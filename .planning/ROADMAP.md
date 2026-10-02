@@ -10,7 +10,7 @@ CareerLoom delivers a zero-friction job discovery portal across major global fir
 - Integer phases (1, 2, 3, 4, 5): Planned milestone work
 - Decimal phases: Urgent insertions
 
-- [ ] **Phase 1: Ingestion Engine & ATS Direct Feeds** - Direct API connectors (Greenhouse, Lever, Ashby), uniform `JobItem` normalization, UTC date parsing, and SQLite caching.
+- [x] **Phase 1: Ingestion Engine & ATS Direct Feeds** - Direct API connectors (Greenhouse, Lever, Ashby), uniform `JobItem` normalization, UTC date parsing, and SQLite caching.
 - [ ] **Phase 2: Natural Language Query & Filter Engine** - Multi-provider free LLM query parser (Groq / Gemini), heuristic rule fallback, category exploration, and multi-attribute SQL search.
 - [ ] **Phase 3: High-Craft Frontend UI & Card Experience** - Modern React/Vite UI, conversational search bar, category quick-pills, faceted filter sidebar, and job card grid with prominent posting dates.
 - [ ] **Phase 4: Custom Enterprise Portal Scrapers** - Extensible crawler pipeline with BeautifulSoup4 and ScrapeGraph-ai for non-ATS enterprise career portals.
@@ -30,9 +30,9 @@ CareerLoom delivers a zero-friction job discovery portal across major global fir
   4. On-demand live fetch updates a target company's listings immediately.
 **Plans**: 3 plans
 Plans:
-- [ ] 01-01: Backend architecture setup (FastAPI + SQLite schema + JobItem model)
-- [ ] 01-02: Direct ATS connectors for Greenhouse, Lever, and Ashby with date normalizer
-- [ ] 01-03: Seed company dataset (50+ global firms) and background sync service
+- [x] 01-01: Backend architecture setup (FastAPI + SQLite schema + JobItem model)
+- [x] 01-02: Direct ATS connectors for Greenhouse, Lever, and Ashby with date normalizer
+- [x] 01-03: Seed company dataset (50+ global firms) and background sync service
 
 ### Phase 2: Natural Language Query & Filter Engine
 **Goal**: Translate conversational prompts and category phrases into structured SQL queries using free online LLMs with heuristic fallbacks and multi-faceted filtering.
@@ -99,8 +99,8 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Ingestion Engine & ATS Direct Feeds | 0/3 | Not started | - |
-| 2. Natural Language Query & Filter Engine | 0/3 | Not started | - |
+| 1. Ingestion Engine & ATS Direct Feeds | 3/3 | Complete | 2026-10-03 |
+| 2. Natural Language Query & Filter Engine | 0/3 | Ready to plan | - |
 | 3. High-Craft Frontend UI & Card Experience | 0/3 | Not started | - |
 | 4. Custom Enterprise Portal Scrapers | 0/2 | Not started | - |
 | 5. Community Intelligence (Reddit Insights) | 0/2 | Not started | - |

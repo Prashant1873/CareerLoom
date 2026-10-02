@@ -9,11 +9,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Data Ingestion & Direct ATS Connectors (INGEST)
 
-- [ ] **INGEST-01**: User can query jobs aggregated across major tech, finance, and consulting firms via direct ATS public API connectors (Greenhouse, Lever, Ashby).
-- [ ] **INGEST-02**: System normalizes varying ATS data feeds into a uniform `JobItem` schema (title, company, domain, category, seniority, location, country, remote, date_posted, apply_url).
-- [ ] **INGEST-03**: System accurately extracts and normalizes the job publication date (`date_posted`) into ISO UTC timestamps.
-- [ ] **INGEST-04**: System persists and indexes normalized jobs in an embedded SQLite database for sub-100ms instant query performance.
-- [ ] **INGEST-05**: User can trigger an on-demand live fetch for a specific company or domain to pull the latest fresh postings.
+- [x] **INGEST-01**: User can query jobs aggregated across major tech, finance, and consulting firms via direct ATS public API connectors (Greenhouse, Lever, Ashby).
+- [x] **INGEST-02**: System normalizes varying ATS data feeds into a uniform `JobItem` schema (title, company, domain, category, seniority, location, country, remote, date_posted, apply_url).
+- [x] **INGEST-03**: System accurately extracts and normalizes the job publication date (`date_posted`) into ISO UTC timestamps.
+- [x] **INGEST-04**: System persists and indexes normalized jobs in an embedded SQLite database for sub-100ms instant query performance.
+- [x] **INGEST-05**: User can trigger an on-demand live fetch for a specific company or domain to pull the latest fresh postings.
 
 ### Natural Language Search & Category Exploration (NLP)
 
@@ -74,11 +74,11 @@ Which phases cover which requirements. Populated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INGEST-01 | Phase 1 | Pending |
-| INGEST-02 | Phase 1 | Pending |
-| INGEST-03 | Phase 1 | Pending |
-| INGEST-04 | Phase 1 | Pending |
-| INGEST-05 | Phase 1 | Pending |
+| INGEST-01 | Phase 1 | Complete |
+| INGEST-02 | Phase 1 | Complete |
+| INGEST-03 | Phase 1 | Complete |
+| INGEST-04 | Phase 1 | Complete |
+| INGEST-05 | Phase 1 | Complete |
 | NLP-01 | Phase 2 | Pending |
 | NLP-02 | Phase 2 | Pending |
 | NLP-03 | Phase 2 | Pending |
