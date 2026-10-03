@@ -39,7 +39,7 @@ class WorkdayConnector(BaseATSConnector):
 
         payload = {
             "appliedFacets": {},
-            "limit": 20,
+            "limit": 50,
             "offset": 0,
             "searchText": "",
         }

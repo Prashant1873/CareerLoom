@@ -15,6 +15,10 @@ CareerLoom delivers a zero-friction job discovery portal across major global fir
 - [x] **Phase 3: High-Craft Frontend UI & Card Experience** - Modern React/Vite UI, conversational search bar, category quick-pills, faceted filter sidebar, and job card grid with prominent posting dates.
 - [x] **Phase 4: Custom Enterprise Portal Scrapers** - Extensible crawler pipeline with BeautifulSoup4 and lightweight LLM extractor for non-ATS enterprise career portals.
 - [x] **Phase 5: Community Intelligence (Reddit Insights)** - Reddit and public forum sentiment scraper for interview timelines, turnaround stages, and authentic company reviews.
+- [x] **Phase 6: Obsidian Design System & 3-Column Shell** - Obsidian Studio dark tokens, 3-column layout shell, and collapsible left navigation rail.
+- [x] **Phase 7: Master Job Stream & Keyboard Navigation Flow** - Sticky omnibox, active chips, and keyboard cursor navigation.
+- [x] **Phase 8: Persistent Job Inspector & Embedded Community Intel** - Persistent right-side inspector pane with embedded tabbed Reddit community intel.
+- [ ] **Phase 9: Massive Global Portal Expansion & Multi-ATS Ingestion (200+ Firms)** - Scale company catalog across 5 major global sectors and bulk-ingest thousands of live job listings into SQLite cache.
 
 ## Phase Details
 
@@ -134,10 +138,26 @@ Plans:
 Plans:
 - [x] 08-01: Persistent right-side job inspector pane with embedded community intel tabs and mobile responsive drawer
 
+### Phase 9: Massive Global Portal Expansion & Multi-ATS Ingestion (200+ Firms)
+**Goal**: Scale the global career portal catalog to 200+ elite employers across Big Tech, AI Labs, Quant Finance, Tier-1 Consulting, and Healthcare, and ingest thousands of live postings directly into SQLite.
+**Mode**: mvp
+**Depends on**: Phase 8
+**Requirements**: SCALE-01, SCALE-02, SCALE-03, SCALE-04, SCALE-05
+**Success Criteria**:
+  1. `companies.json` catalog contains 200+ verified corporate career feeds across Greenhouse, Lever, Ashby, SmartRecruiters, and Workday.
+  2. Multi-ATS connectors fetch jobs concurrently with resilient timeout/rate-limiting handling.
+  3. Bulk ingestion runner populates SQLite cache with thousands of real active job postings.
+  4. Database search queries maintain sub-50ms latency across large volume.
+**Plans**: 3 plans
+Plans:
+- [x] 09-01: Massive 200+ employer catalog expansion across 5 major global sectors
+- [x] 09-02: Multi-ATS bulk sync runner and live database population
+- [x] 09-03: Performance validation, sub-50ms query benchmarking, and regression verification
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -149,6 +169,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 6. Obsidian Design System & 3-Column Shell | 1/1 | Complete | 2026-10-03 |
 | 7. Master Job Stream & Keyboard Flow | 1/1 | Complete | 2026-10-03 |
 | 8. Persistent Job Inspector & Community Intel | 1/1 | Complete | 2026-10-03 |
+| 9. Massive Global Portal Expansion | 3/3 | Complete | 2026-10-03 |
 
 
 

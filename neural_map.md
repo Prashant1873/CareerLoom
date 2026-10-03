@@ -71,4 +71,9 @@ graph TD
    - **Column 2 (`MasterJobStream.tsx`)**: Omnibox search with `/` trigger, active filter chips, sort options, and high-density job cards with `J`/`K` keyboard cursor navigation.
    - **Column 3 (`JobInspectorPane.tsx`)**: Persistent right-side inspection pane with role summary, verified ATS apply CTA, and embedded tabbed Reddit community intel.
 
+7. **Massive Multi-ATS Global Pipeline (200+ Firms)**
+   - [backend/app/data/companies.json](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/data/companies.json): Seed dataset of 200+ global industry leaders categorized by domain, region, and ATS connector type (Greenhouse, Lever, Ashby, SmartRecruiters, Workday).
+   - [backend/app/services/sync.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/services/sync.py): Bounded-concurrency async ingestion runner with rate-limit backoff, duplicate elimination, and batch insertion into SQLite.
+   - [backend/app/db/database.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/db/database.py): SQLite persistence layer with composite indexes for sub-50ms multi-attribute queries across thousands of active jobs.
+
 

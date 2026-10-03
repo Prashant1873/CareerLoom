@@ -68,6 +68,17 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ## Out of Scope
 
+### Milestone v3: Massive Global Career Portal Expansion
+
+#### Catalog & Multi-ATS Scale
+- [x] **SCALE-01**: Catalog expanded to 200+ top global employers spanning AI labs, Big Tech, Quant Finance, Tier-1 Consulting, and Healthcare.
+- [x] **SCALE-02**: Multi-ATS connector validation and hardening for Greenhouse, Lever, Ashby, SmartRecruiters, and Workday with polite concurrency and rate-limit backoff.
+- [x] **SCALE-03**: High-throughput concurrent bulk ingestion runner with progress metrics, batch commits, and failure isolation.
+- [x] **SCALE-04**: SQLite cache populated with thousands of verified live job postings across diverse categories and countries.
+- [x] **SCALE-05**: Verification of sub-50ms indexed search queries and UI responsiveness across scaled job volume.
+
+### Out of Scope
+
 Explicitly excluded. Documented to prevent scope creep.
 
 | Feature | Reason |
@@ -92,15 +103,18 @@ Which phases cover which requirements. Populated during roadmap creation.
 | V2-STREAM-01, V2-KEYBOARD-01 | Phase 7 | Complete |
 | V2-INSPECT-01, V2-INSPECT-02 | Phase 8 | Complete |
 | V2-AESTHETIC-01, V2-MOTION-01 | Phase 8 | Complete |
+| SCALE-01 to 05 | Phase 9 | Complete |
 
 **Coverage:**
 - v1 requirements: 23 total (23 Complete)
 - v2 requirements: 8 total (8 Complete)
-- Mapped to phases: 31
+- v3 requirements: 5 total (5 Complete)
+- Total requirements: 36
+- Mapped to phases: 36
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-10-03*
-*Last updated: 2026-10-03 for v2 Visual Overhaul*
+*Last updated: 2026-10-03 for Phase 9 Massive Portal Expansion*
 
 

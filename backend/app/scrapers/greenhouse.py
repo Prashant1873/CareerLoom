@@ -22,7 +22,7 @@ class GreenhouseConnector(BaseATSConnector):
         company_slug: str,
         domain: str = "Tech",
     ) -> List[JobItem]:
-        url = f"https://boards-api.greenhouse.io/v1/boards/{company_slug}/jobs?content=true"
+        url = f"https://boards-api.greenhouse.io/v1/boards/{company_slug}/jobs"
         jobs: List[JobItem] = []
 
         try:
@@ -42,7 +42,7 @@ class GreenhouseConnector(BaseATSConnector):
 
                 apply_url = rj.get("absolute_url") or f"https://boards.greenhouse.io/{company_slug}/jobs/{rj.get('id')}"
                 raw_location = rj.get("location", {}).get("name", "")
-                raw_date = rj.get("updated_at")
+                raw_date = rj.get("first_published") or rj.get("updated_at")
 
                 date_posted = parse_posting_date(raw_date)
                 category, seniority = classify_role(title)
