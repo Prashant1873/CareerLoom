@@ -17,19 +17,19 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Natural Language Search & Category Exploration (NLP)
 
-- [ ] **NLP-01**: User can search for roles using conversational freeform natural language prompts (e.g., "entry level product management in Europe or remote").
-- [ ] **NLP-02**: System interprets natural language queries via free online AI model APIs (Groq Llama 3.3, Google Gemini Flash, OpenRouter free tier) and extracts structured filter parameters.
-- [ ] **NLP-03**: System provides an instant rule-based / regex heuristic fallback parser if external LLM APIs are offline or rate-limited.
-- [ ] **NLP-04**: User can explore jobs by broad role categories (e.g., "Product Entry Level", "Machine Learning New Grad", "Infrastructure Engineer") without requiring exact title keyword matches.
-- [ ] **NLP-05**: System caches parsed natural language queries in-memory to prevent redundant LLM API calls and optimize latency.
+- [x] **NLP-01**: User can search for roles using conversational freeform natural language prompts (e.g., "entry level product management in Europe or remote").
+- [x] **NLP-02**: System interprets natural language queries via free online AI model APIs (Groq Llama 3.3, Google Gemini Flash, OpenRouter free tier) and extracts structured filter parameters.
+- [x] **NLP-03**: System provides an instant rule-based / regex heuristic fallback parser if external LLM APIs are offline or rate-limited.
+- [x] **NLP-04**: User can explore jobs by broad role categories (e.g., "Product Entry Level", "Machine Learning New Grad", "Infrastructure Engineer") without requiring exact title keyword matches.
+- [x] **NLP-05**: System caches parsed natural language queries in-memory to prevent redundant LLM API calls and optimize latency.
 
 ### Multi-Attribute Filtering & Freshness (FILTER)
 
-- [ ] **FILTER-01**: User can filter jobs by Country and Region (e.g., United States, United Kingdom, European Union, India, Global).
-- [ ] **FILTER-02**: User can filter jobs by Remote work status (Remote, Hybrid, Onsite).
-- [ ] **FILTER-03**: User can filter jobs by Industry Domain (Tech / Software, Fintech, Quantitative Finance, Consulting, AI / ML).
-- [ ] **FILTER-04**: User can filter jobs by Posting Freshness (Past 24 Hours, Past 7 Days, Past 14 Days, Past 30 Days).
-- [ ] **FILTER-05**: User can sort search results by date posted (newest first) or relevance match score.
+- [x] **FILTER-01**: User can filter jobs by Country and Region (e.g., United States, United Kingdom, European Union, India, Global).
+- [x] **FILTER-02**: User can filter jobs by Remote work status (Remote, Hybrid, Onsite).
+- [x] **FILTER-03**: User can filter jobs by Industry Domain (Tech / Software, Fintech, Quantitative Finance, Consulting, AI / ML).
+- [x] **FILTER-04**: User can filter jobs by Posting Freshness (Past 24 Hours, Past 7 Days, Past 14 Days, Past 30 Days).
+- [x] **FILTER-05**: User can sort search results by date posted (newest first) or relevance match score.
 
 ### Frontend UI & Card Experience (UI)
 
@@ -79,16 +79,16 @@ Which phases cover which requirements. Populated during roadmap creation.
 | INGEST-03 | Phase 1 | Complete |
 | INGEST-04 | Phase 1 | Complete |
 | INGEST-05 | Phase 1 | Complete |
-| NLP-01 | Phase 2 | Pending |
-| NLP-02 | Phase 2 | Pending |
-| NLP-03 | Phase 2 | Pending |
-| NLP-04 | Phase 2 | Pending |
-| NLP-05 | Phase 2 | Pending |
-| FILTER-01 | Phase 2 | Pending |
-| FILTER-02 | Phase 2 | Pending |
-| FILTER-03 | Phase 2 | Pending |
-| FILTER-04 | Phase 2 | Pending |
-| FILTER-05 | Phase 2 | Pending |
+| NLP-01 | Phase 2 | Complete |
+| NLP-02 | Phase 2 | Complete |
+| NLP-03 | Phase 2 | Complete |
+| NLP-04 | Phase 2 | Complete |
+| NLP-05 | Phase 2 | Complete |
+| FILTER-01 | Phase 2 | Complete |
+| FILTER-02 | Phase 2 | Complete |
+| FILTER-03 | Phase 2 | Complete |
+| FILTER-04 | Phase 2 | Complete |
+| FILTER-05 | Phase 2 | Complete |
 | UI-01 | Phase 3 | Pending |
 | UI-02 | Phase 3 | Pending |
 | UI-03 | Phase 3 | Pending |

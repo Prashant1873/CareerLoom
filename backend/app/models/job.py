@@ -84,5 +84,7 @@ class JobFilterParams(BaseModel):
     seniority: Optional[str] = None
     is_remote: Optional[bool] = None
     posted_within_days: Optional[int] = None
+    sort_by: str = Field(default="date", description="Sort order: 'date' (newest first), 'company', or 'title'")
+    synonyms: Optional[List[str]] = Field(default=None, description="Optional category synonyms for semantic title matching")
     limit: int = Field(default=50, ge=1, le=200)
     offset: int = Field(default=0, ge=0)

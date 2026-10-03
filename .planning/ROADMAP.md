@@ -11,7 +11,7 @@ CareerLoom delivers a zero-friction job discovery portal across major global fir
 - Decimal phases: Urgent insertions
 
 - [x] **Phase 1: Ingestion Engine & ATS Direct Feeds** - Direct API connectors (Greenhouse, Lever, Ashby), uniform `JobItem` normalization, UTC date parsing, and SQLite caching.
-- [ ] **Phase 2: Natural Language Query & Filter Engine** - Multi-provider free LLM query parser (Groq / Gemini), heuristic rule fallback, category exploration, and multi-attribute SQL search.
+- [x] **Phase 2: Natural Language Query & Filter Engine** - Multi-provider free LLM query parser (Groq / Gemini), heuristic rule fallback, category exploration, and multi-attribute SQL search.
 - [ ] **Phase 3: High-Craft Frontend UI & Card Experience** - Modern React/Vite UI, conversational search bar, category quick-pills, faceted filter sidebar, and job card grid with prominent posting dates.
 - [ ] **Phase 4: Custom Enterprise Portal Scrapers** - Extensible crawler pipeline with BeautifulSoup4 and ScrapeGraph-ai for non-ATS enterprise career portals.
 - [ ] **Phase 5: Community Intelligence (Reddit Insights)** - Reddit and public forum sentiment scraper for interview timelines, turnaround stages, and authentic company reviews.
@@ -46,9 +46,9 @@ Plans:
   4. Faceted filters (Country, Remote, Industry Domain, Freshness) accurately slice and sort search results by date posted.
 **Plans**: 3 plans
 Plans:
-- [ ] 02-01: Multi-model LLM adapter (Groq, Gemini, OpenRouter) and regex fallback parser with LRU query cache
-- [ ] 02-02: Role category taxonomy and semantic expansion engine
-- [ ] 02-03: Search & filter API endpoints with multi-attribute filtering and date sorting
+- [x] 02-01: Multi-model LLM adapter (Groq, Gemini, OpenRouter) and regex fallback parser with LRU query cache
+- [x] 02-02: Role category taxonomy and semantic expansion engine
+- [x] 02-03: Search & filter API endpoints with multi-attribute filtering and date sorting
 
 ### Phase 3: High-Craft Frontend UI & Card Experience
 **Goal**: Build a responsive, accessible React/Vite interface adhering to `frontend-skill`, featuring conversational search, category quick-pills, faceted filters, and job cards highlighting posting dates.
@@ -100,7 +100,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Ingestion Engine & ATS Direct Feeds | 3/3 | Complete | 2026-10-03 |
-| 2. Natural Language Query & Filter Engine | 0/3 | Ready to plan | - |
-| 3. High-Craft Frontend UI & Card Experience | 0/3 | Not started | - |
+| 2. Natural Language Query & Filter Engine | 3/3 | Complete | 2026-10-03 |
+| 3. High-Craft Frontend UI & Card Experience | 0/3 | Ready to plan | - |
 | 4. Custom Enterprise Portal Scrapers | 0/2 | Not started | - |
 | 5. Community Intelligence (Reddit Insights) | 0/2 | Not started | - |

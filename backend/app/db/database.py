@@ -167,8 +167,19 @@ async def query_jobs(params: JobFilterParams) -> Tuple[List[JobItem], int]:
         values.append(params.domain.strip())
 
     if params.country:
-        if params.country.lower() == "remote":
+        c_lower = params.country.lower().strip()
+        if c_lower == "remote":
             conditions.append("is_remote = 1")
+        elif c_lower in ("europe", "eu"):
+            eu_countries = [
+                "united kingdom", "germany", "france", "ireland", "netherlands",
+                "switzerland", "spain", "italy", "sweden", "poland", "europe"
+            ]
+            placeholders = ",".join("?" for _ in eu_countries)
+            conditions.append(f"(LOWER(country) IN ({placeholders}) OR (is_remote = 1 AND LOWER(country) = 'global'))")
+            values.extend(eu_countries)
+        elif c_lower in ("us", "usa", "united states"):
+            conditions.append("(LOWER(country) IN ('united states', 'usa', 'us') OR (is_remote = 1 AND LOWER(country) = 'global'))")
         else:
             conditions.append("(LOWER(country) = LOWER(?) OR (is_remote = 1 AND LOWER(?) = 'global'))")
             values.extend([params.country.strip(), params.country.strip()])
@@ -190,11 +201,18 @@ async def query_jobs(params: JobFilterParams) -> Tuple[List[JobItem], int]:
     if conditions:
         where_clause = "WHERE " + " AND ".join(conditions)
 
+    # Resolve sorting
+    sort_clause = "date_posted DESC"
+    if params.sort_by == "company":
+        sort_clause = "company ASC, date_posted DESC"
+    elif params.sort_by == "title":
+        sort_clause = "title ASC, date_posted DESC"
+
     count_sql = f"SELECT COUNT(*) as total FROM jobs {where_clause}"
     select_sql = f"""
         SELECT * FROM jobs
         {where_clause}
-        ORDER BY date_posted DESC
+        ORDER BY {sort_clause}
         LIMIT ? OFFSET ?
     """
 

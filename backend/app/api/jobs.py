@@ -39,12 +39,13 @@ async def list_jobs(
     seniority: Optional[str] = Query(None, description="Seniority level (entry, mid, senior, lead, intern)"),
     is_remote: Optional[bool] = Query(None, description="Filter for remote positions"),
     posted_within_days: Optional[int] = Query(None, description="Posting freshness in days (1, 7, 14, 30)"),
+    sort_by: str = Query("date", description="Sort order: 'date' (newest first), 'company', or 'title'"),
     limit: int = Query(50, ge=1, le=200),
     offset: int = Query(0, ge=0),
 ):
     """
     Search and filter job listings from the indexed database with sub-50ms latency.
-    Results are chronologically sorted by date_posted DESC.
+    Results are chronologically sorted by date_posted DESC by default.
     """
     params = JobFilterParams(
         search=search,
@@ -55,6 +56,7 @@ async def list_jobs(
         seniority=seniority,
         is_remote=is_remote,
         posted_within_days=posted_within_days,
+        sort_by=sort_by,
         limit=limit,
         offset=offset,
     )

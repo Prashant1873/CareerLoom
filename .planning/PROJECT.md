@@ -15,12 +15,12 @@ Empowers candidates to discover fresh, direct-from-source job listings across ma
 - ✓ Direct ATS job aggregation engine connecting to public API feeds (Greenhouse, Lever, Ashby) across top global employers — Phase 1
 - ✓ Normalized `JobItem` schema with timezone-aware UTC date parser (`date_posted`) — Phase 1
 - ✓ Persistent SQLite storage with sub-50ms indexed queries and on-demand live fetch — Phase 1
+- ✓ Multi-provider Natural Language query parser using free online LLMs (Groq Llama 3.3, Google Gemini Flash, OpenRouter free models) with structured JSON filter extraction & regex fallback — Phase 2
+- ✓ Category-first and broad-role exploration with 36 canonical tracks (e.g. "product entry level", "machine learning new grad") without rigid title requirements — Phase 2
+- ✓ Multi-faceted filtering system: Country/Region expansion, Remote status, Industry Domain, Seniority, and Posting Date freshness — Phase 2
 
 ### Active
 
-- [ ] Multi-provider Natural Language query parser using free online LLMs (Groq Llama 3.3, Google Gemini Flash, OpenRouter free models) with structured JSON filter extraction.
-- [ ] Category-first and broad-role exploration (e.g. "product entry level", "quantitative finance new grad", "infrastructure engineer") without rigid title requirements.
-- [ ] Multi-faceted filtering system: Country/Region, Remote status, Industry Domain, Seniority, and Posting Date freshness.
 - [ ] High-craft card-based UI displaying job title, employer, domain badge, location, direct career site apply CTA, and prominently featured posting date (relative + exact).
 - [ ] AI-assisted and BeautifulSoup scraper pipeline (ScrapeGraph-ai integration) for custom enterprise career portals.
 - [ ] Community intelligence scraper (Reddit & public forums) for interview timelines, company reviews, and preparation advice.
@@ -50,8 +50,8 @@ Empowers candidates to discover fresh, direct-from-source job listings across ma
 | Python (FastAPI) + React (Vite) | Native Python support for ScrapeGraph-ai, scraping tools, and LLMs paired with responsive modern UI | ✓ Good |
 | Direct ATS Endpoints First | Greenhouse, Lever, and Ashby public feeds provide structured JSON with 0 lag and 0 anti-bot blocks | ✓ Good |
 | Hybrid DB + On-Demand Fetch | Instant (<50ms) indexed searches for thousands of jobs with on-demand fresh sync | ✓ Good |
-| Multi-provider LLM Adapter | Free-tier resilience across Groq, Gemini, and OpenRouter with mock/regex offline fallback | — Pending |
-| Phase 2 Community Insights | Keeps early phases focused on search, filtering, and cards; layers Reddit sentiment afterwards | — Pending |
+| Multi-provider LLM Adapter + Regex Fallback | Free-tier resilience across Groq, Gemini, and OpenRouter with instant rule-based fallback | ✓ Good |
+| Category & Track Taxonomy | Canonical mapping of 8 domains and 36 curated tracks to bridge user vernacular and ATS data | ✓ Good |
 
 ## Evolution
 
