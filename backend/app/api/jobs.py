@@ -32,6 +32,7 @@ class JobsResponse(BaseModel):
 @router.get("", response_model=JobsResponse)
 async def list_jobs(
     search: Optional[str] = Query(None, description="Keywords to match against title or company"),
+    keyword: Optional[str] = Query(None, description="Alias for search keywords"),
     company: Optional[str] = Query(None, description="Exact employer company name"),
     category: Optional[str] = Query(None, description="Canonical category (product, software_engineering, data_ai, design, etc.)"),
     domain: Optional[str] = Query(None, description="Industry domain"),
@@ -47,8 +48,9 @@ async def list_jobs(
     Search and filter job listings from the indexed database with sub-50ms latency.
     Results are chronologically sorted by date_posted DESC by default.
     """
+    search_term = search or keyword
     params = JobFilterParams(
-        search=search,
+        search=search_term,
         company=company,
         category=category,
         domain=domain,

@@ -11,6 +11,9 @@ build/
 # Local databases
 data/*.db
 data/*.sqlite
+*.db-shm
+*.db-wal
+*.db-journal
 
 # Virtual environments
 venv/

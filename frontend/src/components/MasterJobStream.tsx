@@ -19,6 +19,7 @@ import { formatJobDate } from '../utils/dateFormatter';
 
 interface MasterJobStreamProps {
   jobs: JobItem[];
+  totalCount?: number;
   selectedJob: JobItem | null;
   onSelectJob: (job: JobItem) => void;
   isLoading: boolean;
@@ -37,6 +38,7 @@ interface MasterJobStreamProps {
 
 export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
   jobs,
+  totalCount,
   selectedJob,
   onSelectJob,
   isLoading,
@@ -179,9 +181,15 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
         {/* Stream Toolbar & Controls */}
         <div className="stream-toolbar">
           <div className="stream-count-info">
-            <span className="count-number">{jobs.length}</span>
+            <span className="count-number">
+              {(totalCount !== undefined ? totalCount : jobs.length).toLocaleString()}
+            </span>
             <span className="count-label">
-              {filters.savedOnly ? 'saved opportunities' : 'verified openings'}
+              {filters.savedOnly
+                ? 'saved opportunities'
+                : totalCount && totalCount > jobs.length
+                ? `verified openings (showing first ${jobs.length})`
+                : 'verified openings'}
             </span>
           </div>
 

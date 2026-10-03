@@ -17,12 +17,28 @@ DB_PATH = DATA_DIR / "jobs.db"
 
 from contextlib import asynccontextmanager
 
+_shared_conn: Optional[aiosqlite.Connection] = None
+
 @asynccontextmanager
 async def get_connection():
+    global _shared_conn
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    async with aiosqlite.connect(str(DB_PATH)) as conn:
-        conn.row_factory = aiosqlite.Row
-        yield conn
+    if _shared_conn is None:
+        _shared_conn = await aiosqlite.connect(str(DB_PATH))
+        _shared_conn.row_factory = aiosqlite.Row
+        await _shared_conn.execute("PRAGMA journal_mode=WAL")
+        await _shared_conn.execute("PRAGMA synchronous=NORMAL")
+        await _shared_conn.execute("PRAGMA cache_size=-64000")
+    yield _shared_conn
+
+async def close_db() -> None:
+    global _shared_conn
+    if _shared_conn is not None:
+        try:
+            await _shared_conn.close()
+        except Exception:
+            pass
+        _shared_conn = None
 
 
 async def init_db() -> None:

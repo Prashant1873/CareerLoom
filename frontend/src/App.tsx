@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import './App.css';
 import type { Category, FilterState, JobItem, ParsedQuery } from './types/job';
-import { fetchCategories, nlpSearch, searchJobs } from './services/api';
+import { fetchCategories, fetchStats, nlpSearch, searchJobsWithTotal } from './services/api';
 import { useBookmarks } from './hooks/useBookmarks';
 import { useKeyboardNav } from './hooks/useKeyboardNav';
 import { NavRail } from './components/NavRail';
@@ -25,6 +25,7 @@ export function App() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS);
   const [jobs, setJobs] = useState<JobItem[]>([]);
+  const [totalMatches, setTotalMatches] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [parsedQuery, setParsedQuery] = useState<ParsedQuery | null>(null);
   const [selectedJob, setSelectedJob] = useState<JobItem | null>(null);
@@ -36,16 +37,16 @@ export function App() {
   const searchRef = useRef<HTMLInputElement | null>(null);
   const { savedIds, savedCount, isBookmarked, toggleBookmark } = useBookmarks();
 
-  // Load initial taxonomy & metadata on mount
+  // Load initial taxonomy & database stats on mount
   useEffect(() => {
     async function loadMeta() {
       try {
-        const [cats, allJobs] = await Promise.all([
+        const [cats, stats] = await Promise.all([
           fetchCategories(),
-          searchJobs({ limit: 100 }),
+          fetchStats(),
         ]);
         setCategories(cats);
-        setTotalJobsIndexed(allJobs.length > 0 ? allJobs.length : 1200);
+        setTotalJobsIndexed(stats.total_jobs || 16064);
       } catch (e) {
         console.error('Error loading metadata:', e);
       }
@@ -72,12 +73,13 @@ export function App() {
           });
           setParsedQuery(response.parsed);
           setJobs(response.jobs);
+          setTotalMatches(response.count);
           if (response.jobs.length > 0) {
             setSelectedJob(response.jobs[0]);
           }
         } else {
           setParsedQuery(null);
-          const results = await searchJobs({
+          const result = await searchJobsWithTotal({
             category: currentFilters.category || undefined,
             domain: currentFilters.domain || undefined,
             country: currentFilters.country || undefined,
@@ -87,9 +89,10 @@ export function App() {
             sort_by: currentFilters.sortBy,
             limit: 100,
           });
-          setJobs(results);
-          if (results.length > 0) {
-            setSelectedJob(results[0]);
+          setJobs(result.jobs);
+          setTotalMatches(result.total);
+          if (result.jobs.length > 0) {
+            setSelectedJob(result.jobs[0]);
           }
         }
       } catch (err) {
@@ -187,6 +190,7 @@ export function App() {
       {/* Column 2: Central Master Job Stream (MasterJobStream.tsx) */}
       <MasterJobStream
         jobs={displayedJobs}
+        totalCount={filters.savedOnly ? displayedJobs.length : totalMatches}
         selectedJob={selectedJob}
         onSelectJob={setSelectedJob}
         isLoading={isLoading}

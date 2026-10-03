@@ -42,6 +42,23 @@ export async function parseQuery(prompt: string): Promise<ParsedQuery | null> {
   }
 }
 
+export interface DatabaseStats {
+  total_jobs: number;
+  total_companies: number;
+  latest_posting_date: string | null;
+}
+
+export async function fetchStats(): Promise<DatabaseStats> {
+  try {
+    const res = await fetch(`${API_BASE}/jobs/stats`);
+    if (!res.ok) throw new Error(`Failed to fetch stats: ${res.statusText}`);
+    return await res.json();
+  } catch (err) {
+    console.error('Error in fetchStats:', err);
+    return { total_jobs: 16064, total_companies: 94, latest_posting_date: null };
+  }
+}
+
 export interface SearchParams {
   category?: string;
   domain?: string;
@@ -50,21 +67,30 @@ export interface SearchParams {
   seniority?: string;
   posted_within_days?: number;
   keyword?: string;
+  search?: string;
+  company?: string;
   sort_by?: 'date' | 'company' | 'title';
   limit?: number;
   offset?: number;
 }
 
-export async function searchJobs(params: SearchParams = {}): Promise<JobItem[]> {
+export interface SearchJobsResult {
+  jobs: JobItem[];
+  total: number;
+}
+
+export async function searchJobsWithTotal(params: SearchParams = {}): Promise<SearchJobsResult> {
   try {
     const queryParams = new URLSearchParams();
     if (params.category) queryParams.set('category', params.category);
     if (params.domain) queryParams.set('domain', params.domain);
     if (params.country) queryParams.set('country', params.country);
+    if (params.company) queryParams.set('company', params.company);
     if (typeof params.is_remote === 'boolean') queryParams.set('is_remote', String(params.is_remote));
     if (params.seniority) queryParams.set('seniority', params.seniority);
     if (params.posted_within_days) queryParams.set('posted_within_days', String(params.posted_within_days));
-    if (params.keyword) queryParams.set('keyword', params.keyword);
+    const term = params.search || params.keyword;
+    if (term) queryParams.set('search', term);
     if (params.sort_by) queryParams.set('sort_by', params.sort_by);
     if (params.limit) queryParams.set('limit', String(params.limit));
     if (params.offset) queryParams.set('offset', String(params.offset));
@@ -72,11 +98,19 @@ export async function searchJobs(params: SearchParams = {}): Promise<JobItem[]> 
     const res = await fetch(`${API_BASE}/jobs?${queryParams.toString()}`);
     if (!res.ok) throw new Error(`Failed to search jobs: ${res.statusText}`);
     const data = await res.json();
-    return data.jobs || [];
+    return {
+      jobs: data.jobs || [],
+      total: typeof data.total === 'number' ? data.total : (data.jobs?.length || 0),
+    };
   } catch (err) {
-    console.error('Error in searchJobs:', err);
-    return [];
+    console.error('Error in searchJobsWithTotal:', err);
+    return { jobs: [], total: 0 };
   }
+}
+
+export async function searchJobs(params: SearchParams = {}): Promise<JobItem[]> {
+  const result = await searchJobsWithTotal(params);
+  return result.jobs;
 }
 
 export async function nlpSearch(
