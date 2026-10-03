@@ -18,10 +18,10 @@ Empowers candidates to discover fresh, direct-from-source job listings across ma
 - ✓ Multi-provider Natural Language query parser using free online LLMs (Groq Llama 3.3, Google Gemini Flash, OpenRouter free models) with structured JSON filter extraction & regex fallback — Phase 2
 - ✓ Category-first and broad-role exploration with 36 canonical tracks (e.g. "product entry level", "machine learning new grad") without rigid title requirements — Phase 2
 - ✓ Multi-faceted filtering system: Country/Region expansion, Remote status, Industry Domain, Seniority, and Posting Date freshness — Phase 2
+- ✓ High-craft card-based UI displaying employer, title, domain, location, direct apply CTA, dual date posted (relative + exact), and bookmarks — Phase 3
 
 ### Active
 
-- [ ] High-craft card-based UI displaying job title, employer, domain badge, location, direct career site apply CTA, and prominently featured posting date (relative + exact).
 - [ ] AI-assisted and BeautifulSoup scraper pipeline (ScrapeGraph-ai integration) for custom enterprise career portals.
 - [ ] Community intelligence scraper (Reddit & public forums) for interview timelines, company reviews, and preparation advice.
 
@@ -52,6 +52,7 @@ Empowers candidates to discover fresh, direct-from-source job listings across ma
 | Hybrid DB + On-Demand Fetch | Instant (<50ms) indexed searches for thousands of jobs with on-demand fresh sync | ✓ Good |
 | Multi-provider LLM Adapter + Regex Fallback | Free-tier resilience across Groq, Gemini, and OpenRouter with instant rule-based fallback | ✓ Good |
 | Category & Track Taxonomy | Canonical mapping of 8 domains and 36 curated tracks to bridge user vernacular and ATS data | ✓ Good |
+| Anti-Slop Vanilla CSS Tokens | Zero-bloat CSS variable tokens complying with frontend-skill without heavy Tailwind runtime | ✓ Good |
 
 ## Evolution
 

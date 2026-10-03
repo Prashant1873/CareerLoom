@@ -33,10 +33,14 @@ graph TD
 
 ## Core Modules & Logic Flow
 
-1. **User Interface (`frontend/` - Phase 3)**
-   - Conversational input bar + categorical pills ("Product Entry Level", "ML New Grad").
-   - Faceted controls: Country / Remote, Domain / Industry, Freshness / Date Posted, Seniority.
-   - Job Cards: High-craft aesthetic, direct apply CTA, dual date posted (relative + ISO), bookmarking.
+1. **User Interface (`frontend/` - Phase 3 Complete)**
+   - [Header.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/Header.tsx): Live feed badge, indexed job count, saved jobs toggle.
+   - [SearchBar.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/SearchBar.tsx): Omnibox conversational search (`/` shortcut), real-time NLP parsing badge, prompt chips.
+   - [CategoryPills.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/CategoryPills.tsx): Category ribbon and 36 curated discovery track pills.
+   - [FilterSidebar.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/FilterSidebar.tsx): Faceted sidebar for freshness (24h/7d/14d/30d), remote mode, country, domain, seniority, sorting.
+   - [JobCard.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/JobCard.tsx): High-craft job cards with prominent posting dates (relative + exact), verified ATS apply CTA, bookmark toggle.
+   - [JobDetailModal.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/JobDetailModal.tsx): Interactive job inspection modal with skill chips and verified ATS link.
+   - [useBookmarks.ts](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/hooks/useBookmarks.ts): Persistent saved jobs in `localStorage`.
 
 2. **NL Query Interpreter & Taxonomy (`backend/app/services/` & `api/`)**
    - [backend/app/services/llm_adapter.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/services/llm_adapter.py): Multi-model LLM adapter (Groq Llama 3.3, Google Gemini Flash, OpenRouter) with `HeuristicQueryParser` regex fallback.

@@ -33,11 +33,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Frontend UI & Card Experience (UI)
 
-- [ ] **UI-01**: User can search and filter through a responsive, modern interface adhering to `frontend-skill` standards (anti-slop, clean visual hierarchy, optical balance).
-- [ ] **UI-02**: System arranges search results in clear, high-density cards displaying job title, company name, domain badge, location, and seniority.
-- [ ] **UI-03**: Each job card prominently highlights the posting date with both relative time ("2 days ago") and exact formatted date.
-- [ ] **UI-04**: Each job card provides a direct "Apply on Company Site" CTA button opening the verified official ATS career application portal.
-- [ ] **UI-05**: User can bookmark or save favorite jobs, persisted across browser sessions in local storage.
+- [x] **UI-01**: User can search and filter through a responsive, modern interface adhering to `frontend-skill` standards (anti-slop, clean visual hierarchy, optical balance).
+- [x] **UI-02**: System arranges search results in clear, high-density cards displaying job title, company name, domain badge, location, and seniority.
+- [x] **UI-03**: Each job card prominently highlights the posting date with both relative time ("2 days ago") and exact formatted date.
+- [x] **UI-04**: Each job card provides a direct "Apply on Company Site" CTA button opening the verified official ATS career application portal.
+- [x] **UI-05**: User can bookmark or save favorite jobs, persisted across browser sessions in local storage.
 
 ### Community Intelligence & Reviews (COMMUNITY - Phase 2)
 
@@ -89,11 +89,11 @@ Which phases cover which requirements. Populated during roadmap creation.
 | FILTER-03 | Phase 2 | Complete |
 | FILTER-04 | Phase 2 | Complete |
 | FILTER-05 | Phase 2 | Complete |
-| UI-01 | Phase 3 | Pending |
-| UI-02 | Phase 3 | Pending |
-| UI-03 | Phase 3 | Pending |
-| UI-04 | Phase 3 | Pending |
-| UI-05 | Phase 3 | Pending |
+| UI-01 | Phase 3 | Complete |
+| UI-02 | Phase 3 | Complete |
+| UI-03 | Phase 3 | Complete |
+| UI-04 | Phase 3 | Complete |
+| UI-05 | Phase 3 | Complete |
 | SCRAPER-01 | Phase 4 | Pending |
 | COMMUNITY-01 | Phase 5 | Pending |
 | COMMUNITY-02 | Phase 5 | Pending |

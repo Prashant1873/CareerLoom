@@ -12,7 +12,7 @@ CareerLoom delivers a zero-friction job discovery portal across major global fir
 
 - [x] **Phase 1: Ingestion Engine & ATS Direct Feeds** - Direct API connectors (Greenhouse, Lever, Ashby), uniform `JobItem` normalization, UTC date parsing, and SQLite caching.
 - [x] **Phase 2: Natural Language Query & Filter Engine** - Multi-provider free LLM query parser (Groq / Gemini), heuristic rule fallback, category exploration, and multi-attribute SQL search.
-- [ ] **Phase 3: High-Craft Frontend UI & Card Experience** - Modern React/Vite UI, conversational search bar, category quick-pills, faceted filter sidebar, and job card grid with prominent posting dates.
+- [x] **Phase 3: High-Craft Frontend UI & Card Experience** - Modern React/Vite UI, conversational search bar, category quick-pills, faceted filter sidebar, and job card grid with prominent posting dates.
 - [ ] **Phase 4: Custom Enterprise Portal Scrapers** - Extensible crawler pipeline with BeautifulSoup4 and ScrapeGraph-ai for non-ATS enterprise career portals.
 - [ ] **Phase 5: Community Intelligence (Reddit Insights)** - Reddit and public forum sentiment scraper for interview timelines, turnaround stages, and authentic company reviews.
 
@@ -62,9 +62,9 @@ Plans:
   4. Users can bookmark jobs with bookmarks persisted in browser local storage.
 **Plans**: 3 plans
 Plans:
-- [ ] 03-01: Frontend scaffolding (Vite + React 19 + TypeScript + design tokens adhering to `frontend-skill`)
-- [ ] 03-02: Search input, category quick-pills, and faceted filter controls
-- [ ] 03-03: Job Card Grid with posting date highlight, direct apply action, and bookmarks
+- [x] 03-01: Frontend scaffolding (Vite + React 19 + TypeScript + design tokens adhering to `frontend-skill`)
+- [x] 03-02: Search input, category quick-pills, and faceted filter controls
+- [x] 03-03: Job Card Grid with posting date highlight, direct apply action, and bookmarks
 
 ### Phase 4: Custom Enterprise Portal Scrapers
 **Goal**: Integrate an extensible crawler pipeline using BeautifulSoup4 and ScrapeGraph-ai to extract jobs from custom enterprise career sites that lack open ATS feeds.
@@ -101,6 +101,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 |-------|----------------|--------|-----------|
 | 1. Ingestion Engine & ATS Direct Feeds | 3/3 | Complete | 2026-10-03 |
 | 2. Natural Language Query & Filter Engine | 3/3 | Complete | 2026-10-03 |
-| 3. High-Craft Frontend UI & Card Experience | 0/3 | Ready to plan | - |
-| 4. Custom Enterprise Portal Scrapers | 0/2 | Not started | - |
+| 3. High-Craft Frontend UI & Card Experience | 3/3 | Complete | 2026-10-03 |
+| 4. Custom Enterprise Portal Scrapers | 0/2 | Ready to plan | - |
 | 5. Community Intelligence (Reddit Insights) | 0/2 | Not started | - |
