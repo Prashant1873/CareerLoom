@@ -41,16 +41,14 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Community Intelligence & Reviews (COMMUNITY - Phase 2)
 
-- [ ] **COMMUNITY-01**: User can view authentic community discussions and interview timelines pulled from Reddit (e.g. r/cscareerquestions, r/ProductManagement) for a selected company or role.
-- [ ] **COMMUNITY-02**: System extracts and summarizes consensus on interview stages, turnaround time, and insider advice without requiring a Reddit paid API key.
+- [x] **COMMUNITY-01**: User can view authentic community discussions and interview timelines pulled from Reddit (e.g. r/cscareerquestions, r/ProductManagement) for a selected company or role.
+- [x] **COMMUNITY-02**: System extracts and summarizes consensus on interview stages, turnaround time, and insider advice without requiring a Reddit paid API key.
 
 ### Custom Enterprise Portal Scrapers (SCRAPER)
 
 - [x] **SCRAPER-01**: System provides an extensible scraper pipeline (BeautifulSoup4 / ScrapeGraph-ai integration) for non-standard enterprise career sites lacking direct JSON ATS feeds.
 
 ## v2 Requirements
-
-Deferred to future release. Tracked but not in current roadmap.
 
 ### Application Tracking & Alerts
 
@@ -95,8 +93,9 @@ Which phases cover which requirements. Populated during roadmap creation.
 | UI-04 | Phase 3 | Complete |
 | UI-05 | Phase 3 | Complete |
 | SCRAPER-01 | Phase 4 | Complete |
-| COMMUNITY-01 | Phase 5 | Pending |
-| COMMUNITY-02 | Phase 5 | Pending |
+| COMMUNITY-01 | Phase 5 | Complete |
+| COMMUNITY-02 | Phase 5 | Complete |
+
 
 **Coverage:**
 - v1 requirements: 23 total

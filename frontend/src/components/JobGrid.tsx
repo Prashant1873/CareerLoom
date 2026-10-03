@@ -9,6 +9,7 @@ interface JobGridProps {
   isBookmarked: (id: string) => boolean;
   onToggleBookmark: (id: string) => void;
   onSelectJob: (job: JobItem) => void;
+  onOpenInsights?: (job: JobItem) => void;
   onResetFilters: () => void;
   hasActiveFilters: boolean;
   isSavedTab: boolean;
@@ -20,10 +21,12 @@ export const JobGrid: React.FC<JobGridProps> = ({
   isBookmarked,
   onToggleBookmark,
   onSelectJob,
+  onOpenInsights,
   onResetFilters,
   hasActiveFilters,
   isSavedTab,
 }) => {
+
   if (isLoading) {
     return (
       <div className="job-grid-section">
@@ -75,8 +78,10 @@ export const JobGrid: React.FC<JobGridProps> = ({
             isBookmarked={isBookmarked(job.id)}
             onToggleBookmark={onToggleBookmark}
             onSelectJob={onSelectJob}
+            onOpenInsights={onOpenInsights}
           />
         ))}
+
       </div>
     </div>
   );

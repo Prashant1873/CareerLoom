@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Bookmark, MapPin, Building2, Calendar, Zap } from 'lucide-react';
+import { ExternalLink, Bookmark, MapPin, Building2, Calendar, Zap, MessageSquare } from 'lucide-react';
 import type { JobItem } from '../types/job';
 import { formatJobDate } from '../utils/dateFormatter';
 
@@ -8,6 +8,7 @@ interface JobCardProps {
   isBookmarked: boolean;
   onToggleBookmark: (id: string) => void;
   onSelectJob: (job: JobItem) => void;
+  onOpenInsights?: (job: JobItem) => void;
 }
 
 export const JobCard: React.FC<JobCardProps> = ({
@@ -15,6 +16,7 @@ export const JobCard: React.FC<JobCardProps> = ({
   isBookmarked,
   onToggleBookmark,
   onSelectJob,
+  onOpenInsights,
 }) => {
   const { relative, exact, tier } = formatJobDate(job.date_posted);
 
@@ -108,15 +110,32 @@ export const JobCard: React.FC<JobCardProps> = ({
 
       {/* Action Footer */}
       <div className="card-footer">
-        <button
-          type="button"
-          className={`bookmark-btn ${isBookmarked ? 'bookmarked' : ''}`}
-          onClick={handleBookmarkClick}
-          title={isBookmarked ? 'Remove bookmark' : 'Bookmark this job'}
-          aria-label={isBookmarked ? 'Remove bookmark' : 'Bookmark this job'}
-        >
-          <Bookmark size={16} fill={isBookmarked ? 'currentColor' : 'none'} />
-        </button>
+        <div className="card-footer-left">
+          <button
+            type="button"
+            className={`bookmark-btn ${isBookmarked ? 'bookmarked' : ''}`}
+            onClick={handleBookmarkClick}
+            title={isBookmarked ? 'Remove bookmark' : 'Bookmark this job'}
+            aria-label={isBookmarked ? 'Remove bookmark' : 'Bookmark this job'}
+          >
+            <Bookmark size={15} fill={isBookmarked ? 'currentColor' : 'none'} />
+          </button>
+
+          {onOpenInsights && (
+            <button
+              type="button"
+              className="insights-trigger-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenInsights(job);
+              }}
+              title="View interview stages, timelines & Reddit discussions"
+            >
+              <MessageSquare size={13} className="text-orange-400" />
+              <span>Intel</span>
+            </button>
+          )}
+        </div>
 
         <button
           type="button"
@@ -124,10 +143,11 @@ export const JobCard: React.FC<JobCardProps> = ({
           onClick={handleApplyClick}
           title="Apply on official company portal"
         >
-          <span>Apply on Company Site</span>
-          <ExternalLink size={14} className="cta-icon" />
+          <span>Apply</span>
+          <ExternalLink size={13} className="cta-icon" />
         </button>
       </div>
     </article>
   );
 };
+

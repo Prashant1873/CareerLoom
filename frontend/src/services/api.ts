@@ -129,3 +129,22 @@ export async function nlpSearch(
     };
   }
 }
+
+export async function fetchCommunityInsights(
+  company: string,
+  role?: string,
+  domain?: string
+): Promise<import('../types/job').CommunityInsights | null> {
+  try {
+    const params = new URLSearchParams({ company });
+    if (role) params.set('role', role);
+    if (domain) params.set('domain', domain);
+    const res = await fetch(`${API_BASE}/insights/company?${params.toString()}`);
+    if (!res.ok) throw new Error(`Failed to fetch insights: ${res.statusText}`);
+    return await res.json();
+  } catch (err) {
+    console.error('Error fetching community insights:', err);
+    return null;
+  }
+}
+

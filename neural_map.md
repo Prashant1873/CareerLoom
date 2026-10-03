@@ -60,6 +60,9 @@ graph TD
    - [backend/app/models/job.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/models/job.py): `JobItem` model with deterministic SHA-256 deduplication and UTC datetime enforcement.
    - [backend/app/db/database.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/db/database.py): SQLite storage with composite indexes (`date_posted DESC`, `category`, `company`, `domain`, `country`), regional geographic expansion (e.g. Europe), and sorting.
 
-5. **Community Insights (Phase 5)**
-   - Reddit API / public search for `[company] + [role] + interview timeline / review`.
-   - Distill consensus on response times, rounds, and insider advice.
+5. **Community Insights (`backend/app/services/reddit.py`, `backend/app/api/insights.py`, & `frontend/`)**
+   - [backend/app/services/reddit.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/services/reddit.py): `RedditCommunityService` querying public Reddit `.json` search feeds with custom User-Agent headers, 24-hour in-memory TTL caching, benchmark consensus for top employers, and fallback synthesis.
+   - [backend/app/api/insights.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/api/insights.py): `GET /api/insights/company` providing turnaround estimates, interview round breakdowns, insider tips, and thread links.
+   - [frontend/src/components/CommunityInsightsDrawer.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/CommunityInsightsDrawer.tsx): High-craft slide-over panel with turnaround highlight, hiring sentiment summary, stepped process roadmap, candidate tips, and authentic Reddit cards.
+   - Integrated trigger buttons in [JobCard.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/JobCard.tsx) and [JobDetailModal.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/JobDetailModal.tsx).
+

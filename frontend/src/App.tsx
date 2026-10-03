@@ -9,6 +9,8 @@ import { CategoryPills } from './components/CategoryPills';
 import { FilterSidebar } from './components/FilterSidebar';
 import { JobGrid } from './components/JobGrid';
 import { JobDetailModal } from './components/JobDetailModal';
+import { CommunityInsightsDrawer } from './components/CommunityInsightsDrawer';
+
 
 const DEFAULT_FILTERS: FilterState = {
   searchPrompt: '',
@@ -31,8 +33,20 @@ export function App() {
   const [parsedQuery, setParsedQuery] = useState<ParsedQuery | null>(null);
   const [selectedJob, setSelectedJob] = useState<JobItem | null>(null);
   const [totalJobsIndexed, setTotalJobsIndexed] = useState<number>(0);
+  const [insightsJob, setInsightsJob] = useState<JobItem | null>(null);
+  const [isInsightsOpen, setIsInsightsOpen] = useState<boolean>(false);
 
   const { savedIds, savedCount, isBookmarked, toggleBookmark } = useBookmarks();
+
+  const handleOpenInsights = (job: JobItem) => {
+    setInsightsJob(job);
+    setIsInsightsOpen(true);
+  };
+
+  const handleCloseInsights = () => {
+    setIsInsightsOpen(false);
+  };
+
 
   // Load initial taxonomy & metadata on mount
   useEffect(() => {
@@ -204,6 +218,7 @@ export function App() {
               isBookmarked={isBookmarked}
               onToggleBookmark={toggleBookmark}
               onSelectJob={setSelectedJob}
+              onOpenInsights={handleOpenInsights}
               onResetFilters={handleResetFilters}
               hasActiveFilters={hasActiveFilters}
               isSavedTab={filters.savedOnly}
@@ -217,9 +232,17 @@ export function App() {
         onClose={() => setSelectedJob(null)}
         isBookmarked={selectedJob ? isBookmarked(selectedJob.id) : false}
         onToggleBookmark={toggleBookmark}
+        onOpenInsights={handleOpenInsights}
+      />
+
+      <CommunityInsightsDrawer
+        job={insightsJob}
+        isOpen={isInsightsOpen}
+        onClose={handleCloseInsights}
       />
     </div>
   );
 }
+
 
 export default App;

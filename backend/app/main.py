@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.app.api import categories, jobs, nlp
+from backend.app.api import categories, insights, jobs, nlp
 from backend.app.db.database import get_stats, init_db
 from backend.app.services.sync import JobSyncService
 
@@ -81,3 +81,4 @@ async def root():
 app.include_router(jobs.router)
 app.include_router(categories.router)
 app.include_router(nlp.router)
+app.include_router(insights.router)

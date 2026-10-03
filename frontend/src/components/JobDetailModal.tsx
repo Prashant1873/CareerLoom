@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, ExternalLink, Bookmark, MapPin, Building2, Calendar, ShieldCheck, Globe } from 'lucide-react';
+import { X, ExternalLink, Bookmark, MapPin, Building2, Calendar, ShieldCheck, Globe, MessageSquare } from 'lucide-react';
 import type { JobItem } from '../types/job';
 import { formatJobDate } from '../utils/dateFormatter';
 
@@ -8,6 +8,7 @@ interface JobDetailModalProps {
   onClose: () => void;
   isBookmarked: boolean;
   onToggleBookmark: (id: string) => void;
+  onOpenInsights?: (job: JobItem) => void;
 }
 
 export const JobDetailModal: React.FC<JobDetailModalProps> = ({
@@ -15,7 +16,9 @@ export const JobDetailModal: React.FC<JobDetailModalProps> = ({
   onClose,
   isBookmarked,
   onToggleBookmark,
+  onOpenInsights,
 }) => {
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -125,15 +128,29 @@ export const JobDetailModal: React.FC<JobDetailModalProps> = ({
 
         {/* Modal Actions Footer */}
         <div className="modal-footer">
-          <button
-            type="button"
-            className={`modal-bookmark-btn ${isBookmarked ? 'bookmarked' : ''}`}
-            onClick={() => onToggleBookmark(job.id)}
-            aria-label={isBookmarked ? 'Saved to bookmarks' : 'Save to bookmarks'}
-          >
-            <Bookmark size={18} fill={isBookmarked ? 'currentColor' : 'none'} />
-            <span>{isBookmarked ? 'Saved' : 'Save Job'}</span>
-          </button>
+          <div className="modal-footer-left">
+            <button
+              type="button"
+              className={`modal-bookmark-btn ${isBookmarked ? 'bookmarked' : ''}`}
+              onClick={() => onToggleBookmark(job.id)}
+              aria-label={isBookmarked ? 'Saved to bookmarks' : 'Save to bookmarks'}
+            >
+              <Bookmark size={17} fill={isBookmarked ? 'currentColor' : 'none'} />
+              <span>{isBookmarked ? 'Saved' : 'Save'}</span>
+            </button>
+
+            {onOpenInsights && (
+              <button
+                type="button"
+                className="modal-insights-btn"
+                onClick={() => onOpenInsights(job)}
+                title="View interview process, turnaround times and Reddit discussions"
+              >
+                <MessageSquare size={16} />
+                <span>Interview Intel</span>
+              </button>
+            )}
+          </div>
 
           <button
             type="button"
@@ -149,3 +166,4 @@ export const JobDetailModal: React.FC<JobDetailModalProps> = ({
     </div>
   );
 };
+

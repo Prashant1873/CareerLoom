@@ -59,3 +59,25 @@ export interface FilterState {
   sortBy: 'date' | 'company' | 'title';
   savedOnly: boolean;
 }
+
+export interface RedditThreadItem {
+  title: string;
+  url: string;
+  score: number;
+  num_comments: number;
+  author: string;
+  subreddit: string;
+}
+
+export interface CommunityInsights {
+  company: string;
+  role: string;
+  subreddit: string;
+  turnaround_estimate: string;
+  interview_stages: string[];
+  insider_tips: string[];
+  sentiment_summary: string;
+  threads: RedditThreadItem[];
+  last_updated: string;
+}
+

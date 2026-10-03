@@ -13,10 +13,11 @@ CareerLoom delivers a zero-friction job discovery portal across major global fir
 - [x] **Phase 1: Ingestion Engine & ATS Direct Feeds** - Direct API connectors (Greenhouse, Lever, Ashby), uniform `JobItem` normalization, UTC date parsing, and SQLite caching.
 - [x] **Phase 2: Natural Language Query & Filter Engine** - Multi-provider free LLM query parser (Groq / Gemini), heuristic rule fallback, category exploration, and multi-attribute SQL search.
 - [x] **Phase 3: High-Craft Frontend UI & Card Experience** - Modern React/Vite UI, conversational search bar, category quick-pills, faceted filter sidebar, and job card grid with prominent posting dates.
-- [ ] **Phase 4: Custom Enterprise Portal Scrapers** - Extensible crawler pipeline with BeautifulSoup4 and ScrapeGraph-ai for non-ATS enterprise career portals.
-- [ ] **Phase 5: Community Intelligence (Reddit Insights)** - Reddit and public forum sentiment scraper for interview timelines, turnaround stages, and authentic company reviews.
+- [x] **Phase 4: Custom Enterprise Portal Scrapers** - Extensible crawler pipeline with BeautifulSoup4 and lightweight LLM extractor for non-ATS enterprise career portals.
+- [x] **Phase 5: Community Intelligence (Reddit Insights)** - Reddit and public forum sentiment scraper for interview timelines, turnaround stages, and authentic company reviews.
 
 ## Phase Details
+
 
 ### Phase 1: Ingestion Engine & ATS Direct Feeds
 **Goal**: Ingest verified job listings directly from public ATS endpoints across top global employers, normalize to a uniform schema with reliable posting dates, and cache in SQLite for sub-50ms queries.
@@ -89,8 +90,8 @@ Plans:
   2. System extracts consensus on interview turnaround times, stage counts, and candidate tips.
 **Plans**: 2 plans
 Plans:
-- [ ] 05-01: Reddit public JSON API client with company/role search and caching
-- [ ] 05-02: Timeline & sentiment summarizer drawer component in frontend
+- [x] 05-01: Reddit public JSON API client with company/role search and caching
+- [x] 05-02: Timeline & sentiment summarizer drawer component in frontend
 
 ## Progress
 
@@ -103,4 +104,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 2. Natural Language Query & Filter Engine | 3/3 | Complete | 2026-10-03 |
 | 3. High-Craft Frontend UI & Card Experience | 3/3 | Complete | 2026-10-03 |
 | 4. Custom Enterprise Portal Scrapers | 2/2 | Complete | 2026-10-03 |
-| 5. Community Intelligence (Reddit Insights) | 0/2 | Ready to plan | - |
+| 5. Community Intelligence (Reddit Insights) | 2/2 | Complete | 2026-10-03 |
+
