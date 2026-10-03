@@ -9,6 +9,8 @@ from backend.app.scrapers.ashby import AshbyConnector
 from backend.app.scrapers.greenhouse import GreenhouseConnector
 from backend.app.scrapers.lever import LeverConnector
 from backend.app.scrapers.llm_scraper import LLMPortalExtractor
+from backend.app.scrapers.smartrecruiters import SmartRecruitersConnector
+from backend.app.scrapers.workday import WorkdayConnector
 
 logger = logging.getLogger("careerloom.sync")
 
@@ -22,8 +24,11 @@ class JobSyncService:
             "greenhouse": GreenhouseConnector(),
             "lever": LeverConnector(),
             "ashby": AshbyConnector(),
+            "smartrecruiters": SmartRecruitersConnector(),
+            "workday": WorkdayConnector(),
         }
         self.portal_extractor = LLMPortalExtractor()
+
 
     def load_companies(self) -> List[Dict[str, str]]:
         if not COMPANIES_FILE.exists():

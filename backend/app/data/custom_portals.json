@@ -18,10 +18,40 @@
     "tier": "Tier 1 Strategy"
   },
   {
+    "company": "Oliver Wyman",
+    "domain": "Consulting",
+    "career_url": "https://www.oliverwyman.com/careers/search-jobs.html",
+    "tier": "Management Consulting"
+  },
+  {
     "company": "Goldman Sachs",
     "domain": "Quantitative Finance",
     "career_url": "https://www.goldmansachs.com/careers",
     "tier": "Tier 1 Investment Banking"
+  },
+  {
+    "company": "Morgan Stanley",
+    "domain": "Quantitative Finance",
+    "career_url": "https://www.morganstanley.com/people-opportunities/careers",
+    "tier": "Tier 1 Investment Banking"
+  },
+  {
+    "company": "JPMorgan Chase",
+    "domain": "Quantitative Finance",
+    "career_url": "https://careers.jpmorgan.com/us/en/home",
+    "tier": "Global Banking & Tech"
+  },
+  {
+    "company": "Citadel",
+    "domain": "Quantitative Finance",
+    "career_url": "https://www.citadel.com/careers/open-roles",
+    "tier": "Quantitative Hedge Fund"
+  },
+  {
+    "company": "Jane Street",
+    "domain": "Quantitative Finance",
+    "career_url": "https://www.janestreet.com/join-jane-street/open-roles",
+    "tier": "Proprietary Trading"
   },
   {
     "company": "Apple",
@@ -30,9 +60,39 @@
     "tier": "Big Tech"
   },
   {
+    "company": "Microsoft",
+    "domain": "Tech",
+    "career_url": "https://careers.microsoft.com/v2/global/en/home.html",
+    "tier": "Big Tech"
+  },
+  {
+    "company": "Google",
+    "domain": "Tech",
+    "career_url": "https://www.google.com/about/careers/applications/jobs/results",
+    "tier": "Big Tech"
+  },
+  {
+    "company": "Netflix",
+    "domain": "Tech",
+    "career_url": "https://jobs.netflix.com/search",
+    "tier": "Big Tech & Entertainment"
+  },
+  {
     "company": "Bloomberg",
     "domain": "Fintech",
     "career_url": "https://www.bloomberg.com/company/careers",
     "tier": "Fintech & Data"
+  },
+  {
+    "company": "Pfizer",
+    "domain": "Healthcare",
+    "career_url": "https://pfizer.wd1.myworkdayjobs.com/PfizerCareers",
+    "tier": "Global Biopharma"
+  },
+  {
+    "company": "Moderna",
+    "domain": "Healthcare",
+    "career_url": "https://modernatx.wd1.myworkdayjobs.com/moderna",
+    "tier": "Biotech & mRNA"
   }
 ]

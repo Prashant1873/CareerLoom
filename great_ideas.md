@@ -19,5 +19,9 @@
 - **Company Vibe & Timeline Meter**: Display expected turnaround time, interview rounds, and insider advice directly alongside the job listing.
 
 ## 4. Intelligent Scraping & Ingestion Strategy
-- **Scraper Pipeline Exploration**: Investigate AI-assisted web scraping engines like [Scrapegraph-ai](https://github.com/ScrapeGraphAI/Scrapegraph-ai) for unstructured career sites.
-- **Standard ATS Direct Feed Ingestion**: Connect directly to public JSON feeds of Greenhouse, Lever, Ashby, and Workday boards for fast, reliable, zero-block data ingestion.
+- **Standard ATS Direct Feed Ingestion**: Connect directly to public JSON feeds of Greenhouse, Lever, and Ashby boards for fast, reliable, zero-block data ingestion.
+- **Enterprise ATS Direct API Connectors**:
+  - **Workday Candidate Experience Service (CXS)**: Direct REST endpoint (`POST /wday/cxs/{tenant}/{career_site}/jobs`) enabling zero-scraping, zero-bot-block ingestion of Fortune 500 companies (Pfizer, Target, Adobe, Morgan Stanley).
+  - **SmartRecruiters Public API**: Zero-auth public postings feed (`GET /v1/companies/{company}/postings`) for tier-1 global employers (Visa, Bosch, IKEA, Ubisoft).
+  - **Lightweight Semantic DOM Cleaner**: BS4 HTML boilerplate stripper + free online LLM semantic normalizer for unstructured enterprise career portals (McKinsey, Apple, BCG, Bain, Goldman Sachs).
+
