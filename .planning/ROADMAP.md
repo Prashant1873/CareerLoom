@@ -106,7 +106,7 @@ Plans:
   3. Quick views (All, Saved, Fresh <24h, Fresh <7d) update filter state immediately with badge counts.
 **Plans**: 1 plan
 Plans:
-- [ ] 06-01: Obsidian design tokens, 3-column layout shell, and collapsible left navigation rail
+- [x] 06-01: Obsidian design tokens, 3-column layout shell, and collapsible left navigation rail
 
 ### Phase 7: Master Job Stream & Keyboard Navigation Flow
 **Goal**: Deliver a high-density, scannable central job stream featuring an omnibox search header with real-time NLP pills, active filter chips, and keyboard-first cursor navigation (`J`/`K`/`S`/`Enter`).
@@ -119,7 +119,7 @@ Plans:
   3. Users can navigate up/down through jobs via `J`/`K` keys and toggle bookmarks via `S`.
 **Plans**: 1 plan
 Plans:
-- [ ] 07-01: Master job stream component, filter chips, sort bar, and keyboard navigation hook
+- [x] 07-01: Master job stream component, filter chips, sort bar, and keyboard navigation hook
 
 ### Phase 8: Persistent Job Inspector & Embedded Community Intel
 **Goal**: Build the persistent right-side inspector pane showing instant job summaries, verified apply actions, and embedded tabbed Reddit community intel (turnaround estimates, stage roadmap, tips, discussions).
@@ -132,7 +132,7 @@ Plans:
   3. Mobile/tablet breakpoints gracefully collapse into slide-over drawer with Apple spring physics.
 **Plans**: 1 plan
 Plans:
-- [ ] 08-01: Persistent right-side job inspector pane with embedded community intel tabs and mobile responsive drawer
+- [x] 08-01: Persistent right-side job inspector pane with embedded community intel tabs and mobile responsive drawer
 
 ## Progress
 
@@ -146,8 +146,9 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 3. High-Craft Frontend UI & Card Experience | 3/3 | Complete | 2026-10-03 |
 | 4. Custom Enterprise Portal Scrapers | 2/2 | Complete | 2026-10-03 |
 | 5. Community Intelligence (Reddit Insights) | 2/2 | Complete | 2026-10-03 |
-| 6. Obsidian Design System & 3-Column Shell | 0/1 | Ready to plan | - |
-| 7. Master Job Stream & Keyboard Flow | 0/1 | Queued | - |
-| 8. Persistent Job Inspector & Community Intel | 0/1 | Queued | - |
+| 6. Obsidian Design System & 3-Column Shell | 1/1 | Complete | 2026-10-03 |
+| 7. Master Job Stream & Keyboard Flow | 1/1 | Complete | 2026-10-03 |
+| 8. Persistent Job Inspector & Community Intel | 1/1 | Complete | 2026-10-03 |
+
 
 

@@ -1,16 +1,13 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import './App.css';
-import type { Category, DiscoveryTrack, FilterState, JobItem, ParsedQuery } from './types/job';
-import { fetchCategories, fetchDiscoveryTracks, nlpSearch, searchJobs } from './services/api';
+import type { Category, FilterState, JobItem, ParsedQuery } from './types/job';
+import { fetchCategories, nlpSearch, searchJobs } from './services/api';
 import { useBookmarks } from './hooks/useBookmarks';
-import { Header } from './components/Header';
-import { SearchBar } from './components/SearchBar';
-import { CategoryPills } from './components/CategoryPills';
-import { FilterSidebar } from './components/FilterSidebar';
-import { JobGrid } from './components/JobGrid';
-import { JobDetailModal } from './components/JobDetailModal';
+import { useKeyboardNav } from './hooks/useKeyboardNav';
+import { NavRail } from './components/NavRail';
+import { MasterJobStream } from './components/MasterJobStream';
+import { JobInspectorPane } from './components/JobInspectorPane';
 import { CommunityInsightsDrawer } from './components/CommunityInsightsDrawer';
-
 
 const DEFAULT_FILTERS: FilterState = {
   searchPrompt: '',
@@ -26,7 +23,6 @@ const DEFAULT_FILTERS: FilterState = {
 
 export function App() {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [tracks, setTracks] = useState<DiscoveryTrack[]>([]);
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS);
   const [jobs, setJobs] = useState<JobItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -35,31 +31,21 @@ export function App() {
   const [totalJobsIndexed, setTotalJobsIndexed] = useState<number>(0);
   const [insightsJob, setInsightsJob] = useState<JobItem | null>(null);
   const [isInsightsOpen, setIsInsightsOpen] = useState<boolean>(false);
+  const [isRailCollapsed, setIsRailCollapsed] = useState<boolean>(false);
 
+  const searchRef = useRef<HTMLInputElement | null>(null);
   const { savedIds, savedCount, isBookmarked, toggleBookmark } = useBookmarks();
-
-  const handleOpenInsights = (job: JobItem) => {
-    setInsightsJob(job);
-    setIsInsightsOpen(true);
-  };
-
-  const handleCloseInsights = () => {
-    setIsInsightsOpen(false);
-  };
-
 
   // Load initial taxonomy & metadata on mount
   useEffect(() => {
     async function loadMeta() {
       try {
-        const [cats, trks, allJobs] = await Promise.all([
+        const [cats, allJobs] = await Promise.all([
           fetchCategories(),
-          fetchDiscoveryTracks(),
           searchJobs({ limit: 100 }),
         ]);
         setCategories(cats);
-        setTracks(trks);
-        setTotalJobsIndexed(allJobs.length > 0 ? allJobs.length : 1000);
+        setTotalJobsIndexed(allJobs.length > 0 ? allJobs.length : 1200);
       } catch (e) {
         console.error('Error loading metadata:', e);
       }
@@ -67,13 +53,13 @@ export function App() {
     loadMeta();
   }, []);
 
+
   // Perform search whenever searchPrompt or structured filters change
   const executeSearch = useCallback(
     async (currentFilters: FilterState) => {
       setIsLoading(true);
       try {
         if (currentFilters.searchPrompt.trim()) {
-          // Conversational search via NLP engine
           const response = await nlpSearch(currentFilters.searchPrompt, {
             category: currentFilters.category || undefined,
             domain: currentFilters.domain || undefined,
@@ -86,8 +72,10 @@ export function App() {
           });
           setParsedQuery(response.parsed);
           setJobs(response.jobs);
+          if (response.jobs.length > 0) {
+            setSelectedJob(response.jobs[0]);
+          }
         } else {
-          // Standard multi-faceted search
           setParsedQuery(null);
           const results = await searchJobs({
             category: currentFilters.category || undefined,
@@ -100,6 +88,9 @@ export function App() {
             limit: 100,
           });
           setJobs(results);
+          if (results.length > 0) {
+            setSelectedJob(results[0]);
+          }
         }
       } catch (err) {
         console.error('Failed search execution:', err);
@@ -128,15 +119,13 @@ export function App() {
     setFilters((prev) => ({
       ...prev,
       category: categoryId,
-      // If prompt was empty, clearing category resets cleanly
     }));
   };
 
-  const handleSelectTrack = (track: DiscoveryTrack) => {
+  const handleSelectFreshness = (days: number | null) => {
     setFilters((prev) => ({
       ...prev,
-      searchPrompt: track.track,
-      category: track.category_id,
+      freshnessDays: days,
     }));
   };
 
@@ -152,89 +141,77 @@ export function App() {
     setFilters((prev) => ({ ...prev, savedOnly: !prev.savedOnly }));
   };
 
+  const handleOpenInsights = (job: JobItem) => {
+    setInsightsJob(job);
+    setIsInsightsOpen(true);
+  };
+
+  const handleCloseInsights = () => {
+    setIsInsightsOpen(false);
+  };
+
   // Filter jobs by saved status if savedOnly is enabled
   const displayedJobs = filters.savedOnly
     ? jobs.filter((j) => savedIds.includes(j.id))
     : jobs;
 
-  const hasActiveFilters = Boolean(
-    filters.searchPrompt ||
-      filters.category ||
-      filters.domain ||
-      filters.country ||
-      filters.isRemote !== null ||
-      filters.seniority ||
-      filters.freshnessDays !== null
-  );
+  // Keyboard navigation hook
+  useKeyboardNav({
+    jobs: displayedJobs,
+    selectedJob,
+    onSelectJob: setSelectedJob,
+    onToggleBookmark: toggleBookmark,
+    onFocusSearch: () => searchRef.current?.focus(),
+  });
 
   return (
-    <div className="app-container">
-      <Header
+    <div className="app-v2-shell">
+      {/* Column 1: Left Navigation Rail (NavRail.tsx) */}
+      <NavRail
+        isCollapsed={isRailCollapsed}
+        onToggleCollapse={() => setIsRailCollapsed(!isRailCollapsed)}
+        categories={categories}
+        selectedCategory={filters.category}
+        onSelectCategory={handleSelectCategory}
+        totalJobsCount={totalJobsIndexed}
         savedCount={savedCount}
         showSavedOnly={filters.savedOnly}
         onToggleSavedOnly={handleToggleSavedOnly}
-        totalJobs={totalJobsIndexed}
+        freshnessDays={filters.freshnessDays}
+        onSelectFreshness={handleSelectFreshness}
+        filters={filters}
+        onFilterChange={handleFilterChange}
+        onResetFilters={handleResetFilters}
       />
 
-      <main className="main-wrapper">
-        <SearchBar
-          query={filters.searchPrompt}
-          onQueryChange={handleQueryChange}
-          onSearch={handleSearchSubmit}
-          isLoading={isLoading}
-          parsedQuery={parsedQuery}
-        />
-
-        <CategoryPills
-          categories={categories}
-          tracks={tracks}
-          selectedCategory={filters.category}
-          onSelectCategory={handleSelectCategory}
-          onSelectTrack={handleSelectTrack}
-        />
-
-        <div className="content-layout">
-          <FilterSidebar
-            filters={filters}
-            onFilterChange={handleFilterChange}
-            onResetFilters={handleResetFilters}
-            totalFilteredCount={displayedJobs.length}
-          />
-
-          <section className="results-area">
-            <div className="results-meta-bar">
-              <span className="results-count-text">
-                {filters.savedOnly ? (
-                  <>Showing <span className="count-highlight">{displayedJobs.length}</span> saved opportunities</>
-                ) : (
-                  <>Found <span className="count-highlight">{displayedJobs.length}</span> verified postings</>
-                )}
-              </span>
-            </div>
-
-            <JobGrid
-              jobs={displayedJobs}
-              isLoading={isLoading}
-              isBookmarked={isBookmarked}
-              onToggleBookmark={toggleBookmark}
-              onSelectJob={setSelectedJob}
-              onOpenInsights={handleOpenInsights}
-              onResetFilters={handleResetFilters}
-              hasActiveFilters={hasActiveFilters}
-              isSavedTab={filters.savedOnly}
-            />
-          </section>
-        </div>
-      </main>
-
-      <JobDetailModal
-        job={selectedJob}
-        onClose={() => setSelectedJob(null)}
-        isBookmarked={selectedJob ? isBookmarked(selectedJob.id) : false}
+      {/* Column 2: Central Master Job Stream (MasterJobStream.tsx) */}
+      <MasterJobStream
+        jobs={displayedJobs}
+        selectedJob={selectedJob}
+        onSelectJob={setSelectedJob}
+        isLoading={isLoading}
+        isBookmarked={isBookmarked}
         onToggleBookmark={toggleBookmark}
         onOpenInsights={handleOpenInsights}
+        query={filters.searchPrompt}
+        onQueryChange={handleQueryChange}
+        onSearch={handleSearchSubmit}
+        parsedQuery={parsedQuery}
+        filters={filters}
+        onFilterChange={handleFilterChange}
+        onResetFilters={handleResetFilters}
+        searchRef={searchRef}
       />
 
+      {/* Column 3: Persistent Right-Side Job Inspector (JobInspectorPane.tsx) */}
+      <JobInspectorPane
+        job={selectedJob}
+        isBookmarked={selectedJob ? isBookmarked(selectedJob.id) : false}
+        onToggleBookmark={toggleBookmark}
+        onClose={() => setSelectedJob(null)}
+      />
+
+      {/* Slide-over Community Insights Drawer */}
       <CommunityInsightsDrawer
         job={insightsJob}
         isOpen={isInsightsOpen}
@@ -243,6 +220,5 @@ export function App() {
     </div>
   );
 }
-
 
 export default App;

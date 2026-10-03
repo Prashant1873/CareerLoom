@@ -51,20 +51,20 @@ Requirements for initial release. Each maps to roadmap phases.
 ## v2 Requirements: Visual Overhaul & Desktop-Grade Master-Detail Control Center
 
 ### Layout Shell & Navigation Rail (V2-SHELL)
-- [ ] **V2-SHELL-01**: User interacts with a 3-column split layout (Collapsible Left Rail + Central Stream + Sticky Right Inspector) built with fluid CSS grid.
-- [ ] **V2-NAV-01**: User can toggle navigation views (All Jobs, Saved Jobs with count, Fresh <24h, Fresh <7d) and expand/collapse category and filter accordions in the left rail.
+- [x] **V2-SHELL-01**: User interacts with a 3-column split layout (Collapsible Left Rail + Central Stream + Sticky Right Inspector) built with fluid CSS grid.
+- [x] **V2-NAV-01**: User can toggle navigation views (All Jobs, Saved Jobs with count, Fresh <24h, Fresh <7d) and expand/collapse category and filter accordions in the left rail.
 
 ### Central Stream & Keyboard Navigation (V2-STREAM)
-- [ ] **V2-STREAM-01**: User can search using a sticky omnibox search header with real-time NLP badge, clearable filter chips, and sorting controls.
-- [ ] **V2-KEYBOARD-01**: User can navigate the job stream using keyboard shortcuts: `J` (next job), `K` (previous job), `S` (bookmark), `Enter` (apply), and `/` (focus search).
+- [x] **V2-STREAM-01**: User can search using a sticky omnibox search header with real-time NLP badge, clearable filter chips, and sorting controls.
+- [x] **V2-KEYBOARD-01**: User can navigate the job stream using keyboard shortcuts: `J` (next job), `K` (previous job), `S` (bookmark), `Enter` (apply), and `/` (focus search).
 
 ### Persistent Job Inspector & Embedded Community Intel (V2-INSPECT)
-- [ ] **V2-INSPECT-01**: Right-side inspector displays selected job summary, dual date badges, and verified ATS apply CTA without intrusive modal dialogs.
-- [ ] **V2-INSPECT-02**: Right-side inspector embeds tabbed Reddit community intelligence (interview turnaround estimates, stage roadmap, insider tips, discussion thread links).
+- [x] **V2-INSPECT-01**: Right-side inspector displays selected job summary, dual date badges, and verified ATS apply CTA without intrusive modal dialogs.
+- [x] **V2-INSPECT-02**: Right-side inspector embeds tabbed Reddit community intelligence (interview turnaround estimates, stage roadmap, insider tips, discussion thread links).
 
 ### Design Aesthetics & Fluid Motion (V2-AESTHETIC)
-- [ ] **V2-AESTHETIC-01**: Interface adopts Obsidian Studio Dark styling (#0B0F17 canvas, hairline borders, emerald active glow, amber Reddit accents) conforming to `frontend-skill`.
-- [ ] **V2-MOTION-01**: Micro-interactions feature Apple HIG spring physics, tactile `active: scale(0.98)` feedback, and fluid responsive column collapse.
+- [x] **V2-AESTHETIC-01**: Interface adopts Obsidian Studio Dark styling (#0B0F17 canvas, hairline borders, emerald active glow, amber Reddit accents) conforming to `frontend-skill`.
+- [x] **V2-MOTION-01**: Micro-interactions feature Apple HIG spring physics, tactile `active: scale(0.98)` feedback, and fluid responsive column collapse.
 
 ## Out of Scope
 
@@ -88,18 +88,19 @@ Which phases cover which requirements. Populated during roadmap creation.
 | UI-01 to 05 | Phase 3 | Complete |
 | SCRAPER-01 | Phase 4 | Complete |
 | COMMUNITY-01, 02 | Phase 5 | Complete |
-| V2-SHELL-01, V2-NAV-01 | Phase 6 | Planned |
-| V2-STREAM-01, V2-KEYBOARD-01 | Phase 7 | Planned |
-| V2-INSPECT-01, V2-INSPECT-02 | Phase 8 | Planned |
-| V2-AESTHETIC-01, V2-MOTION-01 | Phase 8 | Planned |
+| V2-SHELL-01, V2-NAV-01 | Phase 6 | Complete |
+| V2-STREAM-01, V2-KEYBOARD-01 | Phase 7 | Complete |
+| V2-INSPECT-01, V2-INSPECT-02 | Phase 8 | Complete |
+| V2-AESTHETIC-01, V2-MOTION-01 | Phase 8 | Complete |
 
 **Coverage:**
 - v1 requirements: 23 total (23 Complete)
-- v2 requirements: 8 total (8 Planned)
+- v2 requirements: 8 total (8 Complete)
 - Mapped to phases: 31
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-10-03*
 *Last updated: 2026-10-03 for v2 Visual Overhaul*
+
 
