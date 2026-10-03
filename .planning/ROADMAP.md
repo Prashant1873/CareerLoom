@@ -76,8 +76,8 @@ Plans:
   2. Extraction captures role title, description summary, location, and posting date with graceful fallback.
 **Plans**: 2 plans
 Plans:
-- [ ] 04-01: BeautifulSoup4 custom portal crawler framework with rate-limiting and browser headers
-- [ ] 04-02: ScrapeGraph-ai integration for unstructured complex career portal extraction
+- [x] 04-01: BeautifulSoup4 custom portal crawler framework with rate-limiting and browser headers
+- [x] 04-02: ScrapeGraph-ai integration for unstructured complex career portal extraction
 
 ### Phase 5: Community Intelligence (Reddit Insights)
 **Goal**: Pull and summarize authentic interview turnaround timelines, interview rounds, and company culture reviews from Reddit career communities.
@@ -102,5 +102,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 1. Ingestion Engine & ATS Direct Feeds | 3/3 | Complete | 2026-10-03 |
 | 2. Natural Language Query & Filter Engine | 3/3 | Complete | 2026-10-03 |
 | 3. High-Craft Frontend UI & Card Experience | 3/3 | Complete | 2026-10-03 |
-| 4. Custom Enterprise Portal Scrapers | 0/2 | Ready to plan | - |
-| 5. Community Intelligence (Reddit Insights) | 0/2 | Not started | - |
+| 4. Custom Enterprise Portal Scrapers | 2/2 | Complete | 2026-10-03 |
+| 5. Community Intelligence (Reddit Insights) | 0/2 | Ready to plan | - |

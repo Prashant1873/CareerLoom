@@ -1,0 +1,38 @@
+[
+  {
+    "company": "McKinsey & Company",
+    "domain": "Consulting",
+    "career_url": "https://www.mckinsey.com/careers/search-jobs",
+    "tier": "Tier 1 Strategy"
+  },
+  {
+    "company": "Boston Consulting Group",
+    "domain": "Consulting",
+    "career_url": "https://careers.bcg.com/search-jobs",
+    "tier": "Tier 1 Strategy"
+  },
+  {
+    "company": "Bain & Company",
+    "domain": "Consulting",
+    "career_url": "https://www.bain.com/careers/search-jobs",
+    "tier": "Tier 1 Strategy"
+  },
+  {
+    "company": "Goldman Sachs",
+    "domain": "Quantitative Finance",
+    "career_url": "https://www.goldmansachs.com/careers",
+    "tier": "Tier 1 Investment Banking"
+  },
+  {
+    "company": "Apple",
+    "domain": "Tech",
+    "career_url": "https://jobs.apple.com/en-us/search",
+    "tier": "Big Tech"
+  },
+  {
+    "company": "Bloomberg",
+    "domain": "Fintech",
+    "career_url": "https://www.bloomberg.com/company/careers",
+    "tier": "Fintech & Data"
+  }
+]

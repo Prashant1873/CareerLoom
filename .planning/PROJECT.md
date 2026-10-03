@@ -19,10 +19,10 @@ Empowers candidates to discover fresh, direct-from-source job listings across ma
 - ✓ Category-first and broad-role exploration with 36 canonical tracks (e.g. "product entry level", "machine learning new grad") without rigid title requirements — Phase 2
 - ✓ Multi-faceted filtering system: Country/Region expansion, Remote status, Industry Domain, Seniority, and Posting Date freshness — Phase 2
 - ✓ High-craft card-based UI displaying employer, title, domain, location, direct apply CTA, dual date posted (relative + exact), and bookmarks — Phase 3
+- ✓ BeautifulSoup4 & LLM-assisted scraper pipeline for custom enterprise career portals without ATS feeds — Phase 4
 
 ### Active
 
-- [ ] AI-assisted and BeautifulSoup scraper pipeline (ScrapeGraph-ai integration) for custom enterprise career portals.
 - [ ] Community intelligence scraper (Reddit & public forums) for interview timelines, company reviews, and preparation advice.
 
 ### Out of Scope
@@ -53,6 +53,7 @@ Empowers candidates to discover fresh, direct-from-source job listings across ma
 | Multi-provider LLM Adapter + Regex Fallback | Free-tier resilience across Groq, Gemini, and OpenRouter with instant rule-based fallback | ✓ Good |
 | Category & Track Taxonomy | Canonical mapping of 8 domains and 36 curated tracks to bridge user vernacular and ATS data | ✓ Good |
 | Anti-Slop Vanilla CSS Tokens | Zero-bloat CSS variable tokens complying with frontend-skill without heavy Tailwind runtime | ✓ Good |
+| Lightweight BS4 & LLM Scraper | Replaced heavy multi-GB ScrapeGraphAI with polite BS4 cleaner + LLM adapter to preserve free cloud resource limits | ✓ Good |
 
 ## Evolution
 

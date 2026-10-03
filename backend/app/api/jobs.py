@@ -101,6 +101,27 @@ async def live_fetch_company(req: LiveFetchRequest):
     }
 
 
+@router.post("/sync/custom")
+async def trigger_custom_portals_sync(limit: Optional[int] = None):
+    """
+    Triggers crawler and extraction across non-standard enterprise career portals.
+    """
+    res = await sync_service.sync_custom_portals(limit=limit)
+    return res
+
+
+@router.get("/portals")
+async def list_custom_portals():
+    """
+    Returns catalog of custom enterprise career portals.
+    """
+    portals = sync_service.load_custom_portals()
+    return {
+        "total": len(portals),
+        "portals": portals,
+    }
+
+
 @router.get("/companies")
 async def list_companies():
     """

@@ -46,7 +46,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Custom Enterprise Portal Scrapers (SCRAPER)
 
-- [ ] **SCRAPER-01**: System provides an extensible scraper pipeline (BeautifulSoup4 / ScrapeGraph-ai integration) for non-standard enterprise career sites lacking direct JSON ATS feeds.
+- [x] **SCRAPER-01**: System provides an extensible scraper pipeline (BeautifulSoup4 / ScrapeGraph-ai integration) for non-standard enterprise career sites lacking direct JSON ATS feeds.
 
 ## v2 Requirements
 
@@ -94,7 +94,7 @@ Which phases cover which requirements. Populated during roadmap creation.
 | UI-03 | Phase 3 | Complete |
 | UI-04 | Phase 3 | Complete |
 | UI-05 | Phase 3 | Complete |
-| SCRAPER-01 | Phase 4 | Pending |
+| SCRAPER-01 | Phase 4 | Complete |
 | COMMUNITY-01 | Phase 5 | Pending |
 | COMMUNITY-02 | Phase 5 | Pending |
 

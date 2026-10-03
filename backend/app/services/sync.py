@@ -2,16 +2,18 @@ import asyncio
 import json
 import logging
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 from backend.app.db.database import upsert_jobs
 from backend.app.scrapers.ashby import AshbyConnector
 from backend.app.scrapers.greenhouse import GreenhouseConnector
 from backend.app.scrapers.lever import LeverConnector
+from backend.app.scrapers.llm_scraper import LLMPortalExtractor
 
 logger = logging.getLogger("careerloom.sync")
 
 COMPANIES_FILE = Path(__file__).resolve().parent.parent / "data" / "companies.json"
+CUSTOM_PORTALS_FILE = Path(__file__).resolve().parent.parent / "data" / "custom_portals.json"
 
 
 class JobSyncService:
@@ -21,6 +23,7 @@ class JobSyncService:
             "lever": LeverConnector(),
             "ashby": AshbyConnector(),
         }
+        self.portal_extractor = LLMPortalExtractor()
 
     def load_companies(self) -> List[Dict[str, str]]:
         if not COMPANIES_FILE.exists():
@@ -28,6 +31,41 @@ class JobSyncService:
             return []
         with open(COMPANIES_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
+
+    def load_custom_portals(self) -> List[Dict[str, str]]:
+        if not CUSTOM_PORTALS_FILE.exists():
+            logger.warning(f"Custom portals catalog missing at {CUSTOM_PORTALS_FILE}")
+            return []
+        with open(CUSTOM_PORTALS_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+
+    async def sync_custom_portals(self, limit: Optional[int] = None) -> Dict[str, Any]:
+        """
+        Crawls and ingests non-standard corporate career portals using BeautifulSoup & LLM scraper.
+        """
+        portals = self.load_custom_portals()
+        if limit:
+            portals = portals[:limit]
+
+        total_synced = 0
+        results = []
+        for p in portals:
+            company = p["company"]
+            url = p["career_url"]
+            domain = p.get("domain", "Enterprise")
+            try:
+                jobs = await self.portal_extractor.scrape_portal(url, company, default_domain=domain)
+                if jobs:
+                    inserted = await upsert_jobs(jobs)
+                    total_synced += inserted
+                    results.append({"company": company, "jobs_synced": inserted, "status": "success"})
+                else:
+                    results.append({"company": company, "jobs_synced": 0, "status": "no_jobs_extracted"})
+            except Exception as e:
+                logger.error("Failed scraping custom portal for %s: %s", company, e)
+                results.append({"company": company, "error": str(e), "status": "error"})
+
+        return {"total_jobs_synced": total_synced, "portals_processed": len(portals), "details": results}
 
     async def sync_company(self, company_info: Dict[str, str]) -> int:
         name = company_info["name"]

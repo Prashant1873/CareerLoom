@@ -320,5 +320,9 @@ Categories: product, software_engineering, data_ai, design, finance_quant, consu
 _service = LLMQueryService()
 
 
+def get_llm_service() -> LLMQueryService:
+    return _service
+
+
 async def parse_natural_language_query(prompt: str) -> Dict[str, Any]:
     return await _service.parse(prompt)
