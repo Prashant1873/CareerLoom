@@ -42,7 +42,18 @@ def classify_role(title: str) -> Tuple[str, str]:
     return category, seniority
 
 
-def parse_location(location_name: str, title: str = "") -> Tuple[str, str, bool]:
+INDIAN_COMPANIES_HINTS = {
+    "cred", "meesho", "paytm", "groww", "inmobi", "glance", "slice", "swiggy",
+    "porter", "hackerrank", "sarvam", "navi", "fi", "epifi", "pocketfm", "stage",
+    "lokal", "signoz", "zeta", "bluestone", "atlan", "acceldata", "unacademy",
+    "kredx", "lendingkart", "turtlemint", "cars24", "whatfix", "nobroker",
+    "interviewbit", "newtonschool", "ixigo", "abhibus", "bounce", "river", "vogo",
+    "captainfresh", "entropik", "kovaico", "mindtickle", "druva", "highradius",
+    "zenoti", "freshworks"
+}
+
+
+def parse_location(location_name: str, title: str = "", company_hint: str = "") -> Tuple[str, str, bool]:
     """
     Extracts (location_display, country, is_remote) from location string and title.
     """
@@ -63,7 +74,7 @@ def parse_location(location_name: str, title: str = "") -> Tuple[str, str, bool]
         country = "Germany"
     elif re.search(r"\b(france|paris)\b", combined):
         country = "France"
-    elif re.search(r"\b(india|bangalore|bengaluru|mumbai|delhi|hyderabad|pune|gurgaon)\b", combined):
+    elif re.search(r"\b(india|bangalore|bengaluru|mumbai|delhi|hyderabad|pune|gurgaon|gurugram|noida|chennai|ahmedabad|kolkata|kochi|indore|jaipur|chandigarh|ncr|karnataka|maharashtra|telangana|tamil nadu|haryana|gujarat)\b", combined):
         country = "India"
     elif re.search(r"\b(ireland|dublin)\b", combined):
         country = "Ireland"
@@ -78,5 +89,11 @@ def parse_location(location_name: str, title: str = "") -> Tuple[str, str, bool]
     elif is_remote:
         country = "Remote / Global"
 
-    location_display = location_name.strip() if location_name.strip() else ("Remote" if is_remote else "Global")
+    # Fallback for Indian startups if country was not explicitly marked
+    if country in ("Global", "Remote / Global") and company_hint:
+        hint_clean = re.sub(r"[^a-z0-9]", "", company_hint.lower())
+        if any(h in hint_clean for h in INDIAN_COMPANIES_HINTS):
+            country = "India"
+
+    location_display = location_name.strip() if location_name.strip() else ("Remote (India)" if is_remote and country == "India" else ("Remote" if is_remote else ("India" if country == "India" else "Global")))
     return location_display, country, is_remote

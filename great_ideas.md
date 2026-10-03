@@ -42,6 +42,15 @@
   - **Tier-1 Strategy & Management Consulting**: McKinsey & Company, Boston Consulting Group (BCG), Bain & Company, Oliver Wyman, Kearney, Roland Berger, Strategy&.
   - **Global Healthcare, Biopharma & Biotech**: Pfizer, Moderna, Abbott, Roche, Novartis, Johnson & Johnson, Genentech, Eli Lilly, Illumina, Gilead.
   - **European & Global Tech Leaders**: Spotify, Wise, Adyen, Delivery Hero, Celonis, Checkout.com, Personio, Bolt, N26.
-- **Pre-Populated & Instant Search**: Massive concurrent batch sync pipeline populating SQLite cache to deliver thousands of verified direct listings with sub-50ms query response times.
+## 7. Deep India Tech Ecosystem & Startup Coverage
+- **Core Value**: Direct-from-source visibility into India's vibrant startup and high-growth tech ecosystem without ATS friction or aggregator spam.
+- **Top Indian Unicorns & Startups**:
+  - **Fintech & Banking**: Paytm (One97), CRED, Groww, Zeta, Fi Money (EpiFi), KredX, Lendingkart, Turtlemint.
+  - **Ecommerce & Quick Commerce**: Swiggy, Meesho, Cars24, Captain Fresh.
+  - **Generative AI & Data Infrastructure**: Sarvam AI (foundational Indian LLMs), Atlan (data governance & metadata AI), SigNoz (open-source observability & APM), Acceldata (data observability).
+  - **Enterprise SaaS & DevTools**: InMobi, Glance, Freshworks, HackerRank, HighRadius, Zenoti, Mindtickle, Druva, Kovai.co, Whatfix, Entropik Tech.
+  - **EdTech & Career Prep**: Unacademy, InterviewBit, Newton School.
+  - **Travel, Media & Consumer Tech**: Ixigo, AbhiBus, Pocket FM, Lokal, NoBroker, Truecaller India, Instawork, Thoughtworks India.
+- **Regional Tech Hub Mapping**: Comprehensive normalization for Indian metropolitan tech hubs (Bengaluru, Hyderabad, Mumbai, Delhi NCR / Gurugram / Noida, Pune, Chennai, Ahmedabad) guaranteeing instant discovery and sub-50ms filtering by Country = "India".
 
 

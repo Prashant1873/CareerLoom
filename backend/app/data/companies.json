@@ -1420,5 +1420,233 @@
     "slug": "lilium",
     "ats_type": "greenhouse",
     "domain": "eVTOL Jet"
+  },
+  {
+    "name": "Paytm",
+    "slug": "paytm",
+    "ats_type": "lever",
+    "domain": "Fintech / Payments"
+  },
+  {
+    "name": "CRED",
+    "slug": "cred",
+    "ats_type": "lever",
+    "domain": "Fintech / Premium Credit"
+  },
+  {
+    "name": "Meesho",
+    "slug": "meesho",
+    "ats_type": "lever",
+    "domain": "Ecommerce / Social Commerce"
+  },
+  {
+    "name": "Groww",
+    "slug": "groww",
+    "ats_type": "greenhouse",
+    "domain": "Fintech / WealthTech"
+  },
+  {
+    "name": "InMobi",
+    "slug": "inmobi",
+    "ats_type": "greenhouse",
+    "domain": "AdTech / AI"
+  },
+  {
+    "name": "Glance",
+    "slug": "glance",
+    "ats_type": "greenhouse",
+    "domain": "Consumer Tech / AI"
+  },
+  {
+    "name": "Freshworks",
+    "slug": "freshworks",
+    "ats_type": "smartrecruiters",
+    "domain": "Enterprise SaaS"
+  },
+  {
+    "name": "Swiggy",
+    "slug": "swiggy",
+    "ats_type": "smartrecruiters",
+    "domain": "Food Delivery & Quick Commerce"
+  },
+  {
+    "name": "HackerRank",
+    "slug": "hackerrank",
+    "ats_type": "greenhouse",
+    "domain": "Developer Tools & Assessment"
+  },
+  {
+    "name": "Sarvam AI",
+    "slug": "sarvam",
+    "ats_type": "ashby",
+    "domain": "Generative AI / Foundational Models"
+  },
+  {
+    "name": "Atlan",
+    "slug": "atlan",
+    "ats_type": "ashby",
+    "domain": "Data Governance & Metadata AI"
+  },
+  {
+    "name": "Navi",
+    "slug": "navi",
+    "ats_type": "ashby",
+    "domain": "Fintech / Digital Lending"
+  },
+  {
+    "name": "Fi Money",
+    "slug": "fi",
+    "ats_type": "lever",
+    "domain": "Fintech / Neo-Banking"
+  },
+  {
+    "name": "Pocket FM",
+    "slug": "pocketfm",
+    "ats_type": "lever",
+    "domain": "Audio OTT / Entertainment"
+  },
+  {
+    "name": "Lokal",
+    "slug": "lokal",
+    "ats_type": "smartrecruiters",
+    "domain": "Hyperlocal News & Classifieds"
+  },
+  {
+    "name": "Druva",
+    "slug": "druva",
+    "ats_type": "greenhouse",
+    "domain": "Cloud Data Protection & Cyber Resilience"
+  },
+  {
+    "name": "HighRadius",
+    "slug": "highradius",
+    "ats_type": "greenhouse",
+    "domain": "Fintech SaaS / Autonomous Finance"
+  },
+  {
+    "name": "Zenoti",
+    "slug": "zenoti",
+    "ats_type": "greenhouse",
+    "domain": "Wellness & Spa Enterprise SaaS"
+  },
+  {
+    "name": "Mindtickle",
+    "slug": "mindtickle",
+    "ats_type": "lever",
+    "domain": "Sales Enablement SaaS"
+  },
+  {
+    "name": "Kovai.co",
+    "slug": "kovaico",
+    "ats_type": "smartrecruiters",
+    "domain": "Enterprise Cloud Management SaaS"
+  },
+  {
+    "name": "SigNoz",
+    "slug": "signoz",
+    "ats_type": "ashby",
+    "domain": "Open-Source APM & Observability"
+  },
+  {
+    "name": "Zeta",
+    "slug": "zeta",
+    "ats_type": "lever",
+    "domain": "Banking Tech / Next-Gen Core Banking"
+  },
+  {
+    "name": "Truecaller India",
+    "slug": "truecaller",
+    "ats_type": "greenhouse",
+    "domain": "Communications & Caller ID Tech"
+  },
+  {
+    "name": "Instawork",
+    "slug": "instawork",
+    "ats_type": "greenhouse",
+    "domain": "Flexible Work Marketplace"
+  },
+  {
+    "name": "Acceldata",
+    "slug": "acceldata",
+    "ats_type": "lever",
+    "domain": "Enterprise Data Observability"
+  },
+  {
+    "name": "Entropik Tech",
+    "slug": "entropik",
+    "ats_type": "smartrecruiters",
+    "domain": "Emotion & Cognitive AI"
+  },
+  {
+    "name": "Captain Fresh",
+    "slug": "captainfresh",
+    "ats_type": "smartrecruiters",
+    "domain": "B2B Supply Chain & Seafood Tech"
+  },
+  {
+    "name": "NoBroker",
+    "slug": "nobroker",
+    "ats_type": "smartrecruiters",
+    "domain": "PropTech & Real Estate Marketplace"
+  },
+  {
+    "name": "InterviewBit",
+    "slug": "interviewbit",
+    "ats_type": "smartrecruiters",
+    "domain": "EdTech & Tech Career Prep"
+  },
+  {
+    "name": "Newton School",
+    "slug": "newtonschool",
+    "ats_type": "smartrecruiters",
+    "domain": "EdTech Academy & Upskilling"
+  },
+  {
+    "name": "Ixigo",
+    "slug": "ixigo",
+    "ats_type": "smartrecruiters",
+    "domain": "Travel Tech & AI Booking"
+  },
+  {
+    "name": "AbhiBus",
+    "slug": "abhibus",
+    "ats_type": "smartrecruiters",
+    "domain": "Mobility & Bus Ticketing"
+  },
+  {
+    "name": "Unacademy",
+    "slug": "unacademy",
+    "ats_type": "smartrecruiters",
+    "domain": "EdTech Learning Platform"
+  },
+  {
+    "name": "KredX",
+    "slug": "kredx",
+    "ats_type": "smartrecruiters",
+    "domain": "Fintech / Supply Chain Financing"
+  },
+  {
+    "name": "Lendingkart",
+    "slug": "lendingkart",
+    "ats_type": "smartrecruiters",
+    "domain": "Fintech / MSME Lending"
+  },
+  {
+    "name": "Turtlemint",
+    "slug": "turtlemint",
+    "ats_type": "smartrecruiters",
+    "domain": "InsurTech Distribution"
+  },
+  {
+    "name": "Cars24",
+    "slug": "cars24",
+    "ats_type": "smartrecruiters",
+    "domain": "Used Cars Ecommerce & AutoTech"
+  },
+  {
+    "name": "Whatfix",
+    "slug": "whatfix",
+    "ats_type": "smartrecruiters",
+    "domain": "Digital Adoption Platform SaaS"
   }
 ]

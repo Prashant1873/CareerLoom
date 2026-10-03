@@ -54,7 +54,16 @@ class SmartRecruitersConnector(BaseATSConnector):
                 location_str = ", ".join(filter(None, [city, region, country_code.upper()]))
                 date_posted = parse_posting_date(posting.get("releasedDate"))
                 category, seniority = classify_role(title)
-                loc_text, country, is_remote_classified = parse_location(location_str, title)
+                loc_text, country, is_remote_classified = parse_location(location_str, title, company_hint=company_name)
+                cc = country_code.upper()
+                if cc in ("IN", "IND"):
+                    country = "India"
+                elif cc in ("US", "USA"):
+                    country = "United States"
+                elif cc in ("GB", "UK"):
+                    country = "United Kingdom"
+                elif cc in ("DE", "GER"):
+                    country = "Germany"
 
                 tags = []
                 func = posting.get("function", {}).get("label")

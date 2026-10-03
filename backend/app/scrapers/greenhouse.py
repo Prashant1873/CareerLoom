@@ -46,7 +46,7 @@ class GreenhouseConnector(BaseATSConnector):
 
                 date_posted = parse_posting_date(raw_date)
                 category, seniority = classify_role(title)
-                location, country, is_remote = parse_location(raw_location, title)
+                location, country, is_remote = parse_location(raw_location, title, company_hint=company_name)
 
                 # Extract departments/tags
                 raw_tags = []
