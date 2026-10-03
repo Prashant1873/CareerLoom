@@ -25,3 +25,12 @@
   - **SmartRecruiters Public API**: Zero-auth public postings feed (`GET /v1/companies/{company}/postings`) for tier-1 global employers (Visa, Bosch, IKEA, Ubisoft).
   - **Lightweight Semantic DOM Cleaner**: BS4 HTML boilerplate stripper + free online LLM semantic normalizer for unstructured enterprise career portals (McKinsey, Apple, BCG, Bain, Goldman Sachs).
 
+## 5. v2 Visual Overhaul: Desktop-Grade Control Center (Linear / Raycast Style)
+- **Master-Detail 3-Column Architecture**:
+  - **Column 1 (Navigation Rail)**: Collapsible icon/expanded sidebar with quick-views (All, Saved, Fresh <24h), taxonomy category badges, and faceted filter accordions.
+  - **Column 2 (Master Job Stream)**: Omnibox conversational search bar (`/`), active filter pills, sort controls, and scannable cards with `J`/`K` keyboard cursor navigation.
+  - **Column 3 (Inspector & Community Intel Pane)**: Persistent right-hand inspector pane showing role breakdown, direct ATS apply button, and embedded tabbed Reddit community intel (turnaround estimate, interview roadmap, candidate tips, discussion links) without intrusive modal interruptions.
+- **Obsidian Studio Palette**: Deep charcoal canvas, hairline borders, emerald active indicators, amber Reddit badges, and WCAG 2.2 AA optical hierarchy.
+- **Tactile Fluid Physics**: Apple HIG interruptible spring physics, instant pointer-down state response, and keyboard ergonomics.
+
+

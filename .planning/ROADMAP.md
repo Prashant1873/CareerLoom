@@ -93,10 +93,51 @@ Plans:
 - [x] 05-01: Reddit public JSON API client with company/role search and caching
 - [x] 05-02: Timeline & sentiment summarizer drawer component in frontend
 
+## Milestone v2: Major Visual Overhaul (Desktop-Grade Control Center)
+
+### Phase 6: Obsidian Design System & 3-Column Shell
+**Goal**: Implement the Obsidian Studio Dark design tokens, fluid CSS grid 3-column layout shell, and collapsible left navigation rail with quick counts and category accordions.
+**Mode**: mvp
+**Depends on**: Phase 5
+**Requirements**: V2-SHELL-01, V2-NAV-01, V2-AESTHETIC-01
+**Success Criteria**:
+  1. Application renders a responsive 3-column grid (Left Rail, Center Stream, Right Inspector) with obsidian dark styling (#0B0F17).
+  2. Left navigation rail toggles smoothly between expanded and collapsed icon-only mode.
+  3. Quick views (All, Saved, Fresh <24h, Fresh <7d) update filter state immediately with badge counts.
+**Plans**: 1 plan
+Plans:
+- [ ] 06-01: Obsidian design tokens, 3-column layout shell, and collapsible left navigation rail
+
+### Phase 7: Master Job Stream & Keyboard Navigation Flow
+**Goal**: Deliver a high-density, scannable central job stream featuring an omnibox search header with real-time NLP pills, active filter chips, and keyboard-first cursor navigation (`J`/`K`/`S`/`Enter`).
+**Mode**: mvp
+**Depends on**: Phase 6
+**Requirements**: V2-STREAM-01, V2-KEYBOARD-01, V2-MOTION-01
+**Success Criteria**:
+  1. Sticky header provides omnibox search with `/` keyboard trigger, NLP status badge, and clearable filter chips.
+  2. Job cards render in high-density list items highlighting dual dates, company logo badges, and selected glowing border.
+  3. Users can navigate up/down through jobs via `J`/`K` keys and toggle bookmarks via `S`.
+**Plans**: 1 plan
+Plans:
+- [ ] 07-01: Master job stream component, filter chips, sort bar, and keyboard navigation hook
+
+### Phase 8: Persistent Job Inspector & Embedded Community Intel
+**Goal**: Build the persistent right-side inspector pane showing instant job summaries, verified apply actions, and embedded tabbed Reddit community intel (turnaround estimates, stage roadmap, tips, discussions).
+**Mode**: mvp
+**Depends on**: Phase 7
+**Requirements**: V2-INSPECT-01, V2-INSPECT-02, V2-AESTHETIC-01, V2-MOTION-01
+**Success Criteria**:
+  1. Selecting any job in the stream immediately populates the right-side inspector without modal popup interruptions.
+  2. Inspector includes tabbed view switching between Role Overview and Community Intel (Reddit consensus roadmap & live thread cards).
+  3. Mobile/tablet breakpoints gracefully collapse into slide-over drawer with Apple spring physics.
+**Plans**: 1 plan
+Plans:
+- [ ] 08-01: Persistent right-side job inspector pane with embedded community intel tabs and mobile responsive drawer
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -105,4 +146,8 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 3. High-Craft Frontend UI & Card Experience | 3/3 | Complete | 2026-10-03 |
 | 4. Custom Enterprise Portal Scrapers | 2/2 | Complete | 2026-10-03 |
 | 5. Community Intelligence (Reddit Insights) | 2/2 | Complete | 2026-10-03 |
+| 6. Obsidian Design System & 3-Column Shell | 0/1 | Ready to plan | - |
+| 7. Master Job Stream & Keyboard Flow | 0/1 | Queued | - |
+| 8. Persistent Job Inspector & Community Intel | 0/1 | Queued | - |
+
 

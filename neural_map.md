@@ -66,3 +66,9 @@ graph TD
    - [frontend/src/components/CommunityInsightsDrawer.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/CommunityInsightsDrawer.tsx): High-craft slide-over panel with turnaround highlight, hiring sentiment summary, stepped process roadmap, candidate tips, and authentic Reddit cards.
    - Integrated trigger buttons in [JobCard.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/JobCard.tsx) and [JobDetailModal.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/JobDetailModal.tsx).
 
+6. **v2 Desktop-Grade Master-Detail Architecture (`frontend/`)**
+   - **Column 1 (`NavRail.tsx`)**: Left collapsible navigation rail with quick counts (All, Saved, 24h Fresh), category badges, and faceted filter accordions.
+   - **Column 2 (`MasterJobStream.tsx`)**: Omnibox search with `/` trigger, active filter chips, sort options, and high-density job cards with `J`/`K` keyboard cursor navigation.
+   - **Column 3 (`JobInspectorPane.tsx`)**: Persistent right-side inspection pane with role summary, verified ATS apply CTA, and embedded tabbed Reddit community intel.
+
+

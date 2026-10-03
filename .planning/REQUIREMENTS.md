@@ -48,13 +48,23 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **SCRAPER-01**: System provides an extensible scraper pipeline (BeautifulSoup4 / ScrapeGraph-ai integration) for non-standard enterprise career sites lacking direct JSON ATS feeds.
 
-## v2 Requirements
+## v2 Requirements: Visual Overhaul & Desktop-Grade Master-Detail Control Center
 
-### Application Tracking & Alerts
+### Layout Shell & Navigation Rail (V2-SHELL)
+- [ ] **V2-SHELL-01**: User interacts with a 3-column split layout (Collapsible Left Rail + Central Stream + Sticky Right Inspector) built with fluid CSS grid.
+- [ ] **V2-NAV-01**: User can toggle navigation views (All Jobs, Saved Jobs with count, Fresh <24h, Fresh <7d) and expand/collapse category and filter accordions in the left rail.
 
-- **ALERT-01**: Email or desktop push alerts when new jobs matching a saved natural language query are indexed.
-- **TRACK-01**: Kanban board for tracking user application stages (Applied, Interviewing, Offered, Rejected).
-- **RESUME-01**: Tailored resume keyword alignment analysis against job description requirements.
+### Central Stream & Keyboard Navigation (V2-STREAM)
+- [ ] **V2-STREAM-01**: User can search using a sticky omnibox search header with real-time NLP badge, clearable filter chips, and sorting controls.
+- [ ] **V2-KEYBOARD-01**: User can navigate the job stream using keyboard shortcuts: `J` (next job), `K` (previous job), `S` (bookmark), `Enter` (apply), and `/` (focus search).
+
+### Persistent Job Inspector & Embedded Community Intel (V2-INSPECT)
+- [ ] **V2-INSPECT-01**: Right-side inspector displays selected job summary, dual date badges, and verified ATS apply CTA without intrusive modal dialogs.
+- [ ] **V2-INSPECT-02**: Right-side inspector embeds tabbed Reddit community intelligence (interview turnaround estimates, stage roadmap, insider tips, discussion thread links).
+
+### Design Aesthetics & Fluid Motion (V2-AESTHETIC)
+- [ ] **V2-AESTHETIC-01**: Interface adopts Obsidian Studio Dark styling (#0B0F17 canvas, hairline borders, emerald active glow, amber Reddit accents) conforming to `frontend-skill`.
+- [ ] **V2-MOTION-01**: Micro-interactions feature Apple HIG spring physics, tactile `active: scale(0.98)` feedback, and fluid responsive column collapse.
 
 ## Out of Scope
 
@@ -72,36 +82,24 @@ Which phases cover which requirements. Populated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INGEST-01 | Phase 1 | Complete |
-| INGEST-02 | Phase 1 | Complete |
-| INGEST-03 | Phase 1 | Complete |
-| INGEST-04 | Phase 1 | Complete |
-| INGEST-05 | Phase 1 | Complete |
-| NLP-01 | Phase 2 | Complete |
-| NLP-02 | Phase 2 | Complete |
-| NLP-03 | Phase 2 | Complete |
-| NLP-04 | Phase 2 | Complete |
-| NLP-05 | Phase 2 | Complete |
-| FILTER-01 | Phase 2 | Complete |
-| FILTER-02 | Phase 2 | Complete |
-| FILTER-03 | Phase 2 | Complete |
-| FILTER-04 | Phase 2 | Complete |
-| FILTER-05 | Phase 2 | Complete |
-| UI-01 | Phase 3 | Complete |
-| UI-02 | Phase 3 | Complete |
-| UI-03 | Phase 3 | Complete |
-| UI-04 | Phase 3 | Complete |
-| UI-05 | Phase 3 | Complete |
+| INGEST-01 to 05 | Phase 1 | Complete |
+| NLP-01 to 05 | Phase 2 | Complete |
+| FILTER-01 to 05 | Phase 2 | Complete |
+| UI-01 to 05 | Phase 3 | Complete |
 | SCRAPER-01 | Phase 4 | Complete |
-| COMMUNITY-01 | Phase 5 | Complete |
-| COMMUNITY-02 | Phase 5 | Complete |
-
+| COMMUNITY-01, 02 | Phase 5 | Complete |
+| V2-SHELL-01, V2-NAV-01 | Phase 6 | Planned |
+| V2-STREAM-01, V2-KEYBOARD-01 | Phase 7 | Planned |
+| V2-INSPECT-01, V2-INSPECT-02 | Phase 8 | Planned |
+| V2-AESTHETIC-01, V2-MOTION-01 | Phase 8 | Planned |
 
 **Coverage:**
-- v1 requirements: 23 total
-- Mapped to phases: 23
+- v1 requirements: 23 total (23 Complete)
+- v2 requirements: 8 total (8 Planned)
+- Mapped to phases: 31
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-10-03*
-*Last updated: 2026-10-03 after research synthesis*
+*Last updated: 2026-10-03 for v2 Visual Overhaul*
+
