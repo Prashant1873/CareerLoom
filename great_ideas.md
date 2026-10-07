@@ -53,4 +53,16 @@
   - **Travel, Media & Consumer Tech**: Ixigo, AbhiBus, Pocket FM, Lokal, NoBroker, Truecaller India, Instawork, Thoughtworks India.
 - **Regional Tech Hub Mapping**: Comprehensive normalization for Indian metropolitan tech hubs (Bengaluru, Hyderabad, Mumbai, Delhi NCR / Gurugram / Noida, Pune, Chennai, Ahmedabad) guaranteeing instant discovery and sub-50ms filtering by Country = "India".
 
-
+## 8. Milestone v4: India Launch & Indian Leads Maximization Engine
+- **India-First Discovery Controls**:
+  - Direct "India Direct" toggle in navigation rail for instant 1-click filtering to all verified Indian listings.
+  - Metro Tech Hub Quick Filter ribbon: Bengaluru (BLR), NCR / Gurgaon / Noida, Hyderabad (HYD), Pune (PUN), Mumbai (BOM), Chennai (MAA), and Remote (India).
+  - INR CTC Compensation parsing and prominent badges (e.g. ₹20-35 LPA, ₹45L+).
+- **Candidate Lead Capture & Fast Referral Engine**:
+  - "Ask for Referral / Submit Lead" CTA on job cards and the persistent inspector.
+  - Candidate lead capture drawer/modal collecting LinkedIn profile, YoE, target role, expected CTC, and resume link.
+  - SQLite `candidate_leads` registry with exportable lead cards for recruiters and talent pools.
+  - Fast one-click copy of candidate lead summaries for sharing in peer referral Slack/Discord/WhatsApp communities.
+- **Indian Developer Community Intel**:
+  - Ingest authentic candidate reviews and interview timelines from `r/developersIndia`, `r/IndianStartups`, and `r/IndiaTech`.
+  - Realistic Indian hiring stage breakdown: Online Assessment, Machine Coding, System Design / Low Level Design (LLD/HLD), Hiring Manager, and HR/Notice Period negotiation.

@@ -81,6 +81,8 @@ class JobFilterParams(BaseModel):
     category: Optional[str] = None
     domain: Optional[str] = None
     country: Optional[str] = None
+    location: Optional[str] = None
+    metro_hub: Optional[str] = None
     seniority: Optional[str] = None
     is_remote: Optional[bool] = None
     posted_within_days: Optional[int] = None

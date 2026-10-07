@@ -53,6 +53,7 @@ export interface FilterState {
   category: string;
   domain: string;
   country: string;
+  metroHub?: string;
   isRemote: boolean | null;
   seniority: string;
   freshnessDays: number | null;
@@ -80,4 +81,33 @@ export interface CommunityInsights {
   threads: RedditThreadItem[];
   last_updated: string;
 }
+
+export interface CandidateLeadInput {
+  job_id: string;
+  company: string;
+  role_title: string;
+  candidate_name: string;
+  email: string;
+  linkedin_url?: string;
+  yoe: number;
+  current_ctc_lpa?: number;
+  expected_ctc_lpa?: number;
+  notice_period_days: number;
+  resume_url?: string;
+}
+
+export interface CandidateLeadRecord extends CandidateLeadInput {
+  id: string;
+  status: string;
+  created_at: string;
+}
+
+export interface LeadSubmitResult {
+  success: boolean;
+  lead_id: string;
+  message: string;
+  referral_pitch: string;
+  lead: CandidateLeadRecord;
+}
+
 

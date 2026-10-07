@@ -58,7 +58,7 @@ export const CommunityInsightsDrawer: React.FC<CommunityInsightsDrawerProps> = (
       setIsLoading(true);
       setError(null);
       try {
-        const data = await fetchCommunityInsights(job.company, job.title, job.domain);
+        const data = await fetchCommunityInsights(job.company, job.title, job.domain, job.country);
         if (isMounted) {
           if (data) {
             setInsights(data);
@@ -106,7 +106,10 @@ export const CommunityInsightsDrawer: React.FC<CommunityInsightsDrawerProps> = (
               <div className="drawer-subhead">
                 <span>Community Intel</span>
                 {insights?.subreddit && (
-                  <span className="subreddit-badge">r/{insights.subreddit}</span>
+                  <span className="subreddit-badge">
+                    {insights.subreddit.toLowerCase().includes('developersindia') && '🇮🇳 '}
+                    {insights.subreddit.startsWith('r/') ? insights.subreddit : `r/${insights.subreddit}`}
+                  </span>
                 )}
               </div>
               <h2 className="drawer-company-title">{job?.company}</h2>
@@ -227,7 +230,9 @@ export const CommunityInsightsDrawer: React.FC<CommunityInsightsDrawerProps> = (
                           <ExternalLink size={13} className="thread-link-icon" />
                         </div>
                         <div className="thread-meta-row">
-                          <span className="thread-sub">r/{thread.subreddit}</span>
+                          <span className="thread-sub">
+                            {thread.subreddit.startsWith('r/') ? thread.subreddit : `r/${thread.subreddit}`}
+                          </span>
                           <span className="thread-author">by {thread.author}</span>
                           <div className="thread-stats">
                             <span className="thread-upvotes">

@@ -18,7 +18,8 @@ CareerLoom delivers a zero-friction job discovery portal across major global fir
 - [x] **Phase 6: Obsidian Design System & 3-Column Shell** - Obsidian Studio dark tokens, 3-column layout shell, and collapsible left navigation rail.
 - [x] **Phase 7: Master Job Stream & Keyboard Navigation Flow** - Sticky omnibox, active chips, and keyboard cursor navigation.
 - [x] **Phase 8: Persistent Job Inspector & Embedded Community Intel** - Persistent right-side inspector pane with embedded tabbed Reddit community intel.
-- [ ] **Phase 9: Massive Global Portal Expansion & Multi-ATS Ingestion (200+ Firms)** - Scale company catalog across 5 major global sectors and bulk-ingest thousands of live job listings into SQLite cache.
+- [x] **Phase 9: Massive Global Portal Expansion & Multi-ATS Ingestion (200+ Firms)** - Scale company catalog across 5 major global sectors and bulk-ingest thousands of live job listings into SQLite cache.
+- [x] **Phase 10: India Launch & Indian Leads Engine** - Curate 50+ Indian unicorns & GCCs, India-First discovery controls, CTC compensation badges, candidate lead capture & referral engine, and r/developersIndia community intel.
 
 ## Phase Details
 
@@ -154,10 +155,30 @@ Plans:
 - [x] 09-02: Multi-ATS bulk sync runner and live database population
 - [x] 09-03: Performance validation, sub-50ms query benchmarking, and regression verification
 
+## Milestone v4: India Launch & Indian Leads Engine
+
+### Phase 10: India Launch & Indian Leads Engine
+**Goal**: Launch full coverage of the Indian tech ecosystem by indexing 50+ top Indian unicorns, high-growth startups, and GCCs across direct ATS feeds into SQLite, introducing India-First discovery controls (1-click India mode, metro hub pills, INR CTC indicators), implementing a candidate lead capture and referral engine, and ingesting Indian developer community intelligence (`r/developersIndia`).
+**Mode**: mvp
+**Depends on**: Phase 9
+**Requirements**: INDIA-CATALOG-01, INDIA-INGEST-02, INDIA-DISCOVER-03, INDIA-CTC-04, INDIA-LEADS-05, INDIA-COMMUNITY-06
+**Success Criteria**:
+  1. `companies.json` catalog contains 50+ verified Indian tech unicorns, startups, and GCCs with direct ATS feeds.
+  2. Bulk sync runner populates verified live Indian tech postings with normalized metro hub locations (Bengaluru, NCR, Hyderabad, Pune, Mumbai, Chennai, Remote-India).
+  3. Frontend provides 1-click "India Direct" toggle in NavRail, Metro Hub filter ribbon, and INR CTC indicators adhering to `frontend-skill`.
+  4. Candidates can submit leads / referral requests via `LeadCaptureModal`, stored in SQLite `candidate_leads` with one-click clipboard formatting for referral sharing.
+  5. Community intelligence embeds authentic hiring turnaround metrics, interview stages (OA, Machine Coding, LLD/HLD, HR), and candidate insights from `r/developersIndia`.
+**Plans**: 4 plans
+Plans:
+- [x] 10-01: India tech catalog & direct ATS ingestion pipeline (50+ Indian Unicorns & GCCs)
+- [x] 10-02: India-First discovery controls & CTC compensation badges
+- [x] 10-03: Candidate lead capture & fast referral engine
+- [x] 10-04: Indian community intelligence & verification
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -170,6 +191,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 7. Master Job Stream & Keyboard Flow | 1/1 | Complete | 2026-10-03 |
 | 8. Persistent Job Inspector & Community Intel | 1/1 | Complete | 2026-10-03 |
 | 9. Massive Global Portal Expansion | 3/3 | Complete | 2026-10-03 |
+| 10. India Launch & Indian Leads Engine | 4/4 | Complete | 2026-10-03 |
 
 
 

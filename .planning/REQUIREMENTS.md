@@ -77,8 +77,23 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **SCALE-04**: SQLite cache populated with thousands of verified live job postings across diverse categories and countries.
 - [x] **SCALE-05**: Verification of sub-50ms indexed search queries and UI responsiveness across scaled job volume.
 
-### Out of Scope
+## Milestone v4: India Launch & Indian Leads Engine
 
+### India Tech Ecosystem & Direct ATS Ingestion (INDIA-CATALOG, INDIA-INGEST)
+- [ ] **INDIA-CATALOG-01**: Curate and verify 50+ top Indian tech unicorns, startups, and GCCs (Swiggy, CRED, Groww, Meesho, Razorpay, PhonePe, Zepto, Atlan, Sarvam AI, SigNoz, InMobi, Thoughtworks India, etc.) across direct ATS feeds.
+- [ ] **INDIA-INGEST-02**: Bulk ingestion pipeline populates verified live Indian tech jobs into SQLite cache, with accurate regional mapping for major tech hubs (Bengaluru, Hyderabad, NCR, Pune, Mumbai, Chennai, Remote-India).
+
+### India-First Discovery Controls & Compensation Badges (INDIA-DISCOVER, INDIA-CTC)
+- [ ] **INDIA-DISCOVER-03**: Interface provides dedicated "India Direct" toggle in the navigation rail, Indian Metro Hub filter ribbon (BLR, NCR, HYD, PUN, BOM, MAA), and Indian role level NLP expansion (SDE-1/2/3, APM, EM).
+- [ ] **INDIA-CTC-04**: Detect and display INR CTC compensation indicators (e.g. ₹20-35 LPA, ₹50 LPA+) on job cards and inspector pane.
+
+### Candidate Lead Capture & Referral Engine (INDIA-LEADS)
+- [ ] **INDIA-LEADS-05**: Interactive candidate lead capture drawer allowing Indian job seekers to submit leads (LinkedIn, YoE, target role, expected CTC, resume) with SQLite `candidate_leads` storage, REST API endpoints, and one-click formatted lead cards for referral communities.
+
+### Indian Community Intelligence (INDIA-COMMUNITY)
+- [ ] **INDIA-COMMUNITY-06**: Ingestion and synthesis of hiring turnaround times, interview stages (Online Assessment, Machine Coding, System Design, Notice Period negotiation), and candidate insights from `r/developersIndia`, `r/IndianStartups`, and `r/IndiaTech`.
+
+## Out of Scope
 Explicitly excluded. Documented to prevent scope creep.
 
 | Feature | Reason |
@@ -104,17 +119,22 @@ Which phases cover which requirements. Populated during roadmap creation.
 | V2-INSPECT-01, V2-INSPECT-02 | Phase 8 | Complete |
 | V2-AESTHETIC-01, V2-MOTION-01 | Phase 8 | Complete |
 | SCALE-01 to 05 | Phase 9 | Complete |
+| INDIA-CATALOG-01, INDIA-INGEST-02 | Phase 10 | Planned |
+| INDIA-DISCOVER-03, INDIA-CTC-04 | Phase 10 | Planned |
+| INDIA-LEADS-05 | Phase 10 | Planned |
+| INDIA-COMMUNITY-06 | Phase 10 | Planned |
 
 **Coverage:**
 - v1 requirements: 23 total (23 Complete)
 - v2 requirements: 8 total (8 Complete)
 - v3 requirements: 5 total (5 Complete)
-- Total requirements: 36
-- Mapped to phases: 36
+- v4 requirements: 6 total (6 Planned)
+- Total requirements: 42
+- Mapped to phases: 42
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-10-03*
-*Last updated: 2026-10-03 for Phase 9 Massive Portal Expansion*
+*Last updated: 2026-10-03 for Phase 10 India Launch & Indian Leads Engine*
 
 

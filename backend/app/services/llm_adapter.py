@@ -18,10 +18,10 @@ class HeuristicQueryParser:
 
     CATEGORIES = {
         "product": [
-            r"\b(product|product manager|product management|\bpm\b|apm|technical product manager|product lead|product owner)\b"
+            r"\b(product|product manager|product management|\bpm\b|apm|gpm|associate product manager|technical product manager|product lead|product owner)\b"
         ],
         "software_engineering": [
-            r"\b(software engineer|software engineering|software developer|backend|frontend|fullstack|full-stack|\bswe\b|devops|\bsre\b|infrastructure|cloud engineer|systems engineer|firmware|embedded|web developer)\b"
+            r"\b(software engineer|software engineering|software developer|backend|frontend|fullstack|full-stack|\bswe\b|\bsde\b|sde 1|sde 2|sde 3|sde-1|sde-2|sde-3|sde i|sde ii|sde iii|mts|smts|devops|\bsre\b|infrastructure|cloud engineer|systems engineer|firmware|embedded|web developer)\b"
         ],
         "data_ai": [
             r"\b(machine learning|\bml\b|ai\b|artificial intelligence|data scientist|data science|computer vision|\bnlp\b|deep learning|data engineer|mlops|llm)\b"
@@ -45,9 +45,10 @@ class HeuristicQueryParser:
 
     SENIORITIES = {
         "intern": r"\b(intern|internship|co-op|coop|student)\b",
-        "entry": r"\b(entry level|entry-level|junior|jr|new grad|new graduate|fresh graduate|associate|early career)\b",
-        "lead": r"\b(lead|principal|staff|director|vp|head of|chief)\b",
-        "senior": r"\b(senior|sr|sr\.)\b",
+        "entry": r"\b(entry level|entry-level|junior|jr|new grad|new graduate|fresh graduate|associate|early career|sde 1|sde-1|sde i|sde-i|apm)\b",
+        "mid": r"\b(sde 2|sde-2|sde ii|sde-ii|mts|mid level|mid-level)\b",
+        "senior": r"\b(senior|sr|sr\.|sde 3|sde-3|sde iii|sde-iii|smts|tech lead)\b",
+        "lead": r"\b(lead|principal|staff|director|vp|head of|chief|engineering manager|\bem\b)\b",
     }
 
     GEOGRAPHIES = {
@@ -55,11 +56,20 @@ class HeuristicQueryParser:
         "United Kingdom": r"\b(uk|united kingdom|london|manchester|edinburgh|cambridge|oxford)\b",
         "France": r"\b(france|paris)\b",
         "Canada": r"\b(canada|toronto|vancouver|montreal|ottawa)\b",
-        "India": r"\b(india|bangalore|bengaluru|mumbai|delhi|hyderabad|pune|gurgaon)\b",
+        "India": r"\b(india|bangalore|bengaluru|mumbai|delhi|new delhi|hyderabad|pune|gurgaon|gurugram|noida|chennai|ahmedabad|kolkata|kochi|indore|jaipur|ncr|blr|hyd)\b",
         "Singapore": r"\b(singapore)\b",
         "Australia": r"\b(australia|sydney|melbourne)\b",
         "United States": r"\b(us|usa|united states|san francisco|sf|bay area|new york|nyc|seattle|austin|chicago|boston|los angeles)\b",
         "Europe": r"\b(europe|eu|netherlands|ireland|amsterdam|dublin|switzerland|zurich)\b",
+    }
+
+    METRO_HUBS = {
+        "Bengaluru": r"\b(bangalore|bengaluru|blr)\b",
+        "Delhi NCR": r"\b(delhi|new delhi|gurgaon|gurugram|noida|ncr)\b",
+        "Hyderabad": r"\b(hyderabad|hyd)\b",
+        "Pune": r"\b(pune|pun)\b",
+        "Mumbai": r"\b(mumbai|bombay|bom)\b",
+        "Chennai": r"\b(chennai|madras|maa)\b",
     }
 
     DOMAINS = {
@@ -102,6 +112,15 @@ class HeuristicQueryParser:
         if not detected_country and is_remote:
             detected_country = "Remote"
 
+        # 4b. Indian Metro Hub extraction
+        detected_metro = None
+        for hub, pat in self.METRO_HUBS.items():
+            if re.search(pat, p):
+                detected_metro = hub
+                break
+        if detected_metro and not detected_country:
+            detected_country = "India"
+
         # 5. Domain extraction
         detected_domain = None
         for domain, pat in self.DOMAINS.items():
@@ -133,6 +152,9 @@ class HeuristicQueryParser:
         # Strip geography words
         for pat in self.GEOGRAPHIES.values():
             cleaned = re.sub(pat, " ", cleaned)
+        # Strip metro words
+        for pat in self.METRO_HUBS.values():
+            cleaned = re.sub(pat, " ", cleaned)
         # Strip stop words and time terms
         cleaned = re.sub(
             r"\b(find|search|jobs|roles|positions|looking for|in|at|for|with|posted|recent|recently|remote|anywhere|wfh|today|yesterday|week|month|days|hours|or|and|the|a|an|of|to|this|past|last|engineer|developer|manager|specialist)\b",
@@ -147,6 +169,8 @@ class HeuristicQueryParser:
             "category": detected_category,
             "seniority": detected_seniority,
             "country": detected_country,
+            "metro_hub": detected_metro,
+            "location": detected_metro,
             "is_remote": is_remote if is_remote else None,
             "domain": detected_domain,
             "posted_within_days": posted_within_days,

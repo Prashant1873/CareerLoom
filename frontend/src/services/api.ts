@@ -63,6 +63,8 @@ export interface SearchParams {
   category?: string;
   domain?: string;
   country?: string;
+  location?: string;
+  metro_hub?: string;
   is_remote?: boolean;
   seniority?: string;
   posted_within_days?: number;
@@ -85,6 +87,8 @@ export async function searchJobsWithTotal(params: SearchParams = {}): Promise<Se
     if (params.category) queryParams.set('category', params.category);
     if (params.domain) queryParams.set('domain', params.domain);
     if (params.country) queryParams.set('country', params.country);
+    if (params.location) queryParams.set('location', params.location);
+    if (params.metro_hub) queryParams.set('metro_hub', params.metro_hub);
     if (params.company) queryParams.set('company', params.company);
     if (typeof params.is_remote === 'boolean') queryParams.set('is_remote', String(params.is_remote));
     if (params.seniority) queryParams.set('seniority', params.seniority);
@@ -119,6 +123,7 @@ export async function nlpSearch(
     category?: string;
     domain?: string;
     country?: string;
+    metro_hub?: string;
     is_remote?: boolean;
     seniority?: string;
     posted_within_days?: number;
@@ -167,12 +172,14 @@ export async function nlpSearch(
 export async function fetchCommunityInsights(
   company: string,
   role?: string,
-  domain?: string
+  domain?: string,
+  country?: string
 ): Promise<import('../types/job').CommunityInsights | null> {
   try {
     const params = new URLSearchParams({ company });
     if (role) params.set('role', role);
     if (domain) params.set('domain', domain);
+    if (country) params.set('country', country);
     const res = await fetch(`${API_BASE}/insights/company?${params.toString()}`);
     if (!res.ok) throw new Error(`Failed to fetch insights: ${res.statusText}`);
     return await res.json();
@@ -181,4 +188,39 @@ export async function fetchCommunityInsights(
     return null;
   }
 }
+
+export async function submitCandidateLead(
+  lead: import('../types/job').CandidateLeadInput
+): Promise<import('../types/job').LeadSubmitResult> {
+  const res = await fetch(`${API_BASE}/leads/submit`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(lead),
+  });
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => ({}));
+    throw new Error(errorData.detail || `Failed to submit lead: ${res.statusText}`);
+  }
+  return await res.json();
+}
+
+export async function generateReferralPitch(payload: {
+  candidate_name: string;
+  company: string;
+  role_title: string;
+  job_apply_url?: string;
+  yoe: number;
+  linkedin_url?: string;
+  resume_url?: string;
+}): Promise<string> {
+  const res = await fetch(`${API_BASE}/leads/pitch`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) throw new Error(`Failed to generate pitch: ${res.statusText}`);
+  const data = await res.json();
+  return data.pitch || '';
+}
+
 

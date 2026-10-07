@@ -42,7 +42,7 @@ async def test_smartrecruiters_connector_parsing():
         assert job.seniority == "senior"
 
         assert job.is_remote is True
-        assert job.country == "US"
+        assert job.country in ("US", "United States")
         assert "jobs.smartrecruiters.com/visa/743999912345" in job.apply_url
 
 

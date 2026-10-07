@@ -2,6 +2,7 @@ import React from 'react';
 import { ExternalLink, Bookmark, MapPin, Building2, Calendar, Zap, MessageSquare } from 'lucide-react';
 import type { JobItem } from '../types/job';
 import { formatJobDate } from '../utils/dateFormatter';
+import { getCTCInfo } from '../utils/ctcFormatter';
 
 interface JobCardProps {
   job: JobItem;
@@ -19,6 +20,16 @@ export const JobCard: React.FC<JobCardProps> = ({
   onOpenInsights,
 }) => {
   const { relative, exact, tier } = formatJobDate(job.date_posted);
+  const ctcInfo = getCTCInfo(
+    job.company,
+    job.title,
+    job.country,
+    job.location,
+    job.seniority,
+    job.category,
+    job.tags,
+    job.description_summary
+  );
 
   const handleApplyClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -85,6 +96,16 @@ export const JobCard: React.FC<JobCardProps> = ({
         {job.seniority && (
           <span className="seniority-pill">
             {job.seniority.charAt(0).toUpperCase() + job.seniority.slice(1)}
+          </span>
+        )}
+
+        {ctcInfo && (
+          <span
+            className={`ctc-compensation-pill ${ctcInfo.isEstimated ? 'estimated' : 'verified'}`}
+            title={ctcInfo.benchmarkDetails || ctcInfo.tierBadge}
+          >
+            <span className="ctc-pill-value">{ctcInfo.display}</span>
+            <span className="ctc-pill-badge">{ctcInfo.tierBadge}</span>
           </span>
         )}
       </div>

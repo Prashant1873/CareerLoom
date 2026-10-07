@@ -83,7 +83,7 @@ class SmartRecruitersConnector(BaseATSConnector):
                     category=category,
                     seniority=seniority,
                     location=location_str or loc_text,
-                    country=country_code.upper() if len(country_code) == 2 else country,
+                    country=country,
                     is_remote=is_loc_remote or is_remote_classified,
                     raw_tags=tags,
                 )

@@ -116,10 +116,11 @@ export const NavRail: React.FC<NavRailProps> = ({
           <div className="rail-nav-items">
             <button
               type="button"
-              className={`rail-nav-btn ${!showSavedOnly && !freshnessDays ? 'active' : ''}`}
+              className={`rail-nav-btn ${!showSavedOnly && !freshnessDays && filters.country !== 'India' ? 'active' : ''}`}
               onClick={() => {
                 if (showSavedOnly) onToggleSavedOnly();
                 onSelectFreshness(null);
+                if (filters.country === 'India') onFilterChange({ country: '', metroHub: undefined });
               }}
               title="All verified opportunities"
             >
@@ -129,6 +130,28 @@ export const NavRail: React.FC<NavRailProps> = ({
               </div>
               {!isCollapsed && (
                 <span className="nav-count-badge">{totalJobsCount}</span>
+              )}
+            </button>
+
+            <button
+              type="button"
+              className={`rail-nav-btn india-direct-nav-btn ${filters.country === 'India' ? 'active' : ''}`}
+              onClick={() => {
+                if (showSavedOnly) onToggleSavedOnly();
+                if (filters.country === 'India') {
+                  onFilterChange({ country: '', metroHub: undefined });
+                } else {
+                  onFilterChange({ country: 'India', metroHub: undefined });
+                }
+              }}
+              title="Filter exclusively for verified jobs across Indian Unicorns & Tech Hubs"
+            >
+              <div className="nav-btn-left">
+                <span className="india-flag-icon" role="img" aria-label="India flag">🇮🇳</span>
+                {!isCollapsed && <span className="nav-text font-medium">India Direct</span>}
+              </div>
+              {!isCollapsed && (
+                <span className="nav-count-badge india-badge">1.4k</span>
               )}
             </button>
 
@@ -313,20 +336,47 @@ export const NavRail: React.FC<NavRailProps> = ({
                     <select
                       className="filter-select-input"
                       value={filters.country}
-                      onChange={(e) => onFilterChange({ country: e.target.value })}
+                      onChange={(e) => onFilterChange({ country: e.target.value, metroHub: undefined })}
                       aria-label="Filter by Country or Region"
                     >
                       <option value="">Global / All Regions</option>
+                      <option value="India">🇮🇳 India</option>
                       <option value="United States">United States</option>
                       <option value="United Kingdom">United Kingdom</option>
                       <option value="Europe">Europe (Regional)</option>
                       <option value="Canada">Canada</option>
                       <option value="Germany">Germany</option>
-                      <option value="India">India</option>
                       <option value="Singapore">Singapore</option>
                     </select>
                   </div>
                 </div>
+
+                {/* Metro Hub Filter (Available when India is active) */}
+                {filters.country === 'India' && (
+                  <div className="filter-group-mini animate-fade-in">
+                    <span className="mini-label">Indian Tech Hub</span>
+                    <div className="filter-chips-grid">
+                      {[
+                        { id: '', label: 'All India' },
+                        { id: 'Bengaluru', label: 'BLR' },
+                        { id: 'Delhi NCR', label: 'NCR' },
+                        { id: 'Hyderabad', label: 'HYD' },
+                        { id: 'Pune', label: 'PUN' },
+                        { id: 'Mumbai', label: 'BOM' },
+                        { id: 'Chennai', label: 'MAA' },
+                      ].map((hub) => (
+                        <button
+                          key={hub.id}
+                          type="button"
+                          className={`chip-btn ${(filters.metroHub || '') === hub.id ? 'active' : ''}`}
+                          onClick={() => onFilterChange({ metroHub: hub.id || undefined })}
+                        >
+                          {hub.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Industry Domain */}
                 <div className="filter-group-mini">

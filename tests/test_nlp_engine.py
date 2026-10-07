@@ -110,3 +110,40 @@ def test_api_jobs_sorting_and_filtering():
     # Filter by region (Europe)
     res_eu = client.get("/api/jobs?country=Europe&limit=5")
     assert res_eu.status_code == 200
+
+
+def test_heuristic_parser_indian_metro_and_seniority():
+    parser = HeuristicQueryParser()
+    
+    # SDE 2 in Bangalore
+    res1 = parser.parse("sde 2 in bangalore")
+    assert res1["category"] == "software_engineering"
+    assert res1["seniority"] == "mid"
+    assert res1["country"] == "India"
+    assert res1["metro_hub"] == "Bengaluru"
+
+    # APM in Gurgaon
+    res2 = parser.parse("apm in gurgaon")
+    assert res2["category"] == "product"
+    assert res2["seniority"] == "entry"
+    assert res2["country"] == "India"
+    assert res2["metro_hub"] == "Delhi NCR"
+
+    # Engineering Manager in Hyderabad
+    res3 = parser.parse("engineering manager in hyderabad")
+    assert res3["seniority"] == "lead"
+    assert res3["country"] == "India"
+    assert res3["metro_hub"] == "Hyderabad"
+
+
+def test_api_jobs_metro_hub_filtering():
+    client = TestClient(app)
+    res = client.get("/api/jobs?country=India&metro_hub=Bengaluru&limit=10")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["total"] > 0
+    for job in data["jobs"]:
+        assert job["country"] == "India"
+        loc = job["location"].lower()
+        assert "bengaluru" in loc or "bangalore" in loc or "blr" in loc
+

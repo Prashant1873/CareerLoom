@@ -8,6 +8,7 @@ import { NavRail } from './components/NavRail';
 import { MasterJobStream } from './components/MasterJobStream';
 import { JobInspectorPane } from './components/JobInspectorPane';
 import { CommunityInsightsDrawer } from './components/CommunityInsightsDrawer';
+import { LeadCaptureModal } from './components/LeadCaptureModal';
 
 const DEFAULT_FILTERS: FilterState = {
   searchPrompt: '',
@@ -32,6 +33,8 @@ export function App() {
   const [totalJobsIndexed, setTotalJobsIndexed] = useState<number>(0);
   const [insightsJob, setInsightsJob] = useState<JobItem | null>(null);
   const [isInsightsOpen, setIsInsightsOpen] = useState<boolean>(false);
+  const [referralJob, setReferralJob] = useState<JobItem | null>(null);
+  const [isReferralModalOpen, setIsReferralModalOpen] = useState<boolean>(false);
   const [isRailCollapsed, setIsRailCollapsed] = useState<boolean>(false);
 
   const searchRef = useRef<HTMLInputElement | null>(null);
@@ -65,6 +68,7 @@ export function App() {
             category: currentFilters.category || undefined,
             domain: currentFilters.domain || undefined,
             country: currentFilters.country || undefined,
+            metro_hub: currentFilters.metroHub || undefined,
             is_remote: currentFilters.isRemote !== null ? currentFilters.isRemote : undefined,
             seniority: currentFilters.seniority || undefined,
             posted_within_days: currentFilters.freshnessDays || undefined,
@@ -83,6 +87,7 @@ export function App() {
             category: currentFilters.category || undefined,
             domain: currentFilters.domain || undefined,
             country: currentFilters.country || undefined,
+            metro_hub: currentFilters.metroHub || undefined,
             is_remote: currentFilters.isRemote !== null ? currentFilters.isRemote : undefined,
             seniority: currentFilters.seniority || undefined,
             posted_within_days: currentFilters.freshnessDays || undefined,
@@ -153,6 +158,11 @@ export function App() {
     setIsInsightsOpen(false);
   };
 
+  const handleOpenReferral = (job: JobItem) => {
+    setReferralJob(job);
+    setIsReferralModalOpen(true);
+  };
+
   // Filter jobs by saved status if savedOnly is enabled
   const displayedJobs = filters.savedOnly
     ? jobs.filter((j) => savedIds.includes(j.id))
@@ -197,6 +207,7 @@ export function App() {
         isBookmarked={isBookmarked}
         onToggleBookmark={toggleBookmark}
         onOpenInsights={handleOpenInsights}
+        onOpenReferral={handleOpenReferral}
         query={filters.searchPrompt}
         onQueryChange={handleQueryChange}
         onSearch={handleSearchSubmit}
@@ -213,6 +224,7 @@ export function App() {
         isBookmarked={selectedJob ? isBookmarked(selectedJob.id) : false}
         onToggleBookmark={toggleBookmark}
         onClose={() => setSelectedJob(null)}
+        onOpenReferral={handleOpenReferral}
       />
 
       {/* Slide-over Community Insights Drawer */}
@@ -220,6 +232,13 @@ export function App() {
         job={insightsJob}
         isOpen={isInsightsOpen}
         onClose={handleCloseInsights}
+      />
+
+      {/* Candidate Referral & Lead Capture Modal */}
+      <LeadCaptureModal
+        job={referralJob}
+        isOpen={isReferralModalOpen}
+        onClose={() => setIsReferralModalOpen(false)}
       />
     </div>
   );

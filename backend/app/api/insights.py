@@ -35,6 +35,7 @@ async def get_company_insights(
     company: str = Query(..., description="Target employer name (e.g. 'Stripe', 'Figma', 'McKinsey & Company')"),
     role: Optional[str] = Query(None, description="Optional role context (e.g. 'Software Engineer', 'Product Manager')"),
     domain: Optional[str] = Query("tech", description="Domain context for subreddit routing (e.g. 'tech', 'product', 'finance', 'consulting')"),
+    country: Optional[str] = Query(None, description="Country filter (e.g. 'India')"),
 ):
     """
     Returns authentic interview timelines, round breakdowns, insider advice,
@@ -45,5 +46,7 @@ async def get_company_insights(
         company=company,
         role=role,
         domain=domain,
+        country=country,
     )
     return insights
+

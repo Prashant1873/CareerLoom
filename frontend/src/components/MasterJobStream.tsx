@@ -13,9 +13,11 @@ import {
   MessageSquare,
   AlertCircle,
   Command,
+  Send,
 } from 'lucide-react';
 import type { FilterState, JobItem, ParsedQuery } from '../types/job';
 import { formatJobDate } from '../utils/dateFormatter';
+import { getCTCInfo } from '../utils/ctcFormatter';
 
 interface MasterJobStreamProps {
   jobs: JobItem[];
@@ -26,6 +28,7 @@ interface MasterJobStreamProps {
   isBookmarked: (id: string) => boolean;
   onToggleBookmark: (id: string) => void;
   onOpenInsights: (job: JobItem) => void;
+  onOpenReferral?: (job: JobItem) => void;
   query: string;
   onQueryChange: (q: string) => void;
   onSearch: (q: string) => void;
@@ -45,6 +48,7 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
   isBookmarked,
   onToggleBookmark,
   onOpenInsights,
+  onOpenReferral,
   query,
   onQueryChange,
   onSearch,
@@ -95,6 +99,12 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
     activeChips.push({
       label: filters.domain,
       onClear: () => onFilterChange({ domain: '' }),
+    });
+  }
+  if (filters.metroHub) {
+    activeChips.push({
+      label: `Hub: ${filters.metroHub}`,
+      onClear: () => onFilterChange({ metroHub: undefined }),
     });
   }
   if (filters.freshnessDays) {
@@ -152,6 +162,37 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
               {parsedQuery.country && ` • Region: ${parsedQuery.country}`}
               {parsedQuery.is_remote !== null && ` • ${parsedQuery.is_remote ? 'Remote' : 'Onsite'}`}
             </span>
+          </div>
+        )}
+
+        {/* Indian Metro Tech Hub Quick Filter Ribbon */}
+        {filters.country === 'India' && (
+          <div className="metro-hub-ribbon" role="toolbar" aria-label="Indian Metro Tech Hubs">
+            <span className="metro-ribbon-label">Tech Hub:</span>
+            <div className="metro-chips-scroll">
+              {[
+                { id: '', label: 'All India' },
+                { id: 'Bengaluru', label: 'Bengaluru (BLR)' },
+                { id: 'Delhi NCR', label: 'Delhi NCR' },
+                { id: 'Hyderabad', label: 'Hyderabad (HYD)' },
+                { id: 'Pune', label: 'Pune' },
+                { id: 'Mumbai', label: 'Mumbai' },
+                { id: 'Chennai', label: 'Chennai' },
+                { id: 'Remote', label: 'Remote' },
+              ].map((hub) => {
+                const isActive = (filters.metroHub || '') === hub.id;
+                return (
+                  <button
+                    key={hub.id}
+                    type="button"
+                    className={`metro-hub-chip ${isActive ? 'active' : ''}`}
+                    onClick={() => onFilterChange({ metroHub: hub.id || undefined })}
+                  >
+                    <span>{hub.label}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         )}
 
@@ -244,6 +285,16 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
             const isSelected = selectedJob?.id === job.id;
             const { relative, exact, tier } = formatJobDate(job.date_posted);
             const saved = isBookmarked(job.id);
+            const ctcInfo = getCTCInfo(
+              job.company,
+              job.title,
+              job.country,
+              job.location,
+              job.seniority,
+              job.category,
+              job.tags,
+              job.description_summary
+            );
 
             return (
               <div
@@ -299,6 +350,16 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
                       {job.seniority.charAt(0).toUpperCase() + job.seniority.slice(1)}
                     </span>
                   )}
+
+                  {ctcInfo && (
+                    <span
+                      className={`stream-ctc-pill ${ctcInfo.isEstimated ? 'estimated' : 'verified'}`}
+                      title={ctcInfo.benchmarkDetails || ctcInfo.tierBadge}
+                    >
+                      <span className="ctc-amount">{ctcInfo.display}</span>
+                      <span className="ctc-tier-name hide-mobile">{ctcInfo.tierBadge}</span>
+                    </span>
+                  )}
                 </div>
 
                 {/* Card Footer Quick Actions */}
@@ -328,6 +389,21 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
                       <MessageSquare size={12} className="text-orange-400" />
                       <span>Intel</span>
                     </button>
+
+                    {onOpenReferral && (
+                      <button
+                        type="button"
+                        className="stream-referral-btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onOpenReferral(job);
+                        }}
+                        title="Generate 1-click tailored referral request message"
+                      >
+                        <Send size={11} className="text-emerald-400" />
+                        <span>Referral</span>
+                      </button>
+                    )}
                   </div>
 
                   <button

@@ -1648,5 +1648,89 @@
     "slug": "whatfix",
     "ats_type": "smartrecruiters",
     "domain": "Digital Adoption Platform SaaS"
+  },
+  {
+    "name": "Slice",
+    "slug": "slice",
+    "ats_type": "greenhouse",
+    "domain": "Fintech / Credit & Cards"
+  },
+  {
+    "name": "TCS",
+    "slug": "tcs",
+    "ats_type": "greenhouse",
+    "domain": "Global IT Services & Enterprise Tech"
+  },
+  {
+    "name": "Porter",
+    "slug": "porter",
+    "ats_type": "lever",
+    "domain": "Intra-City Logistics & On-Demand Delivery"
+  },
+  {
+    "name": "FamPay",
+    "slug": "fampay",
+    "ats_type": "lever",
+    "domain": "Fintech & Gen-Z Banking"
+  },
+  {
+    "name": "Vogo",
+    "slug": "vogo",
+    "ats_type": "lever",
+    "domain": "Electric Vehicles & Smart Urban Mobility"
+  },
+  {
+    "name": "Shipsy",
+    "slug": "shipsy",
+    "ats_type": "smartrecruiters",
+    "domain": "Logistics SaaS & AI Supply Chain"
+  },
+  {
+    "name": "Entrupy",
+    "slug": "entrupy",
+    "ats_type": "greenhouse",
+    "domain": "AI Computer Vision & Authentication"
+  },
+  {
+    "name": "Upstox",
+    "slug": "upstox",
+    "ats_type": "smartrecruiters",
+    "domain": "Fintech & Investment Tech"
+  },
+  {
+    "name": "Bluestone",
+    "slug": "bluestone",
+    "ats_type": "greenhouse",
+    "domain": "Fine Jewelry & Omnichannel Tech"
+  },
+  {
+    "name": "Target India GCC",
+    "slug": "target-india",
+    "ats_type": "workday",
+    "domain": "Retail Cloud & Enterprise Tech GCC"
+  },
+  {
+    "name": "Walmart Global Tech India",
+    "slug": "walmart-india",
+    "ats_type": "workday",
+    "domain": "Cloud Infrastructure & Retail Tech GCC"
+  },
+  {
+    "name": "Goldman Sachs India GCC",
+    "slug": "goldmansachs-india",
+    "ats_type": "workday",
+    "domain": "FinTech, Quant & Banking Tech GCC"
+  },
+  {
+    "name": "Morgan Stanley India GCC",
+    "slug": "morganstanley-india",
+    "ats_type": "workday",
+    "domain": "Financial Infrastructure & Cloud GCC"
+  },
+  {
+    "name": "JP Morgan India GCC",
+    "slug": "jpmorgan-india",
+    "ats_type": "workday",
+    "domain": "Global Banking & Tech Infrastructure GCC"
   }
 ]

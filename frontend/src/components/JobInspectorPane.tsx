@@ -18,9 +18,12 @@ import {
   RefreshCw,
   X,
   Briefcase,
+  TrendingUp,
+  Send,
 } from 'lucide-react';
 import type { CommunityInsights, JobItem } from '../types/job';
 import { formatJobDate } from '../utils/dateFormatter';
+import { getCTCInfo } from '../utils/ctcFormatter';
 import { fetchCommunityInsights } from '../services/api';
 
 interface JobInspectorPaneProps {
@@ -28,6 +31,7 @@ interface JobInspectorPaneProps {
   isBookmarked: boolean;
   onToggleBookmark: (id: string) => void;
   onClose?: () => void;
+  onOpenReferral?: (job: JobItem) => void;
   isMobileDrawer?: boolean;
 }
 
@@ -36,6 +40,7 @@ export const JobInspectorPane: React.FC<JobInspectorPaneProps> = ({
   isBookmarked,
   onToggleBookmark,
   onClose,
+  onOpenReferral,
   isMobileDrawer = false,
 }) => {
   const [activeTab, setActiveTab] = useState<'overview' | 'intel'>('overview');
@@ -55,7 +60,7 @@ export const JobInspectorPane: React.FC<JobInspectorPaneProps> = ({
       if (!job) return;
       setIsIntelLoading(true);
       try {
-        const data = await fetchCommunityInsights(job.company, job.title, job.domain);
+        const data = await fetchCommunityInsights(job.company, job.title, job.domain, job.country);
         if (isMounted) setInsights(data);
       } catch (err) {
         console.error('Failed loading intel:', err);
@@ -87,6 +92,16 @@ export const JobInspectorPane: React.FC<JobInspectorPaneProps> = ({
   }
 
   const { relative, exact, tier } = formatJobDate(job.date_posted);
+  const ctcInfo = getCTCInfo(
+    job.company,
+    job.title,
+    job.country,
+    job.location,
+    job.seniority,
+    job.category,
+    job.tags,
+    job.description_summary
+  );
 
   const handleShare = () => {
     if (navigator.clipboard) {
@@ -155,6 +170,18 @@ export const JobInspectorPane: React.FC<JobInspectorPaneProps> = ({
             <ExternalLink size={14} />
           </button>
 
+          {onOpenReferral && (
+            <button
+              type="button"
+              className="inspector-referral-btn"
+              onClick={() => onOpenReferral(job)}
+              title="Request employee referral & generate tailored pitch"
+            >
+              <Send size={14} className="text-emerald-400" />
+              <span>Ask Referral</span>
+            </button>
+          )}
+
           <button
             type="button"
             className={`inspector-bookmark-btn ${isBookmarked ? 'bookmarked' : ''}`}
@@ -222,6 +249,45 @@ export const JobInspectorPane: React.FC<JobInspectorPaneProps> = ({
       <div className="inspector-body">
         {activeTab === 'overview' && (
           <div className="overview-tab-content animate-fade-in">
+            {/* CTC Compensation Intelligence Section */}
+            {ctcInfo && (
+              <div className="inspector-ctc-card">
+                <div className="ctc-card-header">
+                  <div className="ctc-card-title-group">
+                    <div className="ctc-label-tiny-row">
+                      <TrendingUp size={13} className="text-emerald-400" />
+                      <span className="ctc-label-tiny">Target Compensation</span>
+                    </div>
+                    <span className="ctc-main-figure">{ctcInfo.display}</span>
+                  </div>
+                  <span className={`ctc-status-badge ${ctcInfo.isEstimated ? 'estimated' : 'verified'}`}>
+                    {ctcInfo.tierBadge}
+                  </span>
+                </div>
+                <p className="ctc-card-details">
+                  {ctcInfo.benchmarkDetails ||
+                    (ctcInfo.isEstimated
+                      ? 'Calibrated against verified tech offers across Indian unicorns and product firms.'
+                      : 'Explicit compensation provided by employer ATS feed.')}
+                </p>
+                {ctcInfo.tierName && (
+                  <div className="ctc-tier-footer">
+                    <span className="ctc-tier-tag">{ctcInfo.tierName}</span>
+                    <span className="ctc-market-tag">INR / India Market</span>
+                    {onOpenReferral && (
+                      <button
+                        type="button"
+                        className="ctc-referral-link-btn"
+                        onClick={() => onOpenReferral(job)}
+                      >
+                        Request Referral →
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+
             <div className="content-section">
               <h4 className="section-heading">Description Summary</h4>
               <p className="description-text">
@@ -256,12 +322,25 @@ export const JobInspectorPane: React.FC<JobInspectorPaneProps> = ({
               <>
                 {/* Hero Intel Card */}
                 <div className="intel-hero-card">
-                  <div className="intel-stat-item">
-                    <div className="stat-label">
-                      <Clock size={12} className="text-emerald-400" />
-                      <span>Avg. Turnaround</span>
+                  <div className="intel-stats-grid">
+                    <div className="intel-stat-item">
+                      <div className="stat-label">
+                        <Clock size={12} className="text-emerald-400" />
+                        <span>Avg. Turnaround</span>
+                      </div>
+                      <span className="stat-highlight">{insights.turnaround_estimate}</span>
                     </div>
-                    <span className="stat-highlight">{insights.turnaround_estimate}</span>
+
+                    <div className="intel-stat-item">
+                      <div className="stat-label">
+                        <Globe size={12} className="text-cyan-400" />
+                        <span>Community Hub</span>
+                      </div>
+                      <span className="stat-highlight">
+                        {insights.subreddit.toLowerCase().includes('developersindia') && '🇮🇳 '}
+                        {insights.subreddit.startsWith('r/') ? insights.subreddit : `r/${insights.subreddit}`}
+                      </span>
+                    </div>
                   </div>
 
                   <div className="intel-sentiment-item">
@@ -332,7 +411,9 @@ export const JobInspectorPane: React.FC<JobInspectorPaneProps> = ({
                             <ExternalLink size={12} className="thread-open-icon" />
                           </div>
                           <div className="thread-meta-flex">
-                            <span className="thread-sub-name">r/{t.subreddit}</span>
+                            <span className="thread-sub-name">
+                              {t.subreddit.startsWith('r/') ? t.subreddit : `r/${t.subreddit}`}
+                            </span>
                             <div className="thread-counters">
                               <span>
                                 <ThumbsUp size={10} /> {t.score}

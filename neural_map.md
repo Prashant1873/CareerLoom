@@ -77,8 +77,20 @@ graph TD
    - [backend/app/db/database.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/db/database.py): SQLite persistence layer with composite indexes for sub-50ms multi-attribute queries across thousands of active jobs.
 
 8. **Indian Tech Startup & Unicorn Discovery Pipeline**
-   - [backend/app/data/companies.json](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/data/companies.json): Curated directory of 38+ verified Indian tech unicorns and startups (Paytm, Swiggy, Meesho, CRED, Groww, InMobi, Glance, Sarvam AI, Atlan, Zeta, HighRadius, Zenoti, Mindtickle, SigNoz, Druva, Kovai.co, etc.).
+   - [backend/app/data/companies.json](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/data/companies.json): Curated directory of 50+ verified Indian tech unicorns and startups (Paytm, Swiggy, Meesho, CRED, Groww, InMobi, Glance, Sarvam AI, Atlan, Zeta, HighRadius, Zenoti, Mindtickle, SigNoz, Druva, Kovai.co, etc.).
    - [backend/app/utils/classifier.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/utils/classifier.py): Regional geographic mapping for all major Indian tech centers (Bengaluru, Hyderabad, Mumbai, Delhi NCR, Gurugram, Noida, Pune, Chennai, Ahmedabad) with ISO-2 code mapping (`IN`/`IND` -> `India`) and company-origin fallbacks.
    - [backend/app/scrapers/](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/scrapers/): ATS connectors (Lever, Greenhouse, Ashby, SmartRecruiters) enriched with `company_hint` for deterministic country classification and verified direct listing links.
+
+9. **Candidate Lead Capture & Referral Engine (`backend/app/api/leads.py` & `frontend/`)**
+   - [backend/app/db/database.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/db/database.py): SQLite `candidate_leads` schema for storing candidate profile submissions, target job IDs, CTC expectations, and referral status.
+   - [backend/app/api/leads.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/api/leads.py): `POST /api/leads/submit`, `GET /api/leads`, and `POST /api/leads/pitch` for candidate lead capture, referral pitch generation, and recruiter querying.
+   - [frontend/src/components/LeadCaptureModal.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/LeadCaptureModal.tsx): Obsidian dark dialog with LinkedIn profile sync, YoE, CTC LPA numbers, Notice Period selector, and 1-click clipboard referral pitch copy.
+   - [frontend/src/components/NavRail.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/NavRail.tsx): Dedicated "India Direct" toggle (🇮🇳 1.4k live count) and Indian Metro Tech Hub ribbon.
+   - [frontend/src/utils/ctcFormatter.ts](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/utils/ctcFormatter.ts): High-fidelity INR CTC parser and calibrated compensation benchmark engine (₹ LPA).
+
+10. **Indian Developer Community Intelligence & Verification (`backend/app/services/reddit.py` & `tests/`)**
+    - [backend/app/services/reddit.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/services/reddit.py): Regional routing to `r/developersIndia`, `r/IndianStartups`, and `r/IndiaTech` for Indian tech employers; benchmark consensus for Swiggy, CRED, Groww, Meesho, Razorpay, Atlan, Target India, and Thoughtworks.
+    - [frontend/src/components/JobInspectorPane.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/JobInspectorPane.tsx): 5-stage Indian hiring roadmap (Online Assessment -> Machine Coding -> LLD/HLD -> Hiring Manager -> HR & Notice Period Buyout) and Community Hub source badge.
+    - [tests/test_india_engine.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/tests/test_india_engine.py): Automated test suite verifying Indian catalog schemas, location and metro classifier, heuristic NLP parsing, sub-50ms query latency, and community intelligence routing.
 
 

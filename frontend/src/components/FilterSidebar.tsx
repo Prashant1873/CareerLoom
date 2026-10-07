@@ -145,7 +145,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
         <select
           className="filter-select"
           value={filters.country}
-          onChange={(e) => onFilterChange({ country: e.target.value })}
+          onChange={(e) => onFilterChange({ country: e.target.value, metroHub: undefined })}
         >
           {REGION_OPTIONS.map((r) => (
             <option key={r.value} value={r.value}>
@@ -154,6 +154,30 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
           ))}
         </select>
       </div>
+
+      {/* Indian Tech Hub Filter (Visible when India is active) */}
+      {filters.country === 'India' && (
+        <div className="filter-group animate-fade-in">
+          <div className="filter-group-title">
+            <Globe size={14} className="filter-icon text-emerald-400" />
+            <span>Indian Tech Hub</span>
+          </div>
+          <select
+            className="filter-select"
+            value={filters.metroHub || ''}
+            onChange={(e) => onFilterChange({ metroHub: e.target.value || undefined })}
+          >
+            <option value="">All India (1,400+ jobs)</option>
+            <option value="Bengaluru">Bengaluru / Bangalore (BLR)</option>
+            <option value="Delhi NCR">Delhi NCR / Gurgaon / Noida</option>
+            <option value="Hyderabad">Hyderabad / Cyberabad (HYD)</option>
+            <option value="Pune">Pune (PUN)</option>
+            <option value="Mumbai">Mumbai / Navi Mumbai (BOM)</option>
+            <option value="Chennai">Chennai (MAA)</option>
+            <option value="Remote">Remote (India)</option>
+          </select>
+        </div>
+      )}
 
       {/* Industry Domain */}
       <div className="filter-group">
