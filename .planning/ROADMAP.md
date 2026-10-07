@@ -29,7 +29,7 @@ CareerLoom delivers a zero-friction job discovery portal across major global fir
 - [x] **Phase 10: India Launch & Indian Leads Engine** - Curate 50+ Indian unicorns & GCCs, India-First discovery controls, CTC compensation badges, candidate lead capture & referral engine, and r/developersIndia community intel.
 
 ### Milestone v5: Indian Career Repository & Continuous Batch Scraping Engine
-- [ ] **Phase 11: Career Targets Registry & Database Architecture** - Persistent SQLite schema (`career_targets`), REST API management endpoints, seed migration, and stale job reconciler.
+- [x] **Phase 11: Career Targets Registry & Database Architecture** - Persistent SQLite schema (`career_targets`), REST API management endpoints, seed migration, and stale job reconciler.
 - [ ] **Phase 12: Reddit Discovery Pipeline & Indian Ecosystem Catalog Scaling** - Reddit scanner (`r/developersIndia`, `r/IndianStartups`, `r/ProductManagement`, `r/consulting`), candidate company extractor, and 200+ Indian company expansion.
 - [ ] **Phase 13: Product Management & Strategy Consulting Taxonomy Engine** - Domain ontology expansion, APM/PM and Strategy Consulting role track mapping, and sub-50ms filtering.
 - [ ] **Phase 14: Continuous Batch Scraping Pipeline & Ingestion Automation** - High-concurrency async batch runner (`sync_batch.py`), scheduled periodic worker, and error isolation.
@@ -49,8 +49,8 @@ CareerLoom delivers a zero-friction job discovery portal across major global fir
   2. Seed migrator populates 200+ Indian employers and existing global companies into the registry with verified career URLs.
 **Plans**: 2 plans
 Plans:
-- [ ] 11-01: SQLite Schema Extension, Target Models, and Stale Job Reconciler
-- [ ] 11-02: Catalog Seeder & REST API Management Endpoints
+- [x] 11-01: SQLite Schema Extension, Target Models, and Stale Job Reconciler
+- [x] 11-02: Catalog Seeder & REST API Management Endpoints
 
 ### Phase 12: Reddit Discovery Pipeline & Indian Ecosystem Catalog Scaling
 **Goal**: Build an automated Reddit discovery engine scanning `r/developersIndia`, `r/IndianStartups`, `r/ProductManagement`, `r/consulting`, and `r/bangalore` to mine company mentions, discover career portals, and scale Indian coverage to 200+ companies across startups, conglomerates, and consulting firms.
