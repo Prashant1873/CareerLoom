@@ -76,6 +76,9 @@ Plans:
   2. Taxonomy ontology extended with Strategy & Consulting tracks (Management Consultant, Strategy Analyst, Chief of Staff, Founder's Office, BizOps, Corporate Strategy).
   3. Query parser and database filter return matching PM and Strategy Consulting jobs in under 50ms without title mismatch drop-offs.
 **Plans**: 2 plans
+Plans:
+- [ ] 13-01: Domain Ontology Expansion, Sub-0.1ms Regex Classifier & Model Extension
+- [ ] 13-02: Sub-50ms Search Engine, SQLite Indexing, NLP Fast-Path & Catalog Backfill
 
 ### Phase 14: Continuous Batch Scraping Pipeline & Ingestion Automation
 **Goal**: Build an async, bounded-concurrency batch scraping engine (`sync_batch.py`) that iterates through all registered career targets, extracts live postings, prunes stale/closed jobs, and supports background scheduled execution.

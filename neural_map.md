@@ -44,10 +44,11 @@ graph TD
 
 2. **NL Query Interpreter & Taxonomy (`backend/app/services/` & `api/`)**
    - [backend/app/services/llm_adapter.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/services/llm_adapter.py): Multi-model LLM adapter (Groq Llama 3.3, Google Gemini Flash, OpenRouter) with `HeuristicQueryParser` regex fallback.
-   - [backend/app/services/taxonomy.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/services/taxonomy.py): Canonical ontology of 8 categories, 36 curated tracks, and title synonyms with `match_category_phrase()`.
+   - [backend/app/services/taxonomy.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/services/taxonomy.py): Granular ontology with 6-way PM & Strategy split (`product`, `technical_product`, `product_ops`, `management_consulting`, `corporate_strategy`, `founders_office`), parent cluster resolution (`product_cluster`, `strategy_cluster`), and fast-path matching.
+   - [backend/app/utils/classifier.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/utils/classifier.py): Sub-0.1ms compiled regex classifier resolving `(category, seniority, track)` with employer consulting hints and priority collision resolution.
    - [backend/app/utils/query_cache.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/utils/query_cache.py): In-memory LRU/TTL parsed query cache.
-   - [backend/app/api/nlp.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/api/nlp.py): `POST /api/nlp/parse` and `POST /api/nlp/search`.
-   - [backend/app/api/categories.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/api/categories.py): `GET /api/categories` and `GET /api/categories/tracks`.
+   - [backend/app/api/nlp.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/api/nlp.py): Fast-path taxonomy match before LLM fallback in `POST /api/nlp/parse` and `POST /api/nlp/search`.
+   - [backend/app/api/categories.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/api/categories.py): `GET /api/categories`, `GET /api/categories/tracks` (with live job counts), and `GET /api/categories/clusters`.
 
 3. **Aggregator & Custom Ingestion Engine (`backend/app/scrapers/` & `services/sync.py`)**
    - Direct ATS Connectors: [greenhouse.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/scrapers/greenhouse.py), [lever.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/scrapers/lever.py), [ashby.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/scrapers/ashby.py).
@@ -94,9 +95,12 @@ graph TD
     - [tests/test_india_engine.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/tests/test_india_engine.py): Automated test suite verifying Indian catalog schemas, location and metro classifier, heuristic NLP parsing, sub-50ms query latency, and community intelligence routing.
 
 11. **Milestone v5: Indian Career Repository & Batch Ingestion Pipeline**
-    - `career_targets` Registry: SQLite table indexing 200+ companies (Startups, Unicorns, Conglomerates, Strategy Consulting), tracking direct career links, ATS connectors, scraping status, role tags, and scrape timestamps.
-    - Reddit Discovery Engine: Mining `r/developersIndia`, `r/IndianStartups`, `r/ProductManagement`, `r/consulting`, and `r/bangalore` for emerging employers and active career URLs.
-    - PM & Strategy Consulting Ontology: Canonical taxonomy for Product Management (APM, PM, SPM, GPM, TPM, ProdOps) and Strategy & Consulting (Consultant, Strategy Analyst, Chief of Staff, Founder's Office, BizOps) with sub-50ms query mapping.
+    - `career_targets` Registry: SQLite table indexing 233+ companies (Startups, Unicorns, Conglomerates, Strategy Consulting), tracking direct career links, ATS connectors, scraping status, role tags, and scrape timestamps.
+    - Reddit Discovery Engine ([backend/app/services/reddit_scanner.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/services/reddit_scanner.py)): Autonomous mining of `r/developersIndia`, `r/IndianStartups`, `r/ProductManagement`, `r/consulting`, and `r/bangalore` with 24h SQLite TTL cache (`discovery_cache`), polite backoff, and HTTP 429 resilience.
+    - Multi-ATS Discovery Prober ([backend/app/services/discovery_prober.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/services/discovery_prober.py)): Regex candidate extraction, concurrent multi-ATS endpoint verification (Greenhouse, Lever, Ashby, SmartRecruiters), automatic enrollment into `career_targets`, and 7-day negative domain caching (`probed_cache`).
+    - Partitioned Ecosystem Catalog ([backend/app/data/targets/](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/data/targets/)): 233 curated Indian employers partitioned across `indian_startups.json` (159), `indian_conglomerates.json` (42), and `strategy_consulting.json` (32) with standardized role tags and verified career portals.
+    - Idempotent Ingestion Seeder ([backend/scripts/seed_targets.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/scripts/seed_targets.py)): Ingests partitioned datasets while preserving live scraping telemetry, job counts, and status timestamps.
+    - Headless Discovery Runner ([backend/scripts/run_discovery.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/scripts/run_discovery.py)): CLI runner orchestrating Reddit mining, probing, and registry synchronization with ANSI summary reporting.
     - Continuous Batch Engine: Bounded-concurrency async scraper (`asyncio.Semaphore(15)`) with stale job reconciler to purge expired postings.
     - Frontend Career Directory Hub: Obsidian view displaying all tracked companies, direct portal links, and live sync health indicators.
 
