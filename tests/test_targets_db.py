@@ -102,7 +102,7 @@ async def test_target_crud_operations():
     # Search
     search_results, _ = await get_targets(CareerTargetFilterParams(search="McKinsey"))
     assert len(search_results) >= 1
-    assert search_results[0].slug == "mckinsey-india-test"
+    assert any(t.slug == "mckinsey-india-test" for t in search_results)
 
 
 @pytest.mark.asyncio

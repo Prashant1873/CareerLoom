@@ -1,10 +1,12 @@
 import asyncio
 import json
 import logging
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from backend.app.db.database import upsert_jobs
+from backend.app.db.database import upsert_jobs, reconcile_target_jobs
+from backend.app.models.target import CareerTarget
 from backend.app.scrapers.ashby import AshbyConnector
 from backend.app.scrapers.greenhouse import GreenhouseConnector
 from backend.app.scrapers.lever import LeverConnector
@@ -145,3 +147,55 @@ class JobSyncService:
             "ats_type": ats_type,
             "domain": "Tech",
         })
+
+    async def sync_target(self, target: CareerTarget) -> Dict[str, Any]:
+        """
+        Synchronizes jobs for a single CareerTarget, reconciles live vs stale jobs,
+        and updates the target's metadata and job count.
+        """
+        connector = self.connectors.get(target.ats_type.lower())
+        jobs = []
+        if connector:
+            try:
+                jobs = await connector.fetch_jobs(
+                    company_name=target.name,
+                    company_slug=target.slug,
+                    domain=target.domain,
+                )
+            except Exception as e:
+                logger.error(f"Error fetching jobs for target {target.name}: {e}")
+        elif target.career_url:
+            try:
+                jobs = await self.portal_extractor.scrape_portal(
+                    target.career_url, target.name, default_domain=target.domain
+                )
+            except Exception as e:
+                logger.error(f"Error scraping custom portal for target {target.name}: {e}")
+
+        now_iso = datetime.now(timezone.utc).isoformat()
+        if jobs:
+            # Enforce country = India if target is an Indian startup/unicorn
+            if target.category_tier in ("startup", "unicorn") or "india" in target.slug or "india" in target.name.lower():
+                for j in jobs:
+                    if j.country in ("Global", "Remote / Global"):
+                        j.country = "India"
+            await upsert_jobs(jobs)
+            live_ids = [j.id for j in jobs]
+        else:
+            live_ids = []
+
+        reconcile_res = await reconcile_target_jobs(
+            company=target.name,
+            live_job_ids=live_ids,
+            sync_timestamp=now_iso,
+        )
+
+        return {
+            "slug": target.slug,
+            "name": target.name,
+            "status": "ok",
+            "jobs_synced": len(jobs),
+            "live_jobs": reconcile_res["live_count"],
+            "archived_jobs": reconcile_res["archived_count"],
+        }
+

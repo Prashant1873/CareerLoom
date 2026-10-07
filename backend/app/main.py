@@ -3,9 +3,10 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.app.api import categories, insights, jobs, nlp, leads
+from backend.app.api import categories, insights, jobs, leads, nlp, targets
 from backend.app.db.database import get_stats, init_db
 from backend.app.services.sync import JobSyncService
+from backend.scripts.seed_targets import seed_career_targets
 
 # Configure structured logging
 logging.basicConfig(
@@ -21,6 +22,9 @@ async def lifespan(app: FastAPI):
     logger.info("Starting CareerLoom Discovery Engine...")
     await init_db()
     
+    # Ensure career targets registry is populated
+    await seed_career_targets(force=False)
+
     # Auto-seed initial batch if database is empty
     stats = await get_stats()
     if stats.get("total_jobs", 0) == 0:
@@ -74,6 +78,8 @@ async def root():
             "companies": "/api/jobs/companies",
             "stats": "/api/jobs/stats",
             "filter_options": "/api/jobs/filter-options",
+            "targets": "/api/targets",
+            "targets_stats": "/api/targets/stats",
         },
     }
 
@@ -83,3 +89,4 @@ app.include_router(categories.router)
 app.include_router(nlp.router)
 app.include_router(insights.router)
 app.include_router(leads.router)
+app.include_router(targets.router)
