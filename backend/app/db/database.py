@@ -2,7 +2,7 @@ import json
 import logging
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 import aiosqlite
 
@@ -136,7 +136,33 @@ async def init_db() -> None:
         """)
         await db.execute("CREATE INDEX IF NOT EXISTS idx_leads_company ON candidate_leads (company)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_leads_job_id ON candidate_leads (job_id)")
-        await db.execute("CREATE INDEX IF NOT EXISTS idx_leads_created ON candidate_leads (created_at DESC)")
+        # Reddit discovery cache table (Phase 12)
+        await db.execute("""
+            CREATE TABLE IF NOT EXISTS discovery_cache (
+                id TEXT PRIMARY KEY,
+                subreddit TEXT NOT NULL,
+                post_id TEXT NOT NULL,
+                title TEXT NOT NULL,
+                url TEXT,
+                selftext TEXT,
+                payload TEXT NOT NULL,
+                scanned_at TEXT NOT NULL,
+                expires_at TEXT NOT NULL
+            )
+        """)
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_disc_sub ON discovery_cache (subreddit)")
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_disc_expires ON discovery_cache (expires_at)")
+
+        # Probed domains and ATS negative cache (Phase 12)
+        await db.execute("""
+            CREATE TABLE IF NOT EXISTS probed_cache (
+                domain_or_slug TEXT PRIMARY KEY,
+                status TEXT NOT NULL,
+                probed_at TEXT NOT NULL,
+                expires_at TEXT NOT NULL
+            )
+        """)
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_probed_expires ON probed_cache (expires_at)")
 
         await db.commit()
     logger.info(f"Database initialized at {DB_PATH}")
@@ -731,5 +757,149 @@ async def reconcile_target_jobs(
         f"Reconciled jobs for {company_clean}: {len(live_job_ids)} live, {archived_count} soft-archived"
     )
     return {"live_count": len(live_job_ids), "archived_count": archived_count}
+
+
+# ============================================================================
+# Phase 12: Discovery Cache & Probed Cache Operations
+# ============================================================================
+
+async def save_discovery_posts(posts: List[Dict[str, Any]], ttl_hours: int = 24) -> int:
+    """
+    Saves or updates Reddit discovery posts in discovery_cache table with TTL.
+    """
+    if not posts:
+        return 0
+
+    now = datetime.now(timezone.utc)
+    scanned_at = now.isoformat()
+    expires_at = (now + timedelta(hours=ttl_hours)).isoformat()
+
+    saved_count = 0
+    async with get_connection() as db:
+        for p in posts:
+            subreddit = str(p.get("subreddit", "")).replace("r/", "").strip()
+            post_id = str(p.get("id", p.get("post_id", ""))).strip()
+            if not post_id or not subreddit:
+                continue
+
+            cache_id = f"{subreddit}_{post_id}"
+            title = str(p.get("title", "")).strip()
+            url = str(p.get("url", "")).strip()
+            selftext = str(p.get("selftext", "")).strip()
+            payload = json.dumps(p)
+
+            await db.execute(
+                """
+                INSERT INTO discovery_cache (id, subreddit, post_id, title, url, selftext, payload, scanned_at, expires_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(id) DO UPDATE SET
+                    title = excluded.title,
+                    url = excluded.url,
+                    selftext = excluded.selftext,
+                    payload = excluded.payload,
+                    scanned_at = excluded.scanned_at,
+                    expires_at = excluded.expires_at
+                """,
+                (cache_id, subreddit, post_id, title, url, selftext, payload, scanned_at, expires_at),
+            )
+            saved_count += 1
+        await db.commit()
+
+    return saved_count
+
+
+async def get_cached_discovery_posts(
+    subreddit: Optional[str] = None,
+    limit: int = 50,
+) -> List[Dict[str, Any]]:
+    """
+    Retrieves unexpired cached discovery posts.
+    """
+    now_iso = datetime.now(timezone.utc).isoformat()
+    async with get_connection() as db:
+        if subreddit:
+            clean_sub = subreddit.replace("r/", "").strip().lower()
+            cursor = await db.execute(
+                """
+                SELECT payload FROM discovery_cache
+                WHERE LOWER(subreddit) = ? AND expires_at > ?
+                ORDER BY scanned_at DESC
+                LIMIT ?
+                """,
+                (clean_sub, now_iso, limit),
+            )
+        else:
+            cursor = await db.execute(
+                """
+                SELECT payload FROM discovery_cache
+                WHERE expires_at > ?
+                ORDER BY scanned_at DESC
+                LIMIT ?
+                """,
+                (now_iso, limit),
+            )
+        rows = await cursor.fetchall()
+        results = []
+        for r in rows:
+            try:
+                results.append(json.loads(r["payload"]))
+            except Exception:
+                pass
+        return results
+
+
+async def record_probed_domain(
+    domain_or_slug: str,
+    status: str,
+    ttl_days: int = 7,
+) -> None:
+    """
+    Records outcome of probing an employer or ATS domain/slug with TTL.
+    """
+    key = domain_or_slug.strip().lower()
+    if not key:
+        return
+
+    now = datetime.now(timezone.utc)
+    probed_at = now.isoformat()
+    expires_at = (now + timedelta(days=ttl_days)).isoformat()
+
+    async with get_connection() as db:
+        await db.execute(
+            """
+            INSERT INTO probed_cache (domain_or_slug, status, probed_at, expires_at)
+            VALUES (?, ?, ?, ?)
+            ON CONFLICT(domain_or_slug) DO UPDATE SET
+                status = excluded.status,
+                probed_at = excluded.probed_at,
+                expires_at = excluded.expires_at
+            """,
+            (key, status, probed_at, expires_at),
+        )
+        await db.commit()
+
+
+async def is_domain_probed(domain_or_slug: str) -> Optional[str]:
+    """
+    Checks if a domain or slug is cached and unexpired in probed_cache.
+    Returns status ('verified', 'failed', 'non_ats') if found, else None.
+    """
+    key = domain_or_slug.strip().lower()
+    if not key:
+        return None
+
+    now_iso = datetime.now(timezone.utc).isoformat()
+    async with get_connection() as db:
+        cursor = await db.execute(
+            """
+            SELECT status FROM probed_cache
+            WHERE domain_or_slug = ? AND expires_at > ?
+            """,
+            (key, now_iso),
+        )
+        row = await cursor.fetchone()
+        if row:
+            return row["status"]
+        return None
 
 
