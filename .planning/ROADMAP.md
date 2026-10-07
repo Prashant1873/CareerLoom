@@ -47,8 +47,10 @@ CareerLoom delivers a zero-friction job discovery portal across major global fir
 **Success Criteria**:
   1. `career_targets` table initialized in SQLite with composite indexes for status, tier, and last scraped timestamp.
   2. Seed migrator populates 200+ Indian employers and existing global companies into the registry with verified career URLs.
-  3. REST API endpoints (`GET /api/targets`, `GET /api/targets/stats`, `POST /api/targets/seed`) return structured targets with sub-20ms latency.
 **Plans**: 2 plans
+Plans:
+- [ ] 11-01: SQLite Schema Extension, Target Models, and Stale Job Reconciler
+- [ ] 11-02: Catalog Seeder & REST API Management Endpoints
 
 ### Phase 12: Reddit Discovery Pipeline & Indian Ecosystem Catalog Scaling
 **Goal**: Build an automated Reddit discovery engine scanning `r/developersIndia`, `r/IndianStartups`, `r/ProductManagement`, `r/consulting`, and `r/bangalore` to mine company mentions, discover career portals, and scale Indian coverage to 200+ companies across startups, conglomerates, and consulting firms.
