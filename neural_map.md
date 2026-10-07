@@ -101,7 +101,14 @@ graph TD
     - Partitioned Ecosystem Catalog ([backend/app/data/targets/](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/data/targets/)): 233 curated Indian employers partitioned across `indian_startups.json` (159), `indian_conglomerates.json` (42), and `strategy_consulting.json` (32) with standardized role tags and verified career portals.
     - Idempotent Ingestion Seeder ([backend/scripts/seed_targets.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/scripts/seed_targets.py)): Ingests partitioned datasets while preserving live scraping telemetry, job counts, and status timestamps.
     - Headless Discovery Runner ([backend/scripts/run_discovery.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/scripts/run_discovery.py)): CLI runner orchestrating Reddit mining, probing, and registry synchronization with ANSI summary reporting.
-    - Continuous Batch Engine: Bounded-concurrency async scraper (`asyncio.Semaphore(15)`) with stale job reconciler to purge expired postings.
-    - Frontend Career Directory Hub: Obsidian view displaying all tracked companies, direct portal links, and live sync health indicators.
+13. **Continuous Batch Scraping & Ingestion Automation Pipeline (Phase 14 Complete)**
+    - **Batch Scrape Runner**: [backend/app/services/batch_runner.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/services/batch_runner.py) bounding execution via `asyncio.Semaphore(15)`, host-keyed politeness jitter (100-300ms) across shared ATS domains, and complete per-target error isolation.
+    - **Hardened Reconciler & Data-Loss Protection**: [backend/app/db/database.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/db/database.py) preserving listings on network/API failure (`is_successful_fetch=False`), soft-archiving vanished postings (`is_active = 0`), and `purge_stale_jobs` permanently pruning dead postings older than N days.
+    - **Standalone Batch CLI Runner**: [backend/scripts/sync_batch.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/scripts/sync_batch.py) with full parameter filtering (`--tier`, `--domain`, `--limit`, `--target`, `--purge-stale`, `--dry-run`, `--quiet`) and formatted summary table telemetry.
+    - **Background Batch Scheduler**: [backend/app/services/scheduler.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/services/scheduler.py) managing periodic background ingestion loops, execution progress state, and concurrency mutex locking (`_is_running`) to prevent overlapping runs.
+    - **Batch REST API Endpoints**: [backend/app/api/targets.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/api/targets.py) exposing `POST /api/targets/sync` (202 Accepted on idle, 409 Conflict when active), `GET /api/targets/sync/status`, and `POST /api/targets/purge-stale`.
+    - **Lifespan Automation**: [backend/app/main.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/main.py) starting the background scheduler on boot and canceling tasks gracefully on shutdown.
+
+
 
 
