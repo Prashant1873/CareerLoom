@@ -30,8 +30,8 @@ CareerLoom delivers a zero-friction job discovery portal across major global fir
 
 ### Milestone v5: Indian Career Repository & Continuous Batch Scraping Engine
 - [x] **Phase 11: Career Targets Registry & Database Architecture** - Persistent SQLite schema (`career_targets`), REST API management endpoints, seed migration, and stale job reconciler.
-- [ ] **Phase 12: Reddit Discovery Pipeline & Indian Ecosystem Catalog Scaling** - Reddit scanner (`r/developersIndia`, `r/IndianStartups`, `r/ProductManagement`, `r/consulting`), candidate company extractor, and 200+ Indian company expansion.
-- [ ] **Phase 13: Product Management & Strategy Consulting Taxonomy Engine** - Domain ontology expansion, APM/PM and Strategy Consulting role track mapping, and sub-50ms filtering.
+- [x] **Phase 12: Reddit Discovery Pipeline & Indian Ecosystem Catalog Scaling** - Reddit scanner (`r/developersIndia`, `r/IndianStartups`, `r/ProductManagement`, `r/consulting`), candidate company extractor, and 200+ Indian company expansion.
+- [x] **Phase 13: Product Management & Strategy Consulting Taxonomy Engine** - Domain ontology expansion, APM/PM and Strategy Consulting role track mapping, and sub-50ms filtering.
 - [ ] **Phase 14: Continuous Batch Scraping Pipeline & Ingestion Automation** - High-concurrency async batch runner (`sync_batch.py`), scheduled periodic worker, and error isolation.
 - [ ] **Phase 15: Frontend Career Directory Hub & Role Experience** - Obsidian dark Career Directory modal/view, 1-click PM and Strategy filter ribbons, and live sync indicators.
 
@@ -63,8 +63,8 @@ Plans:
   3. Career registry scales to 200+ Indian companies spanning Startups/Unicorns, Indian Conglomerates (Tata, Reliance, Infosys, etc.), and Strategy Consulting firms (McKinsey, BCG, Bain, Kearney, etc.).
 **Plans**: 2 plans
 Plans:
-- [ ] 12-01: Reddit Discovery Scanner, Caching Engine & Multi-ATS Prober Pipeline
-- [ ] 12-02: Ecosystem Catalog Scaling (220+ Targets) & Seed Partitioning
+- [x] 12-01: Reddit Discovery Scanner, Caching Engine & Multi-ATS Prober Pipeline
+- [x] 12-02: Ecosystem Catalog Scaling (220+ Targets) & Seed Partitioning
 
 ### Phase 13: Product Management & Strategy Consulting Taxonomy Engine
 **Goal**: Expand the domain ontology and classification engine to provide first-class coverage and sub-50ms filtering for Product Management and Strategy Consulting career tracks.
@@ -77,8 +77,8 @@ Plans:
   3. Query parser and database filter return matching PM and Strategy Consulting jobs in under 50ms without title mismatch drop-offs.
 **Plans**: 2 plans
 Plans:
-- [ ] 13-01: Domain Ontology Expansion, Sub-0.1ms Regex Classifier & Model Extension
-- [ ] 13-02: Sub-50ms Search Engine, SQLite Indexing, NLP Fast-Path & Catalog Backfill
+- [x] 13-01: Domain Ontology Expansion, Sub-0.1ms Regex Classifier & Model Extension
+- [x] 13-02: Sub-50ms Search Engine, SQLite Indexing, NLP Fast-Path & Catalog Backfill
 
 ### Phase 14: Continuous Batch Scraping Pipeline & Ingestion Automation
 **Goal**: Build an async, bounded-concurrency batch scraping engine (`sync_batch.py`) that iterates through all registered career targets, extracts live postings, prunes stale/closed jobs, and supports background scheduled execution.
@@ -90,6 +90,9 @@ Plans:
   2. Stale job reconciler detects closed listings and purges/flags them, eliminating dead links and ghost jobs.
   3. API trigger (`POST /api/targets/sync`) and continuous background worker run reliably with isolated error handling.
 **Plans**: 2 plans
+Plans:
+- [ ] 14-01: Batch Scraping Core Engine, Stale Job Reconciler & CLI Runner
+- [ ] 14-02: Background Scheduler Service, REST API Endpoints & Lifespan Automation
 
 ### Phase 15: Frontend Career Directory Hub & Role Experience
 **Goal**: Deliver an Obsidian dark Career Directory Hub view displaying all monitored companies and live portals, with 1-click filter ribbons for Product Management and Strategy Consulting and live sync indicators.
@@ -121,8 +124,8 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 8. Persistent Job Inspector & Community Intel | 1/1 | Complete | 2026-10-03 |
 | 9. Massive Global Portal Expansion | 3/3 | Complete | 2026-10-03 |
 | 10. India Launch & Indian Leads Engine | 4/4 | Complete | 2026-10-03 |
-| 11. Career Targets Registry & Database Architecture | 0/2 | Planned | - |
-| 12. Reddit Discovery Pipeline & Indian Ecosystem Catalog Scaling | 0/2 | Planned | - |
-| 13. Product Management & Strategy Consulting Taxonomy Engine | 0/2 | Planned | - |
-| 14. Continuous Batch Scraping Pipeline & Ingestion Automation | 0/2 | Planned | - |
+| 11. Career Targets Registry & Database Architecture | 2/2 | Complete | 2026-10-08 |
+| 12. Reddit Discovery Pipeline & Indian Ecosystem Catalog Scaling | 2/2 | Complete | 2026-10-08 |
+| 13. Product Management & Strategy Consulting Taxonomy Engine | 2/2 | Complete | 2026-10-08 |
+| 14. Continuous Batch Scraping Pipeline & Ingestion Automation | 0/2 | Ready to execute | - |
 | 15. Frontend Career Directory Hub & Role Experience | 0/2 | Planned | - |
