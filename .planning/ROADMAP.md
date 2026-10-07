@@ -131,8 +131,8 @@ Plans:
 **Plans**: 2 plans
 Plans:
 
-- [ ] 15-01: Career Targets TypeScript Models, API Client & CareerDirectoryModal Component
-- [ ] 15-02: 1-Click Role Track Quick-Filter Ribbons, Sync Freshness Indicators & Shell Integration
+- [x] 15-01: Career Targets TypeScript Models, API Client & CareerDirectoryModal Component
+- [x] 15-02: 1-Click Role Track Quick-Filter Ribbons, Sync Freshness Indicators & Shell Integration
 
 ---
 
@@ -157,4 +157,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 12. Reddit Discovery Pipeline & Indian Ecosystem Catalog Scaling | 2/2 | Complete | 2026-10-08 |
 | 13. Product Management & Strategy Consulting Taxonomy Engine | 2/2 | Complete | 2026-10-08 |
 | 14. Continuous Batch Scraping Pipeline & Ingestion Automation | 2/2 | Complete    | 2026-10-08 |
-| 15. Frontend Career Directory Hub & Role Experience | 0/2 | Planned | - |
+| 15. Frontend Career Directory Hub & Role Experience | 2/2 | Complete | 2026-10-08 |

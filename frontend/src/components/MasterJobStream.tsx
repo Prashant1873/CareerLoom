@@ -14,6 +14,8 @@ import {
   AlertCircle,
   Command,
   Send,
+  Compass,
+  Briefcase,
 } from 'lucide-react';
 import type { FilterState, JobItem, ParsedQuery } from '../types/job';
 import { formatJobDate } from '../utils/dateFormatter';
@@ -37,6 +39,9 @@ interface MasterJobStreamProps {
   onFilterChange: (partial: Partial<FilterState>) => void;
   onResetFilters: () => void;
   searchRef?: React.RefObject<HTMLInputElement | null>;
+  onOpenDirectory?: () => void;
+  monitoredCount?: number;
+  syncFreshnessText?: string;
 }
 
 export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
@@ -57,6 +62,9 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
   onFilterChange,
   onResetFilters,
   searchRef,
+  onOpenDirectory,
+  monitoredCount,
+  syncFreshnessText: _syncFreshnessText,
 }) => {
   const activeChips: { label: string; onClear: () => void }[] = [];
 
@@ -67,8 +75,14 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
     });
   }
   if (filters.category) {
+    let catLabel = filters.category.replace(/_/g, ' ');
+    if (filters.category === 'product_cluster') {
+      catLabel = '🇮🇳 PM Leadership';
+    } else if (filters.category === 'strategy_cluster') {
+      catLabel = '🇮🇳 Strategy & Consulting';
+    }
     activeChips.push({
-      label: filters.category.replace(/_/g, ' '),
+      label: catLabel,
       onClear: () => onFilterChange({ category: '' }),
     });
   }
@@ -105,6 +119,12 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
     activeChips.push({
       label: `Hub: ${filters.metroHub}`,
       onClear: () => onFilterChange({ metroHub: undefined }),
+    });
+  }
+  if (filters.company) {
+    activeChips.push({
+      label: `Company: ${filters.company}`,
+      onClear: () => onFilterChange({ company: '' }),
     });
   }
   if (filters.freshnessDays) {
@@ -149,6 +169,56 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
             <div className="omnibox-key-hint">
               <span className="key-badge">/</span>
             </div>
+          )}
+        </div>
+
+        {/* 1-Click Role Track Quick-Filter Ribbon (V5-UI-02) */}
+        <div className="track-quick-ribbon" role="toolbar" aria-label="Role Track Quick Filters">
+          <button
+            type="button"
+            className={`track-pill-btn pm-pill ${filters.category === 'product_cluster' && filters.country === 'India' ? 'active' : ''}`}
+            onClick={() => {
+              if (filters.category === 'product_cluster' && filters.country === 'India') {
+                onFilterChange({ category: '', country: '' });
+              } else {
+                onFilterChange({ category: 'product_cluster', country: 'India', metroHub: undefined });
+              }
+            }}
+            title="1-Click filter for Product Management roles across India"
+          >
+            <Compass size={13} className="track-pill-icon text-cyan-400" />
+            <span className="track-pill-text">🇮🇳 PM Roles</span>
+            <span className="track-pill-badge">Cluster</span>
+          </button>
+
+          <button
+            type="button"
+            className={`track-pill-btn strategy-pill ${filters.category === 'strategy_cluster' && filters.country === 'India' ? 'active' : ''}`}
+            onClick={() => {
+              if (filters.category === 'strategy_cluster' && filters.country === 'India') {
+                onFilterChange({ category: '', country: '' });
+              } else {
+                onFilterChange({ category: 'strategy_cluster', country: 'India', metroHub: undefined });
+              }
+            }}
+            title="1-Click filter for Strategy & Consulting roles across India"
+          >
+            <Briefcase size={13} className="track-pill-icon text-indigo-400" />
+            <span className="track-pill-text">🇮🇳 Strategy</span>
+            <span className="track-pill-badge">Cluster</span>
+          </button>
+
+          {onOpenDirectory && (
+            <button
+              type="button"
+              className="track-pill-btn directory-pill"
+              onClick={onOpenDirectory}
+              title="Explore 230+ monitored employers & verified career portals"
+            >
+              <Building2 size={13} className="track-pill-icon text-emerald-400" />
+              <span className="track-pill-text">Directory Hub</span>
+              <span className="track-pill-badge directory-count-badge">{monitoredCount || 230}+</span>
+            </button>
           )}
         </div>
 

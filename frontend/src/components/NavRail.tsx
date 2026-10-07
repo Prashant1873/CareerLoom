@@ -19,6 +19,7 @@ import {
   UserCheck,
   Stethoscope,
   Building,
+  Building2,
 } from 'lucide-react';
 import type { Category, FilterState } from '../types/job';
 
@@ -37,6 +38,10 @@ interface NavRailProps {
   filters: FilterState;
   onFilterChange: (partial: Partial<FilterState>) => void;
   onResetFilters: () => void;
+  onOpenDirectory?: () => void;
+  monitoredCount?: number;
+  syncFreshnessText?: string;
+  isSyncing?: boolean;
 }
 
 const CATEGORY_ICONS: Record<string, React.ReactNode> = {
@@ -65,6 +70,10 @@ export const NavRail: React.FC<NavRailProps> = ({
   filters,
   onFilterChange,
   onResetFilters,
+  onOpenDirectory,
+  monitoredCount,
+  syncFreshnessText,
+  isSyncing,
 }) => {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
   const [isFiltersOpen, setIsFiltersOpen] = useState(true);
@@ -114,13 +123,31 @@ export const NavRail: React.FC<NavRailProps> = ({
           {!isCollapsed && <span className="rail-section-label">Views</span>}
 
           <div className="rail-nav-items">
+            {/* Career Directory Hub Navigation Trigger */}
+            {onOpenDirectory && (
+              <button
+                type="button"
+                className="rail-nav-btn career-directory-nav-btn"
+                onClick={onOpenDirectory}
+                title="Explore monitored employer career portals and ATS feeds"
+              >
+                <div className="nav-btn-left">
+                  <Building2 size={16} className="nav-icon text-cyan-400" />
+                  {!isCollapsed && <span className="nav-text font-medium">Career Directory</span>}
+                </div>
+                {!isCollapsed && (
+                  <span className="nav-count-badge directory-count-pill">{monitoredCount || 230}+</span>
+                )}
+              </button>
+            )}
+
             <button
               type="button"
-              className={`rail-nav-btn ${!showSavedOnly && !freshnessDays && filters.country !== 'India' ? 'active' : ''}`}
+              className={`rail-nav-btn ${!showSavedOnly && !freshnessDays && filters.country !== 'India' && !filters.category ? 'active' : ''}`}
               onClick={() => {
                 if (showSavedOnly) onToggleSavedOnly();
                 onSelectFreshness(null);
-                if (filters.country === 'India') onFilterChange({ country: '', metroHub: undefined });
+                onFilterChange({ country: '', category: '', metroHub: undefined });
               }}
               title="All verified opportunities"
             >
@@ -133,15 +160,16 @@ export const NavRail: React.FC<NavRailProps> = ({
               )}
             </button>
 
+            {/* India Direct Quick View */}
             <button
               type="button"
-              className={`rail-nav-btn india-direct-nav-btn ${filters.country === 'India' ? 'active' : ''}`}
+              className={`rail-nav-btn india-direct-nav-btn ${filters.country === 'India' && filters.category !== 'product_cluster' && filters.category !== 'strategy_cluster' ? 'active' : ''}`}
               onClick={() => {
                 if (showSavedOnly) onToggleSavedOnly();
-                if (filters.country === 'India') {
+                if (filters.country === 'India' && !filters.category) {
                   onFilterChange({ country: '', metroHub: undefined });
                 } else {
-                  onFilterChange({ country: 'India', metroHub: undefined });
+                  onFilterChange({ country: 'India', category: '', metroHub: undefined });
                 }
               }}
               title="Filter exclusively for verified jobs across Indian Unicorns & Tech Hubs"
@@ -152,6 +180,52 @@ export const NavRail: React.FC<NavRailProps> = ({
               </div>
               {!isCollapsed && (
                 <span className="nav-count-badge india-badge">1.4k</span>
+              )}
+            </button>
+
+            {/* 1-Click Product Management Quick Filter (V5-UI-02) */}
+            <button
+              type="button"
+              className={`rail-nav-btn pm-direct-nav-btn ${filters.category === 'product_cluster' && filters.country === 'India' ? 'active' : ''}`}
+              onClick={() => {
+                if (showSavedOnly) onToggleSavedOnly();
+                if (filters.category === 'product_cluster' && filters.country === 'India') {
+                  onFilterChange({ category: '', country: '' });
+                } else {
+                  onFilterChange({ category: 'product_cluster', country: 'India', metroHub: undefined });
+                }
+              }}
+              title="Filter for verified Product Management openings across India"
+            >
+              <div className="nav-btn-left">
+                <span className="india-flag-icon" role="img" aria-label="India flag">🇮🇳</span>
+                {!isCollapsed && <span className="nav-text font-medium">🇮🇳 PM Roles</span>}
+              </div>
+              {!isCollapsed && (
+                <span className="nav-count-badge pm-badge">PM</span>
+              )}
+            </button>
+
+            {/* 1-Click Strategy & Consulting Quick Filter (V5-UI-02) */}
+            <button
+              type="button"
+              className={`rail-nav-btn strategy-direct-nav-btn ${filters.category === 'strategy_cluster' && filters.country === 'India' ? 'active' : ''}`}
+              onClick={() => {
+                if (showSavedOnly) onToggleSavedOnly();
+                if (filters.category === 'strategy_cluster' && filters.country === 'India') {
+                  onFilterChange({ category: '', country: '' });
+                } else {
+                  onFilterChange({ category: 'strategy_cluster', country: 'India', metroHub: undefined });
+                }
+              }}
+              title="Filter for Strategy, Consulting & Founder's Office openings across India"
+            >
+              <div className="nav-btn-left">
+                <span className="india-flag-icon" role="img" aria-label="India flag">🇮🇳</span>
+                {!isCollapsed && <span className="nav-text font-medium">🇮🇳 Strategy</span>}
+              </div>
+              {!isCollapsed && (
+                <span className="nav-count-badge strategy-badge">Strategy</span>
               )}
             </button>
 
@@ -418,12 +492,26 @@ export const NavRail: React.FC<NavRailProps> = ({
           </button>
         )}
         {!isCollapsed ? (
-          <div className="rail-live-indicator">
-            <span className="status-ping" />
-            <span className="status-text">Live ATS Feeds</span>
+          <div
+            className="rail-live-indicator"
+            onClick={onOpenDirectory}
+            role="button"
+            tabIndex={0}
+            title="Click to view all monitored employer portals and sync health"
+            style={{ cursor: onOpenDirectory ? 'pointer' : 'default' }}
+          >
+            <span className={`status-ping ${isSyncing ? 'status-ping-amber' : ''}`} />
+            <span className="status-text">
+              {monitoredCount || 230}+ Employers • {syncFreshnessText || 'Active Feeds'}
+            </span>
           </div>
         ) : (
-          <span className="status-ping-mini" title="Live ATS Feeds Active" />
+          <span
+            className={`status-ping-mini ${isSyncing ? 'status-ping-amber' : ''}`}
+            title={`${monitoredCount || 230}+ Employers • ${syncFreshnessText || 'Active Feeds'}`}
+            onClick={onOpenDirectory}
+            style={{ cursor: onOpenDirectory ? 'pointer' : 'default' }}
+          />
         )}
       </div>
     </aside>

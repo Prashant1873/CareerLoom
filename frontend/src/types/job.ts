@@ -53,6 +53,7 @@ export interface FilterState {
   category: string;
   domain: string;
   country: string;
+  company?: string;
   metroHub?: string;
   isRemote: boolean | null;
   seniority: string;

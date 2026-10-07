@@ -109,6 +109,7 @@ graph TD
     - **Batch REST API Endpoints**: [backend/app/api/targets.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/api/targets.py) exposing `POST /api/targets/sync` (202 Accepted on idle, 409 Conflict when active), `GET /api/targets/sync/status`, and `POST /api/targets/purge-stale`.
     - **Lifespan Automation**: [backend/app/main.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/backend/app/main.py) starting the background scheduler on boot and canceling tasks gracefully on shutdown.
 
-
-
-
+14. **Frontend Career Directory Hub & Role Experience (Phase 15 Complete)**
+    - **Obsidian Career Directory Modal**: [CareerDirectoryModal.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/CareerDirectoryModal.tsx) & [CareerDirectoryModal.css](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/CareerDirectoryModal.css) providing a responsive 3-column Obsidian grid for 230+ monitored employers, tier selector pills, domain filter dropdown, 8 shimmer skeleton cards, empty search recovery, and direct verified ATS apply links.
+    - **1-Click Role Track Quick-Filter Ribbons**: Integrated across [NavRail.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/NavRail.tsx) and [MasterJobStream.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/MasterJobStream.tsx) for instant 1-click toggling of `🇮🇳 PM Roles` (`product_cluster`) and `🇮🇳 Strategy` (`strategy_cluster`) with sub-50ms query latency.
+    - **Real-Time Freshness & Polling**: Persistent NavRail footer indicator displaying monitored employer count and relative sync timestamps, with dynamic emerald/amber pulse indicators driven by reactive backend polling.
