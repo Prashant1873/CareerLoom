@@ -62,6 +62,9 @@ Plans:
   2. Candidate company extractor parses company mentions, identifies career URLs, and automatically probes ATS endpoints.
   3. Career registry scales to 200+ Indian companies spanning Startups/Unicorns, Indian Conglomerates (Tata, Reliance, Infosys, etc.), and Strategy Consulting firms (McKinsey, BCG, Bain, Kearney, etc.).
 **Plans**: 2 plans
+Plans:
+- [ ] 12-01: Reddit Discovery Scanner, Caching Engine & Multi-ATS Prober Pipeline
+- [ ] 12-02: Ecosystem Catalog Scaling (220+ Targets) & Seed Partitioning
 
 ### Phase 13: Product Management & Strategy Consulting Taxonomy Engine
 **Goal**: Expand the domain ontology and classification engine to provide first-class coverage and sub-50ms filtering for Product Management and Strategy Consulting career tracks.
