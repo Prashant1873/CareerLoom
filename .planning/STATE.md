@@ -1,12 +1,16 @@
 ---
-gsd_state_version: '1.0'
-status: complete
+gsd_state_version: 1.0
+milestone: v5.0
+milestone_name: Indian Career Repository & Continuous Batch Scraping Engine
+status: planning
+last_updated: "2026-10-07T20:12:46.564Z"
+last_activity: 2026-10-08
 progress:
-  total_phases: 10
-  completed_phases: 10
-  total_plans: 23
-  completed_plans: 23
-  percent: 100
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
@@ -16,24 +20,19 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-10-03)
 
 **Core value:** Empowers candidates to discover fresh, direct-from-source job listings across major global employers instantly using freeform natural language queries and category exploration, eliminating rigid keyword matching and ATS search friction.
-**Current focus:** Milestone v4: India Launch & Indian Leads Engine (COMPLETED)
+**Current focus:** Milestone v5.0: Indian Career Repository & Continuous Batch Scraping Engine
 
 ## Current Position
 
-Phase: 10 of 10 (Phase 10: India Launch & Indian Leads Engine)
-Plan: 4 of 4 in Phase 10
-Status: Phase 10 Complete (Plans 10-01 to 10-04 Verified)
-Last activity: 2026-10-03 — Phase 10 completed:
-- 10-01: India Tech Catalog & Bulk ATS Ingestion (51+ Indian tech unicorns, startups, and GCCs; 1,478 verified live India jobs in SQLite cache).
-- 10-02: India-First Discovery Controls & CTC Compensation Badges (1-Click India Direct toggle, Metro Hub ribbon, ₹ LPA CTC cards & market benchmarks).
-- 10-03: Candidate Lead Capture & Fast Referral Engine (Obsidian dark dialog, SQLite lead persistence, 1-click clipboard referral pitch generator).
-- 10-04: Indian Community Intelligence & Verification (r/developersIndia integration, 5-stage hiring roadmap, 44/44 backend tests passing, frontend production build verified).
-
-Progress: [██████████████████] 100%
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-10-08 — Milestone v5.0 started
 
 ## Performance Metrics
 
 **Velocity:**
+
 - Total plans completed: 23
 - Average duration: 5 min
 - Total execution time: 1.9 hours
@@ -53,10 +52,8 @@ Progress: [██████████████████] 100%
 | Phase 9: Massive Global Portal Expansion | 3/3 | 15 min | 5 min |
 | Phase 10: India Launch & Indian Leads Engine | 4/4 | 20 min | 5 min |
 
-
-
-
 **Recent Trend:**
+
 - Trend: Stable
 
 ## Accumulated Context

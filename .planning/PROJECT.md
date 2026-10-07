@@ -8,6 +8,18 @@ CareerLoom is an intelligent job discovery engine that searches career portals a
 
 Empowers candidates to discover fresh, direct-from-source job listings across major global employers instantly using freeform natural language queries and category exploration, eliminating rigid keyword matching and ATS search friction.
 
+## Current Milestone: v5.0 Indian Career Repository & Continuous Batch Scraping Engine
+
+**Goal:** Establish an extensive SQLite-backed repository of hundreds of Indian career portals (popular startups, unicorns, established enterprises, strategy consulting firms) discovered via Reddit and web feeds, with heavy emphasis on Product Management and Strategy Consulting roles, powered by an automated continuous batch scraping pipeline.
+
+**Target features:**
+- SQLite Career Targets Registry (`career_targets` table) storing company metadata, career URLs, ATS connectors, scraping status, role focus tags, and sync timestamps.
+- Reddit & Public Forum Discovery Pipeline querying `r/developersIndia`, `r/IndianStartups`, `r/ProductManagement`, `r/consulting`, `r/bangalore` to identify top companies and their careers endpoints.
+- Massive expansion across Indian ecosystem: Tech Startups/Unicorns, Established Conglomerates (Tata, Reliance, Infosys, etc.), Global Strategy Consulting (McKinsey, BCG, Bain, Kearney, Big 4 India, etc.), and Fintech/Consumer.
+- Specialized Taxonomy & Classifiers for Product Management (APM, PM, SPM, GPM, ProdOps) and Strategy Consulting (Associate, Consultant, Chief of Staff, Strategy & Ops, BizOps).
+- High-Throughput Continuous Batch Scraper (`sync_batch.py`, API endpoint) with concurrency limits, dead-link handling, job deduplication, and scheduled cron execution.
+- Frontend Career Repository Directory view with 1-click filtering for Product Management and Strategy Consulting tracks.
+
 ## Requirements
 
 ### Validated
@@ -20,10 +32,19 @@ Empowers candidates to discover fresh, direct-from-source job listings across ma
 - ✓ Multi-faceted filtering system: Country/Region expansion, Remote status, Industry Domain, Seniority, and Posting Date freshness — Phase 2
 - ✓ High-craft card-based UI displaying employer, title, domain, location, direct apply CTA, dual date posted (relative + exact), and bookmarks — Phase 3
 - ✓ BeautifulSoup4 & LLM-assisted scraper pipeline for custom enterprise career portals without ATS feeds — Phase 4
+- ✓ Community intelligence (Reddit insights & hiring roadmaps) — Phase 5, Phase 8, Phase 10
+- ✓ Desktop-Grade 3-Column Obsidian Control Center — Phase 6, Phase 7, Phase 8
+- ✓ Massive Global Portal Expansion (237 firms, 16k+ live listings) — Phase 9
+- ✓ India Launch & Indian Leads Engine (51+ Indian tech unicorns, 1,478 listings, India Direct controls, CTC badges, referral engine) — Phase 10
 
 ### Active
 
-- [ ] Community intelligence scraper (Reddit & public forums) for interview timelines, company reviews, and preparation advice.
+- [ ] SQLite Career Targets Registry (`career_targets`) for managing hundreds of company career endpoints, scraping health, and metadata.
+- [ ] Automated Reddit & forum discovery pipeline to extract top Indian startups, unicorns, established enterprises, and consulting firms.
+- [ ] Massive Indian company directory expansion across Startups, Conglomerates, and Strategy Consulting firms.
+- [ ] Dedicated Product Management and Strategy Consulting role taxonomies, tracks, and classifiers.
+- [ ] High-throughput continuous batch scraping engine with scheduled / on-demand triggers and stale job pruning.
+- [ ] Frontend Career Directory Hub and dedicated PM & Strategy Consulting exploration views.
 
 ### Out of Scope
 
@@ -73,4 +94,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-10-03 after initialization*
+*Last updated: 2026-10-08 for Milestone v5.0*
