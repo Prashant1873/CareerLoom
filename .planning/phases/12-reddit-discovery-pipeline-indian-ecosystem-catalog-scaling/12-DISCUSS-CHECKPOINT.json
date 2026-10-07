@@ -1,0 +1,135 @@
+{
+  "phase": "12",
+  "phase_name": "Reddit Discovery Pipeline & Indian Ecosystem Catalog Scaling",
+  "timestamp": "2026-10-08T02:27:00.000Z",
+  "areas_completed": [
+    "Reddit Mining & Caching Engine",
+    "Entity Extraction & ATS Probing",
+    "Catalog Scaling (220+ Targets)"
+  ],
+  "areas_remaining": [],
+  "decisions": {
+    "Reddit Mining & Caching Engine": [
+      {
+        "question": "Reddit Mining: How should the discovery scanner query the 5 subreddits without incurring costs or hitting aggressive IP bans?",
+        "answer": "Public Reddit JSON API (.json) with custom User-Agent, polite per-request delay (1.0s), and exponential backoff",
+        "options_presented": [
+          "Public Reddit JSON API (.json) with custom User-Agent, polite per-request delay (1.0s), and exponential backoff",
+          "Public RSS/Atom feeds (reddit.com/r/{sub}/.rss) parsed with lightweight XML parser",
+          "Reddit official OAuth API (requires registered Reddit developer credentials)"
+        ]
+      },
+      {
+        "question": "Caching: Where should the 24-hour Reddit discovery cache be persisted to ensure zero redundant requests across runs?",
+        "answer": "SQLite table (discovery_cache) with payload, post metadata, and 24h TTL expiry check",
+        "options_presented": [
+          "SQLite table (discovery_cache) with payload, post metadata, and 24h TTL expiry check",
+          "Local JSON cache file in backend/app/data/ with timestamped post snapshots",
+          "In-memory dictionary with 24h TTL (cleared on backend restart)"
+        ]
+      },
+      {
+        "question": "Query Strategy: How should the scanner discover relevant threads in each of the 5 subreddits?",
+        "answer": "Hybrid: Fetch recent 'hot' threads plus targeted keyword search ('hiring', 'referrals', 'openings') for maximum coverage",
+        "options_presented": [
+          "Hybrid: Fetch recent 'hot' threads plus targeted keyword search ('hiring', 'referrals', 'openings') for maximum coverage",
+          "Keyword search only: Query Reddit search endpoint with targeted hiring terms per subreddit",
+          "Stream only: Fetch newest 50 posts from each subreddit without search queries"
+        ]
+      },
+      {
+        "question": "Error Resilience: How should the scanner handle Reddit HTTP 429 rate limits or network failures?",
+        "answer": "Graceful degradation: Use cached posts, apply exponential backoff on 429, and continue with other subreddits without crashing",
+        "options_presented": [
+          "Graceful degradation: Use cached posts, apply exponential backoff on 429, and continue with other subreddits without crashing",
+          "Immediate abort: Stop scan immediately on first 429 to avoid IP penalty",
+          "Aggressive retry: Retry 3 times with 5s/10s/20s backoff before skipping that subreddit"
+        ]
+      }
+    ],
+    "Entity Extraction & ATS Probing": [
+      {
+        "question": "Entity Extraction: How should candidate company names and career URLs be identified in Reddit posts?",
+        "answer": "Hybrid: Regex + Known Company dictionary matching + ATS URL pattern detection, with optional free-tier LLM fallback for ambiguous threads",
+        "options_presented": [
+          "Hybrid: Regex + Known Company dictionary matching + ATS URL pattern detection, with optional free-tier LLM fallback for ambiguous threads",
+          "Deterministic only: Pure regex & dictionary lookup for company names and career URLs (zero LLM calls, sub-millisecond)",
+          "LLM-first: Send thread title & text to Groq Llama 3.3 for structured JSON entity extraction"
+        ]
+      },
+      {
+        "question": "ATS Probing: How should the pipeline verify and identify the ATS platform for newly discovered company candidates?",
+        "answer": "Multi-ATS Prober: Inspect HTML for embedded ATS signatures + probe canonical API endpoints (Greenhouse, Lever, Ashby, SmartRecruiters) using async HTTP with 3s timeout",
+        "options_presented": [
+          "Multi-ATS Prober: Inspect HTML for embedded ATS signatures + probe canonical API endpoints (Greenhouse, Lever, Ashby, SmartRecruiters) using async HTTP with 3s timeout",
+          "Strict ATS link matching: Only accept listings that directly contain recognized ATS URLs (greenhouse, lever, ashby domains) in the Reddit post",
+          "Career page crawler: Fetch homepage and crawl internal links looking for /careers and jobs subpages"
+        ]
+      },
+      {
+        "question": "Target Registration: What should happen when the prober successfully verifies a new company and ATS endpoint from Reddit?",
+        "answer": "Auto-insert into career_targets with status='active' if verified (HTTP 200 + active jobs found) and tag role_focus, plus record discovery source in a dedicated log/metadata",
+        "options_presented": [
+          "Auto-insert into career_targets with status='active' if verified (HTTP 200 + active jobs found) and tag role_focus, plus record discovery source in a dedicated log/metadata",
+          "Stage in a discovery review table (discovered_targets) requiring approval before moving to active career_targets",
+          "Log to JSON artifact only without modifying SQLite career_targets table"
+        ]
+      },
+      {
+        "question": "Probe Deduplication: How should the pipeline prevent wasteful repeated ATS probing of existing companies or non-ATS links?",
+        "answer": "Slug-based deduplication against career_targets + 7-day negative cache for probed domains that failed verification",
+        "options_presented": [
+          "Slug-based deduplication against career_targets + 7-day negative cache for probed domains that failed verification",
+          "Check career_targets table only without negative caching of failed candidate domains",
+          "In-memory session deduplication only (cleared between scanner runs)"
+        ]
+      }
+    ],
+    "Catalog Scaling (220+ Targets)": [
+      {
+        "question": "Catalog Structure: How should the 220+ Indian target companies be organized in the codebase?",
+        "answer": "Sector-partitioned JSON files in backend/app/data/targets/ (startups.json, conglomerates.json, consulting.json) loaded via seed_targets.py",
+        "options_presented": [
+          "Sector-partitioned JSON files in backend/app/data/targets/ (startups.json, conglomerates.json, consulting.json) loaded via seed_targets.py",
+          "Single unified JSON catalog file (backend/app/data/indian_catalog_220.json) containing all segments",
+          "Embedded Python seed dictionaries within backend/scripts/seed_targets.py"
+        ]
+      },
+      {
+        "question": "Role Focus Taxonomy: How should role_focus tags be standardized across the 220+ target companies during seeding?",
+        "answer": "Standardized enum tags (product, strategy, tech, founders_office, consulting, leadership) tailored per sector to directly support Phase 13/15 filtering",
+        "options_presented": [
+          "Standardized enum tags (product, strategy, tech, founders_office, consulting, leadership) tailored per sector to directly support Phase 13/15 filtering",
+          "Coarse domain tags only (tech, consulting, conglomerate) matching existing categories",
+          "Open-ended multi-keyword tags per company based on typical hiring profiles"
+        ]
+      },
+      {
+        "question": "Enterprise/Consulting Targets: How should conglomerate and strategy consulting firms with custom career portals be registered in career_targets?",
+        "answer": "Register with direct career portal URLs + ats_type='custom'/'workday', with verified career URLs so users get direct 1-click links immediately and batch runners can hook in Phase 14",
+        "options_presented": [
+          "Register with direct career portal URLs + ats_type='custom'/'workday', with verified career URLs so users get direct 1-click links immediately and batch runners can hook in Phase 14",
+          "Restrict catalog to firms with open JSON ATS endpoints (Greenhouse, Lever, Ashby, SmartRecruiters) only",
+          "Stub feed endpoints with fallback mock generators until custom enterprise scrapers are written"
+        ]
+      },
+      {
+        "question": "Seeding Execution: How should seed_targets.py handle existing database records when updating or seeding 220+ companies?",
+        "answer": "Idempotent upsert: Seed with status='active' and last_status='pending', preserving any existing job counts and timestamps on re-seed",
+        "options_presented": [
+          "Idempotent upsert: Seed with status='active' and last_status='pending', preserving any existing job counts and timestamps on re-seed",
+          "Synchronous seed & scrape: Scrape all 220+ targets immediately upon seeding",
+          "Destructive replace: Clear career_targets table and re-insert fresh targets every time seed is run"
+        ]
+      }
+    ]
+  },
+  "deferred_ideas": [],
+  "canonical_refs": [
+    ".planning/REQUIREMENTS.md",
+    "backend/app/services/reddit.py",
+    "backend/app/db/session.py",
+    "backend/app/models/target.py",
+    "backend/scripts/seed_targets.py"
+  ]
+}
