@@ -39,21 +39,21 @@
 
 ### SQLite Career Targets Registry (REGISTRY)
 
-- [ ] **REGISTRY-01**: System persists a dedicated `career_targets` table in SQLite tracking company name, slug, career page URL, ATS connector type, direct feed endpoint, tier/sector (Startup, Unicorn, Conglomerate, Consulting), role focus tags, sync health, last scraped timestamp, and active job count.
-- [ ] **REGISTRY-02**: Seed loader migrates 200+ Indian companies and existing global catalog into the `career_targets` database table with initial sync health metadata.
-- [ ] **REGISTRY-03**: Backend exposes REST endpoints for targets registry (`GET /api/targets`, `GET /api/targets/stats`, `POST /api/targets/seed`) with domain, tier, and status filtering.
+- [x] **REGISTRY-01**: System persists a dedicated `career_targets` table in SQLite tracking company name, slug, career page URL, ATS connector type, direct feed endpoint, tier/sector (Startup, Unicorn, Conglomerate, Consulting), role focus tags, sync health, last scraped timestamp, and active job count.
+- [x] **REGISTRY-02**: Seed loader migrates 200+ Indian companies and existing global catalog into the `career_targets` database table with initial sync health metadata.
+- [x] **REGISTRY-03**: Backend exposes REST endpoints for targets registry (`GET /api/targets`, `GET /api/targets/stats`, `POST /api/targets/seed`) with domain, tier, and status filtering.
 
 ### Reddit & Web Discovery Pipeline (DISCOVERY)
 
-- [ ] **DISCOVERY-01**: Automated Reddit discovery scanner mines discussions in `r/developersIndia`, `r/IndianStartups`, `r/ProductManagement`, `r/consulting`, and `r/bangalore` for trending companies and hiring links.
-- [ ] **DISCOVERY-02**: Entity normalization pipeline extracts company names, detects career URLs, and probes ATS endpoints (Ashby, Lever, Greenhouse, SmartRecruiters, Workday).
-- [ ] **DISCOVERY-03**: Catalog scales to cover 150+ Indian startups/unicorns, 40+ Indian conglomerates (Tata, Reliance, Infosys, Wipro, L&T, etc.), and 30+ top strategy consulting firms (McKinsey, BCG, Bain, Kearney, Roland Berger, Alvarez & Marsal, Big 4 India).
+- [x] **DISCOVERY-01**: Automated Reddit discovery scanner mines discussions in `r/developersIndia`, `r/IndianStartups`, `r/ProductManagement`, `r/consulting`, and `r/bangalore` for trending companies and hiring links.
+- [x] **DISCOVERY-02**: Entity normalization pipeline extracts company names, detects career URLs, and probes ATS endpoints (Ashby, Lever, Greenhouse, SmartRecruiters, Workday).
+- [x] **DISCOVERY-03**: Catalog scales to cover 150+ Indian startups/unicorns, 40+ Indian conglomerates (Tata, Reliance, Infosys, Wipro, L&T, etc.), and 30+ top strategy consulting firms (McKinsey, BCG, Bain, Kearney, Roland Berger, Alvarez & Marsal, Big 4 India).
 
 ### Product Management & Strategy Consulting Taxonomy (TAXONOMY)
 
-- [ ] **TAXONOMY-01**: Ontology and track definition for Product Management roles (APM, PM, Senior PM, Group PM, VP Product, TPM, Product Operations) with semantic title synonyms.
-- [ ] **TAXONOMY-02**: Ontology and track definition for Strategy & Consulting roles (Management Consultant, Strategy Analyst, Chief of Staff, Founder's Office, BizOps, Corporate Strategy).
-- [ ] **TAXONOMY-03**: Semantic title classifier and multi-attribute search integration ensuring sub-50ms filtering on PM and Strategy Consulting tracks.
+- [x] **TAXONOMY-01**: Ontology and track definition for Product Management roles (APM, PM, Senior PM, Group PM, VP Product, TPM, Product Operations) with semantic title synonyms.
+- [x] **TAXONOMY-02**: Ontology and track definition for Strategy & Consulting roles (Management Consultant, Strategy Analyst, Chief of Staff, Founder's Office, BizOps, Corporate Strategy).
+- [x] **TAXONOMY-03**: Semantic title classifier and multi-attribute search integration ensuring sub-50ms filtering on PM and Strategy Consulting tracks.
 
 ### High-Throughput Continuous Batch Scraping Engine (BATCH)
 
@@ -63,9 +63,9 @@
 
 ### Frontend Career Directory Hub & Role Experience (V5-UI)
 
-- [ ] **V5-UI-01**: Obsidian dark Career Directory Hub view/modal displaying all indexed companies, verified career links, ATS badges, and live opening counts.
-- [ ] **V5-UI-02**: Dedicated Product Management (🇮🇳 PM) and Strategy Consulting (🇮🇳 Strategy) 1-click quick-filters in the navigation rail and stream header.
-- [ ] **V5-UI-03**: Real-time sync freshness indicators in the UI showing last sync timestamp and monitored company count.
+- [x] **V5-UI-01**: Obsidian dark Career Directory Hub view/modal displaying all indexed companies, verified career links, ATS badges, and live opening counts.
+- [x] **V5-UI-02**: Dedicated Product Management (🇮🇳 PM) and Strategy Consulting (🇮🇳 Strategy) 1-click quick-filters in the navigation rail and stream header.
+- [x] **V5-UI-03**: Real-time sync freshness indicators in the UI showing last sync timestamp and monitored company count.
 
 ---
 
@@ -86,11 +86,21 @@ Explicitly excluded to protect zero-cost model and project focus:
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| REGISTRY-01, 02, 03 | Phase 11 | Complete |
-| DISCOVERY-01, 02, 03 | Phase 12 | Complete |
-| TAXONOMY-01, 02, 03 | Phase 13 | Complete |
-| BATCH-01, 02, 03 | Phase 14 | Complete |
-| V5-UI-01, 02, 03 | Phase 15 | Planned |
+| REGISTRY-01 | Phase 11 | Complete |
+| REGISTRY-02 | Phase 11 | Complete |
+| REGISTRY-03 | Phase 11 | Complete |
+| DISCOVERY-01 | Phase 12 | Complete |
+| DISCOVERY-02 | Phase 12 | Complete |
+| DISCOVERY-03 | Phase 12 | Complete |
+| TAXONOMY-01 | Phase 13 | Complete |
+| TAXONOMY-02 | Phase 13 | Complete |
+| TAXONOMY-03 | Phase 13 | Complete |
+| BATCH-01 | Phase 14 | Complete |
+| BATCH-02 | Phase 14 | Complete |
+| BATCH-03 | Phase 14 | Complete |
+| V5-UI-01 | Phase 15 | Complete |
+| V5-UI-02 | Phase 15 | Complete |
+| V5-UI-03 | Phase 15 | Complete |
 
 **Coverage:**
 

@@ -39,7 +39,7 @@ CareerLoom delivers a zero-friction job discovery portal across major global fir
 - [x] **Phase 12: Reddit Discovery Pipeline & Indian Ecosystem Catalog Scaling** - Reddit scanner (`r/developersIndia`, `r/IndianStartups`, `r/ProductManagement`, `r/consulting`), candidate company extractor, and 200+ Indian company expansion.
 - [x] **Phase 13: Product Management & Strategy Consulting Taxonomy Engine** - Domain ontology expansion, APM/PM and Strategy Consulting role track mapping, and sub-50ms filtering.
 - [x] **Phase 14: Continuous Batch Scraping Pipeline & Ingestion Automation** - High-concurrency async batch runner (`sync_batch.py`), scheduled periodic worker, and error isolation. (completed 2026-10-08)
-- [ ] **Phase 15: Frontend Career Directory Hub & Role Experience** - Obsidian dark Career Directory modal/view, 1-click PM and Strategy filter ribbons, and live sync indicators.
+- [x] **Phase 15: Frontend Career Directory Hub & Role Experience** - Obsidian dark Career Directory modal/view, 1-click PM and Strategy filter ribbons, and live sync indicators. (completed 2026-10-08)
 
 ---
 
@@ -157,4 +157,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 12. Reddit Discovery Pipeline & Indian Ecosystem Catalog Scaling | 2/2 | Complete | 2026-10-08 |
 | 13. Product Management & Strategy Consulting Taxonomy Engine | 2/2 | Complete | 2026-10-08 |
 | 14. Continuous Batch Scraping Pipeline & Ingestion Automation | 2/2 | Complete    | 2026-10-08 |
-| 15. Frontend Career Directory Hub & Role Experience | 2/2 | Complete | 2026-10-08 |
+| 15. Frontend Career Directory Hub & Role Experience | 2/2 | Complete    | 2026-10-08 |
