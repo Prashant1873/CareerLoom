@@ -129,6 +129,10 @@ Plans:
   3. UI displays real-time sync status ("Monitored 220+ Companies", "Last Synced X mins ago").
 
 **Plans**: 2 plans
+Plans:
+
+- [ ] 15-01: Career Targets TypeScript Models, API Client & CareerDirectoryModal Component
+- [ ] 15-02: 1-Click Role Track Quick-Filter Ribbons, Sync Freshness Indicators & Shell Integration
 
 ---
 
