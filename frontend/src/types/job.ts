@@ -110,4 +110,50 @@ export interface LeadSubmitResult {
   lead: CandidateLeadRecord;
 }
 
+export interface CareerTarget {
+  id: string;
+  name: string;
+  slug: string;
+  website?: string | null;
+  career_url: string;
+  ats_type: string;
+  feed_url?: string | null;
+  category_tier: string;
+  domain: string;
+  role_focus: string[];
+  status: string;
+  last_scraped_at?: string | null;
+  last_status?: string | null;
+  job_count: number;
+  created_at: string;
+}
+
+export interface CareerTargetStats {
+  total_targets: number;
+  active_targets: number;
+  by_tier: Record<string, number>;
+  total_live_jobs: number;
+}
+
+export interface BatchSyncStatus {
+  is_running: boolean;
+  current_target?: string | null;
+  completed: number;
+  total: number;
+  progress_percent: number;
+  last_run_timestamp?: string | null;
+  last_run_duration_sec?: number | null;
+  last_error?: string | null;
+}
+
+export interface TargetFilterParams {
+  tier?: string;
+  domain?: string;
+  role_tag?: string;
+  status?: string;
+  search?: string;
+  limit?: number;
+  offset?: number;
+}
+
 

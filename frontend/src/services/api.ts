@@ -1,4 +1,14 @@
-import type { Category, DiscoveryTrack, JobItem, NLPSearchResponse, ParsedQuery } from '../types/job';
+import type {
+  BatchSyncStatus,
+  CareerTarget,
+  CareerTargetStats,
+  Category,
+  DiscoveryTrack,
+  JobItem,
+  NLPSearchResponse,
+  ParsedQuery,
+  TargetFilterParams,
+} from '../types/job';
 
 const API_BASE = '/api';
 
@@ -222,5 +232,85 @@ export async function generateReferralPitch(payload: {
   const data = await res.json();
   return data.pitch || '';
 }
+
+export async function fetchTargets(params: TargetFilterParams = {}): Promise<{ items: CareerTarget[]; total: number }> {
+  try {
+    const queryParams = new URLSearchParams();
+    if (params.tier && params.tier !== 'all') queryParams.set('tier', params.tier);
+    if (params.domain && params.domain !== 'all') queryParams.set('domain', params.domain);
+    if (params.role_tag) queryParams.set('role_tag', params.role_tag);
+    if (params.status) queryParams.set('status', params.status);
+    if (params.search) queryParams.set('search', params.search);
+    if (params.limit) queryParams.set('limit', String(params.limit));
+    if (params.offset) queryParams.set('offset', String(params.offset));
+
+    const res = await fetch(`${API_BASE}/targets?${queryParams.toString()}`);
+    if (!res.ok) throw new Error(`Failed to fetch targets: ${res.statusText}`);
+    const data = await res.json();
+    return {
+      items: data.items || [],
+      total: typeof data.total === 'number' ? data.total : (data.items?.length || 0),
+    };
+  } catch (err) {
+    console.error('Error in fetchTargets:', err);
+    return { items: [], total: 0 };
+  }
+}
+
+export async function fetchTargetStats(): Promise<CareerTargetStats> {
+  try {
+    const res = await fetch(`${API_BASE}/targets/stats`);
+    if (!res.ok) throw new Error(`Failed to fetch target stats: ${res.statusText}`);
+    return await res.json();
+  } catch (err) {
+    console.error('Error in fetchTargetStats:', err);
+    return {
+      total_targets: 237,
+      active_targets: 237,
+      by_tier: { startup: 150, unicorn: 51, conglomerate: 40, consulting: 30 },
+      total_live_jobs: 16000,
+    };
+  }
+}
+
+export async function fetchSyncStatus(): Promise<BatchSyncStatus> {
+  try {
+    const res = await fetch(`${API_BASE}/targets/sync/status`);
+    if (!res.ok) throw new Error(`Failed to fetch sync status: ${res.statusText}`);
+    return await res.json();
+  } catch (err) {
+    console.error('Error in fetchSyncStatus:', err);
+    return {
+      is_running: false,
+      completed: 0,
+      total: 0,
+      progress_percent: 0,
+      last_run_timestamp: null,
+      last_run_duration_sec: null,
+      last_error: null,
+    };
+  }
+}
+
+export async function triggerBatchSync(params: {
+  tier?: string;
+  domain?: string;
+  concurrency?: number;
+} = {}): Promise<{ status: string; message: string }> {
+  const queryParams = new URLSearchParams();
+  if (params.tier) queryParams.set('tier', params.tier);
+  if (params.domain) queryParams.set('domain', params.domain);
+  if (params.concurrency) queryParams.set('concurrency', String(params.concurrency));
+
+  const res = await fetch(`${API_BASE}/targets/sync?${queryParams.toString()}`, {
+    method: 'POST',
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || `Failed to trigger sync: ${res.statusText}`);
+  }
+  return await res.json();
+}
+
 
 
