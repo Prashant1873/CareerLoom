@@ -88,5 +88,6 @@ class JobFilterParams(BaseModel):
     posted_within_days: Optional[int] = None
     sort_by: str = Field(default="date", description="Sort order: 'date' (newest first), 'company', or 'title'")
     synonyms: Optional[List[str]] = Field(default=None, description="Optional category synonyms for semantic title matching")
+    include_inactive: bool = Field(default=False, description="Whether to include soft-archived/closed postings")
     limit: int = Field(default=50, ge=1, le=200)
     offset: int = Field(default=0, ge=0)

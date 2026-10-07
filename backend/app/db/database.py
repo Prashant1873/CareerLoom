@@ -8,6 +8,7 @@ import aiosqlite
 
 from backend.app.models.job import JobFilterParams, JobItem
 from backend.app.models.lead import CandidateLead
+from backend.app.models.target import CareerTarget, CareerTargetFilterParams, CareerTargetStats
 
 logger = logging.getLogger("careerloom.database")
 
@@ -40,6 +41,14 @@ async def close_db() -> None:
         except Exception:
             pass
         _shared_conn = None
+
+
+async def _ensure_column(db: aiosqlite.Connection, table: str, column: str, col_type: str) -> None:
+    async with db.execute(f"PRAGMA table_info({table})") as cursor:
+        rows = await cursor.fetchall()
+        cols = [r["name"] for r in rows]
+        if column not in cols:
+            await db.execute(f"ALTER TABLE {table} ADD COLUMN {column} {col_type}")
 
 
 async def init_db() -> None:
@@ -75,6 +84,36 @@ async def init_db() -> None:
         await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_country ON jobs (country)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_is_remote ON jobs (is_remote)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_seniority ON jobs (seniority)")
+
+        # Soft-archive columns on jobs table
+        await _ensure_column(db, "jobs", "is_active", "INTEGER DEFAULT 1")
+        await _ensure_column(db, "jobs", "last_seen_at", "TEXT")
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_is_active ON jobs (is_active)")
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_active_date ON jobs (is_active, date_posted DESC)")
+
+        # Career targets repository table (Phase 11)
+        await db.execute("""
+            CREATE TABLE IF NOT EXISTS career_targets (
+                id TEXT PRIMARY KEY,
+                name TEXT NOT NULL,
+                slug TEXT NOT NULL UNIQUE,
+                website TEXT,
+                career_url TEXT NOT NULL,
+                ats_type TEXT NOT NULL,
+                feed_url TEXT,
+                category_tier TEXT NOT NULL,
+                domain TEXT NOT NULL,
+                role_focus TEXT,
+                status TEXT DEFAULT 'active',
+                last_scraped_at TEXT,
+                last_status TEXT,
+                job_count INTEGER DEFAULT 0,
+                created_at TEXT NOT NULL
+            )
+        """)
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_targets_category ON career_targets (category_tier)")
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_targets_status ON career_targets (status)")
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_targets_last_scraped ON career_targets (last_scraped_at)")
 
         # Candidate leads table for referral acceleration engine (Phase 10)
         await db.execute("""
@@ -145,6 +184,7 @@ async def upsert_jobs(jobs: List[JobItem]) -> int:
     if not jobs:
         return 0
 
+    now_iso = datetime.now(timezone.utc).isoformat()
     records = [
         (
             job.id,
@@ -161,6 +201,8 @@ async def upsert_jobs(jobs: List[JobItem]) -> int:
             job.source,
             job.description_summary,
             json.dumps(job.raw_tags),
+            1,
+            now_iso,
         )
         for job in jobs
     ]
@@ -171,8 +213,8 @@ async def upsert_jobs(jobs: List[JobItem]) -> int:
             INSERT OR REPLACE INTO jobs (
                 id, title, company, domain, category, seniority,
                 location, country, is_remote, date_posted, apply_url,
-                source, description_summary, raw_tags
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                source, description_summary, raw_tags, is_active, last_seen_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             records,
         )
@@ -187,6 +229,9 @@ async def query_jobs(params: JobFilterParams) -> Tuple[List[JobItem], int]:
     """
     conditions: List[str] = []
     values: List[object] = []
+
+    if not params.include_inactive:
+        conditions.append("is_active = 1")
 
     if params.search:
         # Match title or company
@@ -414,4 +459,277 @@ async def get_leads(
             leads = [CandidateLead.from_row(dict(r)) for r in rows]
 
     return leads, total
+
+
+def _row_to_target(row: aiosqlite.Row) -> CareerTarget:
+    role_focus = []
+    if row["role_focus"]:
+        try:
+            role_focus = json.loads(row["role_focus"])
+        except Exception:
+            role_focus = [t.strip() for t in row["role_focus"].split(",") if t.strip()]
+
+    return CareerTarget(
+        id=row["id"],
+        name=row["name"],
+        slug=row["slug"],
+        website=row["website"],
+        career_url=row["career_url"],
+        ats_type=row["ats_type"],
+        feed_url=row["feed_url"],
+        category_tier=row["category_tier"],
+        domain=row["domain"],
+        role_focus=role_focus,
+        status=row["status"] or "active",
+        last_scraped_at=row["last_scraped_at"],
+        last_status=row["last_status"],
+        job_count=row["job_count"] or 0,
+        created_at=row["created_at"],
+    )
+
+
+async def upsert_target(target: CareerTarget) -> None:
+    """
+    Inserts or updates a single CareerTarget by unique slug.
+    """
+    async with get_connection() as db:
+        await db.execute(
+            """
+            INSERT INTO career_targets (
+                id, name, slug, website, career_url, ats_type,
+                feed_url, category_tier, domain, role_focus, status,
+                last_scraped_at, last_status, job_count, created_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(slug) DO UPDATE SET
+                name=excluded.name,
+                website=excluded.website,
+                career_url=excluded.career_url,
+                ats_type=excluded.ats_type,
+                feed_url=excluded.feed_url,
+                category_tier=excluded.category_tier,
+                domain=excluded.domain,
+                role_focus=excluded.role_focus,
+                status=excluded.status,
+                last_scraped_at=COALESCE(excluded.last_scraped_at, career_targets.last_scraped_at),
+                last_status=COALESCE(excluded.last_status, career_targets.last_status),
+                job_count=excluded.job_count
+            """,
+            (
+                target.id,
+                target.name,
+                target.slug,
+                target.website,
+                target.career_url,
+                target.ats_type,
+                target.feed_url,
+                target.category_tier,
+                target.domain,
+                json.dumps(target.role_focus),
+                target.status,
+                target.last_scraped_at,
+                target.last_status,
+                target.job_count,
+                target.created_at,
+            ),
+        )
+        await db.commit()
+
+
+async def upsert_targets(targets: List[CareerTarget]) -> int:
+    """
+    Batch inserts or updates a list of CareerTargets.
+    """
+    if not targets:
+        return 0
+    records = [
+        (
+            t.id,
+            t.name,
+            t.slug,
+            t.website,
+            t.career_url,
+            t.ats_type,
+            t.feed_url,
+            t.category_tier,
+            t.domain,
+            json.dumps(t.role_focus),
+            t.status,
+            t.last_scraped_at,
+            t.last_status,
+            t.job_count,
+            t.created_at,
+        )
+        for t in targets
+    ]
+    async with get_connection() as db:
+        await db.executemany(
+            """
+            INSERT INTO career_targets (
+                id, name, slug, website, career_url, ats_type,
+                feed_url, category_tier, domain, role_focus, status,
+                last_scraped_at, last_status, job_count, created_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(slug) DO UPDATE SET
+                name=excluded.name,
+                website=excluded.website,
+                career_url=excluded.career_url,
+                ats_type=excluded.ats_type,
+                feed_url=excluded.feed_url,
+                category_tier=excluded.category_tier,
+                domain=excluded.domain,
+                role_focus=excluded.role_focus,
+                status=excluded.status,
+                last_scraped_at=COALESCE(excluded.last_scraped_at, career_targets.last_scraped_at),
+                last_status=COALESCE(excluded.last_status, career_targets.last_status),
+                job_count=excluded.job_count
+            """,
+            records,
+        )
+        await db.commit()
+    return len(targets)
+
+
+async def get_targets(params: CareerTargetFilterParams) -> Tuple[List[CareerTarget], int]:
+    """
+    Queries career targets with optional filtering and pagination.
+    """
+    conditions: List[str] = []
+    values: List[object] = []
+
+    if params.category_tier:
+        conditions.append("LOWER(category_tier) = LOWER(?)")
+        values.append(params.category_tier.strip())
+
+    if params.domain:
+        conditions.append("LOWER(domain) = LOWER(?)")
+        values.append(params.domain.strip())
+
+    if params.status:
+        conditions.append("LOWER(status) = LOWER(?)")
+        values.append(params.status.strip())
+
+    if params.role_tag:
+        conditions.append("LOWER(role_focus) LIKE ?")
+        values.append(f'%"{params.role_tag.strip().lower()}"%')
+
+    if params.search:
+        search_pattern = f"%{params.search.strip().lower()}%"
+        conditions.append("(LOWER(name) LIKE ? OR LOWER(slug) LIKE ? OR LOWER(domain) LIKE ?)")
+        values.extend([search_pattern, search_pattern, search_pattern])
+
+    where_clause = ""
+    if conditions:
+        where_clause = "WHERE " + " AND ".join(conditions)
+
+    count_sql = f"SELECT COUNT(*) as total FROM career_targets {where_clause}"
+    select_sql = f"""
+        SELECT * FROM career_targets
+        {where_clause}
+        ORDER BY name ASC
+        LIMIT ? OFFSET ?
+    """
+
+    async with get_connection() as db:
+        async with db.execute(count_sql, values) as cursor:
+            count_row = await cursor.fetchone()
+            total = count_row["total"] if count_row else 0
+
+        fetch_values = list(values) + [params.limit, params.offset]
+        async with db.execute(select_sql, fetch_values) as cursor:
+            rows = await cursor.fetchall()
+            targets = [_row_to_target(r) for r in rows]
+
+    return targets, total
+
+
+async def get_target_by_slug(slug: str) -> Optional[CareerTarget]:
+    """
+    Retrieves a single CareerTarget by slug.
+    """
+    async with get_connection() as db:
+        async with db.execute("SELECT * FROM career_targets WHERE LOWER(slug) = LOWER(?)", [slug.strip()]) as cursor:
+            row = await cursor.fetchone()
+            if row:
+                return _row_to_target(row)
+    return None
+
+
+async def get_target_stats() -> CareerTargetStats:
+    """
+    Calculates aggregate metrics across monitored career targets and live postings.
+    """
+    async with get_connection() as db:
+        async with db.execute("SELECT COUNT(*) as total FROM career_targets") as cursor:
+            total_targets = (await cursor.fetchone())["total"]
+
+        async with db.execute("SELECT COUNT(*) as active FROM career_targets WHERE status = 'active'") as cursor:
+            active_targets = (await cursor.fetchone())["active"]
+
+        async with db.execute("SELECT category_tier, COUNT(*) as count FROM career_targets GROUP BY category_tier") as cursor:
+            tier_rows = await cursor.fetchall()
+            by_tier = {r["category_tier"]: r["count"] for r in tier_rows}
+
+        async with db.execute("SELECT COUNT(*) as live_jobs FROM jobs WHERE is_active = 1") as cursor:
+            live_jobs = (await cursor.fetchone())["live_jobs"]
+
+    return CareerTargetStats(
+        total_targets=total_targets,
+        active_targets=active_targets,
+        by_tier=by_tier,
+        total_live_jobs=live_jobs,
+    )
+
+
+async def reconcile_target_jobs(
+    company: str,
+    live_job_ids: List[str],
+    sync_timestamp: Optional[str] = None,
+) -> Dict[str, int]:
+    """
+    Reconciles job postings for a target company:
+    - Marks live job IDs as is_active = 1 and updates last_seen_at.
+    - Soft-archives vanished postings (is_active = 0).
+    - Updates career_targets table metadata (job_count, last_scraped_at, last_status).
+    """
+    ts = sync_timestamp or datetime.now(timezone.utc).isoformat()
+    company_clean = company.strip()
+
+    async with get_connection() as db:
+        if live_job_ids:
+            placeholders = ",".join("?" for _ in live_job_ids)
+            # Mark live jobs as active and update last_seen_at
+            await db.execute(
+                f"UPDATE jobs SET is_active = 1, last_seen_at = ? WHERE id IN ({placeholders})",
+                [ts] + live_job_ids,
+            )
+            # Soft archive vanished jobs for this company
+            cursor = await db.execute(
+                f"UPDATE jobs SET is_active = 0 WHERE LOWER(company) = LOWER(?) AND id NOT IN ({placeholders})",
+                [company_clean] + live_job_ids,
+            )
+            archived_count = cursor.rowcount
+        else:
+            # If no live jobs returned, soft-archive all jobs for this company
+            cursor = await db.execute(
+                "UPDATE jobs SET is_active = 0 WHERE LOWER(company) = LOWER(?)",
+                [company_clean],
+            )
+            archived_count = cursor.rowcount
+
+        # Update career_targets metadata
+        await db.execute(
+            """
+            UPDATE career_targets
+            SET job_count = ?, last_scraped_at = ?, last_status = 'ok'
+            WHERE LOWER(name) = LOWER(?) OR LOWER(slug) = LOWER(?)
+            """,
+            (len(live_job_ids), ts, company_clean, company_clean.replace(" ", "-")),
+        )
+        await db.commit()
+
+    logger.info(
+        f"Reconciled jobs for {company_clean}: {len(live_job_ids)} live, {archived_count} soft-archived"
+    )
+    return {"live_count": len(live_job_ids), "archived_count": archived_count}
+
 
