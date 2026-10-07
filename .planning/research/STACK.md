@@ -1,66 +1,20 @@
-# Stack Research
+# Stack Additions & Upgrades: Milestone v5.0
 
-**Domain:** Multi-Firm Career Portal Aggregator & NL Job Discovery Engine
-**Researched:** 2026-10-03
-**Confidence:** HIGH
+## Overview
+Milestone v5.0 introduces an expansive Indian career portal repository, Reddit-driven company discovery, specialized Product Management and Strategy Consulting role indexing, and a continuous high-throughput batch scraping engine.
 
-## Recommended Stack
+## Recommended Stack Additions
 
-### Core Technologies
+| Component | Library / Tool | Version | Purpose | Why Recommended |
+|-----------|---------------|---------|---------|-----------------|
+| **Batch Task Scheduling** | `FastAPI BackgroundTasks` + Asyncio Periodic Worker | Standard / 0.115+ | Continuous batch sync execution | Zero extra dependencies, runs inside existing ASGI event loop, zero memory overhead. |
+| **Reddit Thread Discovery** | `httpx` (Async Client) | 0.28+ | Extract company mentions & career URLs from Reddit | Native async, connection pooling, custom User-Agent rotation, robust retry logic. |
+| **Career Registry Persistence** | `aiosqlite` (SQLite WAL) | 3.45+ | Persistent `career_targets` table | Embedded, zero maintenance, relational integrity with `jobs` table, sub-5ms queries. |
+| **Indian ATS Connectors** | Custom Modular Connectors (`Keka`, `Darwinbox`, `Zoho Recruit`) | In-house | Ingest jobs from Indian HRMS/ATS platforms | Extends existing `BaseConnector` pattern used by Greenhouse, Lever, Ashby, and SmartRecruiters. |
+| **HTML Sanitizer & Link Extractor** | `BeautifulSoup4` + `lxml` | 4.12+ | Extract career links and parse job postings | Blazing fast C-based parsing, minimal CPU overhead. |
 
-| Technology | Version | Purpose | Why Recommended |
-|------------|---------|---------|-----------------|
-| **Python** | 3.11+ | Backend Runtime | First-class ecosystem for AI/LLM SDKs, scraping tools (ScrapeGraph-ai, BS4), and data parsing. |
-| **FastAPI** | 0.115+ | Web Framework & API | High-performance async ASGI framework with automatic OpenAPI docs and native Pydantic v2 support. |
-| **SQLite (via aiosqlite / SQLAlchemy)** | 3.45+ | Persistent Job Cache | Zero-config, blazing sub-millisecond local reads, self-contained, no paid DB host required. |
-| **React + Vite** | 19.x / 6.x | Frontend UI Layer | Instant HMR, minimal footprint, robust ecosystem for modern card layouts and responsive UX. |
-| **TypeScript** | 5.7+ | Frontend Type Safety | Guarantees contract alignment with FastAPI Pydantic job models. |
+## What NOT to Add (Strict Avoidance)
 
-### Supporting Libraries
-
-| Library | Version | Purpose | When to Use |
-|---------|---------|---------|-------------|
-| **httpx** | 0.28+ | Async HTTP Client | Fast concurrent fetching of public ATS endpoints (Greenhouse, Lever, Ashby, Workday). |
-| **BeautifulSoup4 + lxml** | 4.12+ | HTML Parsing | Fast extraction of unformatted career pages without heavy browser overhead. |
-| **ScrapeGraph-ai** | 1.10+ | AI Web Scraper Pipeline | Intelligent LLM-driven graph extraction for unstructured custom enterprise career portals. |
-| **groq** | 0.15+ | Free LLM API Client | Ultra-fast inference (<500ms) with Llama 3.3 70B on Groq free cloud tier. |
-| **google-genai** | 1.0+ | Gemini Flash API | Reliable fallback free-tier LLM for structured parameter extraction. |
-| **lucide-react** | 0.475+ | UI Iconography | Crisp, lightweight icons for badges, locations, domains, and actions. |
-
-### Development & Hosting Tools
-
-| Tool | Purpose | Notes |
-|------|---------|-------|
-| **Hugging Face Spaces / Render** | Free Backend Hosting | Runs FastAPI Docker/Python container for $0/month. |
-| **Vercel / Cloudflare Pages** | Free Frontend CDN | Global edge deployment with zero cold starts for Vite static builds. |
-| **GitHub Actions** | Automated Cron Sync | Daily run to refresh ATS boards of top 50+ major firms into SQLite cache for free. |
-
-## Installation
-
-```bash
-# Backend (Python)
-pip install fastapi uvicorn httpx pydantic beautifulsoup4 lxml aiosqlite groq google-genai python-dotenv
-
-# Optional AI Scraper
-pip install scrapegraphai
-
-# Frontend (Node)
-npm create vite@latest frontend -- --template react-ts
-cd frontend
-npm install lucide-react
-```
-
-## Alternatives Considered
-
-| Recommended | Alternative | When to Use Alternative |
-|-------------|-------------|-------------------------|
-| **FastAPI (Python)** | Next.js (Node.js) | Next.js is great for single-repo JS apps, but lacks native access to Python's ScrapeGraph-ai and Python AI libraries. |
-| **SQLite / aiosqlite** | PostgreSQL / Supabase | Supabase is great for multi-user apps; SQLite is simpler, zero maintenance, and instant for local/single-tenant caching. |
-| **Groq / Gemini Free** | OpenAI GPT-4o-mini | OpenAI requires paid API credits ($5 min), whereas Groq and Gemini AI Studio provide permanent free tiers. |
-| **Direct ATS JSON API** | Headless Browser (Selenium/Playwright) | Direct endpoints are 50x faster (200ms vs 10s), consume 99% less memory, and avoid bot protection blocks. |
-
-## What NOT to Use
-
-- **Heavy Headless Browsers on Every Request**: Running Playwright/Puppeteer per search causes 15-second response lags and crashes free-tier cloud containers (512MB RAM limits).
-- **Hardcoded Scraping Selectors**: Fragile CSS classes break weekly; prefer direct JSON feeds (Greenhouse/Lever/Ashby) and semantic LLM extraction for custom sites.
-- **Paid Aggregator APIs (JSearch, RapidAPI)**: Defeats the zero-cost project goal; public career sites expose open feeds.
+- **Celery + Redis / RabbitMQ**: Heavy external brokers requiring background daemon processes and paid hosting tiers. FastAPI's async event loop with `asyncio.Semaphore` provides all necessary queueing and concurrency control.
+- **Paid Aggregator APIs (JSearch, RapidAPI, Apify)**: Defeats zero-cost mandate. Public ATS endpoints and Reddit JSON search are free.
+- **Headless Browser Runtimes (Playwright / Puppeteer)**: Heavy memory footprint (>1GB RAM) that crashes free-tier cloud containers (Render/Hugging Face 512MB limits). Direct HTTP API feeds and lightweight BS4 crawling are 50x faster.
