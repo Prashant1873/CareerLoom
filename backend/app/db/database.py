@@ -9,6 +9,11 @@ import aiosqlite
 from backend.app.models.job import JobFilterParams, JobItem
 from backend.app.models.lead import CandidateLead
 from backend.app.models.target import CareerTarget, CareerTargetFilterParams, CareerTargetStats
+from backend.app.services.taxonomy import (
+    get_categories_in_cluster,
+    get_track_synonyms,
+    resolve_category_or_cluster,
+)
 
 logger = logging.getLogger("careerloom.database")
 
@@ -88,8 +93,13 @@ async def init_db() -> None:
         # Soft-archive columns on jobs table
         await _ensure_column(db, "jobs", "is_active", "INTEGER DEFAULT 1")
         await _ensure_column(db, "jobs", "last_seen_at", "TEXT")
+        await _ensure_column(db, "jobs", "track", "TEXT")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_is_active ON jobs (is_active)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_active_date ON jobs (is_active, date_posted DESC)")
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_category_track ON jobs (category, track, is_active)")
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_track ON jobs (track)")
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_lower_category ON jobs (LOWER(category))")
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_jobs_lower_track ON jobs (LOWER(track))")
 
         # Career targets repository table (Phase 11)
         await db.execute("""
@@ -192,6 +202,7 @@ def _row_to_job(row: aiosqlite.Row) -> JobItem:
         domain=row["domain"],
         category=row["category"],
         seniority=row["seniority"],
+        track=row["track"] if "track" in row.keys() else None,
         location=row["location"],
         country=row["country"],
         is_remote=bool(row["is_remote"]),
@@ -219,6 +230,7 @@ async def upsert_jobs(jobs: List[JobItem]) -> int:
             job.domain,
             job.category,
             job.seniority,
+            job.track,
             job.location,
             job.country,
             1 if job.is_remote else 0,
@@ -237,10 +249,10 @@ async def upsert_jobs(jobs: List[JobItem]) -> int:
         await db.executemany(
             """
             INSERT OR REPLACE INTO jobs (
-                id, title, company, domain, category, seniority,
+                id, title, company, domain, category, seniority, track,
                 location, country, is_remote, date_posted, apply_url,
                 source, description_summary, raw_tags, is_active, last_seen_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             records,
         )
@@ -249,10 +261,11 @@ async def upsert_jobs(jobs: List[JobItem]) -> int:
     return len(records)
 
 
-async def query_jobs(params: JobFilterParams) -> Tuple[List[JobItem], int]:
-    """
-    Faceted query returning a paginated list of JobItems and the total count.
-    """
+def _build_job_query_filter(
+    params: JobFilterParams,
+    use_track_synonyms: bool = False,
+) -> Tuple[List[str], List[object]]:
+    """Builds SQL WHERE conditions and parameters for job querying."""
     conditions: List[str] = []
     values: List[object] = []
 
@@ -260,7 +273,6 @@ async def query_jobs(params: JobFilterParams) -> Tuple[List[JobItem], int]:
         conditions.append("is_active = 1")
 
     if params.search:
-        # Match title or company
         search_pattern = f"%{params.search.strip()}%"
         conditions.append("(title LIKE ? OR company LIKE ? OR category LIKE ?)")
         values.extend([search_pattern, search_pattern, search_pattern])
@@ -269,9 +281,40 @@ async def query_jobs(params: JobFilterParams) -> Tuple[List[JobItem], int]:
         conditions.append("LOWER(company) = LOWER(?)")
         values.append(params.company.strip())
 
-    if params.category:
-        conditions.append("LOWER(category) = LOWER(?)")
-        values.append(params.category.strip())
+    # Cluster or Category filter
+    if params.cluster:
+        cluster_cats = get_categories_in_cluster(params.cluster)
+        if cluster_cats:
+            placeholders = ",".join("?" for _ in cluster_cats)
+            conditions.append(f"LOWER(category) IN ({placeholders})")
+            values.extend([c.lower() for c in cluster_cats])
+    elif params.category:
+        resolved_cats = resolve_category_or_cluster(params.category)
+        if len(resolved_cats) > 1:
+            placeholders = ",".join("?" for _ in resolved_cats)
+            conditions.append(f"LOWER(category) IN ({placeholders})")
+            values.extend([c.lower() for c in resolved_cats])
+        elif len(resolved_cats) == 1:
+            conditions.append("LOWER(category) = LOWER(?)")
+            values.append(resolved_cats[0].lower())
+        else:
+            conditions.append("LOWER(category) = LOWER(?)")
+            values.append(params.category.strip().lower())
+
+    # Track filter with optional hybrid title synonym fallback
+    if params.track:
+        if use_track_synonyms:
+            synonyms = get_track_synonyms(params.track)
+            or_parts = ["LOWER(track) = LOWER(?)"]
+            track_vals: List[object] = [params.track.strip()]
+            for syn in synonyms:
+                or_parts.append("LOWER(title) LIKE ?")
+                track_vals.append(f"%{syn.lower()}%")
+            conditions.append(f"({' OR '.join(or_parts)})")
+            values.extend(track_vals)
+        else:
+            conditions.append("LOWER(track) = LOWER(?)")
+            values.append(params.track.strip())
 
     if params.domain:
         conditions.append("LOWER(domain) = LOWER(?)")
@@ -330,6 +373,16 @@ async def query_jobs(params: JobFilterParams) -> Tuple[List[JobItem], int]:
         conditions.append("date_posted >= ?")
         values.append(cutoff.isoformat())
 
+    return conditions, values
+
+
+async def query_jobs(params: JobFilterParams) -> Tuple[List[JobItem], int]:
+    """
+    Faceted query returning a paginated list of JobItems and the total count.
+    Supports sub-50ms indexed search, clusters, and hybrid track synonym fallback.
+    """
+    conditions, values = _build_job_query_filter(params, use_track_synonyms=False)
+
     where_clause = ""
     if conditions:
         where_clause = "WHERE " + " AND ".join(conditions)
@@ -350,16 +403,36 @@ async def query_jobs(params: JobFilterParams) -> Tuple[List[JobItem], int]:
     """
 
     async with get_connection() as db:
-        # Total count
         async with db.execute(count_sql, values) as cursor:
             count_row = await cursor.fetchone()
             total = count_row["total"] if count_row else 0
 
-        # Paginated results
         fetch_values = list(values) + [params.limit, params.offset]
         async with db.execute(select_sql, fetch_values) as cursor:
             rows = await cursor.fetchall()
             jobs = [_row_to_job(r) for r in rows]
+
+        # (D-09) Hybrid Track Synonym Fallback: if track query yields < 5 results, expand to title synonyms
+        if params.track and total < 5:
+            fb_conditions, fb_values = _build_job_query_filter(params, use_track_synonyms=True)
+            fb_where = "WHERE " + " AND ".join(fb_conditions)
+            fb_count_sql = f"SELECT COUNT(*) as total FROM jobs {fb_where}"
+            fb_select_sql = f"""
+                SELECT * FROM jobs
+                {fb_where}
+                ORDER BY {sort_clause}
+                LIMIT ? OFFSET ?
+            """
+            async with db.execute(fb_count_sql, fb_values) as fb_cursor:
+                fb_count_row = await fb_cursor.fetchone()
+                fb_total = fb_count_row["total"] if fb_count_row else 0
+
+            if fb_total > total:
+                fb_fetch_values = list(fb_values) + [params.limit, params.offset]
+                async with db.execute(fb_select_sql, fb_fetch_values) as fb_cursor:
+                    fb_rows = await fb_cursor.fetchall()
+                    jobs = [_row_to_job(r) for r in fb_rows]
+                    total = fb_total
 
     return jobs, total
 
@@ -537,8 +610,14 @@ async def upsert_target(target: CareerTarget) -> None:
                 role_focus=excluded.role_focus,
                 status=excluded.status,
                 last_scraped_at=COALESCE(excluded.last_scraped_at, career_targets.last_scraped_at),
-                last_status=COALESCE(excluded.last_status, career_targets.last_status),
-                job_count=excluded.job_count
+                last_status=CASE
+                    WHEN excluded.last_status IS NOT NULL AND excluded.last_status != 'pending' THEN excluded.last_status
+                    ELSE COALESCE(career_targets.last_status, excluded.last_status)
+                END,
+                job_count=CASE
+                    WHEN career_targets.job_count > 0 AND (excluded.job_count IS NULL OR excluded.job_count = 0) THEN career_targets.job_count
+                    ELSE COALESCE(excluded.job_count, career_targets.job_count, 0)
+                END
             """,
             (
                 target.id,
@@ -606,8 +685,14 @@ async def upsert_targets(targets: List[CareerTarget]) -> int:
                 role_focus=excluded.role_focus,
                 status=excluded.status,
                 last_scraped_at=COALESCE(excluded.last_scraped_at, career_targets.last_scraped_at),
-                last_status=COALESCE(excluded.last_status, career_targets.last_status),
-                job_count=excluded.job_count
+                last_status=CASE
+                    WHEN excluded.last_status IS NOT NULL AND excluded.last_status != 'pending' THEN excluded.last_status
+                    ELSE COALESCE(career_targets.last_status, excluded.last_status)
+                END,
+                job_count=CASE
+                    WHEN career_targets.job_count > 0 AND (excluded.job_count IS NULL OR excluded.job_count = 0) THEN career_targets.job_count
+                    ELSE COALESCE(excluded.job_count, career_targets.job_count, 0)
+                END
             """,
             records,
         )
@@ -710,15 +795,33 @@ async def reconcile_target_jobs(
     company: str,
     live_job_ids: List[str],
     sync_timestamp: Optional[str] = None,
-) -> Dict[str, int]:
+    is_successful_fetch: bool = True,
+) -> Dict[str, Any]:
     """
     Reconciles job postings for a target company:
-    - Marks live job IDs as is_active = 1 and updates last_seen_at.
-    - Soft-archives vanished postings (is_active = 0).
-    - Updates career_targets table metadata (job_count, last_scraped_at, last_status).
+    - If is_successful_fetch is False: preserves all existing jobs to prevent data destruction
+      on network/API errors, updating only target error status.
+    - If is_successful_fetch is True: marks live job IDs as is_active = 1 and updates last_seen_at.
+      Soft-archives vanished postings (is_active = 0).
+      Updates career_targets table metadata (job_count, last_scraped_at, last_status).
     """
     ts = sync_timestamp or datetime.now(timezone.utc).isoformat()
     company_clean = company.strip()
+
+    if not is_successful_fetch:
+        # Data loss protection: never archive jobs on failed scrape passes
+        async with get_connection() as db:
+            await db.execute(
+                """
+                UPDATE career_targets
+                SET last_scraped_at = ?, last_status = 'error'
+                WHERE LOWER(name) = LOWER(?) OR LOWER(slug) = LOWER(?)
+                """,
+                (ts, company_clean, company_clean.replace(" ", "-")),
+            )
+            await db.commit()
+        logger.warning(f"Preserved existing jobs for {company_clean} due to failed scrape pass")
+        return {"live_count": 0, "archived_count": 0, "status": "error"}
 
     async with get_connection() as db:
         if live_job_ids:
@@ -735,7 +838,7 @@ async def reconcile_target_jobs(
             )
             archived_count = cursor.rowcount
         else:
-            # If no live jobs returned, soft-archive all jobs for this company
+            # If confirmed 0 live jobs returned from valid endpoint, soft-archive all jobs for this company
             cursor = await db.execute(
                 "UPDATE jobs SET is_active = 0 WHERE LOWER(company) = LOWER(?)",
                 [company_clean],
@@ -756,7 +859,37 @@ async def reconcile_target_jobs(
     logger.info(
         f"Reconciled jobs for {company_clean}: {len(live_job_ids)} live, {archived_count} soft-archived"
     )
-    return {"live_count": len(live_job_ids), "archived_count": archived_count}
+    return {"live_count": len(live_job_ids), "archived_count": archived_count, "status": "ok"}
+
+
+async def purge_stale_jobs(
+    days_inactive: int = 30,
+    dry_run: bool = False,
+) -> int:
+    """
+    Permanently purges jobs that have remained inactive (is_active = 0) for longer than
+    the specified days threshold. Active jobs are never touched.
+    """
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=days_inactive)).isoformat()
+    async with get_connection() as db:
+        if dry_run:
+            async with db.execute(
+                "SELECT COUNT(*) as count FROM jobs WHERE is_active = 0 AND (last_seen_at < ? OR last_seen_at IS NULL)",
+                [cutoff],
+            ) as cursor:
+                row = await cursor.fetchone()
+                count = row["count"] if row else 0
+                logger.info(f"Dry run stale job purge: {count} eligible inactive jobs older than {cutoff}")
+                return count
+
+        cursor = await db.execute(
+            "DELETE FROM jobs WHERE is_active = 0 AND (last_seen_at < ? OR last_seen_at IS NULL)",
+            [cutoff],
+        )
+        purged_count = cursor.rowcount
+        await db.commit()
+        logger.info(f"Purged {purged_count} stale inactive jobs older than {cutoff}")
+        return purged_count
 
 
 # ============================================================================

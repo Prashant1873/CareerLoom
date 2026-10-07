@@ -155,6 +155,9 @@ class JobSyncService:
         """
         connector = self.connectors.get(target.ats_type.lower())
         jobs = []
+        fetch_success = True
+        error_msg = None
+
         if connector:
             try:
                 jobs = await connector.fetch_jobs(
@@ -163,6 +166,8 @@ class JobSyncService:
                     domain=target.domain,
                 )
             except Exception as e:
+                fetch_success = False
+                error_msg = str(e)
                 logger.error(f"Error fetching jobs for target {target.name}: {e}")
         elif target.career_url:
             try:
@@ -170,10 +175,15 @@ class JobSyncService:
                     target.career_url, target.name, default_domain=target.domain
                 )
             except Exception as e:
+                fetch_success = False
+                error_msg = str(e)
                 logger.error(f"Error scraping custom portal for target {target.name}: {e}")
+        else:
+            fetch_success = False
+            error_msg = f"Unknown ATS type '{target.ats_type}' and missing career_url"
 
         now_iso = datetime.now(timezone.utc).isoformat()
-        if jobs:
+        if fetch_success and jobs:
             # Enforce country = India if target is an Indian startup/unicorn
             if target.category_tier in ("startup", "unicorn") or "india" in target.slug or "india" in target.name.lower():
                 for j in jobs:
@@ -188,14 +198,16 @@ class JobSyncService:
             company=target.name,
             live_job_ids=live_ids,
             sync_timestamp=now_iso,
+            is_successful_fetch=fetch_success,
         )
 
         return {
             "slug": target.slug,
             "name": target.name,
-            "status": "ok",
+            "status": "ok" if fetch_success else "error",
+            "error": error_msg,
             "jobs_synced": len(jobs),
-            "live_jobs": reconcile_res["live_count"],
-            "archived_jobs": reconcile_res["archived_count"],
+            "live_jobs": reconcile_res.get("live_count", 0),
+            "archived_jobs": reconcile_res.get("archived_count", 0),
         }
 
