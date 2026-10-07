@@ -66,3 +66,18 @@
 - **Indian Developer Community Intel**:
   - Ingest authentic candidate reviews and interview timelines from `r/developersIndia`, `r/IndianStartups`, and `r/IndiaTech`.
   - Realistic Indian hiring stage breakdown: Online Assessment, Machine Coding, System Design / Low Level Design (LLD/HLD), Hiring Manager, and HR/Notice Period negotiation.
+
+## 9. Milestone v5: Indian Career Repository & Continuous Batch Scraping Engine
+- **Career Targets Registry as Core Source of Truth**:
+  - Move away from static company lists to a dedicated SQLite `career_targets` table.
+  - Tracks 200+ Indian companies (Startups, Unicorns, Conglomerates, Strategy Consulting), their career links, ATS connectors, scraping status, role focus tags, and sync timestamps.
+- **Reddit-Driven Continuous Discovery**:
+  - Automated mining of `r/developersIndia`, `r/IndianStartups`, `r/ProductManagement`, `r/consulting`, and `r/bangalore` to discover trending companies and career portals.
+  - Dynamic probing of ATS endpoints (Ashby, Lever, Greenhouse, SmartRecruiters, Workday).
+- **Emphasis on Product Management & Strategy Consulting**:
+  - Dedicated taxonomies and sub-50ms search tracks for PM (APM, PM, Senior PM, Group PM, VP Product, TPM, ProdOps) and Strategy & Consulting (Consultant, Strategy Analyst, Chief of Staff, Founder's Office, BizOps).
+- **Continuous High-Throughput Batch Scraping with Stale Job Pruning**:
+  - Async concurrent scraping engine with bounded concurrency and error isolation.
+  - Automatic pruning/archiving of listings no longer found on source career portals, preventing ghost jobs and broken links.
+- **Frontend Career Directory Hub**:
+  - Obsidian dark directory view allowing users to inspect monitored companies, direct career URLs, ATS types, and live job counts.

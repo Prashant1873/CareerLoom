@@ -93,4 +93,11 @@ graph TD
     - [frontend/src/components/JobInspectorPane.tsx](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/frontend/src/components/JobInspectorPane.tsx): 5-stage Indian hiring roadmap (Online Assessment -> Machine Coding -> LLD/HLD -> Hiring Manager -> HR & Notice Period Buyout) and Community Hub source badge.
     - [tests/test_india_engine.py](file:///c:/Users/u1233270/Downloads/Personal%20Apps/Temporal%20Loom/tests/test_india_engine.py): Automated test suite verifying Indian catalog schemas, location and metro classifier, heuristic NLP parsing, sub-50ms query latency, and community intelligence routing.
 
+11. **Milestone v5: Indian Career Repository & Batch Ingestion Pipeline**
+    - `career_targets` Registry: SQLite table indexing 200+ companies (Startups, Unicorns, Conglomerates, Strategy Consulting), tracking direct career links, ATS connectors, scraping status, role tags, and scrape timestamps.
+    - Reddit Discovery Engine: Mining `r/developersIndia`, `r/IndianStartups`, `r/ProductManagement`, `r/consulting`, and `r/bangalore` for emerging employers and active career URLs.
+    - PM & Strategy Consulting Ontology: Canonical taxonomy for Product Management (APM, PM, SPM, GPM, TPM, ProdOps) and Strategy & Consulting (Consultant, Strategy Analyst, Chief of Staff, Founder's Office, BizOps) with sub-50ms query mapping.
+    - Continuous Batch Engine: Bounded-concurrency async scraper (`asyncio.Semaphore(15)`) with stale job reconciler to purge expired postings.
+    - Frontend Career Directory Hub: Obsidian view displaying all tracked companies, direct portal links, and live sync health indicators.
+
 
