@@ -1,9 +1,15 @@
+"""
+Seed Career Targets Script.
+Idempotently populates and synchronizes career_targets table from partitioned
+curated datasets (startups, conglomerates, consulting) and legacy company catalogs.
+"""
+import argparse
 import asyncio
 import json
 import logging
 import sys
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Set
 
 # Setup project root import
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -16,16 +22,30 @@ from backend.scripts.add_indian_companies import INDIAN_COMPANIES_CATALOG
 logger = logging.getLogger("careerloom.seed_targets")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
+TARGETS_DIR = PROJECT_ROOT / "backend" / "app" / "data" / "targets"
 COMPANIES_FILE = PROJECT_ROOT / "backend" / "app" / "data" / "companies.json"
 
-# Curated Tier-1 Strategy & Management Consulting firms
+VALID_ROLE_TAGS: Set[str] = {
+    "product",
+    "strategy",
+    "tech",
+    "founders_office",
+    "consulting",
+    "leadership",
+    "operations",
+}
+
 CONSULTING_FIRMS = {
     "mckinsey", "mckinsey & company", "bcg", "boston consulting group", "bain", "bain & company",
     "kearney", "oliver wyman", "roland berger", "strategy&", "alvarez & marsal", "dalberg",
     "samagra", "arthur d. little", "everest group", "zinnov", "monitor deloitte"
 }
 
-# Curated Indian tech giants, unicorns, and high-growth firms
+INDIAN_CONGLOMERATES = {
+    "tata", "tata sons", "tata digital", "tata 1mg", "tcs", "reliance", "jio", "infosys",
+    "wipro", "l&t", "mahindra", "titan", "aditya birla", "godrej", "itc", "bajaj"
+}
+
 INDIAN_UNICORNS = {
     "paytm", "cred", "meesho", "groww", "inmobi", "glance", "freshworks", "slice", "swiggy",
     "porter", "hackerrank", "sarvam", "sarvam ai", "atlan", "navi", "fi", "fi money",
@@ -33,14 +53,16 @@ INDIAN_UNICORNS = {
     "thoughtworks", "truecaller", "instawork", "acceldata", "nobroker", "ixigo", "abhibus",
     "unacademy", "kredx", "lendingkart", "turtlemint", "cars24", "whatfix", "zepto", "zomato",
     "blinkit", "flipkart", "phonepe", "postman", "browserstack", "hasura", "urban company",
-    "nykaa", "delhivery", "razorpay"
+    "nykaa", "delhivery", "razorpay", "makemytrip", "redbus", "cleartrip", "payu"
 }
 
-# Established Indian Conglomerates & IT enterprises
-INDIAN_ENTERPRISES = {
-    "tata", "tata digital", "tata 1mg", "reliance", "jio", "infosys", "wipro", "tcs", "hcl",
-    "l&t", "mahindra", "titan", "aditya birla", "bosch", "target india"
-}
+
+def sanitize_role_focus(tags: Optional[List[str]]) -> List[str]:
+    """Ensures role focus tags only contain valid standardized taxonomy tags."""
+    if not tags:
+        return ["tech"]
+    clean = [t.strip().lower() for t in tags if t.strip().lower() in VALID_ROLE_TAGS]
+    return clean or ["tech"]
 
 
 def infer_tier(name: str, domain: str, slug: str) -> str:
@@ -50,29 +72,11 @@ def infer_tier(name: str, domain: str, slug: str) -> str:
 
     if any(c in n_low or c in s_low for c in CONSULTING_FIRMS) or "consulting" in d_low:
         return "consulting"
+    if any(cg in n_low or cg in s_low for cg in INDIAN_CONGLOMERATES) or "conglomerate" in d_low:
+        return "conglomerate"
     if any(u in n_low or u in s_low for u in INDIAN_UNICORNS):
         return "unicorn"
-    if any(e in n_low or e in s_low for e in INDIAN_ENTERPRISES) or "conglomerate" in d_low:
-        return "enterprise"
-    if "startup" in d_low or "seed" in d_low or "ai /" in d_low:
-        return "startup"
-    return "enterprise"
-
-
-def infer_role_focus(tier: str, domain: str, name: str) -> List[str]:
-    d_low = domain.lower()
-    n_low = name.lower()
-
-    if tier == "consulting" or "consulting" in d_low:
-        return ["strategy", "consulting", "product"]
-    if tier in ("unicorn", "startup"):
-        tags = ["tech", "product"]
-        if "fintech" in d_low or "commerce" in d_low or "consumer" in d_low:
-            tags.extend(["strategy", "founders_office"])
-        return tags
-    if "data" in d_low or "ai" in d_low:
-        return ["tech", "product", "ai_research"]
-    return ["tech", "product"]
+    return "startup"
 
 
 def infer_career_url(ats_type: str, slug: str, name: str) -> str:
@@ -103,21 +107,73 @@ def infer_feed_url(ats_type: str, slug: str) -> Optional[str]:
     return None
 
 
-def collect_seed_targets() -> List[CareerTarget]:
+def collect_seed_targets(targets_dir: Optional[Path] = None) -> List[CareerTarget]:
     """
-    Consolidates Indian startups, unicorns, conglomerates, and global companies
-    into a unified collection of CareerTarget models.
+    Consolidates partitioned datasets (startups, conglomerates, consulting)
+    along with fallback catalogs into a deduplicated list of CareerTarget models.
     """
+    directory = targets_dir or TARGETS_DIR
     targets_map: Dict[str, CareerTarget] = {}
 
-    # 1. Ingest Indian Startups & Unicorns from add_indian_companies.py
+    partition_files = [
+        directory / "indian_startups.json",
+        directory / "indian_conglomerates.json",
+        directory / "strategy_consulting.json",
+    ]
+
+    # 1. Ingest partitioned JSON catalog files
+    for p_path in partition_files:
+        if not p_path.exists():
+            logger.warning(f"Partition file not found: {p_path}")
+            continue
+
+        try:
+            with open(p_path, "r", encoding="utf-8") as f:
+                items = json.load(f)
+            logger.info(f"Loaded {len(items)} items from {p_path.name}")
+
+            for item in items:
+                name = item.get("name")
+                if not name:
+                    continue
+                slug = CareerTarget.generate_slug(item.get("slug") or name)
+                ats_type = (item.get("ats_type") or "custom").lower()
+                category_tier = (item.get("category_tier") or "startup").lower()
+                domain = item.get("domain", "Tech")
+                career_url = item.get("career_url") or infer_career_url(ats_type, slug, name)
+                feed_url = item.get("feed_url") or infer_feed_url(ats_type, slug)
+                role_focus = sanitize_role_focus(item.get("role_focus"))
+                website = item.get("website")
+
+                target = CareerTarget.create(
+                    name=name,
+                    career_url=career_url,
+                    ats_type=ats_type,
+                    category_tier=category_tier,
+                    domain=domain,
+                    website=website,
+                    feed_url=feed_url,
+                    role_focus=role_focus,
+                    slug=slug,
+                    status="active",
+                    job_count=0,
+                )
+                targets_map[slug] = target
+
+        except Exception as e:
+            logger.error(f"Error reading partition {p_path}: {e}")
+
+    # 2. Ingest curated Indian catalog from add_indian_companies.py as fallback/supplement
     for c in INDIAN_COMPANIES_CATALOG:
         name = c["name"]
         slug = CareerTarget.generate_slug(c.get("slug") or name)
+        if slug in targets_map:
+            continue
+
         ats_type = c.get("ats_type", "lever").lower()
         domain = c.get("domain", "Tech / Startups")
         tier = infer_tier(name, domain, slug)
-        role_focus = infer_role_focus(tier, domain, name)
+        role_focus = sanitize_role_focus(c.get("role_focus"))
         career_url = infer_career_url(ats_type, slug, name)
         feed_url = infer_feed_url(ats_type, slug)
 
@@ -131,68 +187,87 @@ def collect_seed_targets() -> List[CareerTarget]:
             role_focus=role_focus,
             slug=slug,
             status="active",
+            job_count=0,
         )
         targets_map[slug] = target
 
-    # 2. Ingest Global + Indian catalog from companies.json
+    # 3. Ingest global catalog from companies.json as supplement
     if COMPANIES_FILE.exists():
-        with open(COMPANIES_FILE, "r", encoding="utf-8") as f:
-            global_comps = json.load(f)
+        try:
+            with open(COMPANIES_FILE, "r", encoding="utf-8") as f:
+                global_comps = json.load(f)
 
-        for c in global_comps:
-            name = c.get("name")
-            if not name:
-                continue
-            slug = CareerTarget.generate_slug(c.get("slug") or name)
-            # If already added via curated Indian catalog, preserve enriched tier/tags unless missing
-            if slug in targets_map:
-                continue
+            for c in global_comps:
+                name = c.get("name")
+                if not name:
+                    continue
+                slug = CareerTarget.generate_slug(c.get("slug") or name)
+                if slug in targets_map:
+                    continue
 
-            ats_type = c.get("ats_type", "greenhouse").lower()
-            domain = c.get("domain", "Enterprise Tech")
-            tier = infer_tier(name, domain, slug)
-            role_focus = infer_role_focus(tier, domain, name)
-            career_url = infer_career_url(ats_type, slug, name)
-            feed_url = infer_feed_url(ats_type, slug)
+                ats_type = (c.get("ats_type") or "greenhouse").lower()
+                domain = c.get("domain", "Enterprise Tech")
+                tier = infer_tier(name, domain, slug)
+                role_focus = sanitize_role_focus(c.get("role_focus"))
+                career_url = infer_career_url(ats_type, slug, name)
+                feed_url = infer_feed_url(ats_type, slug)
 
-            target = CareerTarget.create(
-                name=name,
-                career_url=career_url,
-                ats_type=ats_type,
-                category_tier=tier,
-                domain=domain,
-                feed_url=feed_url,
-                role_focus=role_focus,
-                slug=slug,
-                status="active",
-            )
-            targets_map[slug] = target
+                target = CareerTarget.create(
+                    name=name,
+                    career_url=career_url,
+                    ats_type=ats_type,
+                    category_tier=tier,
+                    domain=domain,
+                    feed_url=feed_url,
+                    role_focus=role_focus,
+                    slug=slug,
+                    status="active",
+                    job_count=0,
+                )
+                targets_map[slug] = target
+        except Exception as e:
+            logger.warning(f"Error reading companies.json: {e}")
 
     return list(targets_map.values())
 
 
-async def seed_career_targets(force: bool = False) -> int:
+async def seed_career_targets(
+    force: bool = False,
+    dry_run: bool = False,
+    targets_dir: Optional[Path] = None,
+) -> int:
     """
     Seeds career_targets table in SQLite. Idempotent by default.
+    Preserves existing live telemetry, job_count, and scrape history.
     """
     await init_db()
+
+    targets = collect_seed_targets(targets_dir)
+
+    if dry_run:
+        logger.info(f"[DRY RUN] Would seed/upsert {len(targets)} targets into career_targets.")
+        return len(targets)
 
     async with get_connection() as db:
         async with db.execute("SELECT COUNT(*) as count FROM career_targets") as cur:
             row = await cur.fetchone()
             existing_count = row["count"] if row else 0
 
-    if existing_count > 0 and not force:
-        logger.info(f"career_targets table already contains {existing_count} targets. Skipping seed.")
-        return existing_count
-
-    targets = collect_seed_targets()
     inserted_count = await upsert_targets(targets)
-    logger.info(f"Successfully seeded {inserted_count} career targets into SQLite.")
+    logger.info(
+        f"Successfully seeded {inserted_count} career targets into SQLite (prior count: {existing_count})."
+    )
     return inserted_count
 
 
+def parse_args():
+    parser = argparse.ArgumentParser(description="Seed Career Targets into CareerLoom SQLite database")
+    parser.add_argument("--force", action="store_true", help="Force re-seeding of targets")
+    parser.add_argument("--dry-run", action="store_true", help="Simulate seeding without executing DB writes")
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
-    force_flag = "--force" in sys.argv
-    count = asyncio.run(seed_career_targets(force=force_flag))
-    print(f"\nDone! career_targets table holds {count} active targets.")
+    args = parse_args()
+    count = asyncio.run(seed_career_targets(force=args.force, dry_run=args.dry_run))
+    print(f"\nDone! Processed {count} career targets.")

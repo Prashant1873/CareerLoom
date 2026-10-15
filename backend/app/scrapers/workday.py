@@ -70,8 +70,8 @@ class WorkdayConnector(BaseATSConnector):
                 posted_on = posting.get("postedOn", "")
 
                 date_posted = parse_posting_date(posted_on)
-                category, seniority = classify_role(title)
-                location, country, is_remote = parse_location(raw_location, title)
+                category, seniority, track = classify_role(title, company=company_name, domain_hint=domain)
+                location, country, is_remote = parse_location(raw_location, title, company_hint=company_name)
 
                 job = JobItem.create(
                     title=title,
@@ -81,6 +81,7 @@ class WorkdayConnector(BaseATSConnector):
                     source="workday",
                     domain=domain,
                     category=category,
+                    track=track,
                     seniority=seniority,
                     location=location or raw_location,
                     country=country,

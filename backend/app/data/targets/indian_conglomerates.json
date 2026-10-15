@@ -1,0 +1,578 @@
+[
+  {
+    "name": "Tata Sons",
+    "slug": "tata-sons",
+    "website": "https://www.tata.com",
+    "career_url": "https://www.tata.com/careers",
+    "ats_type": "custom",
+    "domain": "Conglomerate",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "strategy",
+      "leadership",
+      "operations"
+    ]
+  },
+  {
+    "name": "Tata Digital",
+    "slug": "tata-digital",
+    "website": "https://www.tatadigital.com",
+    "career_url": "https://www.tatadigital.com/careers",
+    "ats_type": "custom",
+    "domain": "Consumer Tech / Ecommerce",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy",
+      "leadership"
+    ]
+  },
+  {
+    "name": "Tata Neu",
+    "slug": "tata-neu",
+    "website": "https://www.tataneu.com",
+    "career_url": "https://boards.greenhouse.io/tataneu",
+    "ats_type": "greenhouse",
+    "domain": "Super App / Ecommerce",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Tata 1mg",
+    "slug": "tata-1mg",
+    "website": "https://www.1mg.com",
+    "career_url": "https://boards.greenhouse.io/tata1mg",
+    "ats_type": "greenhouse",
+    "domain": "HealthTech / Pharmacy",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "tech",
+      "product",
+      "operations"
+    ]
+  },
+  {
+    "name": "Tata Consultancy Services (TCS)",
+    "slug": "tcs",
+    "website": "https://www.tcs.com",
+    "career_url": "https://www.tcs.com/careers",
+    "ats_type": "custom",
+    "domain": "IT & Global Consulting",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "tech",
+      "operations",
+      "leadership"
+    ]
+  },
+  {
+    "name": "Tata Elxsi",
+    "slug": "tata-elxsi",
+    "website": "https://www.tataelxsi.com",
+    "career_url": "https://www.tataelxsi.com/careers",
+    "ats_type": "custom",
+    "domain": "Design & Deep Tech",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "tech",
+      "product"
+    ]
+  },
+  {
+    "name": "Tata Motors",
+    "slug": "tata-motors",
+    "website": "https://www.tatamotors.com",
+    "career_url": "https://www.tatamotors.com/careers/",
+    "ats_type": "custom",
+    "domain": "Automotive & EV",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "tech",
+      "operations",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Tata Steel",
+    "slug": "tata-steel",
+    "website": "https://www.tatasteel.com",
+    "career_url": "https://www.tatasteel.com/careers/",
+    "ats_type": "custom",
+    "domain": "Manufacturing & Materials",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "operations",
+      "leadership"
+    ]
+  },
+  {
+    "name": "Titan Company",
+    "slug": "titan-company",
+    "website": "https://www.titancompany.in",
+    "career_url": "https://www.titancompany.in/careers",
+    "ats_type": "custom",
+    "domain": "Retail & Luxury",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "product",
+      "operations",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Trent (Westside / Zudio)",
+    "slug": "trent-westside",
+    "website": "https://www.mywestside.com",
+    "career_url": "https://www.mywestside.com/pages/careers",
+    "ats_type": "custom",
+    "domain": "Fashion & Quick Retail",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "operations",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Voltas",
+    "slug": "voltas",
+    "website": "https://www.voltas.com",
+    "career_url": "https://www.voltas.com/careers",
+    "ats_type": "custom",
+    "domain": "Consumer Appliances & Engineering",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "operations",
+      "tech"
+    ]
+  },
+  {
+    "name": "Reliance Industries",
+    "slug": "reliance-industries",
+    "website": "https://www.ril.com",
+    "career_url": "https://www.ril.com/Careers.aspx",
+    "ats_type": "custom",
+    "domain": "Conglomerate & Energy",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "strategy",
+      "operations",
+      "leadership"
+    ]
+  },
+  {
+    "name": "Reliance Jio",
+    "slug": "reliance-jio",
+    "website": "https://www.jio.com",
+    "career_url": "https://careers.jio.com",
+    "ats_type": "custom",
+    "domain": "Telecom & Digital Services",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "tech",
+      "product",
+      "operations"
+    ]
+  },
+  {
+    "name": "Jio Platforms",
+    "slug": "jio-platforms",
+    "website": "https://www.jio.com",
+    "career_url": "https://careers.jio.com/careers/index.html",
+    "ats_type": "custom",
+    "domain": "Cloud & AI Infrastructure",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "tech",
+      "product",
+      "leadership"
+    ]
+  },
+  {
+    "name": "Reliance Retail",
+    "slug": "reliance-retail",
+    "website": "https://relianceretail.com",
+    "career_url": "https://relianceretail.com/careers.html",
+    "ats_type": "custom",
+    "domain": "Retail & Omnichannel",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "operations",
+      "product",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Netmeds (Reliance)",
+    "slug": "netmeds",
+    "website": "https://www.netmeds.com",
+    "career_url": "https://www.netmeds.com/careers",
+    "ats_type": "custom",
+    "domain": "Pharmacy & HealthTech",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Urban Ladder (Reliance)",
+    "slug": "urban-ladder",
+    "website": "https://www.urbanladder.com",
+    "career_url": "https://www.urbanladder.com/careers",
+    "ats_type": "custom",
+    "domain": "Home Living & Ecommerce",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "product",
+      "operations"
+    ]
+  },
+  {
+    "name": "Infosys",
+    "slug": "infosys",
+    "website": "https://www.infosys.com",
+    "career_url": "https://www.infosys.com/careers/",
+    "ats_type": "custom",
+    "domain": "IT & Digital Services",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "tech",
+      "leadership",
+      "operations"
+    ]
+  },
+  {
+    "name": "Infosys BPM",
+    "slug": "infosys-bpm",
+    "website": "https://www.infosysbpm.com",
+    "career_url": "https://www.infosysbpm.com/careers.html",
+    "ats_type": "custom",
+    "domain": "Business Operations",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "operations",
+      "leadership"
+    ]
+  },
+  {
+    "name": "Wipro",
+    "slug": "wipro",
+    "website": "https://www.wipro.com",
+    "career_url": "https://careers.wipro.com",
+    "ats_type": "custom",
+    "domain": "IT & Consulting",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "tech",
+      "operations",
+      "leadership"
+    ]
+  },
+  {
+    "name": "Wipro Enterprises",
+    "slug": "wipro-enterprises",
+    "website": "https://wiproenterprises.com",
+    "career_url": "https://wiproenterprises.com/careers/",
+    "ats_type": "custom",
+    "domain": "Consumer Care & Infrastructure",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "operations",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Larsen & Toubro (L&T)",
+    "slug": "larsen-and-toubro",
+    "website": "https://www.larsentoubro.com",
+    "career_url": "https://www.larsentoubro.com/corporate/careers/",
+    "ats_type": "custom",
+    "domain": "Heavy Engineering & Infrastructure",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "operations",
+      "leadership",
+      "strategy"
+    ]
+  },
+  {
+    "name": "L&T Technology Services (LTTS)",
+    "slug": "ltts",
+    "website": "https://www.ltts.com",
+    "career_url": "https://www.ltts.com/careers",
+    "ats_type": "custom",
+    "domain": "Engineering R&D Services",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "tech",
+      "product"
+    ]
+  },
+  {
+    "name": "LTIMindtree",
+    "slug": "ltimindtree",
+    "website": "https://www.ltimindtree.com",
+    "career_url": "https://www.ltimindtree.com/careers/",
+    "ats_type": "custom",
+    "domain": "Digital Consulting & IT",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "tech",
+      "product",
+      "operations"
+    ]
+  },
+  {
+    "name": "Mahindra & Mahindra",
+    "slug": "mahindra-and-mahindra",
+    "website": "https://www.mahindra.com",
+    "career_url": "https://www.mahindra.com/careers",
+    "ats_type": "custom",
+    "domain": "Automotive, Farm & Aerospace",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "operations",
+      "strategy",
+      "leadership"
+    ]
+  },
+  {
+    "name": "Tech Mahindra",
+    "slug": "tech-mahindra",
+    "website": "https://www.techmahindra.com",
+    "career_url": "https://careers.techmahindra.com",
+    "ats_type": "custom",
+    "domain": "Digital Services & Telecom IT",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "tech",
+      "leadership"
+    ]
+  },
+  {
+    "name": "Mahindra Digital",
+    "slug": "mahindra-digital",
+    "website": "https://www.mahindra.com",
+    "career_url": "https://www.mahindra.com/careers",
+    "ats_type": "custom",
+    "domain": "Digital Transformation Hub",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Aditya Birla Group",
+    "slug": "aditya-birla-group",
+    "website": "https://www.adityabirla.com",
+    "career_url": "https://www.adityabirla.com/careers",
+    "ats_type": "custom",
+    "domain": "Conglomerate & Metals/Telecom",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "strategy",
+      "operations",
+      "leadership"
+    ]
+  },
+  {
+    "name": "UltraTech Cement",
+    "slug": "ultratech-cement",
+    "website": "https://www.ultratechcement.com",
+    "career_url": "https://www.ultratechcement.com/careers",
+    "ats_type": "custom",
+    "domain": "Materials & Manufacturing",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "operations",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Hindalco",
+    "slug": "hindalco",
+    "website": "https://www.hindalco.com",
+    "career_url": "https://www.hindalco.com/careers",
+    "ats_type": "custom",
+    "domain": "Metals & Mining",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "operations",
+      "leadership"
+    ]
+  },
+  {
+    "name": "Godrej Industries",
+    "slug": "godrej-industries",
+    "website": "https://www.godrej.com",
+    "career_url": "https://www.godrej.com/careers",
+    "ats_type": "custom",
+    "domain": "Conglomerate & Consumer Care",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "strategy",
+      "operations",
+      "leadership"
+    ]
+  },
+  {
+    "name": "Godrej Consumer Products",
+    "slug": "godrej-consumer",
+    "website": "https://www.godrejcp.com",
+    "career_url": "https://www.godrejcp.com/careers",
+    "ats_type": "custom",
+    "domain": "FMCG",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "product",
+      "operations",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Godrej Properties",
+    "slug": "godrej-properties",
+    "website": "https://www.godrejproperties.com",
+    "career_url": "https://www.godrejproperties.com/careers",
+    "ats_type": "custom",
+    "domain": "Real Estate & Urban Spaces",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "operations",
+      "strategy"
+    ]
+  },
+  {
+    "name": "ITC Limited",
+    "slug": "itc-limited",
+    "website": "https://www.itcportal.com",
+    "career_url": "https://www.itcportal.com/careers/",
+    "ats_type": "custom",
+    "domain": "FMCG, Hospitality & Paper",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "strategy",
+      "operations",
+      "leadership"
+    ]
+  },
+  {
+    "name": "ITC Infotech",
+    "slug": "itc-infotech",
+    "website": "https://www.itcinfotech.com",
+    "career_url": "https://www.itcinfotech.com/careers/",
+    "ats_type": "custom",
+    "domain": "Tech Services & Solutions",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Bajaj Finserv",
+    "slug": "bajaj-finserv",
+    "website": "https://www.bajajfinserv.in",
+    "career_url": "https://www.bajajfinserv.in/careers",
+    "ats_type": "custom",
+    "domain": "Financial Services",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "product",
+      "strategy",
+      "tech",
+      "leadership"
+    ]
+  },
+  {
+    "name": "Bajaj Finance",
+    "slug": "bajaj-finance",
+    "website": "https://www.bajajfinserv.in/finance",
+    "career_url": "https://careers.bajajfinserv.in",
+    "ats_type": "custom",
+    "domain": "Consumer Lending & Fintech",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Bajaj Auto",
+    "slug": "bajaj-auto",
+    "website": "https://www.bajajauto.com",
+    "career_url": "https://www.bajajauto.com/careers",
+    "ats_type": "custom",
+    "domain": "Automotive & Two-Wheelers",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "operations",
+      "tech"
+    ]
+  },
+  {
+    "name": "HDFC Bank",
+    "slug": "hdfc-bank",
+    "website": "https://www.hdfcbank.com",
+    "career_url": "https://www.hdfcbank.com/personal/useful-links/careers",
+    "ats_type": "custom",
+    "domain": "Banking & Digital Finance",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "tech",
+      "product",
+      "leadership"
+    ]
+  },
+  {
+    "name": "ICICI Bank",
+    "slug": "icici-bank",
+    "website": "https://www.icicibank.com",
+    "career_url": "https://www.icicicareers.com",
+    "ats_type": "custom",
+    "domain": "Banking & Digital Finance",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "tech",
+      "product",
+      "operations"
+    ]
+  },
+  {
+    "name": "Axis Bank",
+    "slug": "axis-bank",
+    "website": "https://www.axisbank.com",
+    "career_url": "https://www.axisbank.com/careers",
+    "ats_type": "custom",
+    "domain": "Banking & Digital Finance",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Kotak Mahindra Bank",
+    "slug": "kotak-bank",
+    "website": "https://www.kotak.com",
+    "career_url": "https://www.kotak.com/en/about-us/careers.html",
+    "ats_type": "custom",
+    "domain": "Banking & Digital Finance",
+    "category_tier": "conglomerate",
+    "role_focus": [
+      "tech",
+      "product",
+      "leadership"
+    ]
+  }
+]

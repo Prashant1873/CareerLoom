@@ -74,7 +74,7 @@ def test_api_discovery_tracks():
     tracks = res.json()["tracks"]
     assert len(tracks) >= 30
     track_names = [t["track"] for t in tracks]
-    assert "Product Entry Level" in track_names
+    assert "Associate Product Manager (APM)" in track_names
 
 
 def test_api_nlp_parse_endpoint():

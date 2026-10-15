@@ -1,0 +1,93 @@
+/* ThemeToggle.css - Tactile Apple-grade Spring Theme Switcher */
+
+.theme-toggle-segmented {
+  display: flex;
+  align-items: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+  gap: 2px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color var(--duration-fast) var(--ease-spring),
+              border-color var(--duration-fast) var(--ease-spring);
+}
+
+.theme-segment-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 5px 8px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  border-radius: var(--radius-xs);
+  color: var(--text-muted);
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  transition: all var(--duration-fast) var(--ease-spring);
+  user-select: none;
+}
+
+.theme-segment-btn:hover {
+  color: var(--text-primary);
+}
+
+.theme-segment-btn.active {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-weight: 650;
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-segment-btn.active .segment-icon {
+  color: var(--accent-primary);
+}
+
+.segment-icon {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.theme-segment-btn:active .segment-icon {
+  transform: scale(0.92);
+}
+
+/* Collapsed Icon Toggle Button (for compact NavRail) */
+.theme-toggle-collapsed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-spring);
+  margin: 0 auto;
+}
+
+.theme-toggle-collapsed:hover {
+  background: var(--bg-surface);
+  color: var(--accent-primary);
+  border-color: var(--border-hover);
+  transform: translateY(-0.5px);
+}
+
+.theme-toggle-collapsed:active {
+  transform: scale(0.94);
+}
+
+.theme-icon {
+  transition: transform var(--duration-normal) var(--ease-spring),
+              color var(--duration-fast) var(--ease-spring);
+}
+
+.theme-toggle-collapsed:hover .theme-icon {
+  transform: rotate(15deg);
+}

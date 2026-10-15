@@ -2,13 +2,13 @@
 
 ## Overview
 
-CareerLoom delivers a zero-friction job discovery portal across major global firms. The roadmap progresses through five vertical MVP phases in Milestone v1 (core ATS ingestion, NLP query engine, high-craft React UI, custom scrapers, Reddit insights), Milestone v2 (Obsidian 3-column control center), Milestone v3 (global 200+ company expansion), Milestone v4 (India launch & leads engine), and Milestone v5 (Indian career repository, Reddit-driven discovery, PM & Strategy Consulting specialization, and continuous batch scraping).
+CareerLoom delivers a zero-friction job discovery portal across major global firms. The roadmap progresses through five vertical MVP phases in Milestone v1 (core ATS ingestion, NLP query engine, high-craft React UI, custom scrapers, Reddit insights), Milestone v2 (Obsidian 3-column control center), Milestone v3 (global 200+ company expansion), Milestone v4 (India launch & leads engine), Milestone v5 (Indian career repository, Reddit-driven discovery, PM & Strategy Consulting specialization, and continuous batch scraping), and Milestone v6 (Obsidian Light & dual-theme ergonomics).
 
 ## Phases
 
 **Phase Numbering:**
 
-- Integer phases (1 to 15): Planned milestone work
+- Integer phases (1 to 17): Planned milestone work
 - Decimal phases: Urgent insertions
 
 ### Milestone v1: Core Engine & Ingestion
@@ -40,6 +40,11 @@ CareerLoom delivers a zero-friction job discovery portal across major global fir
 - [x] **Phase 13: Product Management & Strategy Consulting Taxonomy Engine** - Domain ontology expansion, APM/PM and Strategy Consulting role track mapping, and sub-50ms filtering.
 - [x] **Phase 14: Continuous Batch Scraping Pipeline & Ingestion Automation** - High-concurrency async batch runner (`sync_batch.py`), scheduled periodic worker, and error isolation. (completed 2026-10-08)
 - [x] **Phase 15: Frontend Career Directory Hub & Role Experience** - Obsidian dark Career Directory modal/view, 1-click PM and Strategy filter ribbons, and live sync indicators. (completed 2026-10-08)
+
+### Milestone v6: Obsidian Light & Dual-Theme Ergonomics
+
+- [x] **Phase 16: Design Token Architecture & WCAG 2.2 AA Contrast Calibration** - Dual-theme semantic CSS tokens, hue-tinted cool slate / porcelain neutral ramp, badge contrast calibration, and hardcoded hex refactoring. (completed 2026-10-16)
+- [x] **Phase 17: Theme Switcher, Component Retheming & Fluid Transitions** - Accessible viscoelastic theme toggle, zero-FOUC hydration, and comprehensive component retheming across all views. (completed 2026-10-16)
 
 ---
 
@@ -134,12 +139,49 @@ Plans:
 - [x] 15-01: Career Targets TypeScript Models, API Client & CareerDirectoryModal Component
 - [x] 15-02: 1-Click Role Track Quick-Filter Ribbons, Sync Freshness Indicators & Shell Integration
 
+### Phase 16: Design Token Architecture & WCAG 2.2 AA Contrast Calibration
+
+**Goal**: Establish dual-theme semantic CSS variable tokens (`:root, [data-theme="dark"]` and `[data-theme="light"]`) in `frontend/src/index.css`, implementing an Obsidian Porcelain canvas (`#f8fafc`), pure white elevated surfaces (`#ffffff`), calibrated emerald accent (`#059669`), accessible badge palettes, and refactoring hardcoded dark hex color values across existing CSS files.
+**Mode**: mvp
+**Depends on**: Phase 15
+**Requirements**: THEME-TOKEN-01, THEME-CONTRAST-02, THEME-BADGE-03, THEME-REFACTOR-04
+**Success Criteria**:
+
+  1. Dual-theme CSS variable architecture active with seamless switching between dark Obsidian Charcoal and light Obsidian Porcelain.
+  2. Contrast validation verifies WCAG 2.2 AA compliance across all typography layers (primary > 14:1, secondary > 8:1, muted > 4.5:1, brand action > 4.5:1).
+  3. Badge tokens (Domain, Remote, Tier, CTC, Match) display legible high-contrast saturated text over subtle pastel fills in light mode.
+  4. Hardcoded dark colors in `App.css` and `CareerDirectoryModal.css` are refactored into semantic tokens.
+
+**Plans**: 2 plans
+Plans:
+
+- [x] 16-01: Dual-Theme Semantic Token Ramp & Hex Value Refactoring (completed 2026-10-16)
+- [x] 16-02: Calibrated Badge Palette & WCAG 2.2 AA Automated Contrast Matrix (completed 2026-10-16)
+
+### Phase 17: Theme Switcher, Component Retheming & Fluid Transitions
+
+**Goal**: Implement an accessible, viscoelastic dual-theme switcher in the navigation rail and responsive header, prevent unstyled theme flashes with initial HTML hydration, and retheme all primary views (3-column shell, job stream, inspector, modals, and drawers).
+**Mode**: mvp
+**Depends on**: Phase 16
+**Requirements**: THEME-TOGGLE-05, THEME-HYDRATE-06, THEME-SURFACE-07
+**Success Criteria**:
+
+  1. Viscoelastic theme toggle control in `NavRail.tsx` and mobile header with spring kinetics (`damping: 1.0`).
+  2. Zero flash of unstyled theme (FOUC) on page refresh with local storage persistence and `prefers-color-scheme` support.
+  3. 100% of components (MasterJobStream, JobCard, JobInspectorPane, CareerDirectoryModal, LeadCaptureModal, FilterSidebar) render crisply in both themes with no broken contrast or dark bleed.
+
+**Plans**: 2 plans
+Plans:
+
+- [x] 17-01: React useTheme Hook, FOUC Prevention & Viscoelastic Theme Switcher Control (completed 2026-10-16)
+- [x] 17-02: Full Shell & Dialog Retheming (Stream, Inspector, Modals, Drawers) & Fluid Polish (completed 2026-10-16)
+
 ---
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14 → 15
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14 → 15 → 16 → 17
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -158,3 +200,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 13. Product Management & Strategy Consulting Taxonomy Engine | 2/2 | Complete | 2026-10-08 |
 | 14. Continuous Batch Scraping Pipeline & Ingestion Automation | 2/2 | Complete    | 2026-10-08 |
 | 15. Frontend Career Directory Hub & Role Experience | 2/2 | Complete    | 2026-10-08 |
+| 16. Design Token Architecture & WCAG 2.2 AA Contrast Calibration | 2/2 | Complete | 2026-10-16 |
+| 17. Theme Switcher, Component Retheming & Fluid Transitions | 2/2 | Complete | 2026-10-16 |

@@ -53,7 +53,7 @@ class SmartRecruitersConnector(BaseATSConnector):
 
                 location_str = ", ".join(filter(None, [city, region, country_code.upper()]))
                 date_posted = parse_posting_date(posting.get("releasedDate"))
-                category, seniority = classify_role(title)
+                category, seniority, track = classify_role(title, company=company_name, domain_hint=domain)
                 loc_text, country, is_remote_classified = parse_location(location_str, title, company_hint=company_name)
                 cc = country_code.upper()
                 if cc in ("IN", "IND"):
@@ -81,6 +81,7 @@ class SmartRecruitersConnector(BaseATSConnector):
                     source="smartrecruiters",
                     domain=domain,
                     category=category,
+                    track=track,
                     seniority=seniority,
                     location=location_str or loc_text,
                     country=country,

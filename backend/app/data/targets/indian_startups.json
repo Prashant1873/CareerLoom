@@ -1,0 +1,2322 @@
+[
+  {
+    "name": "Swiggy",
+    "slug": "swiggy",
+    "website": "https://swiggy.com",
+    "career_url": "https://careers.swiggy.com",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/swiggy?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Food & Quick Commerce",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Zomato",
+    "slug": "zomato",
+    "website": "https://zomato.com",
+    "career_url": "https://www.zomato.com/careers",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/zomato?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Food & Quick Commerce",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Zepto",
+    "slug": "zepto",
+    "website": "https://zeptonow.com",
+    "career_url": "https://jobs.lever.co/zepto",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/zepto?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Quick Commerce",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Blinkit",
+    "slug": "blinkit",
+    "website": "https://blinkit.com",
+    "career_url": "https://blinkit.com/careers",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/blinkit?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Quick Commerce",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "CRED",
+    "slug": "cred",
+    "website": "https://cred.club",
+    "career_url": "https://jobs.lever.co/cred",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/cred?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Fintech / Credit",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Groww",
+    "slug": "groww",
+    "website": "https://groww.in",
+    "career_url": "https://jobs.lever.co/groww",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/groww?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Fintech / WealthTech",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Meesho",
+    "slug": "meesho",
+    "website": "https://meesho.com",
+    "career_url": "https://jobs.lever.co/meesho",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/meesho?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Ecommerce",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "PhonePe",
+    "slug": "phonepe",
+    "website": "https://phonepe.com",
+    "career_url": "https://boards.greenhouse.io/phonepe",
+    "ats_type": "greenhouse",
+    "feed_url": "https://boards-api.greenhouse.io/v1/boards/phonepe/jobs",
+    "category_tier": "unicorn",
+    "domain": "Fintech / Payments",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Razorpay",
+    "slug": "razorpay",
+    "website": "https://razorpay.com",
+    "career_url": "https://jobs.lever.co/razorpay",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/razorpay?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Fintech / Payments",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Paytm (One97)",
+    "slug": "paytm",
+    "website": "https://paytm.com",
+    "career_url": "https://jobs.lever.co/paytm",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/paytm?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Fintech / Payments",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Navi Technologies",
+    "slug": "navi",
+    "website": "https://navi.com",
+    "career_url": "https://jobs.lever.co/navi",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/navi?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Fintech / Digital Lending",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Slice",
+    "slug": "slice",
+    "website": "https://sliceit.com",
+    "career_url": "https://jobs.lever.co/slice",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/slice?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Fintech / Banking",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Jupiter Money",
+    "slug": "jupiter",
+    "website": "https://jupiter.money",
+    "career_url": "https://jobs.lever.co/jupiter",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/jupiter?mode=json",
+    "category_tier": "startup",
+    "domain": "Fintech / Neobank",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Fi Money (EpiFi)",
+    "slug": "fi-money",
+    "website": "https://fi.money",
+    "career_url": "https://jobs.lever.co/fi-money",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/fi-money?mode=json",
+    "category_tier": "startup",
+    "domain": "Fintech / Neobank",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Jar",
+    "slug": "jar",
+    "website": "https://myjar.app",
+    "career_url": "https://jobs.lever.co/jar",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/jar?mode=json",
+    "category_tier": "startup",
+    "domain": "Fintech / Savings",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "INDmoney",
+    "slug": "indmoney",
+    "website": "https://indmoney.com",
+    "career_url": "https://jobs.lever.co/indmoney",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/indmoney?mode=json",
+    "category_tier": "startup",
+    "domain": "Fintech / Super Wealth",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Smallcase",
+    "slug": "smallcase",
+    "website": "https://smallcase.com",
+    "career_url": "https://jobs.lever.co/smallcase",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/smallcase?mode=json",
+    "category_tier": "startup",
+    "domain": "Fintech / Capital Markets",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "KredX",
+    "slug": "kredx",
+    "website": "https://kredx.com",
+    "career_url": "https://jobs.lever.co/kredx",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/kredx?mode=json",
+    "category_tier": "startup",
+    "domain": "Fintech / Invoice Discounting",
+    "role_focus": [
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Lendingkart",
+    "slug": "lendingkart",
+    "website": "https://lendingkart.com",
+    "career_url": "https://jobs.lever.co/lendingkart",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/lendingkart?mode=json",
+    "category_tier": "startup",
+    "domain": "Fintech / MSME Lending",
+    "role_focus": [
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Turtlemint",
+    "slug": "turtlemint",
+    "website": "https://turtlemint.com",
+    "career_url": "https://jobs.lever.co/turtlemint",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/turtlemint?mode=json",
+    "category_tier": "startup",
+    "domain": "Fintech / InsurTech",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Cashfree Payments",
+    "slug": "cashfree",
+    "website": "https://cashfree.com",
+    "career_url": "https://jobs.lever.co/cashfree",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/cashfree?mode=json",
+    "category_tier": "startup",
+    "domain": "Fintech / Gateways",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "PayU India",
+    "slug": "payu-india",
+    "website": "https://corporate.payu.com",
+    "career_url": "https://jobs.lever.co/payu",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/payu?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Fintech / Gateway",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Pine Labs",
+    "slug": "pine-labs",
+    "website": "https://pinelabs.com",
+    "career_url": "https://boards.greenhouse.io/pinelabs",
+    "ats_type": "greenhouse",
+    "feed_url": "https://boards-api.greenhouse.io/v1/boards/pinelabs/jobs",
+    "category_tier": "unicorn",
+    "domain": "Fintech / Merchant POS",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy"
+    ]
+  },
+  {
+    "name": "BharatPe",
+    "slug": "bharatpe",
+    "website": "https://bharatpe.com",
+    "career_url": "https://jobs.lever.co/bharatpe",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/bharatpe?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Fintech / Merchant QR",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Mswipe",
+    "slug": "mswipe",
+    "website": "https://mswipe.com",
+    "career_url": "https://jobs.lever.co/mswipe",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/mswipe?mode=json",
+    "category_tier": "startup",
+    "domain": "Fintech / POS",
+    "role_focus": [
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Dezerv",
+    "slug": "dezerv",
+    "website": "https://dezerv.in",
+    "career_url": "https://jobs.ashbyhq.com/dezerv",
+    "ats_type": "ashby",
+    "feed_url": "https://api.ashbyhq.com/posting-api/job-board/dezerv",
+    "category_tier": "startup",
+    "domain": "Fintech / Wealth",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Stable Money",
+    "slug": "stable-money",
+    "website": "https://stablemoney.in",
+    "career_url": "https://jobs.ashbyhq.com/stablemoney",
+    "ats_type": "ashby",
+    "feed_url": "https://api.ashbyhq.com/posting-api/job-board/stablemoney",
+    "category_tier": "startup",
+    "domain": "Fintech / Fixed Returns",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Wint Wealth",
+    "slug": "wint-wealth",
+    "website": "https://wintwealth.com",
+    "career_url": "https://jobs.lever.co/wintwealth",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/wintwealth?mode=json",
+    "category_tier": "startup",
+    "domain": "Fintech / Debt Assets",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "CoinDCX",
+    "slug": "coindcx",
+    "website": "https://coindcx.com",
+    "career_url": "https://jobs.lever.co/coindcx",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/coindcx?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Fintech / Crypto",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "CoinSwitch",
+    "slug": "coinswitch",
+    "website": "https://coinswitch.co",
+    "career_url": "https://jobs.lever.co/coinswitch",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/coinswitch?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Fintech / Crypto",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Zeta",
+    "slug": "zeta",
+    "website": "https://zeta.tech",
+    "career_url": "https://jobs.lever.co/zeta",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/zeta?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Fintech / Banking SaaS",
+    "role_focus": [
+      "tech",
+      "product",
+      "strategy"
+    ]
+  },
+  {
+    "name": "OneCard (FPL Tech)",
+    "slug": "onecard",
+    "website": "https://getonecard.app",
+    "career_url": "https://jobs.lever.co/onecard",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/onecard?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Fintech / Credit Cards",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Uni Cards",
+    "slug": "uni-cards",
+    "website": "https://uni.club",
+    "career_url": "https://jobs.lever.co/uni",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/uni?mode=json",
+    "category_tier": "startup",
+    "domain": "Fintech / Credit",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Atlan",
+    "slug": "atlan",
+    "website": "https://atlan.com",
+    "career_url": "https://jobs.lever.co/atlan",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/atlan?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Data Governance & Metadata AI",
+    "role_focus": [
+      "tech",
+      "product",
+      "founders_office",
+      "strategy"
+    ]
+  },
+  {
+    "name": "SigNoz",
+    "slug": "signoz",
+    "website": "https://signoz.io",
+    "career_url": "https://jobs.ashbyhq.com/signoz",
+    "ats_type": "ashby",
+    "feed_url": "https://api.ashbyhq.com/posting-api/job-board/signoz",
+    "category_tier": "startup",
+    "domain": "DevOps & Observability",
+    "role_focus": [
+      "tech",
+      "product",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Sarvam AI",
+    "slug": "sarvam-ai",
+    "website": "https://sarvam.ai",
+    "career_url": "https://jobs.ashbyhq.com/sarvam-ai",
+    "ats_type": "ashby",
+    "feed_url": "https://api.ashbyhq.com/posting-api/job-board/sarvam-ai",
+    "category_tier": "startup",
+    "domain": "Generative AI / Indic LLMs",
+    "role_focus": [
+      "tech",
+      "product",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Acceldata",
+    "slug": "acceldata",
+    "website": "https://acceldata.io",
+    "career_url": "https://jobs.lever.co/acceldata",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/acceldata?mode=json",
+    "category_tier": "startup",
+    "domain": "Data Observability",
+    "role_focus": [
+      "tech",
+      "product"
+    ]
+  },
+  {
+    "name": "Postman",
+    "slug": "postman",
+    "website": "https://postman.com",
+    "career_url": "https://boards.greenhouse.io/postman",
+    "ats_type": "greenhouse",
+    "feed_url": "https://boards-api.greenhouse.io/v1/boards/postman/jobs",
+    "category_tier": "unicorn",
+    "domain": "Developer Tools / API Platform",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy"
+    ]
+  },
+  {
+    "name": "BrowserStack",
+    "slug": "browserstack",
+    "website": "https://browserstack.com",
+    "career_url": "https://jobs.lever.co/browserstack",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/browserstack?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Developer Tools / Cloud Testing",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Hasura",
+    "slug": "hasura",
+    "website": "https://hasura.io",
+    "career_url": "https://jobs.lever.co/hasura",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/hasura?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Developer Tools / GraphQL",
+    "role_focus": [
+      "tech",
+      "product",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "InMobi",
+    "slug": "inmobi",
+    "website": "https://inmobi.com",
+    "career_url": "https://jobs.lever.co/inmobi",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/inmobi?mode=json",
+    "category_tier": "unicorn",
+    "domain": "AdTech & Consumer Media",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Glance",
+    "slug": "glance",
+    "website": "https://glance.com",
+    "career_url": "https://jobs.lever.co/glance",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/glance?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Lockscreen Content AI",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Druva",
+    "slug": "druva",
+    "website": "https://druva.com",
+    "career_url": "https://jobs.lever.co/druva",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/druva?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Cloud Data Protection",
+    "role_focus": [
+      "tech",
+      "product"
+    ]
+  },
+  {
+    "name": "HighRadius",
+    "slug": "highradius",
+    "website": "https://highradius.com",
+    "career_url": "https://jobs.lever.co/highradius",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/highradius?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Fintech SaaS / Autonomous Finance",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Zenoti",
+    "slug": "zenoti",
+    "website": "https://zenoti.com",
+    "career_url": "https://jobs.lever.co/zenoti",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/zenoti?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Vertical SaaS / Wellness",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Mindtickle",
+    "slug": "mindtickle",
+    "website": "https://mindtickle.com",
+    "career_url": "https://jobs.lever.co/mindtickle",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/mindtickle?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Sales Enablement SaaS",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Whatfix",
+    "slug": "whatfix",
+    "website": "https://whatfix.com",
+    "career_url": "https://jobs.lever.co/whatfix",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/whatfix?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Digital Adoption SaaS",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "LeadSquared",
+    "slug": "leadsquared",
+    "website": "https://leadsquared.com",
+    "career_url": "https://jobs.lever.co/leadsquared",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/leadsquared?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Sales CRM SaaS",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Darwinbox",
+    "slug": "darwinbox",
+    "website": "https://darwinbox.com",
+    "career_url": "https://jobs.lever.co/darwinbox",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/darwinbox?mode=json",
+    "category_tier": "unicorn",
+    "domain": "HR Tech SaaS",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "CleverTap",
+    "slug": "clevertap",
+    "website": "https://clevertap.com",
+    "career_url": "https://jobs.lever.co/clevertap",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/clevertap?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Customer Engagement SaaS",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "MoEngage",
+    "slug": "moengage",
+    "website": "https://moengage.com",
+    "career_url": "https://jobs.lever.co/moengage",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/moengage?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Customer Engagement SaaS",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "WebEngage",
+    "slug": "webengage",
+    "website": "https://webengage.com",
+    "career_url": "https://jobs.lever.co/webengage",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/webengage?mode=json",
+    "category_tier": "startup",
+    "domain": "Retention Marketing SaaS",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Chargebee",
+    "slug": "chargebee",
+    "website": "https://chargebee.com",
+    "career_url": "https://jobs.lever.co/chargebee",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/chargebee?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Subscription Billing SaaS",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Kissflow",
+    "slug": "kissflow",
+    "website": "https://kissflow.com",
+    "career_url": "https://jobs.lever.co/kissflow",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/kissflow?mode=json",
+    "category_tier": "startup",
+    "domain": "Low-Code Workflow SaaS",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "HackerRank",
+    "slug": "hackerrank",
+    "website": "https://hackerrank.com",
+    "career_url": "https://jobs.lever.co/hackerrank",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/hackerrank?mode=json",
+    "category_tier": "startup",
+    "domain": "Developer Assessment",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "InterviewBit / Scaler",
+    "slug": "scaler",
+    "website": "https://scaler.com",
+    "career_url": "https://jobs.lever.co/scaler",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/scaler?mode=json",
+    "category_tier": "startup",
+    "domain": "EdTech / Tech Upskilling",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Yellow.ai",
+    "slug": "yellow-ai",
+    "website": "https://yellow.ai",
+    "career_url": "https://jobs.lever.co/yellowai",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/yellowai?mode=json",
+    "category_tier": "startup",
+    "domain": "Conversational AI SaaS",
+    "role_focus": [
+      "tech",
+      "product"
+    ]
+  },
+  {
+    "name": "Gupshup",
+    "slug": "gupshup",
+    "website": "https://gupshup.io",
+    "career_url": "https://jobs.lever.co/gupshup",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/gupshup?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Conversational Messaging",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Entrupy",
+    "slug": "entrupy",
+    "website": "https://entrupy.com",
+    "career_url": "https://jobs.lever.co/entrupy",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/entrupy?mode=json",
+    "category_tier": "startup",
+    "domain": "Computer Vision / AI",
+    "role_focus": [
+      "tech",
+      "product"
+    ]
+  },
+  {
+    "name": "GreyOrange",
+    "slug": "greyorange",
+    "website": "https://greyorange.com",
+    "career_url": "https://jobs.lever.co/greyorange",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/greyorange?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Warehouse Robotics AI",
+    "role_focus": [
+      "tech",
+      "operations",
+      "product"
+    ]
+  },
+  {
+    "name": "Delhivery",
+    "slug": "delhivery",
+    "website": "https://delhivery.com",
+    "career_url": "https://jobs.lever.co/delhivery",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/delhivery?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Logistics & Supply Chain Tech",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Porter",
+    "slug": "porter",
+    "website": "https://porter.in",
+    "career_url": "https://jobs.lever.co/porter",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/porter?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Intracity Logistics",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Rapido",
+    "slug": "rapido",
+    "website": "https://rapido.bike",
+    "career_url": "https://jobs.lever.co/rapido",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/rapido?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Mobility / Bike Taxi",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Ather Energy",
+    "slug": "ather-energy",
+    "website": "https://atherenergy.com",
+    "career_url": "https://jobs.lever.co/atherenergy",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/atherenergy?mode=json",
+    "category_tier": "unicorn",
+    "domain": "CleanTech / EV",
+    "role_focus": [
+      "tech",
+      "product",
+      "operations"
+    ]
+  },
+  {
+    "name": "Ola Electric",
+    "slug": "ola-electric",
+    "website": "https://olaelectric.com",
+    "career_url": "https://jobs.lever.co/olaelectric",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/olaelectric?mode=json",
+    "category_tier": "unicorn",
+    "domain": "EV & Mobility",
+    "role_focus": [
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "BluSmart",
+    "slug": "blusmart",
+    "website": "https://blu-smart.com",
+    "career_url": "https://jobs.lever.co/blusmart",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/blusmart?mode=json",
+    "category_tier": "startup",
+    "domain": "All-Electric Ride Hailing",
+    "role_focus": [
+      "operations",
+      "tech",
+      "product"
+    ]
+  },
+  {
+    "name": "Spinny",
+    "slug": "spinny",
+    "website": "https://spinny.com",
+    "career_url": "https://jobs.lever.co/spinny",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/spinny?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Used Cars Retail Tech",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Cars24",
+    "slug": "cars24",
+    "website": "https://cars24.com",
+    "career_url": "https://jobs.lever.co/cars24",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/cars24?mode=json",
+    "category_tier": "unicorn",
+    "domain": "AutoTech Ecommerce",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Shiprocket",
+    "slug": "shiprocket",
+    "website": "https://shiprocket.in",
+    "career_url": "https://jobs.lever.co/shiprocket",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/shiprocket?mode=json",
+    "category_tier": "unicorn",
+    "domain": "D2C Logistics SaaS",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Loconav",
+    "slug": "loconav",
+    "website": "https://loconav.com",
+    "career_url": "https://jobs.lever.co/loconav",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/loconav?mode=json",
+    "category_tier": "startup",
+    "domain": "Fleet Management IoT",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "BlackBuck",
+    "slug": "blackbuck",
+    "website": "https://blackbuck.com",
+    "career_url": "https://jobs.lever.co/blackbuck",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/blackbuck?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Trucking Platform",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Intangles",
+    "slug": "intangles",
+    "website": "https://intangles.com",
+    "career_url": "https://jobs.lever.co/intangles",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/intangles?mode=json",
+    "category_tier": "startup",
+    "domain": "Vehicle Telematics AI",
+    "role_focus": [
+      "tech",
+      "product"
+    ]
+  },
+  {
+    "name": "Euler Motors",
+    "slug": "euler-motors",
+    "website": "https://eulermotors.com",
+    "career_url": "https://jobs.lever.co/eulermotors",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/eulermotors?mode=json",
+    "category_tier": "startup",
+    "domain": "Commercial EV",
+    "role_focus": [
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Simple Energy",
+    "slug": "simple-energy",
+    "website": "https://simpleenergy.in",
+    "career_url": "https://jobs.lever.co/simpleenergy",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/simpleenergy?mode=json",
+    "category_tier": "startup",
+    "domain": "Electric Scooters",
+    "role_focus": [
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "River",
+    "slug": "river",
+    "website": "https://rideriver.com",
+    "career_url": "https://jobs.ashbyhq.com/river",
+    "ats_type": "ashby",
+    "feed_url": "https://api.ashbyhq.com/posting-api/job-board/river",
+    "category_tier": "startup",
+    "domain": "EV Design & Tech",
+    "role_focus": [
+      "tech",
+      "product",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Yulu",
+    "slug": "yulu",
+    "website": "https://yulu.bike",
+    "career_url": "https://jobs.lever.co/yulu",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/yulu?mode=json",
+    "category_tier": "startup",
+    "domain": "Micro-Mobility EV",
+    "role_focus": [
+      "operations",
+      "tech",
+      "product"
+    ]
+  },
+  {
+    "name": "Cityflo",
+    "slug": "cityflo",
+    "website": "https://cityflo.com",
+    "career_url": "https://jobs.lever.co/cityflo",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/cityflo?mode=json",
+    "category_tier": "startup",
+    "domain": "Urban Commute",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Chalo",
+    "slug": "chalo",
+    "website": "https://chalo.com",
+    "career_url": "https://jobs.lever.co/chalo",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/chalo?mode=json",
+    "category_tier": "startup",
+    "domain": "Public Transport Tech",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "MakeMyTrip",
+    "slug": "makemytrip",
+    "website": "https://makemytrip.com",
+    "career_url": "https://careers.makemytrip.com",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "unicorn",
+    "domain": "Travel Tech",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy"
+    ]
+  },
+  {
+    "name": "redBus",
+    "slug": "redbus",
+    "website": "https://redbus.in",
+    "career_url": "https://jobs.lever.co/redbus",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/redbus?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Online Ticketing",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Ixigo",
+    "slug": "ixigo",
+    "website": "https://ixigo.com",
+    "career_url": "https://jobs.lever.co/ixigo",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/ixigo?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Travel & Train Booking",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Cleartrip (Flipkart)",
+    "slug": "cleartrip",
+    "website": "https://cleartrip.com",
+    "career_url": "https://jobs.lever.co/cleartrip",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/cleartrip?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Travel & Aviation",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "EaseMyTrip",
+    "slug": "easemytrip",
+    "website": "https://easemytrip.com",
+    "career_url": "https://jobs.lever.co/easemytrip",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/easemytrip?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Travel Platform",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Oyo",
+    "slug": "oyo",
+    "website": "https://oyorooms.com",
+    "career_url": "https://jobs.lever.co/oyorooms",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/oyorooms?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Hospitality Tech",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy",
+      "operations"
+    ]
+  },
+  {
+    "name": "Treebo Hotels",
+    "slug": "treebo",
+    "website": "https://treebo.com",
+    "career_url": "https://jobs.lever.co/treebo",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/treebo?mode=json",
+    "category_tier": "startup",
+    "domain": "Budget Hospitality",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Cultfit (Curefit)",
+    "slug": "cultfit",
+    "website": "https://cult.fit",
+    "career_url": "https://jobs.lever.co/cultfit",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/cultfit?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Health & Fitness",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Ultrahuman",
+    "slug": "ultrahuman",
+    "website": "https://ultrahuman.com",
+    "career_url": "https://jobs.ashbyhq.com/ultrahuman",
+    "ats_type": "ashby",
+    "feed_url": "https://api.ashbyhq.com/posting-api/job-board/ultrahuman",
+    "category_tier": "startup",
+    "domain": "Metabolic Wearables & Hardware",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "HealthifyMe",
+    "slug": "healthifyme",
+    "website": "https://healthifyme.com",
+    "career_url": "https://jobs.lever.co/healthifyme",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/healthifyme?mode=json",
+    "category_tier": "startup",
+    "domain": "Digital Health & AI Nutrition",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "PharmEasy",
+    "slug": "pharmeasy",
+    "website": "https://pharmeasy.in",
+    "career_url": "https://jobs.lever.co/pharmeasy",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/pharmeasy?mode=json",
+    "category_tier": "unicorn",
+    "domain": "HealthTech / E-Pharmacy",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "MediBuddy",
+    "slug": "medibuddy",
+    "website": "https://medibuddy.in",
+    "career_url": "https://jobs.lever.co/medibuddy",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/medibuddy?mode=json",
+    "category_tier": "startup",
+    "domain": "Digital Healthcare",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Practo",
+    "slug": "practo",
+    "website": "https://practo.com",
+    "career_url": "https://jobs.lever.co/practo",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/practo?mode=json",
+    "category_tier": "startup",
+    "domain": "Doctor Teleconsultation",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Pristyn Care",
+    "slug": "pristyn-care",
+    "website": "https://pristyncare.com",
+    "career_url": "https://jobs.lever.co/pristyncare",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/pristyncare?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Secondary Care Surgery",
+    "role_focus": [
+      "operations",
+      "tech",
+      "product"
+    ]
+  },
+  {
+    "name": "Urban Company",
+    "slug": "urban-company",
+    "website": "https://urbancompany.com",
+    "career_url": "https://jobs.lever.co/urbancompany",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/urbancompany?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Home Services Marketplace",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Nykaa",
+    "slug": "nykaa",
+    "website": "https://nykaa.com",
+    "career_url": "https://jobs.lever.co/nykaa",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/nykaa?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Beauty & Fashion Ecommerce",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Licious",
+    "slug": "licious",
+    "website": "https://licious.in",
+    "career_url": "https://jobs.lever.co/licious",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/licious?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Fresh D2C Consumer Brands",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Mamaearth (Honasa)",
+    "slug": "mamaearth",
+    "website": "https://mamaearth.in",
+    "career_url": "https://jobs.lever.co/mamaearth",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/mamaearth?mode=json",
+    "category_tier": "unicorn",
+    "domain": "D2C Personal Care",
+    "role_focus": [
+      "product",
+      "operations"
+    ]
+  },
+  {
+    "name": "Pocket FM",
+    "slug": "pocket-fm",
+    "website": "https://pocketfm.com",
+    "career_url": "https://jobs.lever.co/pocketfm",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/pocketfm?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Audio Series & Media Tech",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Truecaller India",
+    "slug": "truecaller",
+    "website": "https://truecaller.com",
+    "career_url": "https://jobs.lever.co/truecaller",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/truecaller?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Communication Tech",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "NoBroker",
+    "slug": "nobroker",
+    "website": "https://nobroker.in",
+    "career_url": "https://jobs.lever.co/nobroker",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/nobroker?mode=json",
+    "category_tier": "unicorn",
+    "domain": "PropTech / Real Estate",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Square Yards",
+    "slug": "square-yards",
+    "website": "https://squareyards.com",
+    "career_url": "https://jobs.lever.co/squareyards",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/squareyards?mode=json",
+    "category_tier": "startup",
+    "domain": "PropTech Platform",
+    "role_focus": [
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Infra.Market",
+    "slug": "infra-market",
+    "website": "https://infra.market",
+    "career_url": "https://jobs.lever.co/inframarket",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/inframarket?mode=json",
+    "category_tier": "unicorn",
+    "domain": "B2B Construction Commerce",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Zetwerk",
+    "slug": "zetwerk",
+    "website": "https://zetwerk.com",
+    "career_url": "https://jobs.lever.co/zetwerk",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/zetwerk?mode=json",
+    "category_tier": "unicorn",
+    "domain": "B2B Custom Manufacturing",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Moglix",
+    "slug": "moglix",
+    "website": "https://moglix.com",
+    "career_url": "https://jobs.lever.co/moglix",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/moglix?mode=json",
+    "category_tier": "unicorn",
+    "domain": "B2B Industrial Ecommerce",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "OfBusiness",
+    "slug": "ofbusiness",
+    "website": "https://ofbusiness.com",
+    "career_url": "https://jobs.lever.co/ofbusiness",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/ofbusiness?mode=json",
+    "category_tier": "unicorn",
+    "domain": "B2B Raw Materials & Credit",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy",
+      "operations"
+    ]
+  },
+  {
+    "name": "Bizongo",
+    "slug": "bizongo",
+    "website": "https://bizongo.com",
+    "career_url": "https://jobs.lever.co/bizongo",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/bizongo?mode=json",
+    "category_tier": "startup",
+    "domain": "B2B Packaging Tech",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Udaan",
+    "slug": "udaan",
+    "website": "https://udaan.com",
+    "career_url": "https://jobs.lever.co/udaan",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/udaan?mode=json",
+    "category_tier": "unicorn",
+    "domain": "B2B Retail Marketplace",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Jumbotail",
+    "slug": "jumbotail",
+    "website": "https://jumbotail.com",
+    "career_url": "https://jobs.lever.co/jumbotail",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/jumbotail?mode=json",
+    "category_tier": "startup",
+    "domain": "B2B Wholesale Grocery",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Country Delight",
+    "slug": "country-delight",
+    "website": "https://countrydelight.in",
+    "career_url": "https://jobs.lever.co/countrydelight",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/countrydelight?mode=json",
+    "category_tier": "startup",
+    "domain": "Fresh Dairy Direct Consumer",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Ninjacart",
+    "slug": "ninjacart",
+    "website": "https://ninjacart.com",
+    "career_url": "https://jobs.lever.co/ninjacart",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/ninjacart?mode=json",
+    "category_tier": "startup",
+    "domain": "Agritech Supply Chain",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "DeHaat",
+    "slug": "dehaat",
+    "website": "https://agrevolution.in",
+    "career_url": "https://jobs.lever.co/dehaat",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/dehaat?mode=json",
+    "category_tier": "startup",
+    "domain": "Agritech Inputs & Advisory",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "AgroStar",
+    "slug": "agrostar",
+    "website": "https://agrostar.in",
+    "career_url": "https://jobs.lever.co/agrostar",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/agrostar?mode=json",
+    "category_tier": "startup",
+    "domain": "Farmers Direct Agritech",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "CropIn",
+    "slug": "cropin",
+    "website": "https://cropin.com",
+    "career_url": "https://jobs.lever.co/cropin",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/cropin?mode=json",
+    "category_tier": "startup",
+    "domain": "Agritech AI & Cloud",
+    "role_focus": [
+      "tech",
+      "product"
+    ]
+  },
+  {
+    "name": "Skyroot Aerospace",
+    "slug": "skyroot",
+    "website": "https://skyroot.in",
+    "career_url": "https://jobs.ashbyhq.com/skyroot",
+    "ats_type": "ashby",
+    "feed_url": "https://api.ashbyhq.com/posting-api/job-board/skyroot",
+    "category_tier": "startup",
+    "domain": "SpaceTech / Launch Vehicles",
+    "role_focus": [
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Agnikul Cosmos",
+    "slug": "agnikul",
+    "website": "https://agnikul.in",
+    "career_url": "https://jobs.lever.co/agnikul",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/agnikul?mode=json",
+    "category_tier": "startup",
+    "domain": "SpaceTech / 3D Printed Engines",
+    "role_focus": [
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Pixxel",
+    "slug": "pixxel",
+    "website": "https://pixxel.space",
+    "career_url": "https://jobs.lever.co/pixxel",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/pixxel?mode=json",
+    "category_tier": "startup",
+    "domain": "Hyperspectral Satellite Constellation",
+    "role_focus": [
+      "tech",
+      "product",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Bellatrix Aerospace",
+    "slug": "bellatrix",
+    "website": "https://bellatrix.aero",
+    "career_url": "https://jobs.lever.co/bellatrix",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/bellatrix?mode=json",
+    "category_tier": "startup",
+    "domain": "Space In-Orbit Propulsion",
+    "role_focus": [
+      "tech"
+    ]
+  },
+  {
+    "name": "GalaxEye Space",
+    "slug": "galaxeye",
+    "website": "https://galaxeye.space",
+    "career_url": "https://jobs.ashbyhq.com/galaxeye",
+    "ats_type": "ashby",
+    "feed_url": "https://api.ashbyhq.com/posting-api/job-board/galaxeye",
+    "category_tier": "startup",
+    "domain": "SAR Satellite Imaging",
+    "role_focus": [
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "PhysicsWallah",
+    "slug": "physicswallah",
+    "website": "https://pw.live",
+    "career_url": "https://jobs.lever.co/physicswallah",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/physicswallah?mode=json",
+    "category_tier": "unicorn",
+    "domain": "EdTech / Affordable Learning",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Unacademy",
+    "slug": "unacademy",
+    "website": "https://unacademy.com",
+    "career_url": "https://jobs.lever.co/unacademy",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/unacademy?mode=json",
+    "category_tier": "unicorn",
+    "domain": "EdTech / Test Prep",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "UpGrad",
+    "slug": "upgrad",
+    "website": "https://upgrad.com",
+    "career_url": "https://jobs.lever.co/upgrad",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/upgrad?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Higher Education Upskilling",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Eruditus",
+    "slug": "eruditus",
+    "website": "https://eruditus.com",
+    "career_url": "https://jobs.lever.co/eruditus",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/eruditus?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Executive Education",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Classplus",
+    "slug": "classplus",
+    "website": "https://classplus.co",
+    "career_url": "https://jobs.lever.co/classplus",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/classplus?mode=json",
+    "category_tier": "startup",
+    "domain": "Creator & Teacher SaaS",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Khatabook",
+    "slug": "khatabook",
+    "website": "https://khatabook.com",
+    "career_url": "https://jobs.lever.co/khatabook",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/khatabook?mode=json",
+    "category_tier": "startup",
+    "domain": "MSME Accounting Tech",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Rebel Foods",
+    "slug": "rebel-foods",
+    "website": "https://rebelfoods.com",
+    "career_url": "https://jobs.lever.co/rebelfoods",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/rebelfoods?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Cloud Kitchens / FoodTech",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Curefoods",
+    "slug": "curefoods",
+    "website": "https://curefoods.in",
+    "career_url": "https://jobs.lever.co/curefoods",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/curefoods?mode=json",
+    "category_tier": "startup",
+    "domain": "Cloud Kitchen Brands",
+    "role_focus": [
+      "operations",
+      "product"
+    ]
+  },
+  {
+    "name": "Chaayos",
+    "slug": "chaayos",
+    "website": "https://chaayos.com",
+    "career_url": "https://jobs.lever.co/chaayos",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/chaayos?mode=json",
+    "category_tier": "startup",
+    "domain": "Omnichannel F&B Tech",
+    "role_focus": [
+      "operations",
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Chai Point",
+    "slug": "chai-point",
+    "website": "https://chaipoint.com",
+    "career_url": "https://jobs.lever.co/chaipoint",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/chaipoint?mode=json",
+    "category_tier": "startup",
+    "domain": "F&B IoT & Retail",
+    "role_focus": [
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "EatClub (Box8)",
+    "slug": "eatclub",
+    "website": "https://eatclub.com",
+    "career_url": "https://jobs.lever.co/eatclub",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/eatclub?mode=json",
+    "category_tier": "startup",
+    "domain": "Food Delivery Network",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Wakefit",
+    "slug": "wakefit",
+    "website": "https://wakefit.co",
+    "career_url": "https://jobs.lever.co/wakefit",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/wakefit?mode=json",
+    "category_tier": "startup",
+    "domain": "D2C Home & Sleep",
+    "role_focus": [
+      "product",
+      "operations"
+    ]
+  },
+  {
+    "name": "Pepperfry",
+    "slug": "pepperfry",
+    "website": "https://pepperfry.com",
+    "career_url": "https://jobs.lever.co/pepperfry",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/pepperfry?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Furniture Marketplace",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "CaratLane (Titan)",
+    "slug": "caratlane",
+    "website": "https://caratlane.com",
+    "career_url": "https://jobs.lever.co/caratlane",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/caratlane?mode=json",
+    "category_tier": "unicorn",
+    "domain": "Omnichannel Jewellery",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "BlueStone",
+    "slug": "bluestone",
+    "website": "https://bluestone.com",
+    "career_url": "https://jobs.lever.co/bluestone",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/bluestone?mode=json",
+    "category_tier": "startup",
+    "domain": "Jewellery Ecommerce",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Sugar Cosmetics",
+    "slug": "sugar-cosmetics",
+    "website": "https://sugarcosmetics.com",
+    "career_url": "https://jobs.lever.co/sugarcosmetics",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/sugarcosmetics?mode=json",
+    "category_tier": "startup",
+    "domain": "D2C Beauty & Omnichannel",
+    "role_focus": [
+      "product",
+      "operations"
+    ]
+  },
+  {
+    "name": "Plum Goodness",
+    "slug": "plum-goodness",
+    "website": "https://plumgoodness.com",
+    "career_url": "https://jobs.lever.co/plumgoodness",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/plumgoodness?mode=json",
+    "category_tier": "startup",
+    "domain": "Clean Beauty D2C",
+    "role_focus": [
+      "operations",
+      "product"
+    ]
+  },
+  {
+    "name": "Bombay Shaving Company",
+    "slug": "bombay-shaving-company",
+    "website": "https://bombayshavingcompany.com",
+    "career_url": "https://jobs.lever.co/bombayshavingcompany",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/bombayshavingcompany?mode=json",
+    "category_tier": "startup",
+    "domain": "Personal Care D2C",
+    "role_focus": [
+      "operations",
+      "product"
+    ]
+  },
+  {
+    "name": "Kapiva",
+    "slug": "kapiva",
+    "website": "https://kapiva.in",
+    "career_url": "https://jobs.lever.co/kapiva",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/kapiva?mode=json",
+    "category_tier": "startup",
+    "domain": "Ayurvedic Nutrition D2C",
+    "role_focus": [
+      "product",
+      "operations"
+    ]
+  },
+  {
+    "name": "Epigamia (Drums Food)",
+    "slug": "epigamia",
+    "website": "https://epigamia.com",
+    "career_url": "https://jobs.lever.co/epigamia",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/epigamia?mode=json",
+    "category_tier": "startup",
+    "domain": "FMCG Greek Yogurt D2C",
+    "role_focus": [
+      "operations",
+      "product"
+    ]
+  },
+  {
+    "name": "Mensa Brands",
+    "slug": "mensa-brands",
+    "website": "https://mensabrands.com",
+    "career_url": "https://jobs.lever.co/mensabrands",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/mensabrands?mode=json",
+    "category_tier": "unicorn",
+    "domain": "D2C Brand Aggregator",
+    "role_focus": [
+      "strategy",
+      "product",
+      "founders_office",
+      "operations"
+    ]
+  },
+  {
+    "name": "GlobalBees",
+    "slug": "globalbees",
+    "website": "https://globalbees.com",
+    "career_url": "https://jobs.lever.co/globalbees",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/globalbees?mode=json",
+    "category_tier": "unicorn",
+    "domain": "D2C Brand House",
+    "role_focus": [
+      "strategy",
+      "operations",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Goat Brand Labs",
+    "slug": "goat-brand-labs",
+    "website": "https://goatbrandlabs.com",
+    "career_url": "https://jobs.lever.co/goatbrandlabs",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/goatbrandlabs?mode=json",
+    "category_tier": "startup",
+    "domain": "D2C Brand Accelerator",
+    "role_focus": [
+      "strategy",
+      "operations"
+    ]
+  },
+  {
+    "name": "Even Healthcare",
+    "slug": "even-healthcare",
+    "website": "https://even.in",
+    "career_url": "https://jobs.ashbyhq.com/even",
+    "ats_type": "ashby",
+    "feed_url": "https://api.ashbyhq.com/posting-api/job-board/even",
+    "category_tier": "startup",
+    "domain": "Managed Care & Health Plans",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Loop Health",
+    "slug": "loop-health",
+    "website": "https://loophealth.com",
+    "career_url": "https://jobs.lever.co/loophealth",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/loophealth?mode=json",
+    "category_tier": "startup",
+    "domain": "Group Health Insurance",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Onsurity",
+    "slug": "onsurity",
+    "website": "https://onsurity.com",
+    "career_url": "https://jobs.lever.co/onsurity",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/onsurity?mode=json",
+    "category_tier": "startup",
+    "domain": "Employee Healthcare Tech",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Nova Benefits",
+    "slug": "nova-benefits",
+    "website": "https://novabenefits.com",
+    "career_url": "https://jobs.lever.co/novabenefits",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/novabenefits?mode=json",
+    "category_tier": "startup",
+    "domain": "Corporate Wellness SaaS",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "FamPay",
+    "slug": "fampay",
+    "website": "https://fampay.in",
+    "career_url": "https://jobs.lever.co/fampay",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/fampay?mode=json",
+    "category_tier": "startup",
+    "domain": "Teen Fintech & Payments",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Rupifi",
+    "slug": "rupifi",
+    "website": "https://rupifi.com",
+    "career_url": "https://jobs.lever.co/rupifi",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/rupifi?mode=json",
+    "category_tier": "startup",
+    "domain": "B2B Embedded Fintech",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Progcap",
+    "slug": "progcap",
+    "website": "https://progcap.com",
+    "career_url": "https://jobs.lever.co/progcap",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/progcap?mode=json",
+    "category_tier": "startup",
+    "domain": "Supply Chain Financing",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Open Financial Technologies",
+    "slug": "open-financial",
+    "website": "https://open.money",
+    "career_url": "https://jobs.lever.co/open",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/open?mode=json",
+    "category_tier": "unicorn",
+    "domain": "SME Neobank Platform",
+    "role_focus": [
+      "product",
+      "tech",
+      "strategy"
+    ]
+  },
+  {
+    "name": "Refyne",
+    "slug": "refyne",
+    "website": "https://refyne.co.in",
+    "career_url": "https://jobs.lever.co/refyne",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/refyne?mode=json",
+    "category_tier": "startup",
+    "domain": "Earned Wage Access",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "LiquiLoans",
+    "slug": "liquiloans",
+    "website": "https://liquiloans.com",
+    "career_url": "https://jobs.lever.co/liquiloans",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/liquiloans?mode=json",
+    "category_tier": "startup",
+    "domain": "P2P Lending Tech",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Mudrex",
+    "slug": "mudrex",
+    "website": "https://mudrex.com",
+    "career_url": "https://jobs.lever.co/mudrex",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/mudrex?mode=json",
+    "category_tier": "startup",
+    "domain": "Crypto Wealth Management",
+    "role_focus": [
+      "product",
+      "tech",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Dunzo",
+    "slug": "dunzo",
+    "website": "https://dunzo.com",
+    "career_url": "https://jobs.lever.co/dunzo",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/dunzo?mode=json",
+    "category_tier": "startup",
+    "domain": "Hyperlocal Delivery Tech",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Magicpin",
+    "slug": "magicpin",
+    "website": "https://magicpin.in",
+    "career_url": "https://jobs.lever.co/magicpin",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/magicpin?mode=json",
+    "category_tier": "startup",
+    "domain": "Local Commerce & ONDC",
+    "role_focus": [
+      "product",
+      "tech",
+      "operations"
+    ]
+  },
+  {
+    "name": "Shipsy",
+    "slug": "shipsy",
+    "website": "https://shipsy.io",
+    "career_url": "https://jobs.lever.co/shipsy",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/shipsy?mode=json",
+    "category_tier": "startup",
+    "domain": "Logistics Orchestration SaaS",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Fleetx",
+    "slug": "fleetx",
+    "website": "https://fleetx.io",
+    "career_url": "https://jobs.lever.co/fleetx",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/fleetx?mode=json",
+    "category_tier": "startup",
+    "domain": "Freight IoT & Fleet SaaS",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Captain Fresh",
+    "slug": "captain-fresh",
+    "website": "https://captainfresh.in",
+    "career_url": "https://jobs.lever.co/captainfresh",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/captainfresh?mode=json",
+    "category_tier": "startup",
+    "domain": "B2B Animal Protein Supply Chain",
+    "role_focus": [
+      "operations",
+      "tech",
+      "product"
+    ]
+  },
+  {
+    "name": "WayCool Foods",
+    "slug": "waycool",
+    "website": "https://waycool.in",
+    "career_url": "https://jobs.lever.co/waycool",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/waycool?mode=json",
+    "category_tier": "startup",
+    "domain": "Food Supply Chain Tech",
+    "role_focus": [
+      "operations",
+      "product",
+      "tech"
+    ]
+  },
+  {
+    "name": "Fasal",
+    "slug": "fasal.co",
+    "website": "https://fasal.co",
+    "career_url": "https://jobs.lever.co/fasal",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/fasal?mode=json",
+    "category_tier": "startup",
+    "domain": "Horticulture Precision IoT",
+    "role_focus": [
+      "tech",
+      "product"
+    ]
+  },
+  {
+    "name": "Jai Kisan",
+    "slug": "jai-kisan",
+    "website": "https://jai-kisan.com",
+    "career_url": "https://jobs.lever.co/jaikisan",
+    "ats_type": "lever",
+    "feed_url": "https://api.lever.co/v0/postings/jaikisan?mode=json",
+    "category_tier": "startup",
+    "domain": "Rural Rural Fintech",
+    "role_focus": [
+      "product",
+      "tech"
+    ]
+  }
+]

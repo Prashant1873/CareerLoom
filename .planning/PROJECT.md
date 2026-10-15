@@ -8,17 +8,18 @@ CareerLoom is an intelligent job discovery engine that searches career portals a
 
 Empowers candidates to discover fresh, direct-from-source job listings across major global employers instantly using freeform natural language queries and category exploration, eliminating rigid keyword matching and ATS search friction.
 
-## Current Milestone: v5.0 Indian Career Repository & Continuous Batch Scraping Engine
+## Current Milestone: v6.0 Obsidian Light & Dual-Theme Ergonomics
 
-**Goal:** Establish an extensive SQLite-backed repository of hundreds of Indian career portals (popular startups, unicorns, established enterprises, strategy consulting firms) discovered via Reddit and web feeds, with heavy emphasis on Product Management and Strategy Consulting roles, powered by an automated continuous batch scraping pipeline.
+**Goal:** Deliver a high-craft, anti-slop Light Mode for CareerLoom adhering strictly to `frontend-skill` (WCAG 2.2 AA contrast standards, hue-tinted cool slate / obsidian porcelain neutral architecture, calibrated semantic badge fills, and fluid theme switching without unstyled flash).
 
 **Target features:**
-- SQLite Career Targets Registry (`career_targets` table) storing company metadata, career URLs, ATS connectors, scraping status, role focus tags, and sync timestamps.
-- Reddit & Public Forum Discovery Pipeline querying `r/developersIndia`, `r/IndianStartups`, `r/ProductManagement`, `r/consulting`, `r/bangalore` to identify top companies and their careers endpoints.
-- Massive expansion across Indian ecosystem: Tech Startups/Unicorns, Established Conglomerates (Tata, Reliance, Infosys, etc.), Global Strategy Consulting (McKinsey, BCG, Bain, Kearney, Big 4 India, etc.), and Fintech/Consumer.
-- Specialized Taxonomy & Classifiers for Product Management (APM, PM, SPM, GPM, ProdOps) and Strategy Consulting (Associate, Consultant, Chief of Staff, Strategy & Ops, BizOps).
-- High-Throughput Continuous Batch Scraper (`sync_batch.py`, API endpoint) with concurrency limits, dead-link handling, job deduplication, and scheduled cron execution.
-- Frontend Career Repository Directory view with 1-click filtering for Product Management and Strategy Consulting tracks.
+- Dual-theme token architecture in CSS variables (`data-theme="dark"` and `data-theme="light"`).
+- Hue-tinted cool slate / obsidian porcelain neutral ramp (eliminating washed out generic AI grays).
+- WCAG 2.2 AA contrast compliance across all text layers (primary > 14:1, secondary > 7:1, muted > 4.5:1, brand emerald > 4.5:1).
+- Accessible dual-theme badge system (subtle background tints with darkened high-contrast typography).
+- Responsive, viscoelastic theme switcher component in navigation rail and mobile headers.
+- Zero-flash theme hydration via local storage and system `prefers-color-scheme` support.
+- Comprehensive component retheming across 3-column control center, modals, drawers, and omnibox stream.
 
 ## Requirements
 
@@ -36,15 +37,19 @@ Empowers candidates to discover fresh, direct-from-source job listings across ma
 - ✓ Desktop-Grade 3-Column Obsidian Control Center — Phase 6, Phase 7, Phase 8
 - ✓ Massive Global Portal Expansion (237 firms, 16k+ live listings) — Phase 9
 - ✓ India Launch & Indian Leads Engine (51+ Indian tech unicorns, 1,478 listings, India Direct controls, CTC badges, referral engine) — Phase 10
+- ✓ SQLite Career Targets Registry (`career_targets`) tracking 220+ employers, sync health, and scrape metrics — Phase 11
+- ✓ Automated Reddit & forum discovery pipeline across Indian ecosystem (`r/developersIndia`, etc.) — Phase 12
+- ✓ Dedicated Product Management and Strategy Consulting role taxonomies, tracks, and sub-50ms search — Phase 13
+- ✓ Continuous batch scraping pipeline with async runner, background scheduler, and stale job reconciler — Phase 14
+- ✓ Frontend Career Directory Hub and dedicated PM & Strategy Consulting 1-click exploration views — Phase 15
 
 ### Active
 
-- [ ] SQLite Career Targets Registry (`career_targets`) for managing hundreds of company career endpoints, scraping health, and metadata.
-- [ ] Automated Reddit & forum discovery pipeline to extract top Indian startups, unicorns, established enterprises, and consulting firms.
-- [ ] Massive Indian company directory expansion across Startups, Conglomerates, and Strategy Consulting firms.
-- [ ] Dedicated Product Management and Strategy Consulting role taxonomies, tracks, and classifiers.
-- [ ] High-throughput continuous batch scraping engine with scheduled / on-demand triggers and stale job pruning.
-- [ ] Frontend Career Directory Hub and dedicated PM & Strategy Consulting exploration views.
+- [ ] Dual-theme CSS token architecture with calibrated Obsidian Porcelain & Cool Slate neutral ramp.
+- [ ] WCAG 2.2 AA contrast matrix verification ensuring 4.5:1 text and 3:1 control compliance across both themes.
+- [ ] Refactoring hardcoded dark background values in `App.css` and `CareerDirectoryModal.css` into semantic variables.
+- [ ] Interactive viscoelastic theme toggle in navigation rail and header with system preference synchronization.
+- [ ] Complete retheming pass for Master Job Stream, Job Cards, Inspector Pane, Lead Modal, and Career Directory.
 
 ### Out of Scope
 

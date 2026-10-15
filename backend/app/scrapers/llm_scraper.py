@@ -7,6 +7,7 @@ from backend.app.models.job import JobItem
 from backend.app.scrapers.custom_crawler import CustomPortalCrawler
 from backend.app.services.llm_adapter import LLMQueryService, get_llm_service
 from backend.app.services.taxonomy import match_category_phrase
+from backend.app.utils.classifier import classify_role
 from backend.app.utils.date_parser import parse_posting_date
 
 logger = logging.getLogger("careerloom.scrapers.llm_scraper")
@@ -59,10 +60,8 @@ class LLMPortalExtractor:
         elif is_remote:
             location = "Remote"
 
-        # Match category & seniority
-        tax = match_category_phrase(title)
-        category = tax.get("category", "general")
-        seniority = tax.get("seniority", "mid")
+        # Match category & seniority & track
+        category, seniority, track = classify_role(title, company=company, domain_hint=default_domain)
 
         # Parse date from snippet if present
         date_posted = parse_posting_date(snippet)
@@ -72,6 +71,7 @@ class LLMPortalExtractor:
             company=company,
             domain=default_domain,
             category=category,
+            track=track,
             seniority=seniority,
             location=location,
             country=country,
@@ -80,7 +80,7 @@ class LLMPortalExtractor:
             apply_url=apply_url,
             source="custom_portal",
             description_summary=snippet[:200] if snippet else None,
-            raw_tags=[t for t in [category, seniority, default_domain] if t and t != "general"],
+            raw_tags=[t for t in [category, seniority, track, default_domain] if t and t != "general"],
         )
 
     async def scrape_portal(

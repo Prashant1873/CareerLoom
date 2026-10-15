@@ -402,23 +402,23 @@
 }
 
 .tier-startup {
-  background-color: rgba(16, 185, 129, 0.12);
-  color: #10b981;
+  background-color: var(--accent-subtle);
+  color: var(--accent-emerald-text);
 }
 
 .tier-unicorn {
-  background-color: rgba(6, 182, 212, 0.12);
-  color: #06b6d4;
+  background-color: var(--accent-cyan-subtle);
+  color: var(--accent-cyan-text);
 }
 
 .tier-enterprise {
-  background-color: rgba(245, 158, 11, 0.12);
-  color: #f59e0b;
+  background-color: var(--accent-amber-subtle);
+  color: var(--accent-amber-text);
 }
 
 .tier-consulting {
-  background-color: rgba(99, 102, 241, 0.12);
-  color: #6366f1;
+  background-color: var(--accent-indigo-subtle);
+  color: var(--accent-indigo-text);
 }
 
 .domain-tag {
@@ -449,28 +449,28 @@
 }
 
 .ats-greenhouse {
-  color: #10b981;
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: var(--accent-emerald-text);
+  border: 1px solid var(--border-accent);
 }
 
 .ats-lever {
-  color: #f59e0b;
-  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: var(--accent-amber-text);
+  border: 1px solid var(--accent-amber-subtle);
 }
 
 .ats-ashby {
-  color: #06b6d4;
-  border: 1px solid rgba(6, 182, 212, 0.25);
+  color: var(--accent-cyan-text);
+  border: 1px solid var(--accent-cyan-subtle);
 }
 
 .ats-workday {
-  color: #6366f1;
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  color: var(--accent-indigo-text);
+  border: 1px solid var(--accent-indigo-subtle);
 }
 
 .ats-smartrecruiters {
-  color: #f43f5e;
-  border: 1px solid rgba(244, 63, 94, 0.25);
+  color: var(--accent-rose-text);
+  border: 1px solid var(--accent-rose-subtle);
 }
 
 .live-count-pill {

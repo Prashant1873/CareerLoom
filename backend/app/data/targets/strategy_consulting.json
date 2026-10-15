@@ -1,0 +1,484 @@
+[
+  {
+    "name": "McKinsey & Company India",
+    "slug": "mckinsey-india",
+    "website": "https://www.mckinsey.com",
+    "career_url": "https://www.mckinsey.com/careers/search-jobs",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Strategy & Management Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "product",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Boston Consulting Group (BCG) India",
+    "slug": "bcg-india",
+    "website": "https://www.bcg.com",
+    "career_url": "https://careers.bcg.com",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Strategy & Management Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "product",
+      "leadership"
+    ]
+  },
+  {
+    "name": "Bain & Company India",
+    "slug": "bain-india",
+    "website": "https://www.bain.com",
+    "career_url": "https://www.bain.com/careers/",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Strategy & Management Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "product",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Kearney India",
+    "slug": "kearney-india",
+    "website": "https://www.kearney.com",
+    "career_url": "https://www.kearney.com/careers",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Strategy & Management Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "operations"
+    ]
+  },
+  {
+    "name": "Oliver Wyman India",
+    "slug": "oliver-wyman-india",
+    "website": "https://www.oliverwyman.com",
+    "career_url": "https://www.oliverwyman.com/careers.html",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Strategy & Management Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "product"
+    ]
+  },
+  {
+    "name": "Roland Berger India",
+    "slug": "roland-berger-india",
+    "website": "https://www.rolandberger.com",
+    "career_url": "https://www.rolandberger.com/en/Join.html",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Strategy & Management Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "leadership"
+    ]
+  },
+  {
+    "name": "Strategy& India (PwC)",
+    "slug": "strategy-and-india",
+    "website": "https://www.strategyand.pwc.com",
+    "career_url": "https://www.strategyand.pwc.com/in/en/careers.html",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Strategy & Management Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Alvarez & Marsal India",
+    "slug": "alvarez-and-marsal-india",
+    "website": "https://www.alvarezandmarsal.com",
+    "career_url": "https://www.alvarezandmarsal.com/careers",
+    "ats_type": "workday",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Strategy & Turnaround Advisory",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "operations"
+    ]
+  },
+  {
+    "name": "EY-Parthenon India",
+    "slug": "ey-parthenon-india",
+    "website": "https://www.ey.com/en_gl/parthenon",
+    "career_url": "https://www.ey.com/en_in/careers",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Strategy Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "product"
+    ]
+  },
+  {
+    "name": "Monitor Deloitte India",
+    "slug": "monitor-deloitte-india",
+    "website": "https://www2.deloitte.com",
+    "career_url": "https://www2.deloitte.com/in/en/careers.html",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Strategy Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "leadership"
+    ]
+  },
+  {
+    "name": "KPMG Strategy & Operations India",
+    "slug": "kpmg-strategy-india",
+    "website": "https://kpmg.com/in",
+    "career_url": "https://kpmg.com/in/en/home/careers.html",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Management Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "operations"
+    ]
+  },
+  {
+    "name": "PwC Management Consulting India",
+    "slug": "pwc-consulting-india",
+    "website": "https://www.pwc.in",
+    "career_url": "https://www.pwc.in/careers.html",
+    "ats_type": "workday",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Management Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "tech"
+    ]
+  },
+  {
+    "name": "Arthur D. Little India",
+    "slug": "arthur-d-little-india",
+    "website": "https://www.adlittle.com",
+    "career_url": "https://www.adlittle.com/en/careers",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Strategy & Innovation Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "tech"
+    ]
+  },
+  {
+    "name": "Dalberg Advisors India",
+    "slug": "dalberg-india",
+    "website": "https://dalberg.com",
+    "career_url": "https://dalberg.com/careers/",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Social Impact & Strategy Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Samagra Governance",
+    "slug": "samagra-governance",
+    "website": "https://samagragovernance.in",
+    "career_url": "https://samagragovernance.in/careers",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Governance & Public Policy Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "leadership"
+    ]
+  },
+  {
+    "name": "Zinnov",
+    "slug": "zinnov",
+    "website": "https://zinnov.com",
+    "career_url": "https://zinnov.com/careers/",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Tech & Globalization Advisory",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "tech"
+    ]
+  },
+  {
+    "name": "Everest Group",
+    "slug": "everest-group",
+    "website": "https://www.everestgrp.com",
+    "career_url": "https://www.everestgrp.com/careers/",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Strategic IT & Process Advisory",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "operations"
+    ]
+  },
+  {
+    "name": "L.E.K. Consulting India",
+    "slug": "lek-consulting-india",
+    "website": "https://www.lek.com",
+    "career_url": "https://www.lek.com/join-lek",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Strategy Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "product"
+    ]
+  },
+  {
+    "name": "FTI Consulting India",
+    "slug": "fti-consulting-india",
+    "website": "https://www.fticonsulting.com",
+    "career_url": "https://www.fticonsulting.com/careers",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Financial & Strategic Advisory",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "operations"
+    ]
+  },
+  {
+    "name": "Simon-Kucher & Partners India",
+    "slug": "simon-kucher-india",
+    "website": "https://www.simon-kucher.com",
+    "career_url": "https://www.simon-kucher.com/en/careers",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Growth & Pricing Strategy",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "product"
+    ]
+  },
+  {
+    "name": "Kepler Cannon India",
+    "slug": "kepler-cannon-india",
+    "website": "https://keplercannon.com",
+    "career_url": "https://keplercannon.com/careers/",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Boutique Strategy Advisory",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Praxis Global Alliance",
+    "slug": "praxis-global-alliance",
+    "website": "https://praxisga.com",
+    "career_url": "https://praxisga.com/careers",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Management & PE Advisory",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "product"
+    ]
+  },
+  {
+    "name": "Avalon Consulting",
+    "slug": "avalon-consulting",
+    "website": "https://avalonconsulting.com",
+    "career_url": "https://avalonconsulting.com/careers/",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Strategy & Performance Transformation",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "operations"
+    ]
+  },
+  {
+    "name": "Intellecap",
+    "slug": "intellecap",
+    "website": "https://www.intellecap.com",
+    "career_url": "https://www.intellecap.com/careers/",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Inclusive Development Advisory",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "founders_office"
+    ]
+  },
+  {
+    "name": "Athena Infonomics",
+    "slug": "athena-infonomics",
+    "website": "https://athenainfonomics.com",
+    "career_url": "https://athenainfonomics.com/careers/",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Data-Driven Public Policy Advisory",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "tech"
+    ]
+  },
+  {
+    "name": "Vector Consulting Group",
+    "slug": "vector-consulting",
+    "website": "https://www.vectorconsulting.in",
+    "career_url": "https://www.vectorconsulting.in/careers/",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Supply Chain & Operations Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "operations"
+    ]
+  },
+  {
+    "name": "Miebach Consulting India",
+    "slug": "miebach-india",
+    "website": "https://www.miebach.com",
+    "career_url": "https://www.miebach.com/in/careers/",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Supply Chain Transformation",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "operations"
+    ]
+  },
+  {
+    "name": "Technopak Advisors",
+    "slug": "technopak-advisors",
+    "website": "https://technopak.com",
+    "career_url": "https://technopak.com/careers/",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Retail & Consumer Strategy Advisory",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "product"
+    ]
+  },
+  {
+    "name": "Crisil Advisory",
+    "slug": "crisil-advisory",
+    "website": "https://www.crisil.com",
+    "career_url": "https://www.crisil.com/en/home/careers.html",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Financial & Market Research Advisory",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "leadership"
+    ]
+  },
+  {
+    "name": "ICRA Analytics & Advisory",
+    "slug": "icra-advisory",
+    "website": "https://www.icra.in",
+    "career_url": "https://www.icra.in/Careers",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Credit & Strategy Research",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "leadership"
+    ]
+  },
+  {
+    "name": "CareEdge Advisory",
+    "slug": "careedge-advisory",
+    "website": "https://www.careedge.in",
+    "career_url": "https://www.careedge.in/careers",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Financial & Rating Advisory",
+    "role_focus": [
+      "strategy",
+      "consulting"
+    ]
+  },
+  {
+    "name": "Nomura Research Institute (NRI) India",
+    "slug": "nri-india",
+    "website": "https://www.nri.com",
+    "career_url": "https://www.nri.com/en/careers",
+    "ats_type": "custom",
+    "feed_url": null,
+    "category_tier": "consulting",
+    "domain": "Management & IT Consulting",
+    "role_focus": [
+      "strategy",
+      "consulting",
+      "tech"
+    ]
+  }
+]

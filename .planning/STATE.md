@@ -1,36 +1,36 @@
 ---
 gsd_state_version: 1.0
-milestone: v5.0
-milestone_name: Indian Career Repository & Continuous Batch Scraping Engine
-current_phase: 15
-current_phase_name: Frontend Career Directory Hub & Role Experience
+milestone: v6.0
+milestone_name: Obsidian Light & Dual-Theme Ergonomics
+current_phase: 17
+current_phase_name: Theme Switcher, Component Retheming & Fluid Transitions
 status: completed
-stopped_at: Phase 15 planning complete
-last_updated: "2026-10-07T23:55:14.191Z"
-last_activity: 2026-10-08
-last_activity_desc: Phase 13 executed — PM & Strategy Consulting taxonomy engine, sub-50ms search, fast-path NLP, and backfill completed.
+stopped_at: Milestone v6 complete
+last_updated: "2026-10-16T01:00:00.000Z"
+last_activity: 2026-10-16
+last_activity_desc: Milestone v6 complete — Phase 16 & 17 verified. Full dual-theme system, zero-FOUC hydration, viscoelastic theme switcher, and WCAG 2.2 AA compliance.
 progress:
-  total_phases: 5
-  completed_phases: 5
-  total_plans: 10
-  completed_plans: 10
+  total_phases: 2
+  completed_phases: 2
+  total_plans: 4
+  completed_plans: 4
 ---
 
 # Project State
 
 ## Project Reference
 
-See: `.planning/PROJECT.md` (updated 2026-10-08)
+See: `.planning/PROJECT.md` (updated 2026-10-16)
 
 **Core value:** Empowers candidates to discover fresh, direct-from-source job listings across major global employers instantly using freeform natural language queries and category exploration, eliminating rigid keyword matching and ATS search friction.
-**Current focus:** Milestone v5.0: Indian Career Repository & Continuous Batch Scraping Engine
+**Current focus:** Milestone v6.0: Obsidian Light & Dual-Theme Ergonomics (Complete)
 
 ## Current Position
 
-Phase: 15 of 15 (Frontend Career Directory Hub & Role Experience)
-Plan: Not started
-Status: All phases complete
-Last activity: 2026-10-08 — Phase 15 complete
+Phase: 17 of 17 (Theme Switcher, Component Retheming & Fluid Transitions)
+Plan: All plans complete
+Status: Completed
+Last activity: 2026-10-16 — Milestone v6 complete (Obsidian Light & Dual-Theme Ergonomics)
 
 ## Performance Metrics
 
@@ -38,24 +38,14 @@ Last activity: 2026-10-08 — Phase 15 complete
 
 - Total plans completed: 4
 - Average duration: 5 min
-- Total execution time: 1.9 hours
+- Total execution time: 0.35 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| Phase 1: Ingestion Engine & ATS Direct Feeds | 3/3 | 15 min | 5 min |
-| Phase 2: Natural Language Query & Filter Engine | 3/3 | 15 min | 5 min |
-| Phase 3: High-Craft Frontend UI & Card Experience | 3/3 | 15 min | 5 min |
-| Phase 4: Custom Enterprise Portal Scrapers | 2/2 | 10 min | 5 min |
-| Phase 5: Community Intelligence (Reddit Insights) | 2/2 | 10 min | 5 min |
-| Phase 6: Obsidian Design System & 3-Column Shell | 1/1 | 5 min | 5 min |
-| Phase 7: Master Job Stream & Keyboard Flow | 1/1 | 5 min | 5 min |
-| Phase 8: Persistent Job Inspector & Community Intel | 1/1 | 5 min | 5 min |
-| Phase 9: Massive Global Portal Expansion | 3/3 | 15 min | 5 min |
-| Phase 10: India Launch & Indian Leads Engine | 4/4 | 20 min | 5 min |
-| 14 | 2 | - | - |
-| 15 | 2 | - | - |
+| Phase 16: Design Token Architecture & WCAG 2.2 AA Contrast Calibration | 2/2 | 10 min | 5 min |
+| Phase 17: Theme Switcher, Component Retheming & Fluid Transitions | 2/2 | 10 min | 5 min |
 
 **Recent Trend:**
 

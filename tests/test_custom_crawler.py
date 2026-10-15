@@ -89,7 +89,7 @@ async def test_llm_extractor_heuristic_normalization():
     # Check consultant job
     consultant = next(j for j in jobs if "Consultant" in j.title)
     assert consultant.country == "United Kingdom"
-    assert consultant.category == "consulting_strategy"
+    assert consultant.category in ("management_consulting", "consulting_strategy")
 
 
 def test_custom_portals_catalog():

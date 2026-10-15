@@ -30,15 +30,16 @@ def test_date_parser_relative():
 
 
 def test_role_classifier():
-    cat, sen = classify_role("Senior Product Manager - Growth")
+    cat, sen, track = classify_role("Senior Product Manager - Growth")
     assert cat == "product"
     assert sen == "senior"
+    assert track == "Growth Product Manager"
 
-    cat, sen = classify_role("Associate Machine Learning Engineer")
+    cat, sen, track = classify_role("Associate Machine Learning Engineer")
     assert cat == "data_ai"
     assert sen == "entry"
 
-    cat, sen = classify_role("Software Engineering Intern")
+    cat, sen, track = classify_role("Software Engineering Intern")
     assert cat == "software_engineering"
     assert sen == "intern"
 

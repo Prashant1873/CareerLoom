@@ -22,6 +22,7 @@ import {
   Building2,
 } from 'lucide-react';
 import type { Category, FilterState } from '../types/job';
+import { ThemeToggle } from './ThemeToggle';
 
 interface NavRailProps {
   isCollapsed: boolean;
@@ -480,30 +481,33 @@ export const NavRail: React.FC<NavRailProps> = ({
 
       {/* Rail Footer */}
       <div className="rail-footer">
-        {hasActiveFilters && !isCollapsed && (
-          <button
-            type="button"
-            className="rail-reset-btn"
-            onClick={onResetFilters}
-            title="Reset all active filters"
-          >
-            <RotateCcw size={13} />
-            <span>Reset Filters</span>
-          </button>
-        )}
+        <ThemeToggle collapsed={isCollapsed} />
         {!isCollapsed ? (
-          <div
-            className="rail-live-indicator"
-            onClick={onOpenDirectory}
-            role="button"
-            tabIndex={0}
-            title="Click to view all monitored employer portals and sync health"
-            style={{ cursor: onOpenDirectory ? 'pointer' : 'default' }}
-          >
-            <span className={`status-ping ${isSyncing ? 'status-ping-amber' : ''}`} />
-            <span className="status-text">
-              {monitoredCount || 230}+ Employers • {syncFreshnessText || 'Active Feeds'}
-            </span>
+          <div className="rail-footer-meta">
+            {hasActiveFilters && (
+              <button
+                type="button"
+                className="rail-reset-btn"
+                onClick={onResetFilters}
+                title="Reset all active filters"
+              >
+                <RotateCcw size={13} />
+                <span>Reset Filters</span>
+              </button>
+            )}
+            <div
+              className="rail-live-indicator"
+              onClick={onOpenDirectory}
+              role="button"
+              tabIndex={0}
+              title="Click to view all monitored employer portals and sync health"
+              style={{ cursor: onOpenDirectory ? 'pointer' : 'default', marginLeft: hasActiveFilters ? 'auto' : 0 }}
+            >
+              <span className={`status-ping ${isSyncing ? 'status-ping-amber' : ''}`} />
+              <span className="status-text">
+                {monitoredCount || 230}+ Employers • {syncFreshnessText || 'Active Feeds'}
+              </span>
+            </div>
           </div>
         ) : (
           <span

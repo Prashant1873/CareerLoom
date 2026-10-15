@@ -48,7 +48,7 @@ class AshbyConnector(BaseATSConnector):
                 raw_date = rj.get("publishedAt")
 
                 date_posted = parse_posting_date(raw_date)
-                category, seniority = classify_role(title)
+                category, seniority, track = classify_role(title, company=company_name, domain_hint=domain)
                 location, country, is_remote = parse_location(str(raw_location), title, company_hint=company_name)
 
                 # Ashby explicitly provides isRemote boolean
@@ -75,6 +75,7 @@ class AshbyConnector(BaseATSConnector):
                     source="ashby",
                     domain=domain,
                     category=category,
+                    track=track,
                     seniority=seniority,
                     location=location,
                     country=country,

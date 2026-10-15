@@ -1,5 +1,6 @@
 import React from 'react';
 import { Compass, Bookmark } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
 
 interface HeaderProps {
   savedCount: number;
@@ -52,6 +53,7 @@ export const Header: React.FC<HeaderProps> = ({
             <span>Saved Jobs</span>
             <span className="saved-counter">{savedCount}</span>
           </button>
+          <ThemeToggle collapsed={true} />
         </div>
       </div>
     </header>

@@ -45,7 +45,7 @@ class GreenhouseConnector(BaseATSConnector):
                 raw_date = rj.get("first_published") or rj.get("updated_at")
 
                 date_posted = parse_posting_date(raw_date)
-                category, seniority = classify_role(title)
+                category, seniority, track = classify_role(title, company=company_name, domain_hint=domain)
                 location, country, is_remote = parse_location(raw_location, title, company_hint=company_name)
 
                 # Extract departments/tags
@@ -65,6 +65,7 @@ class GreenhouseConnector(BaseATSConnector):
                     source="greenhouse",
                     domain=domain,
                     category=category,
+                    track=track,
                     seniority=seniority,
                     location=location,
                     country=country,

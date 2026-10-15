@@ -69,6 +69,23 @@
 
 ---
 
+## Milestone v6 Requirements: Obsidian Light & Dual-Theme Ergonomics
+
+### Dual-Theme Token Architecture & WCAG 2.2 AA Contrast (Phase 16)
+
+- [x] **THEME-TOKEN-01**: Define dual-theme semantic CSS variables in `frontend/src/index.css` under `:root, [data-theme="dark"]` and `[data-theme="light"]`, deploying an Obsidian Porcelain canvas (`#f8fafc`), pure white surfaces (`#ffffff`), elevated slate panels, and subtle borders.
+- [x] **THEME-CONTRAST-02**: Enforce WCAG 2.2 AA contrast compliance across all text tiers (primary `#0f172a` > 14:1, secondary `#334155` > 8:1, muted `#64748b` > 4.5:1) and calibrate light mode primary accent to emerald `#047857` (5.48:1 on white).
+- [x] **THEME-BADGE-03**: Calibrate dual-theme semantic badge colors (Domain, Remote, Tier, Match, Compensation) using soft pastel backgrounds and deep saturated text to guarantee >4.5:1 readability on light mode.
+- [x] **THEME-REFACTOR-04**: Eliminate hardcoded dark hex color values (`#080b11`, `#0e131f`, `#121826`, `#0d121c`) across `App.css` and `CareerDirectoryModal.css`, mapping them cleanly to semantic tokens.
+
+### Theme Switcher, Component Retheming & Fluid Transitions (Phase 17)
+
+- [x] **THEME-TOGGLE-05**: Implement accessible, viscoelastic theme toggle control with sun/moon icons and Apple fluid spring kinetics in `NavRail.tsx` and `Header.tsx`.
+- [x] **THEME-HYDRATE-06**: Prevent flash of unstyled theme (FOUC) by synchronizing theme state in `localStorage` with `prefers-color-scheme` media query in initial HTML render and React `useTheme` hook.
+- [x] **THEME-SURFACE-07**: Complete end-to-end component retheming across 3-Column Shell, Master Job Stream, Job Cards, Inspector Pane, Lead Modal, and Career Directory Hub.
+
+---
+
 ## Out of Scope
 
 Explicitly excluded to protect zero-cost model and project focus:
@@ -101,12 +118,19 @@ Explicitly excluded to protect zero-cost model and project focus:
 | V5-UI-01 | Phase 15 | Complete |
 | V5-UI-02 | Phase 15 | Complete |
 | V5-UI-03 | Phase 15 | Complete |
+| THEME-TOKEN-01 | Phase 16 | Complete |
+| THEME-CONTRAST-02 | Phase 16 | Complete |
+| THEME-BADGE-03 | Phase 16 | Complete |
+| THEME-REFACTOR-04 | Phase 16 | Complete |
+| THEME-TOGGLE-05 | Phase 17 | Complete |
+| THEME-HYDRATE-06 | Phase 17 | Complete |
+| THEME-SURFACE-07 | Phase 17 | Complete |
 
 **Coverage:**
 
-- Milestone v5 requirements: 15 total
-- Mapped to phases: 15
+- Milestone v6 requirements: 7 total
+- Mapped to phases: 7
 - Unmapped: 0
 
 ---
-*Requirements defined: 2026-10-08 for Milestone v5.0*
+*Requirements updated: 2026-10-16 for Milestone v6.0*

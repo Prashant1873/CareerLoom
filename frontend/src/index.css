@@ -1,5 +1,6 @@
-:root {
-  /* Color Palette - Obsidian Charcoal Theme */
+:root,
+[data-theme="dark"] {
+  /* Color Palette - Obsidian Charcoal Theme (Dark) */
   --bg-base: #0b0d11;
   --bg-surface: #131720;
   --bg-elevated: #1a202c;
@@ -28,13 +29,83 @@
 
   --accent-cyan: #06b6d4;
   --accent-cyan-subtle: rgba(6, 182, 212, 0.12);
+  --accent-cyan-text: #22d3ee;
+
   --accent-amber: #f59e0b;
   --accent-amber-subtle: rgba(245, 158, 11, 0.12);
+  --accent-amber-text: #fbbf24;
+
   --accent-indigo: #6366f1;
   --accent-indigo-subtle: rgba(99, 102, 241, 0.12);
+  --accent-indigo-text: #818cf8;
+
   --accent-rose: #f43f5e;
   --accent-rose-subtle: rgba(244, 63, 94, 0.12);
+  --accent-rose-text: #fb7185;
 
+  --accent-emerald-text: #34d399;
+
+  /* Shadows (Optical Elevation for Dark Mode) */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px var(--accent-glow);
+}
+
+[data-theme="light"] {
+  /* Color Palette - Obsidian Porcelain & Cool Slate Theme (Light) */
+  --bg-base: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f1f5f9;
+  --bg-subtle: #e2e8f0;
+  --bg-input: #ffffff;
+  --bg-hover: rgba(15, 23, 42, 0.04);
+  --bg-active: rgba(15, 23, 42, 0.08);
+
+  /* Border System */
+  --border-subtle: rgba(15, 23, 42, 0.08);
+  --border-hover: rgba(15, 23, 42, 0.18);
+  --border-strong: rgba(15, 23, 42, 0.26);
+  --border-accent: rgba(5, 150, 105, 0.35);
+
+  /* Text & Hierarchy (Strict WCAG 2.2 AA Contrast) */
+  --text-primary: #0f172a;       /* 14.6:1 on white (AAA) */
+  --text-secondary: #334155;     /* 8.5:1 on white (AAA) */
+  --text-muted: #64748b;         /* 4.6:1 on white (AA) */
+  --text-inverted: #f8fafc;
+
+  /* Accents & Signals (Calibrated for >= 4.5:1 AA contrast on light surfaces) */
+  --accent-primary: #047857;       /* 5.48:1 on white (AA Pass) */
+  --accent-primary-hover: #065f46; /* 7.42:1 on white (AAA Pass) */
+  --accent-subtle: rgba(4, 120, 87, 0.10);
+  --accent-glow: rgba(4, 120, 87, 0.18);
+
+  --accent-cyan: #0e7490;
+  --accent-cyan-subtle: rgba(6, 182, 212, 0.12);
+  --accent-cyan-text: #0e7490;     /* 5.36:1 on white, 4.79:1 on pill (AA Pass) */
+
+  --accent-amber: #b45309;
+  --accent-amber-subtle: rgba(245, 158, 11, 0.14);
+  --accent-amber-text: #b45309;   /* 5.02:1 on white, 4.51:1 on pill (AA Pass) */
+
+  --accent-indigo: #4f46e5;
+  --accent-indigo-subtle: rgba(99, 102, 241, 0.12);
+  --accent-indigo-text: #4f46e5;   /* 6.29:1 on white, 5.42:1 on pill (AAA Pass) */
+
+  --accent-rose: #be123c;
+  --accent-rose-subtle: rgba(244, 63, 94, 0.12);
+  --accent-rose-text: #be123c;     /* 6.29:1 on white, 5.38:1 on pill (AAA Pass) */
+
+  --accent-emerald-text: #047857;  /* 5.48:1 on white, 4.91:1 on pill (AA Pass) */
+
+  /* Shadows (Optical Elevation for Light Surfaces) */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.06);
+  --shadow-glow: 0 0 18px var(--accent-glow);
+}
+
+:root {
   /* Typography Scale */
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -57,12 +128,6 @@
   --radius-lg: 14px;
   --radius-xl: 20px;
   --radius-full: 9999px;
-
-  /* Shadows (Optical Elevation) */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 20px var(--accent-glow);
 
   /* Transitions (Fluid Spring Feel) */
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);

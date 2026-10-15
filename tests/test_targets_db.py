@@ -89,7 +89,7 @@ async def test_target_crud_operations():
     await upsert_targets([t2, t3])
 
     # Filter by tier = unicorn
-    results, total = await get_targets(CareerTargetFilterParams(category_tier="unicorn"))
+    results, total = await get_targets(CareerTargetFilterParams(category_tier="unicorn", limit=200))
     slugs = [t.slug for t in results]
     assert "swiggy-test" in slugs
     assert "cred-test" in slugs

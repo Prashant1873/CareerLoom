@@ -81,3 +81,13 @@
   - Automatic pruning/archiving of listings no longer found on source career portals, preventing ghost jobs and broken links.
 - **Frontend Career Directory Hub**:
   - Obsidian dark directory view allowing users to inspect monitored companies, direct career URLs, ATS types, and live job counts.
+
+## 10. Milestone v6: Obsidian Light & Dual-Theme Ergonomics
+- **Obsidian Porcelain & Cool Slate Palette**:
+  - Anti-slop light mode using an off-white porcelain canvas (`#f8fafc`) paired with crisp white card surfaces (`#ffffff`) and deep slate typography (`#0f172a`), preserving the premium craft of the dark theme.
+- **Perceptual Contrast Standards & WCAG 2.2 AA Compliance**:
+  - Darkened primary emerald accent (`#059669`) achieving 4.6:1 contrast against pure white, overcoming the readability failure of bright mint accents on white.
+  - Saturated typography for semantic pills (Domain, Match, Remote, Tier, Compensation) ensuring >4.5:1 contrast over subtle 10-14% alpha backgrounds.
+- **Viscoelastic Dual-Theme Toggle**:
+  - Tactile theme switcher with Apple fluid spring kinetics (`damping: 1.0`) embedded cleanly in the left navigation rail.
+  - Zero-flash theme hydration via local storage synchronization and system `prefers-color-scheme` support.

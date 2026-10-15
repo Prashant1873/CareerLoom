@@ -14,6 +14,7 @@ class JobItem(BaseModel):
     company: str = Field(description="Employer name")
     domain: str = Field(default="Tech", description="Industry domain or sector")
     category: str = Field(default="general", description="Canonical role category")
+    track: Optional[str] = Field(default=None, description="Granular role track (e.g. Chief of Staff, APM, TPM, BizOps)")
     seniority: str = Field(default="mid", description="Inferred seniority level: entry, mid, senior, lead, intern")
     location: str = Field(default="Not Specified", description="Display location or workplace city/region")
     country: str = Field(default="Global", description="Country name or Global")
@@ -42,6 +43,7 @@ class JobItem(BaseModel):
         source: str,
         domain: str = "Tech",
         category: str = "general",
+        track: Optional[str] = None,
         seniority: str = "mid",
         location: str = "Not Specified",
         country: str = "Global",
@@ -60,6 +62,7 @@ class JobItem(BaseModel):
             company=company.strip(),
             domain=domain.strip(),
             category=category.strip().lower(),
+            track=track.strip() if track else None,
             seniority=seniority.strip().lower(),
             location=location.strip(),
             country=country.strip(),
@@ -79,6 +82,8 @@ class JobFilterParams(BaseModel):
     search: Optional[str] = None
     company: Optional[str] = None
     category: Optional[str] = None
+    cluster: Optional[str] = Field(default=None, description="Parent domain cluster (e.g. 'product_cluster', 'strategy_cluster')")
+    track: Optional[str] = Field(default=None, description="Granular role track (e.g. 'Chief of Staff', 'APM')")
     domain: Optional[str] = None
     country: Optional[str] = None
     location: Optional[str] = None
