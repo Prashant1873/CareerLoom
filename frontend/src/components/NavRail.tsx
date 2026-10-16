@@ -200,7 +200,7 @@ export const NavRail: React.FC<NavRailProps> = ({
             >
               <div className="nav-btn-left">
                 <span className="india-flag-icon" role="img" aria-label="India flag">🇮🇳</span>
-                {!isCollapsed && <span className="nav-text font-medium">🇮🇳 PM Roles</span>}
+                {!isCollapsed && <span className="nav-text font-medium">PM Roles</span>}
               </div>
               {!isCollapsed && (
                 <span className="nav-count-badge pm-badge">PM</span>
@@ -223,7 +223,7 @@ export const NavRail: React.FC<NavRailProps> = ({
             >
               <div className="nav-btn-left">
                 <span className="india-flag-icon" role="img" aria-label="India flag">🇮🇳</span>
-                {!isCollapsed && <span className="nav-text font-medium">🇮🇳 Strategy</span>}
+                {!isCollapsed && <span className="nav-text font-medium">Strategy</span>}
               </div>
               {!isCollapsed && (
                 <span className="nav-count-badge strategy-badge">Strategy</span>
