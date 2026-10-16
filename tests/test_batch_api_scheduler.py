@@ -21,7 +21,7 @@ async def test_scheduler_lifecycle_and_mutex():
     scheduler = BackgroundBatchScheduler()
     scheduler._interval_seconds = 0.05  # Short interval for test
 
-    scheduler.start()
+    scheduler.start(force=True)
     assert scheduler._task is not None
     assert not scheduler._task.done()
 

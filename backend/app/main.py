@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.api import categories, discovery, insights, jobs, leads, nlp, targets
-from backend.app.db.database import get_stats, init_db
+from backend.app.db.database import close_db, get_stats, init_db
 from backend.app.services.scheduler import batch_scheduler
 from backend.app.services.sync import JobSyncService
 from backend.scripts.seed_targets import seed_career_targets
@@ -41,6 +41,7 @@ async def lifespan(app: FastAPI):
     # Shutdown
     logger.info("Shutting down CareerLoom Discovery Engine...")
     await batch_scheduler.stop()
+    await close_db()
 
 
 app = FastAPI(

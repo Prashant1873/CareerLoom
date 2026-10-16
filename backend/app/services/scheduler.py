@@ -50,10 +50,14 @@ class BackgroundBatchScheduler:
     def is_running(self) -> bool:
         return self._is_running
 
-    def start(self) -> None:
+    def start(self, force: bool = False) -> None:
         """
         Starts the periodic background worker loop if enabled.
         """
+        if os.getenv("TESTING") == "1" and not force:
+            logger.info("BackgroundBatchScheduler loop skipped in test mode.")
+            return
+
         if self._interval_seconds > 0 and (self._task is None or self._task.done()):
             self._task = asyncio.create_task(self._periodic_worker_loop())
             now = datetime.now(timezone.utc)
