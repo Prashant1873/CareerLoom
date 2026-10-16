@@ -25,6 +25,7 @@ import type { CommunityInsights, JobItem } from '../types/job';
 import { formatJobDate } from '../utils/dateFormatter';
 import { getCTCInfo } from '../utils/ctcFormatter';
 import { fetchCommunityInsights } from '../services/api';
+import { IndiaFlag } from './IndiaFlag';
 
 interface JobInspectorPaneProps {
   job: JobItem | null;
@@ -199,7 +200,10 @@ export const JobInspectorPane: React.FC<JobInspectorPaneProps> = ({
             <MapPin size={13} className="tile-icon" />
             <div>
               <span className="tile-label">Location</span>
-              <span className="tile-val">{job.location || 'Multiple Locations'}</span>
+              <span className="tile-val" style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+                {job.country === 'India' && <IndiaFlag size={14} />}
+                <span>{job.location || 'Multiple Locations'}</span>
+              </span>
             </div>
           </div>
 
@@ -336,8 +340,8 @@ export const JobInspectorPane: React.FC<JobInspectorPaneProps> = ({
                         <Globe size={12} className="text-cyan-400" />
                         <span>Community Hub</span>
                       </div>
-                      <span className="stat-highlight">
-                        {insights.subreddit.toLowerCase().includes('developersindia') && '🇮🇳 '}
+                      <span className="stat-highlight" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                        {insights.subreddit.toLowerCase().includes('developersindia') && <IndiaFlag size={13} style={{ marginRight: 5 }} />}
                         {insights.subreddit.startsWith('r/') ? insights.subreddit : `r/${insights.subreddit}`}
                       </span>
                     </div>

@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import type { CommunityInsights, JobItem } from '../types/job';
 import { fetchCommunityInsights } from '../services/api';
+import { IndiaFlag } from './IndiaFlag';
 
 interface CommunityInsightsDrawerProps {
   job: JobItem | null;
@@ -106,8 +107,8 @@ export const CommunityInsightsDrawer: React.FC<CommunityInsightsDrawerProps> = (
               <div className="drawer-subhead">
                 <span>Community Intel</span>
                 {insights?.subreddit && (
-                  <span className="subreddit-badge">
-                    {insights.subreddit.toLowerCase().includes('developersindia') && '🇮🇳 '}
+                  <span className="subreddit-badge" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                    {insights.subreddit.toLowerCase().includes('developersindia') && <IndiaFlag size={13} style={{ marginRight: 5 }} />}
                     {insights.subreddit.startsWith('r/') ? insights.subreddit : `r/${insights.subreddit}`}
                   </span>
                 )}

@@ -14,12 +14,11 @@ import {
   AlertCircle,
   Command,
   Send,
-  Compass,
-  Briefcase,
 } from 'lucide-react';
 import type { FilterState, JobItem, ParsedQuery } from '../types/job';
 import { formatJobDate } from '../utils/dateFormatter';
 import { getCTCInfo } from '../utils/ctcFormatter';
+import { IndiaFlag } from './IndiaFlag';
 
 interface MasterJobStreamProps {
   jobs: JobItem[];
@@ -66,7 +65,7 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
   monitoredCount,
   syncFreshnessText: _syncFreshnessText,
 }) => {
-  const activeChips: { label: string; onClear: () => void }[] = [];
+  const activeChips: { label: React.ReactNode; onClear: () => void }[] = [];
 
   if (filters.searchPrompt) {
     activeChips.push({
@@ -75,11 +74,19 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
     });
   }
   if (filters.category) {
-    let catLabel = filters.category.replace(/_/g, ' ');
+    let catLabel: React.ReactNode = filters.category.replace(/_/g, ' ');
     if (filters.category === 'product_cluster') {
-      catLabel = '🇮🇳 PM Leadership';
+      catLabel = (
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+          <IndiaFlag size={13} /> PM Leadership
+        </span>
+      );
     } else if (filters.category === 'strategy_cluster') {
-      catLabel = '🇮🇳 Strategy & Consulting';
+      catLabel = (
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+          <IndiaFlag size={13} /> Strategy & Consulting
+        </span>
+      );
     }
     activeChips.push({
       label: catLabel,
@@ -105,7 +112,13 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
   }
   if (filters.country) {
     activeChips.push({
-      label: filters.country,
+      label: filters.country === 'India' ? (
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+          <IndiaFlag size={13} /> India
+        </span>
+      ) : (
+        filters.country
+      ),
       onClear: () => onFilterChange({ country: '' }),
     });
   }
@@ -186,8 +199,8 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
             }}
             title="1-Click filter for Product Management roles across India"
           >
-            <Compass size={13} className="track-pill-icon text-cyan-400" />
-            <span className="track-pill-text">🇮🇳 PM Roles</span>
+            <IndiaFlag size={15} />
+            <span className="track-pill-text">PM Roles</span>
             <span className="track-pill-badge">Cluster</span>
           </button>
 
@@ -203,8 +216,8 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
             }}
             title="1-Click filter for Strategy & Consulting roles across India"
           >
-            <Briefcase size={13} className="track-pill-icon text-indigo-400" />
-            <span className="track-pill-text">🇮🇳 Strategy</span>
+            <IndiaFlag size={15} />
+            <span className="track-pill-text">Strategy</span>
             <span className="track-pill-badge">Cluster</span>
           </button>
 
@@ -238,7 +251,9 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
         {/* Indian Metro Tech Hub Quick Filter Ribbon */}
         {filters.country === 'India' && (
           <div className="metro-hub-ribbon" role="toolbar" aria-label="Indian Metro Tech Hubs">
-            <span className="metro-ribbon-label">Tech Hub:</span>
+            <span className="metro-ribbon-label" style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+              <IndiaFlag size={13} /> Tech Hub:
+            </span>
             <div className="metro-chips-scroll">
               {[
                 { id: '', label: 'All India' },
@@ -407,6 +422,7 @@ export const MasterJobStream: React.FC<MasterJobStreamProps> = ({
                   <div className="stream-attr-location">
                     <MapPin size={12} />
                     <span>{job.location || 'Multiple Locations'}</span>
+                    {job.country === 'India' && <IndiaFlag size={13} style={{ marginLeft: 3 }} />}
                   </div>
 
                   {job.is_remote && (

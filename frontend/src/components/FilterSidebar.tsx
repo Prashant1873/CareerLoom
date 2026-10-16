@@ -1,6 +1,7 @@
 import React from 'react';
 import { Filter, RotateCcw, Clock, Globe, Briefcase, Award, ArrowUpDown, Laptop } from 'lucide-react';
 import type { FilterState } from '../types/job';
+import { IndiaFlag } from './IndiaFlag';
 
 interface FilterSidebarProps {
   filters: FilterState;
@@ -139,7 +140,11 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
       {/* Region / Country */}
       <div className="filter-group">
         <div className="filter-group-title">
-          <Globe size={14} className="filter-icon" />
+          {filters.country === 'India' ? (
+            <IndiaFlag size={14} className="filter-icon" />
+          ) : (
+            <Globe size={14} className="filter-icon" />
+          )}
           <span>Region & Country</span>
         </div>
         <select
@@ -159,7 +164,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
       {filters.country === 'India' && (
         <div className="filter-group animate-fade-in">
           <div className="filter-group-title">
-            <Globe size={14} className="filter-icon text-emerald-400" />
+            <IndiaFlag size={15} style={{ marginRight: 6 }} />
             <span>Indian Tech Hub</span>
           </div>
           <select

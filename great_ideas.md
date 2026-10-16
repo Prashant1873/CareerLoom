@@ -91,3 +91,10 @@
 - **Viscoelastic Dual-Theme Toggle**:
   - Tactile theme switcher with Apple fluid spring kinetics (`damping: 1.0`) embedded cleanly in the left navigation rail.
   - Zero-flash theme hydration via local storage synchronization and system `prefers-color-scheme` support.
+
+## 11. Cross-Platform Tiranga SVG & Unicode Fallback Elimination
+- **Zero-Dependency SVG Tiranga**:
+  - Windows 10/11 system font `Segoe UI Emoji` lacks regional indicator flag glyphs by OS policy, rendering `🇮🇳` as literal letters "IN".
+  - Standardized vector `<IndiaFlag />` component featuring accurate 3:2 tricolor geometry (saffron `#FF9933`, white `#FFFFFF`, green `#138808`) and central 24-spoke Ashoka Chakra (`#000080`).
+  - Seamlessly embedded in navigation rails, category cluster pills, active filter badges, job card locations, and Reddit community insights across all platforms and themes.
+

@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import type { Category, FilterState } from '../types/job';
 import { ThemeToggle } from './ThemeToggle';
+import { IndiaFlag } from './IndiaFlag';
 
 interface NavRailProps {
   isCollapsed: boolean;
@@ -176,7 +177,7 @@ export const NavRail: React.FC<NavRailProps> = ({
               title="Filter exclusively for verified jobs across Indian Unicorns & Tech Hubs"
             >
               <div className="nav-btn-left">
-                <span className="india-flag-icon" role="img" aria-label="India flag">🇮🇳</span>
+                <IndiaFlag size={18} className="india-flag-icon" />
                 {!isCollapsed && <span className="nav-text font-medium">India Direct</span>}
               </div>
               {!isCollapsed && (
@@ -199,7 +200,7 @@ export const NavRail: React.FC<NavRailProps> = ({
               title="Filter for verified Product Management openings across India"
             >
               <div className="nav-btn-left">
-                <span className="india-flag-icon" role="img" aria-label="India flag">🇮🇳</span>
+                <IndiaFlag size={18} className="india-flag-icon" />
                 {!isCollapsed && <span className="nav-text font-medium">PM Roles</span>}
               </div>
               {!isCollapsed && (
@@ -222,7 +223,7 @@ export const NavRail: React.FC<NavRailProps> = ({
               title="Filter for Strategy, Consulting & Founder's Office openings across India"
             >
               <div className="nav-btn-left">
-                <span className="india-flag-icon" role="img" aria-label="India flag">🇮🇳</span>
+                <IndiaFlag size={18} className="india-flag-icon" />
                 {!isCollapsed && <span className="nav-text font-medium">Strategy</span>}
               </div>
               {!isCollapsed && (
@@ -407,7 +408,11 @@ export const NavRail: React.FC<NavRailProps> = ({
                 <div className="filter-group-mini">
                   <span className="mini-label">Geography</span>
                   <div className="filter-select-wrap">
-                    <Globe size={13} className="select-icon" />
+                    {filters.country === 'India' ? (
+                      <IndiaFlag size={14} className="select-icon" />
+                    ) : (
+                      <Globe size={13} className="select-icon" />
+                    )}
                     <select
                       className="filter-select-input"
                       value={filters.country}
@@ -415,7 +420,7 @@ export const NavRail: React.FC<NavRailProps> = ({
                       aria-label="Filter by Country or Region"
                     >
                       <option value="">Global / All Regions</option>
-                      <option value="India">🇮🇳 India</option>
+                      <option value="India">India</option>
                       <option value="United States">United States</option>
                       <option value="United Kingdom">United Kingdom</option>
                       <option value="Europe">Europe (Regional)</option>
